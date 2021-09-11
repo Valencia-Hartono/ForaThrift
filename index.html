@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css" />
+		<style>
+			#clothesMenu {
+				width: 50vw !important;
+			}
+			#shoesMenu {
+				width: 30vw !important;
+			}
+			#bagsMenu {
+				width: 40vw !important;
+			}
+			#accessoriesMenu {
+				width: 40vw !important;
+			}
+			#greenNav {
+				background: #00ab8e;
+				color: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<nav id="blackNav" class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<div class="container-fluid">
+				<a class="navbar-brand active" href="#">FORA THRIFT</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item">
+							<a class="nav-link" href="#">WOMENS</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">MENS</a>
+						</li>
+						<form class="input-group d-flex">
+							<input type="text" class="form-control" placeholder="Search" />
+							<button class="btn btn-outline-success input-group-btn" type="submit">🔍</button>
+						</form>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+								👤
+							</a>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="#">👤 My Account</a></li>
+								<li><a class="dropdown-item" href="#">❓ Queue/Shipping info</a></li>
+								<li><a class="dropdown-item" href="#">📦 Donation Criteria</a></li>
+								<li><a class="dropdown-item" href="#">👩‍💻 Contact Us</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<!-- 2nd row nav bar (clothes, shoes, bags, accessories, about us) -->
+		<nav id="greenNav" class="nav nav-pills flex-column flex-sm-row active">
+			<!-- clothes list -->
+			<li class="flex-sm-fill text-sm-center nav-link dropdown">
+				<a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"> CLOTHES </a>
+				<ul id="clothesMenu" class="dropdown-menu container">
+					<div class="container">
+						<div class="row">
+							<div class="col">Column</div>
+							<div class="col">Column</div>
+							<div class="col">Column</div>
+						</div>
+					</div>
+				</ul>
+			</li>
+			<!-- shoes list -->
+			<li class="flex-sm-fill text-sm-center nav-link dropdown">
+				<a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"> SHOES </a>
+				<ul id="shoesMenu" class="dropdown-menu container"></ul>
+			</li>
+			<!-- bags list -->
+			<li class="flex-sm-fill text-sm-center nav-link dropdown">
+				<a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"> BAGS </a>
+				<ul id="bagsMenu" class="dropdown-menu container"></ul>
+			</li>
+			<!-- accessories list -->
+			<li class="flex-sm-fill text-sm-center nav-link dropdown">
+				<a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"> ACCESSORIES </a>
+				<ul id="accessoriesMenu" class="dropdown-menu container"></ul>
+			</li>
+			<!-- about us list -->
+
+			<!-- <button
+				type="button"
+				class="btn btn-secondary"
+				data-bs-toggle="tooltip"
+				data-bs-html="true"
+				data-bs-placement="bottom"
+				title='<em>Tooltip</em> <u>with</u><b>HTML</b><img src="https://sheinsz.ltwebstatic.com/she_dist/images/bg-grey-ba96515e9b.png"/>'
+			>
+				Tooltip with HTML
+			</button> -->
+		</nav>
+
+		<script src="./node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
+		<script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script>
+			// enable popovers
+			var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+			var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+				return new bootstrap.Popover(popoverTriggerEl);
+			});
+			// enable tooltips
+			var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+			var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+				return new bootstrap.Tooltip(tooltipTriggerEl);
+			});
+		</script>
+	</body>
+</html>
