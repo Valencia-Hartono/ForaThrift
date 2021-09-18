@@ -1,0 +1,20 @@
+#clothesMenu {
+	width: 50vw !important;
+}
+
+#shoesMenu {
+	width: 30vw !important;
+}
+
+#bagsMenu {
+	width: 40vw !important;
+}
+
+#accessoriesMenu {
+	width: 40vw !important;
+}
+
+#greenNav {
+	background: #00ab8e;
+	color: #fff;
+}

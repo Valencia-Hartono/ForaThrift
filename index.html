@@ -1,28 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css" />
-		<style>
-			#clothesMenu {
-				width: 50vw !important;
-			}
-			#shoesMenu {
-				width: 30vw !important;
-			}
-			#bagsMenu {
-				width: 40vw !important;
-			}
-			#accessoriesMenu {
-				width: 40vw !important;
-			}
-			#greenNav {
-				background: #00ab8e;
-				color: #fff;
-			}
-		</style>
+		<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
-		<nav id="blackNav" class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<nav id="blackNav" class="navbar navbar-expand-sm navbar-dark bg-dark">
 			<div class="container-fluid">
 				<a class="navbar-brand active" href="#">FORA THRIFT</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
@@ -36,10 +19,19 @@
 						<li class="nav-item">
 							<a class="nav-link" href="#">MENS</a>
 						</li>
-						<form class="input-group d-flex">
-							<input type="text" class="form-control" placeholder="Search" />
-							<button class="btn btn-outline-success input-group-btn" type="submit">🔍</button>
+						<form class="mx-2 my-auto d-flex">
+							<div class="input-group">
+								<input type="text" class="form-control" placeholder="Search for items" />
+								<span class="input-group-append">
+									<button class="btn btn-outline-secondary" type="button">🔍</button>
+								</span>
+							</div>
 						</form>
+
+						<!-- <form class="input-group d-flex">
+							<input type="text" class="form-control" placeholder="Search for items and brands" />
+							<button class="btn btn-outline-success input-group-btn" type="submit">🔍</button>
+						</form> -->
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
 								👤
@@ -55,39 +47,57 @@
 				</div>
 			</div>
 		</nav>
-		<!-- 2nd row nav bar (clothes, shoes, bags, accessories, about us) -->
-		<nav id="greenNav" class="nav nav-pills flex-column flex-sm-row active">
-			<!-- clothes list -->
-			<li class="flex-sm-fill text-sm-center nav-link dropdown">
-				<a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"> CLOTHES </a>
-				<ul id="clothesMenu" class="dropdown-menu container">
-					<div class="container">
-						<div class="row">
-							<div class="col">Column</div>
-							<div class="col">Column</div>
-							<div class="col">Column</div>
-						</div>
-					</div>
-				</ul>
-			</li>
-			<!-- shoes list -->
-			<li class="flex-sm-fill text-sm-center nav-link dropdown">
-				<a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"> SHOES </a>
-				<ul id="shoesMenu" class="dropdown-menu container"></ul>
-			</li>
-			<!-- bags list -->
-			<li class="flex-sm-fill text-sm-center nav-link dropdown">
-				<a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"> BAGS </a>
-				<ul id="bagsMenu" class="dropdown-menu container"></ul>
-			</li>
-			<!-- accessories list -->
-			<li class="flex-sm-fill text-sm-center nav-link dropdown">
-				<a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"> ACCESSORIES </a>
-				<ul id="accessoriesMenu" class="dropdown-menu container"></ul>
-			</li>
-			<!-- about us list -->
+		<nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top p-0">
+			<!-- One of the primary actions on mobile is to call a business - This displays a phone button on mobile only -->
+			<div class="navbar-toggler-right">
+				<button
+					class="navbar-toggler"
+					type="button"
+					data-toggle="collapse"
+					data-target="#navbar"
+					aria-controls="navbarTogglerDemo02"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+				>
+					<span class="navbar-toggler-icon"></span>
+				</button>
+			</div>
 
-			<!-- <button
+			<div class="collapse navbar-collapse flex-column" id="navbar">
+				<ul id="greenNav" class="navbar-nav w-100 justify-content-left">
+					<!-- clothes list -->
+					<li class="flex-sm-fill text-sm-center nav-item dropdown">
+						<a class="nav-link" role="button" data-bs-toggle="dropdown" aria-expanded="false"> CLOTHES </a>
+						<ul id="clothesMenu" class="dropdown-menu container">
+							<div class="container">
+								<div class="row">
+									<div class="col">Column</div>
+									<div class="col">Column</div>
+									<div class="col">Column</div>
+								</div>
+							</div>
+						</ul>
+					</li>
+					<!-- shoes list -->
+					<li class="flex-sm-fill text-sm-center nav-item dropdown">
+						<a class="nav-link" role="button" data-bs-toggle="dropdown" aria-expanded="false"> SHOES </a>
+						<ul id="shoesMenu" class="dropdown-menu container"></ul>
+					</li>
+					<!-- bags list -->
+					<li class="flex-sm-fill text-sm-center nav-item dropdown">
+						<a class="nav-link" role="button" data-bs-toggle="dropdown" aria-expanded="false"> BAGS </a>
+						<ul id="bagsMenu" class="dropdown-menu container"></ul>
+					</li>
+					<!-- accessories list -->
+					<li class="flex-sm-fill text-sm-center nav-item dropdown">
+						<a class="nav-link" role="button" data-bs-toggle="dropdown"> ACCESSORIES </a>
+						<ul id="accessoriesMenu" class="dropdown-menu container"></ul>
+					</li>
+					<!-- about us list -->
+					<li class="flex-sm-fill text-sm-center">
+						<a class="nav-link" role="button"> ABOUT US </a>
+					</li>
+					<!-- <button
 				type="button"
 				class="btn btn-secondary"
 				data-bs-toggle="tooltip"
@@ -97,21 +107,13 @@
 			>
 				Tooltip with HTML
 			</button> -->
+				</ul>
+			</div>
 		</nav>
 
-		<script src="./node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
-		<script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-		<script>
-			// enable popovers
-			var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
-			var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-				return new bootstrap.Popover(popoverTriggerEl);
-			});
-			// enable tooltips
-			var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-			var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-				return new bootstrap.Tooltip(tooltipTriggerEl);
-			});
-		</script>
+		<script src="node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
+		<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="node_modules/jquery/dist/jquery.min.js"></script>
+		<script src="index.js"></script>
 	</body>
 </html>
