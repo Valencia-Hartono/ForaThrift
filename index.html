@@ -7,43 +7,51 @@
 	<body>
 		<nav id="blackNav" class="navbar navbar-expand-sm navbar-dark bg-dark">
 			<div class="container-fluid">
-				<a class="navbar-brand active" href="#">FORA THRIFT</a>
+				<a class="navbar-brand active fs-1" href="#">FORA THRIFT</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0 fs-4">
 						<li class="nav-item">
 							<a class="nav-link" href="#">WOMENS</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#">MENS</a>
 						</li>
-						<form class="mx-2 my-auto d-flex">
-							<div class="input-group">
-								<input type="text" class="form-control" placeholder="Search for items" />
-								<span class="input-group-append">
-									<button class="btn btn-outline-secondary" type="button">🔍</button>
-								</span>
-							</div>
-						</form>
-
-						<!-- <form class="input-group d-flex">
-							<input type="text" class="form-control" placeholder="Search for items and brands" />
-							<button class="btn btn-outline-success input-group-btn" type="submit">🔍</button>
-						</form> -->
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
-								👤
-							</a>
-							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="#">👤 My Account</a></li>
-								<li><a class="dropdown-item" href="#">❓ Queue/Shipping info</a></li>
-								<li><a class="dropdown-item" href="#">📦 Donation Criteria</a></li>
-								<li><a class="dropdown-item" href="#">👩‍💻 Contact Us</a></li>
-							</ul>
-						</li>
 					</ul>
+					<ul class="navbar-nav me-0">
+							<form class="mx-2 my-auto d-flex">
+								<div class="input-group">
+									<input type="text" class="form-control" placeholder="Search for items" />
+									<span class="input-group-append">
+										<button class="btn btn-outline-secondary" type="button">🔍</button>
+									</span>
+								</div>
+							</form>
+
+							<!-- <form class="input-group d-flex">
+								<input type="text" class="form-control" placeholder="Search for items and brands" />
+								<button class="btn btn-outline-success input-group-btn" type="submit">🔍</button>
+							</form> -->
+							<li id="profileDropdown" class="nav-item dropdown">
+								<a
+									class="nav-link dropdown-toggle"
+									href="#"
+									role="button"
+									data-bs-toggle="dropdown"
+								>
+									👤 Quinton Ashley
+								</a>
+								<ul class="dropdown-menu dropdown-menu-end">
+									<li><a class="dropdown-item" href="#">👤 My Account</a></li>
+									<li><a class="dropdown-item" href="#">❓ Queue/Shipping info</a></li>
+									<li><a class="dropdown-item" href="#">📦 Donation Criteria</a></li>
+									<li><a class="dropdown-item" href="#">👩‍💻 Contact Us</a></li>
+								</ul>
+							</li>
+						</div>
+					</ul>	
 				</div>
 			</div>
 		</nav>
@@ -63,50 +71,35 @@
 				</button>
 			</div>
 
-			<div class="collapse navbar-collapse flex-column" id="navbar">
-				<ul id="greenNav" class="navbar-nav w-100 justify-content-left">
+			<div id="greenNav" class="collapse navbar-collapse row">
+				<ul class="col-6 navbar-nav pe-0">
 					<!-- clothes list -->
 					<li class="flex-sm-fill text-sm-center nav-item dropdown">
-						<a class="nav-link" role="button" data-bs-toggle="dropdown" aria-expanded="false"> CLOTHES </a>
-						<ul id="clothesMenu" class="dropdown-menu container">
-							<div class="container">
-								<div class="row">
-									<div class="col">Column</div>
-									<div class="col">Column</div>
-									<div class="col">Column</div>
-								</div>
-							</div>
-						</ul>
+						<a class="nav-link" role="button" data-bs-toggle="dropdown" aria-expanded="false">CLOTHES</a>
+						<ul id="clothesMenu" class="dropdown-menu container p-2"></ul>
 					</li>
 					<!-- shoes list -->
 					<li class="flex-sm-fill text-sm-center nav-item dropdown">
-						<a class="nav-link" role="button" data-bs-toggle="dropdown" aria-expanded="false"> SHOES </a>
-						<ul id="shoesMenu" class="dropdown-menu container"></ul>
+						<a class="nav-link" role="button" data-bs-toggle="dropdown" aria-expanded="false">SHOES</a>
+						<ul id="shoesMenu" class="dropdown-menu container p-2"></ul>
 					</li>
 					<!-- bags list -->
 					<li class="flex-sm-fill text-sm-center nav-item dropdown">
-						<a class="nav-link" role="button" data-bs-toggle="dropdown" aria-expanded="false"> BAGS </a>
-						<ul id="bagsMenu" class="dropdown-menu container"></ul>
+						<a class="nav-link" role="button" data-bs-toggle="dropdown" aria-expanded="false">BAGS</a>
+						<ul id="bagsMenu" class="dropdown-menu container p-2"></ul>
 					</li>
 					<!-- accessories list -->
 					<li class="flex-sm-fill text-sm-center nav-item dropdown">
-						<a class="nav-link" role="button" data-bs-toggle="dropdown"> ACCESSORIES </a>
-						<ul id="accessoriesMenu" class="dropdown-menu container"></ul>
+						<a class="nav-link" role="button" data-bs-toggle="dropdown">ACCESSORIES</a>
+						<ul id="accessoriesMenu" class="dropdown-menu container p-2"></ul>
 					</li>
+				</ul>
+				<div class="col-4 navbar-nav"></div>
+				<ul class="col-2 navbar-nav pe-0">
 					<!-- about us list -->
 					<li class="flex-sm-fill text-sm-center">
-						<a class="nav-link" role="button"> ABOUT US </a>
+						<a class="nav-link" role="button">ABOUT US</a>
 					</li>
-					<!-- <button
-				type="button"
-				class="btn btn-secondary"
-				data-bs-toggle="tooltip"
-				data-bs-html="true"
-				data-bs-placement="bottom"
-				title='<em>Tooltip</em> <u>with</u><b>HTML</b><img src="https://sheinsz.ltwebstatic.com/she_dist/images/bg-grey-ba96515e9b.png"/>'
-			>
-				Tooltip with HTML
-			</button> -->
 				</ul>
 			</div>
 		</nav>

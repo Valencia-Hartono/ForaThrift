@@ -1,20 +1,58 @@
-#clothesMenu {
-	width: 50vw !important;
+body {
+	font-family: Avenir;
 }
 
-#shoesMenu {
-	width: 30vw !important;
-}
-
-#bagsMenu {
-	width: 40vw !important;
-}
-
-#accessoriesMenu {
-	width: 40vw !important;
+#greenNav li ul {
+	width: 100vw !important;
+	max-width: none !important;
 }
 
 #greenNav {
 	background: #00ab8e;
 	color: #fff;
+}
+
+#greenNav .nav {
+	margin-bottom: 0;
+}
+#greenNav .dropdown {
+	position: static;
+}
+#greenNav .dropdown-menu {
+	width: 100%;
+}
+#greenNav .dropdown-menu > li {
+	display: inline-block;
+}
+
+#profileDropdown {
+	z-index: 2000;
+}
+
+.green {
+	color: #05816d;
+}
+
+a {
+	color: black;
+}
+
+a:link {
+	color: black;
+	text-decoration: none;
+}
+
+a:visited {
+	color: black;
+	text-decoration: none;
+}
+
+a:active {
+	color: black;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+	color: gray;
 }
