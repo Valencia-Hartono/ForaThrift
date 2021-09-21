@@ -1,0 +1,38 @@
+{
+	"items": [
+		{
+			"id": "003280",
+			"name": "shirt",
+			"type": 0,
+			"subtype": 8,
+			"price": 20.5,
+			"brand": "Nike",
+			"size": 3,
+			"color": 30,
+			"colorName": "Rose Gold",
+			"occasion": 4,
+			"season": 2,
+			"qualityRating": 5,
+			"styleRating": 5,
+			"discretionRating": 5,
+			"images": ["https://www.lulus.com/images/product/xlarge/2958280_586292.jpg?w=560&hdpi=1"]
+		},
+		{
+			"id": "003280",
+			"name": "shirt",
+			"type": 0,
+			"subtype": 8,
+			"price": 20.5,
+			"brand": "Nike",
+			"size": 3,
+			"color": 30,
+			"colorName": "Rose Gold",
+			"occasion": 4,
+			"season": 2,
+			"qualityRating": 5,
+			"styleRating": 5,
+			"discretionRating": 5,
+			"images": ["https://i.pinimg.com/564x/8a/06/03/8a06031cbd0925b3afe3a0c56cde396d.jpg"]
+		}
+	]
+}

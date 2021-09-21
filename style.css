@@ -2,9 +2,22 @@ body {
 	font-family: Avenir;
 }
 
+#topSearchBar {
+	width: 300px !important;
+}
+
+#profileDropdown {
+	z-index: 2000;
+}
+
 #greenNav li ul {
 	width: 100vw !important;
 	max-width: none !important;
+}
+
+#greenNav {
+	background: #00ab8e;
+	color: #fff;
 }
 
 #greenNav {
@@ -25,9 +38,10 @@ body {
 	display: inline-block;
 }
 
-#profileDropdown {
-	z-index: 2000;
-}
+/* #greenNav .dropdown:hover .dropdown-menu {
+	width: 100%;
+	display: block;
+} */
 
 .green {
 	color: #05816d;
