@@ -1,50 +1,45 @@
-.modal.modal-dialog.modal-content(tabindex='-1')
-	.modal-header
-		h5.modal-title Welcome to FORA
-		button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+#login_registerModal.modal: .modal-dialog: .modal-content(tabindex='-1')
+	.modal-header.pt-2.pb-0
+		// sign in and I'm new here tabs
+		ul#myTab.nav.nav-tabs(role='tablist')
+			li.nav-item(role='presentation')
+				button#login-tab.nav-link.fs-4.active(data-bs-toggle='tab' data-bs-target='#login' type='button' role='tab') SIGN IN
+			li.nav-item(role='presentation')
+				button#register-tab.nav-link.fs-4(data-bs-toggle='tab' data-bs-target='#register' type='button' role='tab') I'M NEW HERE
+		button.btn-close.mb-1(type='button' data-bs-dismiss='modal')
 	.modal-body
-		p
-			// sign in and I'm new here tabs
-			ul#myTab.nav.nav-tabs(role='tablist')
-				li.nav-item(role='presentation')
-					button#LOGIN-tab.nav-link.active(data-bs-toggle='tab' data-bs-target='#LOGIN' type='button' role='tab' aria-controls='LOGIN' aria-selected='true') SIGN IN
-				li.nav-item(role='presentation')
-					button#REGISTER.nav-link(data-bs-toggle='tab' data-bs-target='#REGISTER' type='button' role='tab' aria-controls='REGISTER' aria-selected='false') I'M NEW HERE
-			// sign in and I'm new here tab CONTENTS
-			#myTabContent.tab-content
-				// SIGN IN FORM CONTENT
-				#LOGIN.tab-pane.fade.show.active(role='tabpanel' aria-labelledby='LOGIN-tab')
-					.mb-3
-						label.form-label(for='email') *Email address
-						input.form-control(type='email' placeholder='Enter Email' name='email' required)
-					.mb-3
-						label.form-label(for='psw') *Fora password
-						input.form-control(type='password' placeholder='Enter Password' name='psw' required)
-					.form-check
-						input#flexCheckDefault.form-check-input(type='checkbox' value='')
-						label.form-check-label(for='flexCheckDefault')
-							| Keep me signed in.
-					| Forgot
-					a password?
-				// I'M NEW HERE FORM CONTENT
-				#REGISTER.tab-pane.fade(role='tabpanel' aria-labelledby='REGISTER-tab')
-					.mb-3
-						label.form-label(for='username') Username
-						input.form-control(type='text' placeholder='Enter new username' name='username' required)
-					.mb-3
-						label.form-label(for='email') Email address
-						input.form-control(type='email' placeholder='Enter new email' name='email' required)
-					.mb-3
-						label.form-label(for='psw') Create Fora password
-						input.form-control(type='password' placeholder='Enter new password' name='psw' required)
-					.mb-3
-						label.form-label(for='psw') Confirm password
-						input.form-control(type='password' placeholder='Enter new password' name='psw' required)
-					.form-check
-						input#flexCheckDefault.form-check-input(type='checkbox' value='')
-						label.form-check-label(for='flexCheckDefault')
-							| Keep me signed in.
-					| Forgot
-					a password?
-			.modal-footer
-				button.btn.btn-primary(type='submit') SIGN IN
+		// sign in and I'm new here tab contents
+		#myTabContent.tab-content
+			#login.tab-pane.fade.show.active(role='tabpanel')
+				.mb-3
+					label.form-label(for='email') Email address
+					input.form-control(type='email' placeholder='Enter Email' name='email' required)
+				.mb-3
+					label.form-label(for='psw') FORA password
+					input.form-control(type='password' placeholder='Enter Password' name='psw' required)
+				.form-check
+					input#flexCheckDefault.form-check-input(type='checkbox' value='')
+					label.form-check-label(for='flexCheckDefault')
+						| Keep me signed in.
+				.row
+					.col: a Did you forget your password?
+					.col: button.btn.btn-primary.pl-2(type='submit') SIGN IN
+			#register.tab-pane.fade(role='tabpanel')
+				.mb-3
+					label.form-label(for='username') Username
+					input.form-control(type='text' placeholder='Enter new username' name='username' required)
+				.mb-3
+					label.form-label(for='email') Email address
+					input.form-control(type='email' placeholder='Enter new email' name='email' required)
+				.mb-3
+					label.form-label(for='psw') Create FORA password
+					input.form-control(type='password' placeholder='Enter new password' name='psw' required)
+				.mb-3
+					label.form-label(for='psw') Confirm password
+					input.form-control(type='password' placeholder='Enter new password' name='psw' required)
+				.form-check
+					input#flexCheckDefault.form-check-input(type='checkbox' value='')
+					label.form-check-label(for='flexCheckDefault')
+						| Keep me signed in.
+				.mb-2
+				button.btn.btn-primary(type='submit') REGISTER

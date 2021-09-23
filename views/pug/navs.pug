@@ -5,35 +5,24 @@ nav#blackNav.navbar.navbar-expand-sm.navbar-dark.bg-dark.p-2
 			span.navbar-toggler-icon
 		#navbarSupportedContent.collapse.navbar-collapse
 			ul.navbar-nav.me-auto.mb-2.mb-lg-0.fs-5
-				li.nav-item
-					a.nav-link(href='#') WOMENS
-				li.nav-item
-					a.nav-link(href='#') MENS
+				li.nav-item: a.nav-link(href='#') WOMENS
+				li.nav-item: a.nav-link(href='#') MENS
 			ul.navbar-nav.me-0
 				form.mx-2.my-auto.d-flex
 					#topSearchBar.input-group
 						input.form-control(type='text' placeholder='Search for items or brands')
 						span.input-group-append
 							button.btn.btn-outline-secondary(type='button') 🔍
-				//
-					<form class="input-group d-flex">
-					<input type="text" class="form-control" placeholder="Search for items and brands" />
-					<button class="btn btn-outline-success input-group-btn" type="submit">🔍</button>
-					</form>
 				li#profileDropdown.nav-item.dropdown
 					a.nav-link.dropdown.fs-5(href='#' role='button' data-bs-toggle='dropdown')
 						| Get Started
 					ul.dropdown-menu.dropdown-menu-end
-						button.open-button(onclick='openForm()') Register/Sign In
-						// display register/sign initially, if registered/signed in-> then display My acc
-						li
-							a.dropdown-item(href='#') 👤 My Account
-						li
-							a.dropdown-item(href='#') ❓ Queue/Shipping info
-						li
-							a.dropdown-item(href='#') 📦 Donation Criteria
-						li
-							a.dropdown-item(href='#') 👩‍💻 Contact Us
+						li: a.dropdown-item(data-bs-toggle='modal' data-bs-target='#login_registerModal')
+							| Register/Sign In
+						li: a.dropdown-item(href='#') 👤 My Account
+						li: a.dropdown-item(href='#') ❓ Queue/Shipping info
+						li: a.dropdown-item(href='#') 📦 Donation Criteria
+						li: a.dropdown-item(href='#') 👩‍💻 Contact Us
 nav.navbar.navbar-expand-sm.navbar-dark.bg-dark.sticky-top.p-0
 	// One of the primary actions on mobile is to call a business - This displays a phone button on mobile only
 	.navbar-toggler-right
@@ -62,3 +51,4 @@ nav.navbar.navbar-expand-sm.navbar-dark.bg-dark.sticky-top.p-0
 			// about us list
 			li.flex-sm-fill.text-sm-center
 				a.nav-link(role='button') ABOUT US
+.mb-2
