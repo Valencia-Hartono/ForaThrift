@@ -1,10 +1,10 @@
 {
 	"name": "forathrift",
-	"version": "1.0.4",
+	"version": "1.0.6",
 	"description": "Fora Thrift Shop server.",
 	"main": "index.js",
 	"scripts": {
-		"start": "open demo.html",
+		"start": "node server.js",
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"v": "npm version patch --force",
 		"V": "npm version minor --force",
@@ -17,6 +17,11 @@
 		"@popperjs/core": "^2.10.1",
 		"bootstrap": "^5.1.1",
 		"express": "^4.17.1",
-		"jquery": "^3.6.0"
+		"jquery": "^3.6.0",
+		"klaw": "^4.0.1",
+		"minimist": "^1.2.5",
+		"open": "^8.2.1",
+		"pug": "^3.0.2",
+		"server-destroy": "^1.0.1"
 	}
 }

@@ -1,0 +1,64 @@
+nav#blackNav.navbar.navbar-expand-sm.navbar-dark.bg-dark.p-2
+	.container-fluid
+		a.navbar-brand.active.fs-1(href='#') FORA THRIFT
+		button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent')
+			span.navbar-toggler-icon
+		#navbarSupportedContent.collapse.navbar-collapse
+			ul.navbar-nav.me-auto.mb-2.mb-lg-0.fs-5
+				li.nav-item
+					a.nav-link(href='#') WOMENS
+				li.nav-item
+					a.nav-link(href='#') MENS
+			ul.navbar-nav.me-0
+				form.mx-2.my-auto.d-flex
+					#topSearchBar.input-group
+						input.form-control(type='text' placeholder='Search for items or brands')
+						span.input-group-append
+							button.btn.btn-outline-secondary(type='button') 🔍
+				//
+					<form class="input-group d-flex">
+					<input type="text" class="form-control" placeholder="Search for items and brands" />
+					<button class="btn btn-outline-success input-group-btn" type="submit">🔍</button>
+					</form>
+				li#profileDropdown.nav-item.dropdown
+					a.nav-link.dropdown.fs-5(href='#' role='button' data-bs-toggle='dropdown')
+						| Get Started
+					ul.dropdown-menu.dropdown-menu-end
+						button.open-button(onclick='openForm()') Register/Sign In
+						// display register/sign initially, if registered/signed in-> then display My acc
+						li
+							a.dropdown-item(href='#') 👤 My Account
+						li
+							a.dropdown-item(href='#') ❓ Queue/Shipping info
+						li
+							a.dropdown-item(href='#') 📦 Donation Criteria
+						li
+							a.dropdown-item(href='#') 👩‍💻 Contact Us
+nav.navbar.navbar-expand-sm.navbar-dark.bg-dark.sticky-top.p-0
+	// One of the primary actions on mobile is to call a business - This displays a phone button on mobile only
+	.navbar-toggler-right
+		button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbar' aria-controls='navbarTogglerDemo02' aria-expanded='false' aria-label='Toggle navigation')
+			span.navbar-toggler-icon
+	#greenNav.collapse.navbar-collapse.row
+		ul.col-6.navbar-nav.pe-0.p-1
+			// clothes list
+			li.flex-sm-fill.text-sm-center.nav-item.dropdown
+				a.nav-link(role='button' data-bs-toggle='dropdown' aria-expanded='false') CLOTHES
+				ul#clothingMenu.dropdown-menu.container.p-2
+			// shoes list
+			li.flex-sm-fill.text-sm-center.nav-item.dropdown
+				a.nav-link(role='button' data-bs-toggle='dropdown' aria-expanded='false') SHOES
+				ul#shoesMenu.dropdown-menu.container.p-2
+			// bags list
+			li.flex-sm-fill.text-sm-center.nav-item.dropdown
+				a.nav-link(role='button' data-bs-toggle='dropdown' aria-expanded='false') BAGS
+				ul#bagsMenu.dropdown-menu.container.p-2
+			// accessories list
+			li.flex-sm-fill.text-sm-center.nav-item.dropdown
+				a.nav-link(role='button' data-bs-toggle='dropdown') ACCESSORIES
+				ul#accessoriesMenu.dropdown-menu.container.p-2
+		.col-4.navbar-nav
+		ul.col-2.navbar-nav.pe-0
+			// about us list
+			li.flex-sm-fill.text-sm-center
+				a.nav-link(role='button') ABOUT US
