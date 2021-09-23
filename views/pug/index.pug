@@ -5,15 +5,3 @@ include fora.pug
 		#superCategories.col-4
 			| Categories
 		.col-8
-// add Get Started/Sign In forms
-#myForm.form-popup
-	form.form-container(action='')
-		h1 Login
-		label(for='email')
-			b Email
-		input(type='text' placeholder='Enter Email' name='email' required)
-		label(for='psw')
-			b Password
-		input(type='password' placeholder='Enter Password' name='psw' required)
-		button.btn(type='submit') Login
-		button.btn.cancel(type='button' onclick='closeForm()') Close
