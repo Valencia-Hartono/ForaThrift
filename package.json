@@ -1,17 +1,22 @@
 {
-  "name": "forathrift",
-  "version": "1.0.0",
-  "description": "Fora Thrift Shop server.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Valencia-Hartono",
-  "license": "UNLICENSED",
-  "dependencies": {
-    "@popperjs/core": "^2.10.1",
-    "bootstrap": "^5.1.1",
-    "express": "^4.17.1",
-    "jquery": "^3.6.0"
-  }
+	"name": "forathrift",
+	"version": "1.0.1",
+	"description": "Fora Thrift Shop server.",
+	"main": "index.js",
+	"scripts": {
+		"start": "open demo.html",
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"v": "npm version patch --force",
+		"V": "npm version minor --force",
+		"version": "git add -A",
+		"postversion": "git push"
+	},
+	"author": "Valencia-Hartono",
+	"license": "UNLICENSED",
+	"dependencies": {
+		"@popperjs/core": "^2.10.1",
+		"bootstrap": "^5.1.1",
+		"express": "^4.17.1",
+		"jquery": "^3.6.0"
+	}
 }
