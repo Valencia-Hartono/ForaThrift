@@ -36,14 +36,16 @@
 							</form> -->
 							<li id="profileDropdown" class="nav-item dropdown">
 								<a
-									class="nav-link dropdown"
+									class="nav-link dropdown fs-5"
 									href="#"
 									role="button"
 									data-bs-toggle="dropdown"
 								>
-									👤 SIGN IN/REGISTER
+									Get Started
 								</a>
 								<ul class="dropdown-menu dropdown-menu-end">
+									<button class="open-button" onclick="openForm()">Register/Sign In</button>
+									<!-- display register/sign initially, if registered/signed in-> then display My acc -->
 									<li><a class="dropdown-item" href="#">👤 My Account</a></li>
 									<li><a class="dropdown-item" href="#">❓ Queue/Shipping info</a></li>
 									<li><a class="dropdown-item" href="#">📦 Donation Criteria</a></li>
@@ -113,6 +115,22 @@
 
 				</div>
 			</div>
+		</div>
+
+		<!-- add Get Started/Sign In forms -->
+		<div class="form-popup" id="myForm">
+			<form action="/action_page.php" class="form-container">
+				<h1>Login</h1>
+		
+				<label for="email"><b>Email</b></label>
+				<input type="text" placeholder="Enter Email" name="email" required>
+		
+				<label for="psw"><b>Password</b></label>
+				<input type="password" placeholder="Enter Password" name="psw" required>
+		
+				<button type="submit" class="btn">Login</button>
+				<button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+			</form>
 		</div>
 
 		<script src="node_modules/@popperjs/core/dist/umd/popper.min.js"></script>

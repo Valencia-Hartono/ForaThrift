@@ -94,7 +94,7 @@ $(() => {
 			cols[colNumMin] += subCats.length + 1;
 		}
 	}
-
+	//instead of inputing categories manually, use a function
 	addColumns('clothing');
 	addColumns('shoes');
 	addColumns('bags');
@@ -103,4 +103,14 @@ $(() => {
 	$('#clothingSidebar').show();
 
 	$('#shoes').show();
+
+	// add Get Started/Sign In forms
+	function openForm() {
+		document.getElementById('myForm').style.display = 'block';
+	}
+
+	function closeForm() {
+		document.getElementById('myForm').style.display = 'none';
+	}
+	function display 
 });
