@@ -47,26 +47,69 @@ body {
 	color: #05816d;
 }
 
-a {
-	color: black;
-}
-
-a:link {
-	color: black;
-	text-decoration: none;
-}
-
+a,
 a:visited {
-	color: black;
-	text-decoration: none;
+	color: #00ab8e;
 }
 
+a:hover,
 a:active {
+	color: #05816d;
+}
+
+#greenNav .dropdown-menu a {
+	color: black;
+}
+
+#greenNav .dropdown-menu a:visited {
 	color: black;
 	text-decoration: none;
 }
 
-a:hover {
+#greenNav .dropdown-menu a:active {
+	color: black;
+	text-decoration: none;
+}
+
+#greenNav .dropdown-menu a:hover {
 	text-decoration: none;
 	color: gray;
+}
+
+.nav-tabs .nav-item .nav-link {
+	color: gray;
+}
+
+.nav-tabs .nav-item .nav-link.active {
+	color: black;
+}
+
+.modal {
+	padding-right: 5px !important;
+	position: absolute;
+	top: 110px;
+	right: 100px;
+	bottom: 0;
+	left: 0;
+	z-index: 10040;
+	overflow: auto;
+	overflow-y: auto;
+}
+
+.btn {
+	color: #fff;
+	background-color: #00ab8e;
+	border-color: #00ab8e;
+}
+
+.btn:hover {
+	color: #fff;
+	background-color: #05816d;
+	border-color: #05816d;
+}
+
+#accountTab label {
+	position: absolute;
+	margin-top: 5px;
+	margin-left: 8px;
 }

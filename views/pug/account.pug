@@ -1,0 +1,33 @@
+include fora.pug
+// categories
+.container-fluid
+	.row
+		.col-4.col-md-3.col-lg-2#accountSidebar
+			h5 MY ACCOUNT
+			#accountTab.nav.flex-column.naaccount.me-3(role='tablist' aria-orientation='vertical')
+				#profile-profile-tab.active(data-bs-toggle='pill' data-bs-target='#profile-profile' type='button' role='tab')
+					span.fs-4 🧞 
+					label My Profile
+				#profile-coupons-tab(data-bs-toggle='pill' data-bs-target='#profile-coupons' type='button' role='tab')
+					span.fs-4 🎫 
+					label My Coupons
+				#profile-donations-tab(data-bs-toggle='pill' data-bs-target='#profile-donations' type='button' role='tab') 
+					span.fs-4 🦋 
+					label My Donations
+				#profile-favorites-tab(data-bs-toggle='pill' data-bs-target='#profile-favorites' type='button' role='tab') 
+					span.fs-4 ♥ 
+					label My Favorites
+				#profile-reserved-tab(data-bs-toggle='pill' data-bs-target='#profile-reserved' type='button' role='tab') 
+					span.fs-4 🛒 
+					label My Reserved
+				#profile-purchases-tab(data-bs-toggle='pill' data-bs-target='#profile-purchases' type='button' role='tab') 
+					span.fs-4 💳 
+					label My Purchases
+		
+		.col-8.col-md-9.col-lg-10: #accountTabContent.tab-content
+			#profile-profile.tab-pane.fade.show.active(role='tabpanel'): include profile.pug
+			#profile-coupons.tab-pane.fade(role='tabpanel'): include coupons.pug
+			#profile-donations.tab-pane.fade(role='tabpanel'): include donations.pug
+			#profile-favorites.tab-pane.fade(role='tabpanel'): include favorites.pug
+			#profile-reserved.tab-pane.fade(role='tabpanel'): include reserved.pug
+			#profile-purchases.tab-pane.fade(role='tabpanel'): include purchases.pug
