@@ -2,6 +2,10 @@ body {
 	font-family: Avenir;
 }
 
+img {
+	max-width: 100%;
+}
+
 #topSearchBar {
 	width: 300px !important;
 }
@@ -57,21 +61,23 @@ a:active {
 	color: #05816d;
 }
 
-#greenNav .dropdown-menu a {
-	color: black;
-}
-
-#greenNav .dropdown-menu a:visited {
+.dropdown-menu a,
+#categories a {
 	color: black;
 	text-decoration: none;
 }
 
-#greenNav .dropdown-menu a:active {
+.dropdown-menu a:visited {
 	color: black;
 	text-decoration: none;
 }
 
-#greenNav .dropdown-menu a:hover {
+.dropdown-menu a:active {
+	color: black;
+	text-decoration: none;
+}
+
+.dropdown-menu a:hover {
 	text-decoration: none;
 	color: gray;
 }

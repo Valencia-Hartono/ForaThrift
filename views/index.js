@@ -11,47 +11,18 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 	return new bootstrap.Tooltip(tooltipTriggerEl);
 });
 
-$(() => {
-	// superCategories(clothing, accessories, shoes, bags), categories (ex.bottoms, tops, overalls), subCategories (ex.jeans, shorts...)
-	let superCategories = {
-		clothing: {
-			Bottoms: ['Jeans', 'Shorts', 'Skirts', 'Slacks', 'Sweatpants'],
-			Tops: ['Shirts', 'Blazers', 'Coats', 'Hoodies', 'Jackets', 'Sweater'],
-			Overalls: ['Beachwear', 'Dresses', 'Jumpsuits', 'Loungewear']
-		},
-		accessories: {
-			Jewelry: ['Earrings', 'Bracelets', 'Necklaces'],
-			Belts: [],
-			'Hair accessories': [],
-			Gloves: [],
-			Scarves: [],
-			Sunglasses: [],
-			Watches: []
-		},
-		shoes: {
-			Boots: ['Leather', 'k', 'l'],
-			Heels: ['k', 'a'],
-			Formal: ['a', 'b'],
-			Casual: ['Espadrilles'],
-			r: ['k', 'f']
-		},
-		bags: {
-			Backpacks: [],
-			'Chain bags': [],
-			Clutches: [],
-			'Duffle bags': [],
-			'Shoulder bags': [],
-			'Tote bags': []
-		}
-	};
+$(async () => {
+	// categories(clothing, accessories, shoes, bags), types (ex.bottoms, tops, overalls), subCategories (ex.jeans, shorts...)
+	let categories = await (await fetch('categories.json')).json();
+	log(categories);
 
-	function addColumns(superCategory) {
-		let $menu = $('#' + superCategory + 'Menu');
+	function addColumns(category) {
+		let $menu = $('#' + category + 'Menu');
 		$menu.append(`
-<div class="row">
+<div class="row mb-4">
 	<div class="col-8 px-4">
 		<div class="row">
-			<div class="col-12 fs-4 green">Shop ${superCategory[0].toUpperCase() + superCategory.slice(1)}</div>
+			<a href="/store/${category}" class="col-12 fs-4 green">Shop ${category[0].toUpperCase() + category.slice(1)}</a>
 			<div class="col"> _____________ </div>
 			<div class="col"> _____________ </div>
 			<div class="col"> _____________ </div>
@@ -62,20 +33,19 @@ $(() => {
 	</div>
 </div>`);
 		let $cols = $menu.find('.col');
-		let $superCategories = $('#superCategories');
-		$superCategories.append('<div id="' + superCategory + 'Sidebar" class="row"></div>'); //ex. id=clothingSidebar
-		let $superCategory = $('#' + superCategory + 'Sidebar'); // retrieves the element
-		$superCategory.hide();
-		let categories = Object.keys(superCategories[superCategory]); // returns an array of category names ex. tops, bottoms
+		let $categories = $('#categories');
+		$categories.append('<div id="' + category + 'Sidebar" class="row"></div>'); //ex. id=clothingSidebar
+		let $category = $('#' + category + 'Sidebar'); // retrieves the element
+		$category.hide();
+		let types = categories[category].typeNames; // get the array of type names ex. tops, bottoms
 
 		let cols = [0, 0, 0];
 
-		for (let i = 0; i < categories.length; i++) {
-			//loops through array of category names
-			let category = categories[i]; //retrieves a category name (ex.top or bottom)
-
+		for (let i = 0; i < types.length; i++) {
+			//loops through array of type names
+			let type = types[i]; //retrieves a type name (ex.top or bottom)
 			// find which column has the least amount of items
-			// place the category and sub-cat options in that column
+			// place the type and sub-cat options in that column
 			let colNumMin = 0;
 			for (let i = 1; i < cols.length; i++) {
 				if (cols[colNumMin] > cols[i]) {
@@ -83,22 +53,22 @@ $(() => {
 				}
 			}
 
-			$cols.eq(colNumMin).append('<div class="row"><a href="#" class="col">' + category + '</a></div>');
-			$superCategory.append('<a href="#" class="col-12">' + category + '</a>');
+			$cols.eq(colNumMin).append('<div class="row"><a href="#" class="col">' + type + '</a></div>');
+			$category.append('<a href="#" class="col-12">' + type + '</a>');
 
-			let subCats = superCategories[superCategory][category]; // retrieves the array of the category names
-			for (let j = 0; j < subCats.length; j++) {
-				$cols.eq(colNumMin).append('<div class="row"><a href="#" class="col"> - ' + subCats[j] + '</a></div>');
-				$superCategory.append('<a href="#" class="col-12"> - ' + subCats[j] + '</a>');
+			let subtypes = categories[category][type]; // retrieves the array of the type names
+			for (let j = 0; j < subtypes.length; j++) {
+				let subtype = subtypes[j];
+				$cols.eq(colNumMin).append('<div class="row"><a href="#" class="col"> - ' + subtype + '</a></div>');
+				$category.append('<a href="#" class="col-12"> - ' + subtype + '</a>');
 			}
-			cols[colNumMin] += subCats.length + 1;
+			cols[colNumMin] += subtypes.length + 1;
 		}
 	}
-	//instead of inputing categories manually, use a function
-	addColumns('clothing');
-	addColumns('shoes');
-	addColumns('bags');
-	addColumns('accessories');
+	//instead of inputing types manually, use a function
+	for (let category of categories.names) {
+		addColumns(category);
+	}
 
 	$('#clothingSidebar').show();
 

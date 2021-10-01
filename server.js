@@ -1,3 +1,4 @@
+const log = console.log;
 let arg = require('minimist')(process.argv.slice(2));
 global.log = (msg) => {
 	if (arg.dev) console.log(msg);
@@ -7,6 +8,7 @@ global.__root = __dirname;
 const enableDestroy = require('server-destroy');
 const express = require('express');
 const http = require('http');
+const fs = require('fs');
 global.opn = require('open');
 global.os = require('os');
 global.path = require('path');
@@ -25,6 +27,8 @@ if (win) {
 	osType = 'linux';
 }
 
+// klaw gets the names of files in a directory
+// makes klaw async
 global.klaw = function (dir, opt) {
 	return new Promise((resolve, reject) => {
 		let items = [];
@@ -43,6 +47,9 @@ global.klaw = function (dir, opt) {
 			.on('error', (err, item) => reject(err, item));
 	});
 };
+
+// load database;fs = file system
+let db = JSON.parse(fs.readFileSync('inventory.json'));
 
 function useStatic(folder) {
 	app.use(folder, express.static(__root + folder));
@@ -64,23 +71,58 @@ app.set('view engine', 'pug');
 async function loadViews() {
 	let files = await klaw(__root + '/views/pug');
 	for (file of files) {
+		file = file.split('?')[0];
 		file = path.parse(file);
 		if (file.ext != '.pug') continue;
 		if (file.name == 'index') file.name = '';
 
-		app.get('/' + file.name, (req, res) => {
-			let name = req.url;
-			if (name == '/') {
-				name = 'index';
+		let dir = file.dir.split('/').slice(-1);
+		if (dir == 'pug') dir = null;
+
+		app.get('/' + (dir ? dir + '/' : '') + file.name, (req, res) => {
+			if (req.url == '/') {
+				req.url = 'index';
 			}
-			log('requested ' + name);
-			res.render('pug/' + name, {});
+			log('requested ' + req.url);
+			res.render('pug/' + req.url, {});
 		});
 	}
 }
 
 async function startServer() {
 	await loadViews();
+
+	app.all('/categories.json', (req, res) => {
+		res.json(db.categories);
+	});
+
+	// category is a number (0 is not valid)
+	// type is a number (0 for all)
+	// subtype is a number (0 for all)
+	app.all('/items/:category/:type/:subtype', (req, res) => {
+		try {
+			let p = req.params;
+			let inventory = [];
+			if (p.category == 0) {
+				for (let category of db.categories.names) {
+					inventory = inventory.concat(db[category]);
+				}
+			} else {
+				inventory = db[db.categories.names[p.category - 1]];
+			}
+			let items = [];
+			for (let item of inventory) {
+				if (p.type == 0 || item.type == p.type) {
+					if (p.subtype == 0 || item.subtype == p.subtype) {
+						items.push(item);
+					}
+				}
+			}
+			res.json({ items });
+		} catch (e) {
+			res.send('404 Not found or invalid format ' + e.message);
+		}
+	});
 
 	let server = http.createServer(app);
 

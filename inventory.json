@@ -1,0 +1,76 @@
+{
+	"categories": {
+		"names": ["clothing", "shoes", "bags", "accessories"],
+		"clothing": {
+			"typeNames": ["Bottoms", "Tops", "Overalls"],
+			"Bottoms": ["Jeans", "Shorts", "Skirts", "Slacks", "Sweatpants"],
+			"Tops": ["Shirts", "Blazers", "Coats", "Hoodies", "Jackets", "Sweater"],
+			"Overalls": ["Beachwear", "Dresses", "Jumpsuits", "Loungewear"]
+		},
+		"shoes": {
+			"typeNames": ["Boots", "Heels", "Formal", "Casual"],
+			"Boots": ["Leather", "k", "l"],
+			"Heels": ["k", "a"],
+			"Formal": ["a", "b"],
+			"Casual": ["Espadrilles"]
+		},
+		"bags": {
+			"typeNames": ["Backpacks", "Chain bags", "Clutches", "Duffle bags", "Shoulder bags", "Tote bags"],
+			"Backpacks": [],
+			"Chain bags": [],
+			"Clutches": [],
+			"Duffle bags": [],
+			"Shoulder bags": [],
+			"Tote bags": []
+		},
+		"accessories": {
+			"typeNames": ["Jewelry", "Belts", "Hair accessories", "Gloves", "Scarves", "Sunglasses", "Watches"],
+			"Jewelry": ["Earrings", "Bracelets", "Necklaces"],
+			"Belts": [],
+			"Hair accessories": [],
+			"Gloves": [],
+			"Scarves": [],
+			"Sunglasses": [],
+			"Watches": []
+		}
+	},
+	"clothing": [
+		{
+			"id": "003280",
+			"name": "shirt 1",
+			"type": 1,
+			"subtype": 8,
+			"price": 20.5,
+			"brand": "Nike",
+			"size": 3,
+			"color": 30,
+			"colorName": "Rose Gold",
+			"occasion": 4,
+			"season": 2,
+			"qualityRating": 5,
+			"styleRating": 5,
+			"discretionRating": 5,
+			"images": ["https://www.lulus.com/images/product/xlarge/2958280_586292.jpg?w=560&hdpi=1"]
+		},
+		{
+			"id": "003280",
+			"name": "shirt 2",
+			"type": 2,
+			"subtype": 8,
+			"price": 20.5,
+			"brand": "Nike",
+			"size": 3,
+			"color": 30,
+			"colorName": "Rose Gold",
+			"occasion": 4,
+			"season": 2,
+			"qualityRating": 5,
+			"styleRating": 5,
+			"discretionRating": 5,
+			"images": ["https://i.pinimg.com/564x/8a/06/03/8a06031cbd0925b3afe3a0c56cde396d.jpg"]
+		}
+	],
+	"shoes": [],
+	"bags": [],
+	"accessories": []
+}
