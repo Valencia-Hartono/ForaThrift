@@ -1,6 +1,7 @@
 {
 	"categories": {
 		"names": ["clothing", "shoes", "bags", "accessories"],
+		"navNames": ["CLOTHES", "SHOES", "BAGS", "ACCESSORIES"],
 		"clothing": {
 			"typeNames": ["Bottoms", "Tops", "Overalls"],
 			"Bottoms": ["Jeans", "Shorts", "Skirts", "Slacks", "Sweatpants"],
@@ -50,7 +51,8 @@
 			"qualityRating": 5,
 			"styleRating": 5,
 			"discretionRating": 5,
-			"images": ["https://www.lulus.com/images/product/xlarge/2958280_586292.jpg?w=560&hdpi=1"]
+			"img": "https://www.lulus.com/images/product/xlarge/2958280_586292.jpg?w=560&hdpi=1",
+			"images": []
 		},
 		{
 			"id": "003280",
@@ -67,7 +69,28 @@
 			"qualityRating": 5,
 			"styleRating": 5,
 			"discretionRating": 5,
-			"images": ["https://i.pinimg.com/564x/8a/06/03/8a06031cbd0925b3afe3a0c56cde396d.jpg"]
+			"img": "https://i.pinimg.com/564x/8a/06/03/8a06031cbd0925b3afe3a0c56cde396d.jpg",
+			"images": []
+		},
+		{
+			"name": "white wrap dress",
+			"price": 15,
+			"img": "https://i.pinimg.com/474x/a2/df/ed/a2dfed1b26c215b30b5fada14ced83a3.jpg"
+		},
+		{
+			"name": "white collar jumpsuit",
+			"price": 20,
+			"img": "https://i.pinimg.com/564x/8a/06/03/8a06031cbd0925b3afe3a0c56cde396d.jpg"
+		},
+		{
+			"name": "romper",
+			"price": 50,
+			"img": "https://i.pinimg.com/564x/65/3f/1a/653f1a8f1c948ce626ac441d5e50964f.jpg"
+		},
+		{
+			"name": "nude dress",
+			"price": 15,
+			"img": "https://i.pinimg.com/474x/e3/64/f6/e364f63d4d276f369a3a459f71ca4c22.jpg"
 		}
 	],
 	"shoes": [],

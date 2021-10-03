@@ -15,12 +15,19 @@ nav#blackNav.navbar.navbar-expand-sm.navbar-dark.bg-dark.p-2
 						span.input-group-append
 							button.btn.btn-outline-secondary(type='button') 🔍
 				li#profileDropdown.nav-item.dropdown
-					a.nav-link.dropdown.fs-5(href='#' role='button' data-bs-toggle='dropdown')
-						| Get Started
+					if user.username
+						a.nav-link.dropdown.fs-5(href='#' role='button' data-bs-toggle='dropdown')= "Welcome "+ user.username
+						ul.dropdown-menu.dropdown-menu-end
+							li: a.dropdown-item(href='account') 👤 My Account
+							li: a.dropdown-item(href='#') ❓ Queue/Shipping info
+							li: a.dropdown-item(href='#') 📦 Donation Criteria
+							li: a.dropdown-item(href='#') 👩‍💻 Contact Us
+					else
+						a.nav-link.dropdown.fs-5(href='#' role='button' data-bs-toggle='dropdown')
+							| Get Started
 					ul.dropdown-menu.dropdown-menu-end
 						//how come when pressed is blue??
 						li: a.dropdown-item(data-bs-toggle='modal' href='#login_registerModal') Register/Sign In
-						li: a.dropdown-item(href='account') 👤 My Account
 						li: a.dropdown-item(href='#') ❓ Queue/Shipping info
 						li: a.dropdown-item(href='#') 📦 Donation Criteria
 						li: a.dropdown-item(href='#') 👩‍💻 Contact Us
@@ -31,22 +38,17 @@ nav.navbar.navbar-expand-sm.navbar-dark.bg-dark.sticky-top.p-0
 			span.navbar-toggler-icon
 	#greenNav.collapse.navbar-collapse.row
 		ul.col-6.navbar-nav.pe-0.p-1
-			// clothes list
-			li.flex-sm-fill.text-sm-center.nav-item.dropdown
-				a.nav-link(role='button' data-bs-toggle='dropdown' aria-expanded='false') CLOTHES
-				ul#clothingMenu.dropdown-menu.container.p-2
-			// shoes list
-			li.flex-sm-fill.text-sm-center.nav-item.dropdown
-				a.nav-link(role='button' data-bs-toggle='dropdown' aria-expanded='false') SHOES
-				ul#shoesMenu.dropdown-menu.container.p-2
-			// bags list
-			li.flex-sm-fill.text-sm-center.nav-item.dropdown
-				a.nav-link(role='button' data-bs-toggle='dropdown' aria-expanded='false') BAGS
-				ul#bagsMenu.dropdown-menu.container.p-2
-			// accessories list
-			li.flex-sm-fill.text-sm-center.nav-item.dropdown
-				a.nav-link(role='button' data-bs-toggle='dropdown') ACCESSORIES
-				ul#accessoriesMenu.dropdown-menu.container.p-2
+			each name, i in cats.names
+				li.flex-sm-fill.text-sm-center.nav-item.dropdown
+					a.nav-link(role='button' data-bs-toggle='dropdown' aria-expanded='false')= cats.navNames[i]
+					ul#clothingMenu.dropdown-menu.container.p-2: .row.mb-4
+							.col-8.px-4
+								.row
+									a.col-12.fs-4.green(href='/store/clothing')= 'Shop ' + name[0].toUpperCase() + name.slice(1)
+									.col  _____________ 
+									.col  _____________ 
+									.col  _____________ 
+							.col-4.images
 		.col-4.navbar-nav
 		ul.col-2.navbar-nav.pe-0
 			// about us list

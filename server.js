@@ -48,8 +48,18 @@ global.klaw = function (dir, opt) {
 	});
 };
 
+const pDog = require('pug');
+global.pug = (str, locals, insert) => {
+	str = pDog.compile(str)(locals);
+	if (insert) {
+		str = str.insert(insert, str.lastIndexOf('<'));
+	}
+	return str;
+};
+
 // load database;fs = file system
 let db = JSON.parse(fs.readFileSync('inventory.json'));
+let users = JSON.parse(fs.readFileSync('users.json')).users;
 
 function useStatic(folder) {
 	app.use(folder, express.static(__root + folder));
@@ -79,12 +89,18 @@ async function loadViews() {
 		let dir = file.dir.split('/').slice(-1);
 		if (dir == 'pug') dir = null;
 
+		let locals = {
+			//set locals.cats equal to categories objects, use : instead of =
+			cats: db.categories,
+			user: users['alexandra01']
+		};
+
 		app.get('/' + (dir ? dir + '/' : '') + file.name, (req, res) => {
 			if (req.url == '/') {
 				req.url = 'index';
 			}
 			log('requested ' + req.url);
-			res.render('pug/' + req.url, {});
+			res.render('pug/' + req.url, locals);
 		});
 	}
 }
@@ -111,10 +127,13 @@ async function startServer() {
 				inventory = db[db.categories.names[p.category - 1]];
 			}
 			let items = [];
+			let count = 0;
 			for (let item of inventory) {
 				if (p.type == 0 || item.type == p.type) {
 					if (p.subtype == 0 || item.subtype == p.subtype) {
 						items.push(item);
+						count++;
+						if (count > 30) break;
 					}
 				}
 			}

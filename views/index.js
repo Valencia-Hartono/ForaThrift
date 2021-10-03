@@ -12,26 +12,12 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 });
 
 $(async () => {
-	// categories(clothing, accessories, shoes, bags), types (ex.bottoms, tops, overalls), subCategories (ex.jeans, shorts...)
+	// categories(clothing, accessories, shoes, bags), types (ex.bottoms, tops, overalls), subTypes (ex.jeans, shorts...)
 	let categories = await (await fetch('categories.json')).json();
 	log(categories);
-
+	//adds category types and subtypes on second nav bar, evenly split in three column
 	function addColumns(category) {
 		let $menu = $('#' + category + 'Menu');
-		$menu.append(`
-<div class="row mb-4">
-	<div class="col-8 px-4">
-		<div class="row">
-			<a href="/store/${category}" class="col-12 fs-4 green">Shop ${category[0].toUpperCase() + category.slice(1)}</a>
-			<div class="col"> _____________ </div>
-			<div class="col"> _____________ </div>
-			<div class="col"> _____________ </div>
-		</div>
-	</div>
-	<div class="col-4">
-		images
-	</div>
-</div>`);
 		let $cols = $menu.find('.col');
 		let $categories = $('#categories');
 		$categories.append('<div id="' + category + 'Sidebar" class="row"></div>'); //ex. id=clothingSidebar
@@ -82,4 +68,147 @@ $(async () => {
 	function closeForm() {
 		document.getElementById('myForm').style.display = 'none';
 	}
+
+	function checkRank(points) {
+		let rank = '🥉Bronze';
+		if (points >= 5200) {
+			rank = '🥇Gold';
+		} else if (points >= 2600) {
+			rank = '🥈Silver';
+		}
+		$('#rank').append(rank);
+	}
+
+	function avatar(points, gender) {
+		let avatar = '🧚';
+		if (points >= 5200 && gender == 'f') {
+			avatar = '🧞‍♀️';
+		} else if (points >= 5200 && gender == 'm') {
+			avatar = '🧞‍♂️';
+		} else if (points >= 5200 && gender == 'n') {
+			avatar = '🧞';
+		} else if (points >= 2600 && gender == 'f') {
+			avatar = '🧜‍♀️';
+		} else if (points >= 2600 && gender == 'm') {
+			avatar = '🧜';
+		} else if (points >= 2600 && gender == 'n') {
+			avatar = '🧜‍♂️';
+		} else if (points < 2600 && gender == 'f') {
+			avatar = '🧚‍♀️';
+		} else if (points < 2600 && gender == 'm') {
+			avatar = '🧚‍♂️';
+		} else if (points < 2600 && gender == 'n') {
+			avatar = '🧚';
+		}
+	}
+
+	checkRank(user.points, user.gender);
+
+	if (window.location.href.includes('store')) {
+		let items = (await (await fetch('items/1/0/0')).json()).items;
+
+		let $items = $('#items');
+		for (let item of items) {
+			$items.append(`
+			<div class="col-6 col-md-3">
+				<img src="${item.img}"/>
+				<div>${item.name}</div>
+				<div>$${item.price}</div>
+			</div>`);
+		}
+	}
 });
+
+//ACCOUNT PAGE FUNCTIONS
+//PROFILE
+// //check which rank and avatar depending on the total points status
+
+// function checkPointsTotal() {
+// 		var TotalPoints=____; //getPoints from user account
+// 		$('#points-total')=TotalPoints;
+// 		return TotalPoints;
+// }
+
+function checkRank(points) {
+	let rank = '🥉Bronze';
+	if (points >= 5200) {
+		rank = '🥇Gold';
+	} else if (points >= 2600) {
+		rank = '🥈Silver';
+	}
+	$('#rank').append(rank);
+}
+
+function avatar(points, gender) {
+	let avatar = '🧚';
+	if (points >= 5200 && gender == 'f') {
+		avatar = '🧞‍♀️';
+	} else if (points >= 5200 && gender == 'm') {
+		avatar = '🧞‍♂️';
+	} else if (points >= 5200 && gender == 'n') {
+		avatar = '🧞';
+	} else if (points >= 2600 && gender == 'f') {
+		avatar = '🧜‍♀️';
+	} else if (points >= 2600 && gender == 'm') {
+		avatar = '🧜';
+	} else if (points >= 2600 && gender == 'n') {
+		avatar = '🧜‍♂️';
+	} else if (points < 2600 && gender == 'f') {
+		avatar = '🧚‍♀️';
+	} else if (points < 2600 && gender == 'm') {
+		avatar = '🧚‍♂️';
+	} else if (points < 2600 && gender == 'n') {
+		avatar = '🧚';
+	}
+}
+
+// function checkRank(){
+// 		if checkPointsTotal()>=0 && <2600 points,  it is bronze
+// 		 	$('#rank')=🥉Bronze
+// 		 return 3;
+// 		 else if checkPointsTotal()>=2600 && <5200,  it is silver
+// 		 	$('#rank')=🥈Silver
+// 		 return 2;
+// 		 else if checkPointsTotal()>=5200 &&,  it is gold
+// 		 	$('#rank')=🥇Gold
+// 		 return 1;
+// }
+// //check which avatargender depending on which gender selected
+// function checkAvatar(){
+// 	if (checkRank()==3){
+// 		if (femaleRadio is checked){
+// 			$('#avatar')=🧚‍♀️;
+// 		}
+// 		else if (maleRadio is checked){
+// 			$('#avatar')=🧚‍♂️;
+// 		}
+// 		else if (nonBinaryRadio is checked){
+// 			$('#avatar')=🧚;
+// 		}
+// 	}
+// 	else if (checkRank()==2){
+// 		if (femaleRadio is checked){
+// 			$('#avatar')=🧜‍♀️;
+// 		}
+// 		else if (maleRadio is checked){
+// 			$('#avatar')=🧜;
+// 		}
+// 		else if (nonBinaryRadio is checked){
+// 			$('#avatar')=🧜‍♂️;
+// 		}
+// 	}
+// 	else if (checkRank()==3){
+// 		if (femaleRadio is checked){
+// 			$('#avatar')=🧞‍♀️;
+// 		}
+// 		else if (maleRadio is checked){
+// 			$('#avatar')=🧞;
+// 		}
+// 		else if (nonBinaryRadio is checked){
+// 			$('#avatar').text('🧞‍♂️');
+// 		}
+// 	}
+// }
+
+//COUPONS
+//when button is clicked, should display redeem success or sorry not enough points

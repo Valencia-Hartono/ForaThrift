@@ -2,12 +2,7 @@ include fora.pug
 .container-fluid: .row
 	#categories.col-4.col-md-2
 		h4 Categories
-	.col-8.col-md-10: .row
-		//col 6 means 2 rows, col 3 means 4 rows (how many spaces each col is taking up out of 12)
-		each item in [{name:'white dress',price:'$15', img:'https://i.pinimg.com/474x/a2/df/ed/a2dfed1b26c215b30b5fada14ced83a3.jpg'}, {name:'red dress',price:'$20',img:'https://i.pinimg.com/564x/8a/06/03/8a06031cbd0925b3afe3a0c56cde396d.jpg'}]
-			.col-6.col-md-3
-				img(src=item.img)
-				div= item.name
-				div= item.price
+	.col-8.col-md-10: #items.row
+		
 		
 		

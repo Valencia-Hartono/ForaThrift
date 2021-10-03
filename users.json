@@ -1,0 +1,28 @@
+{
+	"users": {
+		"alexandra01": {
+			"username": "alexandra01",
+			"email": "alexa@gmail.com",
+			"password": "alexa01",
+			"totalPoints": 5000,
+			"pointsForExchange": 2000,
+			"name": "alexa",
+			"birthday": "",
+			"gender": "f",
+			"phone": "",
+			"address": ""
+		},
+		"timmy02": {
+			"username": "timmy02",
+			"email": "timmy@gmail.com",
+			"password": "timmy02",
+			"totalPoints": 7000,
+			"pointsForExchange": 4000,
+			"name": "timmy",
+			"birthday": "",
+			"gender": "m",
+			"phone": "",
+			"address": ""
+		}
+	}
+}

@@ -3,19 +3,24 @@ h4 Profile Info
 	.col-6
 		.row
 			.col
+				div Rank:
+					span#rank
+					// ternaries are good if line is  shorter, this one is too long imo
+					//span#rank= (user.totalPoints >= 5200) ? '🥇Gold' : ((user.totalPoints >= 2600) ? '🥈Silver': '🥉Bronze')
+
 				div Avatar 
-					span#rank 🥇Gold
-				#avatar.fs-1 🧞‍♀️
+					span#avatar.fs-1
+					
 			.col
 				p.my-0 Total points: 
-					span#points-total 0
+					span#points-total= user.totalPoints || '0'
 				p.my-0 Points for exchange: 
-					span#points-exchangable 0
+					span#points-exchangable= user.pointsForExchange || '0'
 				a.my-0(href="#") How to earn points?
 		// name form
 		.mb-3
 			label.form-label(for='displayName') Name
-			input.form-control(type='text' name='displayName')
+			input.form-control(type='text' name='displayName' value=(user.name || ''))
 		// need to edit birthday form
 		.mb-3
 			label.form-label(for='birthday') Birthday
@@ -24,14 +29,14 @@ h4 Profile Info
 		.mb-0
 			label.form-label(for='birthday') Gender
 		.form-check.form-check-inline
-			input#flexRadioDefault1.form-check-input(type='radio' name='flexRadioDefault')
-			label.form-check-label(for='flexRadioDefault1')  female 
+			input#femaleRadio.form-check-input(type='radio' name='flexRadioDefault' checked='')
+			label.form-check-label(for='femaleRadio')  female 
 		.form-check.form-check-inline
-			input#flexRadioDefault2.form-check-input(type='radio' name='flexRadioDefault' checked='')
-			label.form-check-label(for='flexRadioDefault2')  male 
+			input#maleRadio.form-check-input(type='radio' name='flexRadioDefault' checked='')
+			label.form-check-label(for='maleRadio')  male 
 		.form-check.form-check-inline
-			input#flexRadioDefault2.form-check-input(type='radio' name='flexRadioDefault' checked='')
-			label.form-check-label(for='flexRadioDefault2')  nonbinary 
+			input#nonBinaryRadio.form-check-input(type='radio' name='flexRadioDefault' checked='')
+			label.form-check-label(for='nonBinaryRadio')  nonbinary 
 		// phone form
 		.mt-3.mb-3
 			label.form-label(for='phone') Phone

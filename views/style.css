@@ -102,13 +102,13 @@ a:active {
 	overflow-y: auto;
 }
 
-.btn {
+.btn-green {
 	color: #fff;
 	background-color: #00ab8e;
 	border-color: #00ab8e;
 }
 
-.btn:hover {
+.btn-green:hover {
 	color: #fff;
 	background-color: #05816d;
 	border-color: #05816d;
