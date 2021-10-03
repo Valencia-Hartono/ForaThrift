@@ -9,20 +9,21 @@ a(href="#") How to earn points?
 p.mt-4
 	button.btn.btn-green#redeem10 Redeem 10% discount (-240pts)
 	|	Number of 10% coupons you have: 
-	span#discount10 0
+	span#discount10= user.discount[0] || '0'
+	//user discount not working
 p 
 	button.btn.btn-green#redeem25 Redeem 25% discount (-480pts)
 	|	Number of 25% coupons you have: 
-	span#discount25 0
+	span#discount25= user.discount[1] || '0'
 p 
 	button.btn.btn-green#redeem40 Redeem 40% discount (-720pts)
 	|	Number of 40% coupons you have: 
-	span#discount40 0
+	span#discount40= user.discount[2] || '0'
 p 
 	button.btn.btn-green#redeem55 Redeem 55% discount (-960pts)
 	|	Number of 55% coupons you have: 
-	span#discount55 0
+	span#discount55= user.discount[3] || '0'
 p 
 	button.btn.btn-green#redeem70 Redeem 70% discount (-1200pts)
 	|	Number of 70% coupons you have: 
-	span#discount70 0
+	span#discount70= user.discount[4]  || '0'

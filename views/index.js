@@ -68,7 +68,7 @@ $(async () => {
 	function closeForm() {
 		document.getElementById('myForm').style.display = 'none';
 	}
-
+	//PROFILE
 	function checkRank(points) {
 		let rank = '🥉Bronze';
 		if (points >= 5200) {
@@ -79,8 +79,8 @@ $(async () => {
 		$('#rank').append(rank);
 	}
 
-	function avatar(points, gender) {
-		let avatar = '🧚';
+	function checkAvatar(points, gender) {
+		var avatar = '🧚';
 		if (points >= 5200 && gender == 'f') {
 			avatar = '🧞‍♀️';
 		} else if (points >= 5200 && gender == 'm') {
@@ -100,9 +100,10 @@ $(async () => {
 		} else if (points < 2600 && gender == 'n') {
 			avatar = '🧚';
 		}
+		$('.avatar').append(avatar);
 	}
-
-	checkRank(user.points, user.gender);
+	checkRank(user.totalPoints);
+	checkAvatar(user.totalPoints, user.gender);
 
 	if (window.location.href.includes('store')) {
 		let items = (await (await fetch('items/1/0/0')).json()).items;
@@ -129,38 +130,38 @@ $(async () => {
 // 		return TotalPoints;
 // }
 
-function checkRank(points) {
-	let rank = '🥉Bronze';
-	if (points >= 5200) {
-		rank = '🥇Gold';
-	} else if (points >= 2600) {
-		rank = '🥈Silver';
-	}
-	$('#rank').append(rank);
-}
+// function checkRank(points) {
+// 	let rank = '🥉Bronze';
+// 	if (points >= 5200) {
+// 		rank = '🥇Gold';
+// 	} else if (points >= 2600) {
+// 		rank = '🥈Silver';
+// 	}
+// 	$('#rank').append(rank);
+// }
 
-function avatar(points, gender) {
-	let avatar = '🧚';
-	if (points >= 5200 && gender == 'f') {
-		avatar = '🧞‍♀️';
-	} else if (points >= 5200 && gender == 'm') {
-		avatar = '🧞‍♂️';
-	} else if (points >= 5200 && gender == 'n') {
-		avatar = '🧞';
-	} else if (points >= 2600 && gender == 'f') {
-		avatar = '🧜‍♀️';
-	} else if (points >= 2600 && gender == 'm') {
-		avatar = '🧜';
-	} else if (points >= 2600 && gender == 'n') {
-		avatar = '🧜‍♂️';
-	} else if (points < 2600 && gender == 'f') {
-		avatar = '🧚‍♀️';
-	} else if (points < 2600 && gender == 'm') {
-		avatar = '🧚‍♂️';
-	} else if (points < 2600 && gender == 'n') {
-		avatar = '🧚';
-	}
-}
+// function avatar(points, gender) {
+// 	let avatar = '🧚';
+// 	if (points >= 5200 && gender == 'f') {
+// 		avatar = '🧞‍♀️';
+// 	} else if (points >= 5200 && gender == 'm') {
+// 		avatar = '🧞‍♂️';
+// 	} else if (points >= 5200 && gender == 'n') {
+// 		avatar = '🧞';
+// 	} else if (points >= 2600 && gender == 'f') {
+// 		avatar = '🧜‍♀️';
+// 	} else if (points >= 2600 && gender == 'm') {
+// 		avatar = '🧜';
+// 	} else if (points >= 2600 && gender == 'n') {
+// 		avatar = '🧜‍♂️';
+// 	} else if (points < 2600 && gender == 'f') {
+// 		avatar = '🧚‍♀️';
+// 	} else if (points < 2600 && gender == 'm') {
+// 		avatar = '🧚‍♂️';
+// 	} else if (points < 2600 && gender == 'n') {
+// 		avatar = '🧚';
+// 	}
+// }
 
 // function checkRank(){
 // 		if checkPointsTotal()>=0 && <2600 points,  it is bronze

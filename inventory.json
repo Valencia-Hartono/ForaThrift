@@ -56,7 +56,7 @@
 		},
 		{
 			"id": "003280",
-			"name": "shirt 2",
+			"name": "belt",
 			"type": 2,
 			"subtype": 8,
 			"price": 20.5,
@@ -69,7 +69,7 @@
 			"qualityRating": 5,
 			"styleRating": 5,
 			"discretionRating": 5,
-			"img": "https://i.pinimg.com/564x/8a/06/03/8a06031cbd0925b3afe3a0c56cde396d.jpg",
+			"img": "https://i.pinimg.com/474x/be/ca/56/beca56fa38986d7c1f7eb1b26ff0e1aa.jpg",
 			"images": []
 		},
 		{

@@ -1,6 +1,6 @@
 nav#blackNav.navbar.navbar-expand-sm.navbar-dark.bg-dark.p-2
 	.container-fluid
-		a.navbar-brand.active.fs-1(href='/') FORA THRIFT
+		a.navbar-brand.active.fs-1(href='store') FORA THRIFT
 		button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent')
 			span.navbar-toggler-icon
 		#navbarSupportedContent.collapse.navbar-collapse
@@ -16,7 +16,7 @@ nav#blackNav.navbar.navbar-expand-sm.navbar-dark.bg-dark.p-2
 							button.btn.btn-outline-secondary(type='button') 🔍
 				li#profileDropdown.nav-item.dropdown
 					if user.username
-						a.nav-link.dropdown.fs-5(href='#' role='button' data-bs-toggle='dropdown')= "Welcome "+ user.username
+						a.nav-link.dropdown.fs-5(href='#' role='button' data-bs-toggle='dropdown')= "Welcome "+ user.name
 						ul.dropdown-menu.dropdown-menu-end
 							li: a.dropdown-item(href='account') 👤 My Account
 							li: a.dropdown-item(href='#') ❓ Queue/Shipping info
@@ -53,5 +53,5 @@ nav.navbar.navbar-expand-sm.navbar-dark.bg-dark.sticky-top.p-0
 		ul.col-2.navbar-nav.pe-0
 			// about us list
 			li.flex-sm-fill.text-sm-center
-				a.nav-link(role='button') ABOUT US
+				a.nav-link(role='button' href='/') ABOUT US
 .mb-2
