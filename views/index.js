@@ -118,32 +118,20 @@ $(async () => {
 			</div>`);
 		}
 	}
-
-	function redeem10(points) {
-		if (points >= 240) {
-			points -= 240;
-		}
+	function couponSetter(tagName, points) {
+		$('#' + tagName).click(function () {
+			if (points >= 240) {
+				points -= 240;
+				alert('redeem success');
+			} else {
+				alert('not enough points');
+			}
+		});
 	}
-	function redeem25(points) {
-		if (points >= 480) {
-			points -= 480;
-		}
-	}
-	function redeem40(points) {
-		if (points >= 720) {
-			points -= 720;
-		}
-	}
-	function redeem55(points) {
-		if (points >= 960) {
-			points -= 960;
-		}
-	}
-	function redeem70(points) {
-		if (points >= 1200) {
-			points -= 1200;
-		}
-	}
+	couponSetter('redeem10', 240);
+	couponSetter('redeem25', 480);
+	couponSetter('redeem40', 720);
+	couponSetter('redeem70', 1200);
 });
 
 //ACCOUNT PAGE FUNCTIONS
