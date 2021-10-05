@@ -7,23 +7,22 @@ p.my-0 Points for exchange:
 	span#points-exchangable= user.pointsForExchange || '0'
 a(href="#") How to earn points?
 p.mt-4
-	button.btn.btn-green#redeem10 Redeem 10% discount (-240pts)
+	button.btn.btn-green#redeem10(onclick="redeem10(user.pointsForExchange)") Redeem 10% discount (-240pts)
 	|	Number of 10% coupons you have: 
-	span#discount10= user.discount[0] || '0'
-	//user discount not working
+	span#discount10= user.coupons[0] || '0'
 p 
-	button.btn.btn-green#redeem25 Redeem 25% discount (-480pts)
+	button.btn.btn-green#redeem25(onclick="redeem25(user.pointsForExchange)") Redeem 25% discount (-480pts)
 	|	Number of 25% coupons you have: 
-	span#discount25= user.discount[1] || '0'
+	span#discount25= user.coupons[1] || '0'
 p 
-	button.btn.btn-green#redeem40 Redeem 40% discount (-720pts)
+	button.btn.btn-green#redeem40(onclick="redeem40(user.pointsForExchange)") Redeem 40% discount (-720pts)
 	|	Number of 40% coupons you have: 
-	span#discount40= user.discount[2] || '0'
+	span#discount40= user.coupons[2] || '0'
 p 
-	button.btn.btn-green#redeem55 Redeem 55% discount (-960pts)
+	button.btn.btn-green#redeem55(onclick="redeem55(user.pointsForExchange)") Redeem 55% discount (-960pts)
 	|	Number of 55% coupons you have: 
-	span#discount55= user.discount[3] || '0'
+	span#discount55= user.coupons[3] || '0'
 p 
-	button.btn.btn-green#redeem70 Redeem 70% discount (-1200pts)
+	button.btn.btn-green#redeem70(onclick="redeem70(user.pointsForExchange)") Redeem 70% discount (-1200pts)
 	|	Number of 70% coupons you have: 
-	span#discount70= user.discount[4]  || '0'
+	span#discount70= user.coupons[4]  || '0'

@@ -118,6 +118,32 @@ $(async () => {
 			</div>`);
 		}
 	}
+
+	function redeem10(points) {
+		if (points >= 240) {
+			points -= 240;
+		}
+	}
+	function redeem25(points) {
+		if (points >= 480) {
+			points -= 480;
+		}
+	}
+	function redeem40(points) {
+		if (points >= 720) {
+			points -= 720;
+		}
+	}
+	function redeem55(points) {
+		if (points >= 960) {
+			points -= 960;
+		}
+	}
+	function redeem70(points) {
+		if (points >= 1200) {
+			points -= 1200;
+		}
+	}
 });
 
 //ACCOUNT PAGE FUNCTIONS
@@ -128,87 +154,6 @@ $(async () => {
 // 		var TotalPoints=____; //getPoints from user account
 // 		$('#points-total')=TotalPoints;
 // 		return TotalPoints;
-// }
-
-// function checkRank(points) {
-// 	let rank = '🥉Bronze';
-// 	if (points >= 5200) {
-// 		rank = '🥇Gold';
-// 	} else if (points >= 2600) {
-// 		rank = '🥈Silver';
-// 	}
-// 	$('#rank').append(rank);
-// }
-
-// function avatar(points, gender) {
-// 	let avatar = '🧚';
-// 	if (points >= 5200 && gender == 'f') {
-// 		avatar = '🧞‍♀️';
-// 	} else if (points >= 5200 && gender == 'm') {
-// 		avatar = '🧞‍♂️';
-// 	} else if (points >= 5200 && gender == 'n') {
-// 		avatar = '🧞';
-// 	} else if (points >= 2600 && gender == 'f') {
-// 		avatar = '🧜‍♀️';
-// 	} else if (points >= 2600 && gender == 'm') {
-// 		avatar = '🧜';
-// 	} else if (points >= 2600 && gender == 'n') {
-// 		avatar = '🧜‍♂️';
-// 	} else if (points < 2600 && gender == 'f') {
-// 		avatar = '🧚‍♀️';
-// 	} else if (points < 2600 && gender == 'm') {
-// 		avatar = '🧚‍♂️';
-// 	} else if (points < 2600 && gender == 'n') {
-// 		avatar = '🧚';
-// 	}
-// }
-
-// function checkRank(){
-// 		if checkPointsTotal()>=0 && <2600 points,  it is bronze
-// 		 	$('#rank')=🥉Bronze
-// 		 return 3;
-// 		 else if checkPointsTotal()>=2600 && <5200,  it is silver
-// 		 	$('#rank')=🥈Silver
-// 		 return 2;
-// 		 else if checkPointsTotal()>=5200 &&,  it is gold
-// 		 	$('#rank')=🥇Gold
-// 		 return 1;
-// }
-// //check which avatargender depending on which gender selected
-// function checkAvatar(){
-// 	if (checkRank()==3){
-// 		if (femaleRadio is checked){
-// 			$('#avatar')=🧚‍♀️;
-// 		}
-// 		else if (maleRadio is checked){
-// 			$('#avatar')=🧚‍♂️;
-// 		}
-// 		else if (nonBinaryRadio is checked){
-// 			$('#avatar')=🧚;
-// 		}
-// 	}
-// 	else if (checkRank()==2){
-// 		if (femaleRadio is checked){
-// 			$('#avatar')=🧜‍♀️;
-// 		}
-// 		else if (maleRadio is checked){
-// 			$('#avatar')=🧜;
-// 		}
-// 		else if (nonBinaryRadio is checked){
-// 			$('#avatar')=🧜‍♂️;
-// 		}
-// 	}
-// 	else if (checkRank()==3){
-// 		if (femaleRadio is checked){
-// 			$('#avatar')=🧞‍♀️;
-// 		}
-// 		else if (maleRadio is checked){
-// 			$('#avatar')=🧞;
-// 		}
-// 		else if (nonBinaryRadio is checked){
-// 			$('#avatar').text('🧞‍♂️');
-// 		}
-// 	}
 // }
 
 //COUPONS
