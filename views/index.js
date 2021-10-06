@@ -118,11 +118,11 @@ $(async () => {
 			</div>`);
 		}
 	}
-	function couponSetter(tagName, points) {
-		$('#' + tagName).click(function () {
-			if (points >= 240) {
-				points -= 240;
-				alert('redeem success');
+	function couponSetter(couponTag, deductedPts) {
+		$('#' + couponTag).click(function () {
+			if (user.pointsForExchange >= deductedPts) {
+				user.pointsForExchange -= deductedPts;
+				alert('bro redeem success');
 			} else {
 				alert('not enough points');
 			}
