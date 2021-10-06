@@ -122,7 +122,7 @@ $(async () => {
 		$('#' + couponTag).click(function () {
 			if (user.pointsForExchange >= deductedPts) {
 				user.pointsForExchange -= deductedPts;
-				alert('bro redeem success');
+				alert('redeem success');
 			} else {
 				alert('not enough points');
 			}
