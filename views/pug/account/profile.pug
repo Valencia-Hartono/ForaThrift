@@ -23,34 +23,34 @@ h4 Profile Info
 		// need to edit birthday form
 		.mb-3
 			label.form-label(for='birthday') Birthday
-			input.form-control(type='date' name='birthday')
+			input.form-control(type='date' name='birthday' value=(user.birthday || ''))
 		// gender form
 		.mb-0
 			label.form-label(for='birthday') Gender
 		.form-check.form-check-inline
-			input#femaleRadio.form-check-input(type='radio' name='flexRadioDefault' checked='')
+			input#femaleRadio.form-check-input(type='radio' name='flexRadioDefault' checked=(user.gender == 'f'))
 			label.form-check-label(for='femaleRadio')  female 
 		.form-check.form-check-inline
-			input#maleRadio.form-check-input(type='radio' name='flexRadioDefault' checked='')
+			input#maleRadio.form-check-input(type='radio' name='flexRadioDefault' checked=(user.gender == 'm'))
 			label.form-check-label(for='maleRadio')  male 
 		.form-check.form-check-inline
-			input#nonBinaryRadio.form-check-input(type='radio' name='flexRadioDefault' checked='')
+			input#nonBinaryRadio.form-check-input(type='radio' name='flexRadioDefault' checked=(user.gender == 'b'))
 			label.form-check-label(for='nonBinaryRadio')  nonbinary 
 		// phone form
 		.mt-3.mb-3
 			label.form-label(for='phone') Phone
-			input.form-control(type='tel' name='phone')
+			input.form-control(type='tel' name='phone' value=(user.phone || ''))
 		// address form
 		.mb-3
 			label.form-label(for='address') Address
-			input.form-control(type='address' name='address' required='')
+			input.form-control(type='address' name='address' required='' value=(user.address || ''))
 		// email form
 		.mb-3
 			label.form-label(for='email') *Email
-			input.form-control(type='email' name='email' required='')
+			input.form-control(type='email' name='email' required='' value=(user.email || ''))
 		// password form
 		.mb-3
 			label.form-label(for='psw') *Fora Password
-			input.form-control(type='password' name='psw' required='')
+			input.form-control(type='psw' name='psw' required='' value=(user.password || ''))
 		.row.mt-4.mb-5
 			button.btn.btn-dark(type='submit') Confirm Changes

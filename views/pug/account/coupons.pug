@@ -6,23 +6,35 @@ p.my-0 Total points:
 p.my-0 Points for exchange: 
 	span.pointsExchangable= user.pointsForExchange || '0'
 a(href="#") How to earn points?
+#couponStatus.mt-3
 p.mt-4
-	button.btn.btn-green#redeem10 Redeem 10% discount (-240pts)
+	button#redeem240.btn.btn-green Redeem 10% discount (-240pts)
 	|	Number of 10% coupons you have: 
-	span#discount10= user.coupons[0] || '0'
+	span#couponAmount240= user.coupons[0] || '0'
 p 
-	button.btn.btn-green#redeem25 Redeem 25% discount (-480pts)
+	button#redeem480.btn.btn-green Redeem 25% discount (-480pts)
 	|	Number of 25% coupons you have: 
-	span#discount25= user.coupons[1] || '0'
+	span#couponAmount480= user.coupons[1] || '0'
 p 
-	button.btn.btn-green#redeem40 Redeem 40% discount (-720pts)
+	button#redeem720.btn.btn-green Redeem 40% discount (-720pts)
 	|	Number of 40% coupons you have: 
-	span#discount40= user.coupons[2] || '0'
+	span#couponAmount720= user.coupons[2] || '0'
 p 
-	button.btn.btn-green#redeem55 Redeem 55% discount (-960pts)
+	button#redeem960.btn.btn-green Redeem 55% discount (-960pts)
 	|	Number of 55% coupons you have: 
-	span#discount55= user.coupons[3] || '0'
+	span#couponAmount960= user.coupons[3] || '0'
 p 
-	button.btn.btn-green#redeem70 Redeem 70% discount (-1200pts)
+	button#redeem1200.btn.btn-green Redeem 70% discount (-1200pts)
 	|	Number of 70% coupons you have: 
-	span#discount70= user.coupons[4]  || '0'
+	span#couponAmount1200= user.coupons[4]  || '0'
+#confirmRedeemModal.modal.fade(tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true')
+	.modal-dialog
+		.modal-content
+			.modal-header
+				h5#exampleModalLabel.modal-title Confirm Redeem Points
+				button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+			.modal-body
+				| Are you sure you want to redeem these points?
+			.modal-footer
+				button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Cancel
+				button#confirmRedeem.btn.btn-green(type='button'  data-bs-dismiss='modal') Confirm
