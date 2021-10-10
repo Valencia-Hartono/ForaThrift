@@ -1,6 +1,6 @@
 {
 	"name": "forathrift",
-	"version": "1.0.20",
+	"version": "1.0.21",
 	"description": "Fora Thrift Shop server.",
 	"main": "index.js",
 	"scripts": {
@@ -19,7 +19,6 @@
 		"express": "^4.17.1",
 		"jquery": "^3.6.0",
 		"klaw": "^4.0.1",
-		"mdb-ui-kit": "^3.9.0",
 		"minimist": "^1.2.5",
 		"open": "^8.2.1",
 		"pug": "^3.0.2",
