@@ -80,40 +80,40 @@ $(async () => {
 	}
 	//Starting from here: Account Information
 	//My Profile page
-	function checkRank(points) {
+	function checkAvatar(points, gender) {
+		var avatar = '🧚';
 		let rank = '🥉Bronze';
 		if (points >= 5200) {
 			rank = '🥇Gold';
+			if (gender == 'f') {
+				avatar = '🧞‍♀️';
+			} else if (gender == 'm') {
+				avatar = '🧞‍♂️';
+			} else {
+				avatar = '🧞';
+			}
 		} else if (points >= 2600) {
 			rank = '🥈Silver';
-		}
-		$('#rank').append(rank);
-	}
-
-	function checkAvatar(points, gender) {
-		var avatar = '🧚';
-		if (points >= 5200 && gender == 'f') {
-			avatar = '🧞‍♀️';
-		} else if (points >= 5200 && gender == 'm') {
-			avatar = '🧞‍♂️';
-		} else if (points >= 5200 && gender == 'n') {
-			avatar = '🧞';
-		} else if (points >= 2600 && gender == 'f') {
-			avatar = '🧜‍♀️';
-		} else if (points >= 2600 && gender == 'm') {
-			avatar = '🧜';
-		} else if (points >= 2600 && gender == 'n') {
-			avatar = '🧜‍♂️';
-		} else if (points < 2600 && gender == 'f') {
-			avatar = '🧚‍♀️';
-		} else if (points < 2600 && gender == 'm') {
-			avatar = '🧚‍♂️';
-		} else if (points < 2600 && gender == 'n') {
-			avatar = '🧚';
+			if (gender == 'f') {
+				avatar = '🧜‍♀️';
+			} else if (gender == 'm') {
+				avatar = '🧜';
+			} else {
+				avatar = '🧜‍♂️';
+			}
+		} else {
+			if (gender == 'f') {
+				avatar = '🧚‍♀️';
+			} else if (gender == 'm') {
+				avatar = '🧚‍♂️';
+			} else {
+				avatar = '🧚';
+			}
 		}
 		$('.avatar').append(avatar);
+		$('#rank').append(rank);
 	}
-	checkRank(user.totalPoints);
+	// checkRank(user.totalPoints);
 	checkAvatar(user.totalPoints, user.gender);
 
 	//My Coupons page
