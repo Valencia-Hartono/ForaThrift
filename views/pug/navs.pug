@@ -41,7 +41,7 @@ nav.navbar.navbar-expand-sm.navbar-dark.bg-dark.sticky-top.p-0
 			each name, i in cats.names
 				li.flex-sm-fill.text-sm-center.nav-item.dropdown
 					a.nav-link(role='button' data-bs-toggle='dropdown' aria-expanded='false')= cats.navNames[i]
-					ul#clothingMenu.dropdown-menu.container.p-2: .row.mb-4
+					ul.dropdown-menu.container.p-2(id=`${name}Menu`): .row.mb-4
 							.col-8.px-4
 								.row
 									a.col-12.fs-4.green(href='/store/clothing')= 'Shop ' + name[0].toUpperCase() + name.slice(1)

@@ -94,10 +94,12 @@ async function loadViews() {
 		let locals = {
 			//set locals.cats equal to categories objects, use : instead of =
 			cats: db.categories,
-			user: users['timmy02']
+			user: null
 		};
 
 		app.get('/' + (dir ? dir + '/' : '') + file.name, (req, res) => {
+			locals.user = users['timmy02'];
+
 			if (req.url == '/') {
 				req.url = 'index';
 			}

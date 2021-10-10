@@ -1,5 +1,6 @@
 body {
 	font-family: Avenir;
+	overflow-x: hidden;
 }
 
 img {

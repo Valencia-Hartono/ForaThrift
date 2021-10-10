@@ -128,8 +128,9 @@ $(async () => {
 <div class="alert alert-danger" role="alert">
   Failed to redeem points! Not enough points: ${user.pointsForExchange}
 </div>`);
-				$('#confirmRedeem').removeClass('show');
+				return;
 			}
+			$('#confirmRedeemModal').modal('show');
 		};
 	}
 	couponSetter(240, 0);
