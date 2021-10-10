@@ -118,20 +118,49 @@ $(async () => {
 			</div>`);
 		}
 	}
-	function couponSetter(couponTag, deductedPts) {
-		$('#' + couponTag).click(function () {
-			if (user.pointsForExchange >= deductedPts) {
-				user.pointsForExchange -= deductedPts;
-				alert('redeem success');
-			} else {
-				alert('not enough points');
+
+	let coupon = {};
+	function couponSetter(points, code) {
+		$('#redeem' + points)[0].onclick = () => {
+			coupon = { points, code };
+			if (user.pointsForExchange < coupon.points) {
+				$('#couponStatus').append(`
+<div class="alert alert-danger" role="alert">
+  Failed to redeem points! Not enough points: ${user.pointsForExchange}
+</div>`);
+				$('#confirmRedeem').removeClass('show');
 			}
-		});
+		};
 	}
-	couponSetter('redeem10', 240);
-	couponSetter('redeem25', 480);
-	couponSetter('redeem40', 720);
-	couponSetter('redeem70', 1200);
+	couponSetter(240, 0);
+	couponSetter(480, 1);
+	couponSetter(720, 2);
+	couponSetter(960, 3);
+	couponSetter(1200, 4);
+
+	$('#confirmRedeem')[0].onclick = async () => {
+		user.pointsForExchange -= coupon.points;
+		user.coupons[coupon.code]++;
+
+		let url = window.location.href;
+		url = url.slice(0, url.lastIndexOf('/')) + '/user';
+		await fetch(url, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(user)
+		});
+
+		$('.pointsExchangable').text(user.pointsForExchange);
+		$('#couponAmount' + coupon.points).text(user.coupons[coupon.code]);
+		$('#couponAmount' + coupon.points).addClass('green');
+
+		$('#couponStatus').append(`
+<div class="alert alert-success" role="alert">
+  Coupon for ${coupon.points} points successfully redeemed!
+</div>`);
+	};
 });
 
 //ACCOUNT PAGE FUNCTIONS
@@ -140,7 +169,7 @@ $(async () => {
 
 // function checkPointsTotal() {
 // 		var TotalPoints=____; //getPoints from user account
-// 		$('#points-total')=TotalPoints;
+// 		$('#pointsTotal')=TotalPoints;
 // 		return TotalPoints;
 // }
 

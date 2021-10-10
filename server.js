@@ -61,6 +61,8 @@ global.pug = (str, locals, insert) => {
 let db = JSON.parse(fs.readFileSync('inventory.json'));
 let users = JSON.parse(fs.readFileSync('users.json')).users;
 
+app.use(express.json());
+
 function useStatic(folder) {
 	app.use(folder, express.static(__root + folder));
 }
@@ -141,6 +143,13 @@ async function startServer() {
 		} catch (e) {
 			res.send('404 Not found or invalid format ' + e.message);
 		}
+	});
+
+	app.post('/user', (req, res) => {
+		let user = req.body; // request body is the json sent
+		log(user);
+		users[user.username] = user; // replace user data with updated data
+		res.send('success');
 	});
 
 	let server = http.createServer(app);
