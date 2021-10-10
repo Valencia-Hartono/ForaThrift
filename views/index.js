@@ -15,7 +15,16 @@ $(async () => {
 	// categories(clothing, accessories, shoes, bags), types (ex.bottoms, tops, overalls), subTypes (ex.jeans, shorts...)
 	let categories = await (await fetch('categories.json')).json();
 	log(categories);
-	//adds category types and subtypes on second nav bar, evenly split in three column
+	//instead of inputing types manually, use a function
+	for (let category of categories.names) {
+		addColumns(category);
+	}
+
+	$('#clothingSidebar').show();
+
+	$('#shoes').show();
+
+	//for nav bar; adds category types and subtypes on second nav bar, evenly split in three column
 	function addColumns(category) {
 		let $menu = $('#' + category + 'Menu');
 		let $cols = $menu.find('.col');
@@ -25,6 +34,7 @@ $(async () => {
 		$category.hide();
 		let types = categories[category].typeNames; // get the array of type names ex. tops, bottoms
 
+		//evenly distribute category types within the three columns
 		let cols = [0, 0, 0];
 
 		for (let i = 0; i < types.length; i++) {
@@ -51,24 +61,25 @@ $(async () => {
 			cols[colNumMin] += subtypes.length + 1;
 		}
 	}
-	//instead of inputing types manually, use a function
-	for (let category of categories.names) {
-		addColumns(category);
+
+	//add items to store pages
+	if (window.location.href.includes('store')) {
+		let items = (await (await fetch('items/1/0/0')).json()).items;
+
+		let $items = $('#items');
+		for (let item of items) {
+			$items.append(`
+			<div class="col-6 col-md-3">
+				<a class="ripple" href="">
+					<img src="${item.img}"/>
+				</a>
+				<div>${item.name}</div>
+				<div>$${item.price}</div>
+			</div>`);
+		}
 	}
-
-	$('#clothingSidebar').show();
-
-	$('#shoes').show();
-
-	// add Get Started/Sign In forms
-	function openForm() {
-		document.getElementById('myForm').style.display = 'block';
-	}
-
-	function closeForm() {
-		document.getElementById('myForm').style.display = 'none';
-	}
-	//PROFILE
+	//Starting from here: Account Information
+	//My Profile page
 	function checkRank(points) {
 		let rank = '🥉Bronze';
 		if (points >= 5200) {
@@ -105,20 +116,7 @@ $(async () => {
 	checkRank(user.totalPoints);
 	checkAvatar(user.totalPoints, user.gender);
 
-	if (window.location.href.includes('store')) {
-		let items = (await (await fetch('items/1/0/0')).json()).items;
-
-		let $items = $('#items');
-		for (let item of items) {
-			$items.append(`
-			<div class="col-6 col-md-3">
-				<img src="${item.img}"/>
-				<div>${item.name}</div>
-				<div>$${item.price}</div>
-			</div>`);
-		}
-	}
-
+	//My Coupons page
 	let coupon = {};
 	function couponSetter(points, code) {
 		$('#redeem' + points)[0].onclick = () => {
@@ -133,12 +131,16 @@ $(async () => {
 			$('#confirmRedeemModal').modal('show');
 		};
 	}
+	//set how much points is reducted for each coupon, ex. (240, 0) means deduct 240pts for the 10% coupon
+	//["10%", "25%", "40%", "55%", "70%"] corresponds to [0, 1, 2, 3, 4]
 	couponSetter(240, 0);
 	couponSetter(480, 1);
 	couponSetter(720, 2);
 	couponSetter(960, 3);
 	couponSetter(1200, 4);
 
+	//if confirm button is clicked, it will update server and re-run it automatically on customer's side
+	//if they refresh page, they will see their "Points for exchange" updated and also "Number of _ coupons"
 	$('#confirmRedeem')[0].onclick = async () => {
 		user.pointsForExchange -= coupon.points;
 		user.coupons[coupon.code]++;
@@ -163,16 +165,3 @@ $(async () => {
 </div>`);
 	};
 });
-
-//ACCOUNT PAGE FUNCTIONS
-//PROFILE
-// //check which rank and avatar depending on the total points status
-
-// function checkPointsTotal() {
-// 		var TotalPoints=____; //getPoints from user account
-// 		$('#pointsTotal')=TotalPoints;
-// 		return TotalPoints;
-// }
-
-//COUPONS
-//when button is clicked, should display redeem success or sorry not enough points
