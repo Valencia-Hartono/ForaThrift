@@ -2,9 +2,9 @@ h4 My Offers/Discount Coupons
 p Points may be redeemed for discount coupons, they will be automatically deducted from your points for exchange but 
 	| remain in total points as an indicator of your journey with us.
 p.my-0 Total points: 
-	span#points-total= user.totalPoints || '0'
+	span.pointsTotal= user.totalPoints || '0'
 p.my-0 Points for exchange: 
-	span#points-exchangable= user.pointsForExchange || '0'
+	span.pointsExchangable= user.pointsForExchange || '0'
 a(href="#") How to earn points?
 p.mt-4
 	button.btn.btn-green#redeem10 Redeem 10% discount (-240pts)
