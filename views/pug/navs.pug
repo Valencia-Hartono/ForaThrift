@@ -1,6 +1,6 @@
 nav#blackNav.navbar.navbar-expand-sm.navbar-dark.bg-dark.p-2
 	.container-fluid
-		a.navbar-brand.active.fs-1(href='store') FORA THRIFT
+		a.navbar-brand.active.fs-1(href='/') FORA THRIFT
 		button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent')
 			span.navbar-toggler-icon
 		#navbarSupportedContent.collapse.navbar-collapse
@@ -15,19 +15,13 @@ nav#blackNav.navbar.navbar-expand-sm.navbar-dark.bg-dark.p-2
 						span.input-group-append
 							button.btn.btn-outline-secondary(type='button') 🔍
 				li#profileDropdown.nav-item.dropdown
-					if user.username
-						a.nav-link.dropdown.fs-5(href='#' role='button' data-bs-toggle='dropdown')= "Welcome "+ user.name
-						ul.dropdown-menu.dropdown-menu-end
-							li: a.dropdown-item(href='account') 👤 My Account
-							li: a.dropdown-item(href='#') ❓ Queue/Shipping info
-							li: a.dropdown-item(href='#') 📦 Donation Criteria
-							li: a.dropdown-item(href='#') 👩‍💻 Contact Us
-					else
-						a.nav-link.dropdown.fs-5(href='#' role='button' data-bs-toggle='dropdown')
-							| Get Started
+					a.nav-link.dropdown.fs-5(href='#' role='button' data-bs-toggle='dropdown')= (user) ? 'Welcome ' + user.name : 'Get Started'
 					ul.dropdown-menu.dropdown-menu-end
-						//how come when pressed is blue??
-						li: a.dropdown-item(data-bs-toggle='modal' href='#login_registerModal') Register/Sign In
+						if user
+							li: a.dropdown-item(data-bs-toggle='modal' href='#login_registerModal') ↩️ Logout
+							li: a.dropdown-item(href='account') 👤 My Account
+						else
+							li: a.dropdown-item(data-bs-toggle='modal' href='#login_registerModal') Register/Sign In
 						li: a.dropdown-item(href='#') ❓ Queue/Shipping info
 						li: a.dropdown-item(href='#') 📦 Donation Criteria
 						li: a.dropdown-item(href='#') 👩‍💻 Contact Us
@@ -53,5 +47,5 @@ nav.navbar.navbar-expand-sm.navbar-dark.bg-dark.sticky-top.p-0
 		ul.col-2.navbar-nav.pe-0
 			// about us list
 			li.flex-sm-fill.text-sm-center
-				a.nav-link(role='button' href='searchFilter') ABOUT US
+				a.nav-link(role='button' href='about') ABOUT US
 .mb-2

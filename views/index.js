@@ -165,3 +165,7 @@ $(async () => {
 </div>`);
 	};
 });
+
+$(document).ready(function () {
+	$('#adminSelect').multiselect();
+});

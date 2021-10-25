@@ -7,6 +7,10 @@ img {
 	max-width: 100%;
 }
 
+#adminPage select {
+	width: 100%;
+}
+
 #topSearchBar {
 	width: 300px !important;
 }
