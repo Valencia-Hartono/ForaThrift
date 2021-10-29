@@ -1,6 +1,6 @@
 h4 Profile Info
 .row
-	.col-6
+	form#profileForm.col-6
 		.row
 			.col
 				div Rank:
@@ -53,4 +53,4 @@ h4 Profile Info
 			label.form-label(for='psw') *Fora Password
 			input.form-control(type='psw' name='psw' required='' value=(user.password || ''))
 		.row.mt-4.mb-5
-			button.btn.btn-dark(type='submit') Confirm Changes
+			button.btn.btn-dark(onclick='submitProfileForm') Confirm Changes

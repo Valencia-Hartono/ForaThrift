@@ -71,6 +71,8 @@ useStatic('/node_modules/jquery');
 useStatic('/node_modules/moment');
 useStatic('/node_modules/@popperjs');
 useStatic('/node_modules/tether');
+useStatic('/node_modules/font-awesome');
+useStatic('/node_modules/mdb-ui-kit');
 // useStatic('/views/img');
 
 // sets the views folder as the main folder
