@@ -1,94 +1,106 @@
 include fora.pug
 #adminPage.container-fluid
 	form.needs-validation(novalidate='')
-		.row
-			.form-group.col-2
-				label(for='') Price $
-				input.form-control(type='number' placeholder='00.00')
-			.form-group.col-md-1
-				label(for='') Size
-				select
-					option(value='0') NA
-					option(value='1') XS
-					option(value='2') S
-					option(value='3') M
-					option(value='4') L
-					option(value='5') XL
-			.form-group.col-md-2
-				label(for='') STYLE
-				select
-					option(value='0') NA
-					option(value='1') 1 ⭐️
-					option(value='2') 2 ⭐️⭐️
-					option(value='3') 3 ⭐️⭐️⭐️
-					option(value='4') 4 ⭐️⭐️⭐️⭐️
-					option(value='5') 5 ⭐️⭐️⭐️⭐️⭐️
-			.form-group.col-md-2
-				label(for='') QUALITY
-				select
-					option(value='0') NA
-					option(value='1') 1 ⭐️
-					option(value='2') 2 ⭐️⭐️
-					option(value='3') 3 ⭐️⭐️⭐️
-					option(value='4') 4 ⭐️⭐️⭐️⭐️
-					option(value='5') 5 ⭐️⭐️⭐️⭐️⭐️
-			.form-group.col-md-2
-				label(for='') REVIEWER'S DISCRETION
-				select
-					option(value='0') NA
-					option(value='1') 1 ⭐️
-					option(value='2') 2 ⭐️⭐️
-					option(value='3') 3 ⭐️⭐️⭐️
-					option(value='4') 4 ⭐️⭐️⭐️⭐️
-					option(value='5') 5 ⭐️⭐️⭐️⭐️⭐️
-			.form-group.col-md-2
-				button#submit.btn.btn-primary.btn-sm.mt-3(type='submit') Submit
-		.row
-			table.table.table-bordered
-				tr
-					td(scope='col') 
-						label(for='') OCCASION
-						each occasion, index in ['⚽️ Sports', '🥂 Formal','🚶 Casual']
-							.form-check
-								input.form-check-input(id='occasion' + index type='checkbox' value='occasion' + index)
-								label.form-check-label(for='occasion' + index)= occasion
-					td(scope='col') 
-						label(for='') SEASON
-						each season, index in ['☘️ Spring', '☀️ Summer','🍂 Fall', '❄️ Winter']
-							.form-check
-								input.form-check-input(id='season' + index type='checkbox' value='season' + index)
-								label.form-check-label(for='season' + index)= season
-				tr
-					td(scope='col') 
-						label(for='') COLOR
-						each color, index in ['Black', 'Brown','Gold', 'Gray','White','Red','Orange','Yellow', 'Green','Turquoise', 'Blue', 'Purple', 'Pink']
-							.form-check
-								input.form-check-input(id='color' + index type='checkbox' value='color' + index)
-								label.form-check-label(for='color' + index)= color
-					td(scope='col')
-						label(for='') TYPE
-						each type, index in ['Accessories', 'Shoes/Socks','Jackets/Sweaters', 'Swimsuits/Undergarments','Dresses/Skirts','Tops','Pants/Shorts']
-							.form-check
-								input.form-check-input(id='type' + index type='checkbox' value='type' + index)
-								label.form-check-label(for='type' + index)= type
-			//- .form-group.col-md-2
-			//- 	label(for='') OCCASION
-			//- 	each occasion, index in ['⚽️ Sports', '🥂 Formal','🚶 Casual']
-			//- 		.form-check
-			//- 			input.form-check-input(id='occasion' + index type='checkbox' value='occasion' + index)
-			//- 			label.form-check-label(for='occasion' + index)= occasion
-			//- .form-group.col-md-2
-			//- 	label(for='') SEASON
-			//- 	each season, index in ['☘️ Spring', '☀️ Summer','🍂 Fall', '❄️ Winter']
-			//- 		.form-check
-			//- 			input.form-check-input(id='season' + index type='checkbox' value='season' + index)
-			//- 			label.form-check-label(for='season' + index)= season
-			//- .form-group.col-md-2
-			//- 	label(for='') COLOR
-			//- 	each color, index in ['Black', 'Brown','Gold', 'Gray','White','Red','Orange','Yellow', 'Green','Turquoise', 'Blue', 'Purple', 'Pink']
-			//- 		.form-check
-			//- 			input.form-check-input(id='color' + index type='checkbox' value='color' + index)
-			//- 			label.form-check-label(for='color' + index)= color
+		container.container
+			.row
+				.col(scope='col'): .row
+					label(for='') ITEM INFO
+					label.form-label(for='') Item Image
+					.form-group.mb-2: .input-group
+						input#inputGroupFile02.form-control(type='file')
+						label.input-group-text(for='inputGroupFile02') Upload
+					.form-group.mb-2
+						label.form-label(for='exampleFormControlTextarea1') Item Description
+						textarea#exampleFormControlTextarea1.form-control(rows='3')
+					.form-group.col-6.mb-2
+						label.form-label(for='') Brand
+						input.form-control(type='text' placeholder="Brand Name")
+					.form-group.col-6.mb-2
+						label.form-label(for='') Item Name
+						input.form-control(type='text' placeholder="Item Name")
+					.form-group.col-4.mb-2
+						label.form-label(for='') Size
+						select.form-select.form-select-md.mb-3
+							option(value='0') NA
+							option(value='1') XS
+							option(value='2') S
+							option(value='3') M
+							option(value='4') L
+							option(value='5') XL
+					.form-group.col-5.mb-2
+						label.form-label(for='') Price
+						.input-group
+							span.input-group-text RMB
+							input.form-control(type='number' placeholder='00.00' aria-label='Amount (to the nearest dollar)')
+					.form-group.col-3.mb-2
+						label.form-label(for='exampleColorInput') Color Picker
+						input#exampleColorInput.form-control.form-control-color(type='color' value='#30D5C8' title='Choose your color')
+					//- .form-group.mb-2
+					//- 	.card.mb-3(style='max-width: 540px;')
+					//- 	.row.g-0
+					//- 		.col-md-4
+					//- 			img.img-fluid.rounded-start(src='...' alt='...')
+					//- 		.col-md-8
+					//- 			.card-body
+					//- 				h5.card-title Item Name
+					//- 				p.card-text
+					//- 					| This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+					//- 				p.card-text
+				.col(scope='col')
+					label(for='') RATING
+					.form-group.mb-2
+						label(for='') Item Style
+						select.form-select
+							option(value='0') NA
+							option(value='1') 1 ⭐️
+							option(value='2') 2 ⭐️⭐️
+							option(value='3') 3 ⭐️⭐️⭐️
+							option(value='4') 4 ⭐️⭐️⭐️⭐️
+							option(value='5') 5 ⭐️⭐️⭐️⭐️⭐️
+					.form-group.mb-2
+						label(for='') Item Quality
+						select.form-select
+							option(value='0') NA
+							option(value='1') 1 ⭐️
+							option(value='2') 2 ⭐️⭐️
+							option(value='3') 3 ⭐️⭐️⭐️
+							option(value='4') 4 ⭐️⭐️⭐️⭐️
+							option(value='5') 5 ⭐️⭐️⭐️⭐️⭐️
+					.form-group.mb-2
+						label(for='') Reviewer's Discretion
+						select.form-select
+							option(value='0') NA
+							option(value='1') 1 ⭐️
+							option(value='2') 2 ⭐️⭐️
+							option(value='3') 3 ⭐️⭐️⭐️
+							option(value='4') 4 ⭐️⭐️⭐️⭐️
+							option(value='5') 5 ⭐️⭐️⭐️⭐️⭐️
+					button#submit.btn.btn-primary.btn-sm.mt-3(type='submit') Submit
+			.row
+				.col(scope='col')
+					label(for='') TYPE
+					each type, index in ['💍🕶🧢👜 Accessories', '👟/🧦 Shoes/Socks','🧥 Jackets/Sweaters', '🩱 Swimsuits/Undergarments','👗 Dresses/Skirts','👚 Tops','👖/🩳 Pants/Shorts']
+						.form-check
+							input.form-check-input(id='type' + index type='checkbox' value='type' + index)
+							label.form-check-label(for='type' + index)= type
+				.col(scope='col') 
+					label(for='') OCCASION
+					each occasion, index in ['⚽️ Sports', '🥂 Formal','🚶 Casual']
+						.form-check
+							input.form-check-input(id='occasion' + index type='checkbox' value='occasion' + index)
+							label.form-check-label(for='occasion' + index)= occasion
+				.col(scope='col') 
+					label(for='') SEASON
+					each season, index in ['☘️ Spring', '☀️ Summer','🍂 Fall', '❄️ Winter']
+						.form-check
+							input.form-check-input(id='season' + index type='checkbox' value='season' + index)
+							label.form-check-label(for='season' + index)= season
+				//- .col(scope='col') 
+				//- 	label(for='') COLOR
+				//- 	each color, index in ['Black', 'Brown','Gold', 'Gray','White','Red','Orange','Yellow', 'Green','Turquoise', 'Blue', 'Purple', 'Pink']
+				//- 		.form-check
+				//- 			input.form-check-input(id='color' + index type='checkbox' value='color' + index)
+				//- 			label.form-check-label(for='color' + index)= color
 		.row
 			.col-4
 			.col-4: button#submit.btn.btn-primary.btn-sm.mt-3(type='submit') Submit
