@@ -124,3 +124,18 @@ a:active {
 	margin-top: 5px;
 	margin-left: 8px;
 }
+
+.table-invisible td {
+	padding: 0;
+	border: none;
+}
+
+.table-invisible td:first-child {
+	width: auto;
+	text-align: right;
+	white-space: nowrap;
+}
+.table-invisible td:nth-child(2) {
+	width: 100%;
+	padding-left: 1em;
+}

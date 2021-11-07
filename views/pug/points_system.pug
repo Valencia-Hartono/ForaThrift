@@ -1,0 +1,36 @@
+#points_system.modal: .modal-dialog: .modal-content(tabindex='-1'): .modal-lg
+	.modal-header.pt-2.pb-0
+		// sign in and I'm new here tabs
+		h3 How to earn points?
+		button.btn-close.mb-1(type='button' data-bs-dismiss='modal')
+	.modal-header.pt-2.pb-0
+		ul#myTab.nav.nav-tabs(role='tablist')
+			li.nav-item(role='presentation')
+				button#login-tab.nav-link.fs-6.active(data-bs-toggle='tab' data-bs-target='#points_purchases' type='button' role='tab') Purchases
+			li.nav-item(role='presentation')
+				button#register-tab.nav-link.fs-6(data-bs-toggle='tab' data-bs-target='#points_donations' type='button' role='tab') Donations
+	.modal-body
+		// sign in and I'm new here tab contents; mx-4=side margins (x-value)
+		#myTabContent.tab-content.mx-4
+			#points_purchases.tab-pane.fade.show.active.mb-2(role='tabpanel')
+				p Every 1rmb spent will be rewarded 2pts
+			#points_donations.tab-pane.fade.mb-2(role='tabpanel')
+				p Each piece of clothing will be evaluated on style, quality, and value using a 5 star scale for each category. Earning a minimum of 30pts to a maximum of 750pts per piece.
+				.justify-content-center(style='display: flex;')
+					table.table.table-invisible(style='width: max-content;')
+						tbody
+							tr
+								td 10pts
+								td ⭐️
+							tr
+								td 40pts 
+								td ⭐️⭐️
+							tr
+								td 90pts 
+								td ⭐️⭐️⭐️
+							tr
+								td 160pts 
+								td ⭐️⭐️⭐️⭐️
+							tr
+								td 250pts 
+								td ⭐️⭐️⭐️⭐️⭐️
