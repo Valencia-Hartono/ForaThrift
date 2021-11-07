@@ -11,6 +11,15 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 	return new bootstrap.Tooltip(tooltipTriggerEl);
 });
 
+function getFormData(formID) {
+	let fd = new FormData(document.getElementById(formID));
+	let data = {};
+	for (var entry of fd.entries()) {
+		data[entry[0]] = entry[1];
+	}
+	return data;
+}
+
 $(async () => {
 	// categories(clothing, accessories, shoes, bags), types (ex.bottoms, tops, overalls), subTypes (ex.jeans, shorts...)
 	let categories = await (await fetch('categories.json')).json();
@@ -78,94 +87,4 @@ $(async () => {
 			</div>`);
 		}
 	}
-	//Starting from here: Account Information
-	//My Profile page
-	function checkAvatar(points, gender) {
-		var avatar = '🧚';
-		let rank = '🥉Bronze';
-		if (points >= 5200) {
-			rank = '🥇Gold';
-			if (gender == 'f') {
-				avatar = '🧞‍♀️';
-			} else if (gender == 'm') {
-				avatar = '🧞‍♂️';
-			} else {
-				avatar = '🧞';
-			}
-		} else if (points >= 2600) {
-			rank = '🥈Silver';
-			if (gender == 'f') {
-				avatar = '🧜‍♀️';
-			} else if (gender == 'm') {
-				avatar = '🧜';
-			} else {
-				avatar = '🧜‍♂️';
-			}
-		} else {
-			if (gender == 'f') {
-				avatar = '🧚‍♀️';
-			} else if (gender == 'm') {
-				avatar = '🧚‍♂️';
-			} else {
-				avatar = '🧚';
-			}
-		}
-		$('.avatar').append(avatar);
-		$('#rank').append(rank);
-	}
-	// checkRank(user.totalPoints);
-	checkAvatar(user.totalPoints, user.gender);
-
-	//My Coupons page
-	let coupon = {};
-	function couponSetter(points, code) {
-		$('#redeem' + points)[0].onclick = () => {
-			coupon = { points, code };
-			if (user.pointsForExchange < coupon.points) {
-				$('#couponStatus').append(`
-<div class="alert alert-danger" role="alert">
-  Failed to redeem points! Not enough points: ${user.pointsForExchange}
-</div>`);
-				return;
-			}
-			$('#confirmRedeemModal').modal('show');
-		};
-	}
-	//set how much points is reducted for each coupon, ex. (240, 0) means deduct 240pts for the 10% coupon
-	//["10%", "25%", "40%", "55%", "70%"] corresponds to [0, 1, 2, 3, 4]
-	couponSetter(240, 0);
-	couponSetter(480, 1);
-	couponSetter(720, 2);
-	couponSetter(960, 3);
-	couponSetter(1200, 4);
-
-	//if confirm button is clicked, it will update server and re-run it automatically on customer's side
-	//if they refresh page, they will see their "Points for exchange" updated and also "Number of _ coupons"
-	$('#confirmRedeem')[0].onclick = async () => {
-		user.pointsForExchange -= coupon.points;
-		user.coupons[coupon.code]++;
-
-		let url = window.location.href;
-		url = url.slice(0, url.lastIndexOf('/')) + '/user';
-		await fetch(url, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify(user)
-		});
-
-		$('.pointsExchangable').text(user.pointsForExchange);
-		$('#couponAmount' + coupon.points).text(user.coupons[coupon.code]);
-		$('#couponAmount' + coupon.points).addClass('green');
-
-		$('#couponStatus').append(`
-<div class="alert alert-success" role="alert">
-  Coupon for ${coupon.points} points successfully redeemed!
-</div>`);
-	};
-});
-
-$(document).ready(function () {
-	$('#adminSelect').multiselect();
 });

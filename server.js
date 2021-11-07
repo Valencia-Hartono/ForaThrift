@@ -8,7 +8,7 @@ global.__root = __dirname;
 const enableDestroy = require('server-destroy');
 const express = require('express');
 const http = require('http');
-const fs = require('fs');
+const fs = require('fs-extra');
 global.opn = require('open');
 global.os = require('os');
 global.path = require('path');
@@ -62,6 +62,7 @@ let db = JSON.parse(fs.readFileSync('inventory.json'));
 let users = JSON.parse(fs.readFileSync('users.json')).users;
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 function useStatic(folder) {
 	app.use(folder, express.static(__root + folder));
@@ -149,18 +150,23 @@ async function startServer() {
 		}
 	});
 
-	app.post('/user', (req, res) => {
-		let user = req.body; // request body is the json sent
+	app.post('/user', async (req, res) => {
+		let data = req.body; // request body is the json sent
+		let user = users[data.username];
+		Object.assign(user, data);
 		log(user);
-		users[user.username] = user; // replace user data with updated data
-		res.send('success');
+
+		// save updated user info to users file
+		await fs.outputFile('users.json', JSON.stringify(users));
+
+		res.json(user);
 	});
 
 	let server = http.createServer(app);
 
 	server.listen(3001, () => {
 		log('server listening on port 3001');
-		opn('http://localhost:3001');
+		// opn('http://localhost:3001');
 	});
 
 	enableDestroy(server);

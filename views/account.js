@@ -6,18 +6,20 @@ $(async () => {
 	async function updateUserData(data) {
 		let url = window.location.href;
 		url = url.slice(0, url.lastIndexOf('/')) + '/user';
-		await fetch(url, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify(user)
-		});
+		window.user = await (
+			await fetch(url, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(data)
+			})
+		).json();
 	}
 
 	window.submitProfileForm = async () => {
-		let data = new FormData($('#profileForm')[0]);
-		console.log(data);
+		let data = getFormData('profileForm');
+		data.username = user.username;
 		await updateUserData(data);
 	};
 
@@ -28,6 +30,7 @@ $(async () => {
 		} else if (points >= 2600) {
 			rank = '🥈Silver';
 		}
+		$('#rank').empty();
 		$('#rank').append(rank);
 	}
 
@@ -52,6 +55,7 @@ $(async () => {
 		} else if (points < 2600 && gender == 'n') {
 			avatar = '🧚';
 		}
+		$('.avatar').empty();
 		$('.avatar').append(avatar);
 	}
 	checkRank(user.totalPoints);

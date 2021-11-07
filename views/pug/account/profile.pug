@@ -18,15 +18,15 @@ h4 Profile Info
 				a.my-0(href="#") How to earn points?
 		// name form
 		.mb-3
-			label.form-label(for='displayName') Name
-			input.form-control(type='text' name='displayName' value=(user.name || ''))
+			label.form-label(for='name') Name
+			input.form-control(type='text' name='name' value=(user.name || ''))
 		// need to edit birthday form
 		.mb-3
 			label.form-label(for='birthday') Birthday
 			input.form-control(type='date' name='birthday' value=(user.birthday || ''))
 		// gender form
 		.mb-0
-			label.form-label(for='birthday') Gender
+			label.form-label(for='gender') Gender
 		.form-check.form-check-inline
 			input#femaleRadio.form-check-input(type='radio' name='flexRadioDefault' checked=(user.gender == 'f'))
 			label.form-check-label(for='femaleRadio')  female 
@@ -43,14 +43,14 @@ h4 Profile Info
 		// address form
 		.mb-3
 			label.form-label(for='address') Address
-			input.form-control(type='address' name='address' required='' value=(user.address || ''))
+			input.form-control(type='text' name='address' required='' value=(user.address || ''))
 		// email form
 		.mb-3
 			label.form-label(for='email') *Email
 			input.form-control(type='email' name='email' required='' value=(user.email || ''))
 		// password form
 		.mb-3
-			label.form-label(for='psw') *Fora Password
-			input.form-control(type='psw' name='psw' required='' value=(user.password || ''))
+			label.form-label(for='password') *Fora Password
+			input.form-control(type='password' name='password' required='' value=(user.password || ''))
 		.row.mt-4.mb-5
-			button.btn.btn-dark(onclick='submitProfileForm') Confirm Changes
+			button.btn.btn-dark(type="button" onclick='submitProfileForm()') Confirm Changes
