@@ -59,7 +59,7 @@ global.pug = (str, locals, insert) => {
 
 // load database;fs = file system
 let db = JSON.parse(fs.readFileSync('inventory.json'));
-let users = JSON.parse(fs.readFileSync('users.json')).users;
+let users = JSON.parse(fs.readFileSync('users.json'));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
