@@ -70,21 +70,4 @@ $(async () => {
 			cols[colNumMin] += subtypes.length + 1;
 		}
 	}
-
-	//add items to store pages
-	if (window.location.href.includes('store')) {
-		let items = (await (await fetch('items/1/0/0')).json()).items;
-
-		let $items = $('#items');
-		for (let item of items) {
-			$items.append(`
-			<div class="col-6 col-md-3">
-				<a class="ripple" href="">
-					<img src="${item.img}"/>
-				</a>
-				<div>${item.name}</div>
-				<div>$${item.price}</div>
-			</div>`);
-		}
-	}
 });

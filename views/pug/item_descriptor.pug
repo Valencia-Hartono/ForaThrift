@@ -1,0 +1,22 @@
+#item_descriptor.modal: .modal-dialog: .modal-content(tabindex='-1'): .modal-lg
+	.modal-header.pt-2.pb-0
+		// sign in and I'm new here tabs
+		h3 Item Description
+		button.btn-close.mb-1(type='button' data-bs-dismiss='modal')
+	.modal-body
+		table.table
+			thead
+				tr
+					th(scope='col') Image
+					th(scope='col') Type
+					th(scope='col') Reserve Status
+			tbody
+				tr
+					td#item_image 
+					td#item_information
+					td Queue # of people: 
+						span#numQueue
+					//if radio is clicked, user reserved[] adds itemID; item queue adds userID
+					input#itemQueue.form-check-input(type='radio' name='flexRadioDefault' checked=(user.gender == 'f'))
+					label.form-check-label(for='itemQueue')  I want to queue
+					
