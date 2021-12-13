@@ -139,3 +139,13 @@ a:active {
 	width: 100%;
 	padding-left: 1em;
 }
+.modal {
+	height: 70vh;
+	overflow-y: scroll;
+	position: fixed;
+	width: 100%;
+	left: 0;
+	right: 0;
+	top: 10;
+	margin: auto;
+}

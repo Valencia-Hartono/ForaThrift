@@ -64,8 +64,8 @@ $(async () => {
 			let subtypes = categories[category][type]; // retrieves the array of the type names
 			for (let j = 0; j < subtypes.length; j++) {
 				let subtype = subtypes[j];
-				$cols.eq(colNumMin).append('<div class="row"><a href="#" class="col"> - ' + subtype + '</a></div>');
-				$category.append('<a href="#" class="col-12"> - ' + subtype + '</a>');
+				$cols.eq(colNumMin).append('<div class="row"><a href="#" class="col"> ➤ ' + subtype + '</a></div>');
+				$category.append('<a href="#" class="col-12"> ➤ ' + subtype + '</a>');
 			}
 			cols[colNumMin] += subtypes.length + 1;
 		}

@@ -16,5 +16,6 @@ head
 body
 	include navs.pug
 	include login_register.pug
+	include item_descriptor.pug
 	script.
 		window.user = JSON.parse('#{JSON.stringify(user)}'.replaceAll('&quot;', '"'));

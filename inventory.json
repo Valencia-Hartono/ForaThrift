@@ -38,7 +38,7 @@
 	"clothing": [
 		{
 			"id": "003280",
-			"name": "navy dress",
+			"name": "NAVY DRESS",
 			"type": 0,
 			"subtype": 8,
 			"price": 20.5,
@@ -53,11 +53,11 @@
 			"discretionRating": 4,
 			"img": "https://www.lulus.com/images/product/xlarge/2958280_586292.jpg?w=560&hdpi=1",
 			"images": [],
-			"queue": []
+			"queue": [3, 4, 5, 6]
 		},
 		{
 			"id": "001563",
-			"name": "belt",
+			"name": "BLACK GOLD BELT",
 			"type": 3,
 			"subtype": 3,
 			"price": 20.5,
@@ -76,7 +76,7 @@
 		},
 		{
 			"id": "008264",
-			"name": "checkered wrap dress",
+			"name": "CHECKERED WRAP BUSINESS CASUAL DRESS",
 			"type": 0,
 			"subtype": 8,
 			"price": 15,
@@ -95,7 +95,7 @@
 		},
 		{
 			"id": "003027",
-			"name": "white short sleeve collar jumpsuit",
+			"name": "WHITE CASUAL JUMPSUIT",
 			"type": 0,
 			"subtype": 8,
 			"price": 70,
@@ -114,7 +114,7 @@
 		},
 		{
 			"id": "005937",
-			"name": "romper",
+			"name": "BLUE ROMPER",
 			"type": 0,
 			"subtype": 8,
 			"price": 20,
@@ -133,7 +133,7 @@
 		},
 		{
 			"id": "006707",
-			"name": "nude dress",
+			"name": "NUDE DRESS",
 			"type": 0,
 			"subtype": 8,
 			"price": 15,
