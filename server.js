@@ -101,7 +101,7 @@ async function loadViews() {
 		};
 
 		app.get('/' + (dir ? dir + '/' : '') + file.name, (req, res) => {
-			locals.user = users['timmy02'];
+			locals.user = users['valencia01'];
 
 			if (req.url == '/') {
 				req.url = 'index';
