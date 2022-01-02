@@ -8,7 +8,7 @@
 				tr
 					th.text-center(scope='col') Rating ⚜️
 					th.text-center(scope='col') Type 🧷
-					th.text-center(scope='col') Reserve 🔒
+					th.text-center(scope='col') User Profile 🔒
 			tbody
 				tr
 					td.col-3
@@ -25,13 +25,18 @@
 						row#item_size
 						br
 						row#item_price
-					td.col-4 Queue # of people: 
+					td.col-4 # of people lining up for item: 
 						span#numQueue
-						//if radio is clicked, user reserved[] adds itemID; item queue adds userID
+						//if radio is clicked, user reserved[] adds itemID; item's queue array adds userID
 						br
 						input#itemQueue.form-check-input(type='checkbox' value='' name='flexCheckDefault')
-						//should display "I want to queue" if this item queue array does not have this username, otherwise display "Queuing"
-						label.form-check-label(for='itemQueue')  I want to queue
-		//img currently not working!!
+						label.form-check-label(for='itemQueue')  Queue 🕓 
+						
+						span#favorites
+						//if radio is clicked, user favorites[] adds itemID
+						br
+						input#favorites.form-check-input(type='checkbox' value='' name='flexCheckDefault')
+						label.form-check-label(for='favorites')  Favorite ♥️ 
+		//img currently not working!! (Optional though)
 		body#item_img
 					
