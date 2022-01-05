@@ -42,6 +42,11 @@ $(async () => {
 			$('#item_descriptor #item_size').text(' Size: ' + item.size);
 			$('#item_descriptor #item_price').text(' Price: ' + item.price + ' RMB');
 
+			// //appends queue checkbox to column 3
+			// $('#item_descriptor #item_Queue').text();
+			// input.form-check-input(type='checkbox' value='' name='flexCheckDefault')
+			// 			label.form-check-label(for='itemQueue')  Queue 🕓
+
 			//appends number of people queueing for item to column 3 by returning length of queue array storing users' names
 			$('#item_descriptor #numQueue').text(item.queue.length);
 		};

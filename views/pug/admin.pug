@@ -1,6 +1,12 @@
 include fora.pug
+script(src='../../admin.js')
 #adminPage.container-fluid
-	form.needs-validation(novalidate='')
+	h1.mt-4.text-center WELCOME ADMIN
+	h3.text-center.text-secondary: a(href="admin_addProduct") ADD PRODUCT
+	h3.text-center.text-secondary: a(href="store") DELETE PRODUCT
+	h3.text-center.text-secondary: a(href="store") EDIT PRODUCT
+	//- form.needs-validation(novalidate='')
+	form#adminForm
 		container.container
 			.row
 				.col(scope='col'): .row
@@ -103,5 +109,5 @@ include fora.pug
 				//- 			label.form-check-label(for='color' + index)= color
 		.row
 			.col-4
-			.col-4: button#submit.btn.btn-primary.btn-sm.mt-3(type='submit') Submit
-			.col-4
+			.col-4: button#submit.btn.btn-primary.btn-sm.mt-3(type="button" onclick='submitAdminForm()') Submit
+			.col-4 
