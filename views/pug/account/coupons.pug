@@ -7,6 +7,15 @@ p.my-0 Points for exchange:
 	span.pointsExchangable= user.pointsForExchange || '0'
 a(data-bs-toggle='modal' href='#points_system') How to earn points?
 #couponStatus.mt-3
+//this part can be generalized into a function where x=pts, y=% discount, z=index of coupon array
+
+//function coupon setter (pts, discount, index)
+//function coupon setter (x, y, z){
+//button#redeem"x".btn.btn-green Redeem "y"% discount (-"x"pts)
+//|	Number of "y"% coupons you have: 
+//span#couponAmount"x"= user.coupons[z] || '0'
+//}
+
 p.mt-4
 	button#redeem240.btn.btn-green Redeem 10% discount (-240pts)
 	|	Number of 10% coupons you have: 
@@ -32,7 +41,6 @@ p
 		.modal-content
 			.modal-header
 				h5#exampleModalLabel.modal-title Confirm Redeem Points
-				button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
 			.modal-body
 				| Are you sure you want to redeem these points?
 			.modal-footer

@@ -2,9 +2,11 @@ include fora.pug
 script(src='../../admin.js')
 #adminPage.container-fluid
 	h1.mt-4.text-center WELCOME ADMIN
-	h3.text-center.text-secondary: a(href="admin_addProduct") ADD PRODUCT
-	h3.text-center.text-secondary: a(href="store") DELETE PRODUCT
-	h3.text-center.text-secondary: a(href="store") EDIT PRODUCT
+	h3.text-center.text-secondary: a(href="store") MANAGE CUSTOMERS
+	h3.text-center.text-secondary: a(href="store") MANAGE INVENTORY
+	h3.text-center.text-secondary: a(href="store") SET COUPONS DISCOUNT%
+	h3.text-center.text-secondary: a(href="store") SET COUPONS DEDUCTION PTS
+	h3.text-center.text-secondary: a(href="store") SET RATINGS REWARD PTS
 	//- form.needs-validation(novalidate='')
 	form#adminForm
 		container.container
@@ -15,15 +17,12 @@ script(src='../../admin.js')
 					.form-group.mb-2: .input-group
 						input#inputGroupFile02.form-control(type='file')
 						label.input-group-text(for='inputGroupFile02') Upload
-					.form-group.mb-2
-						label.form-label(for='exampleFormControlTextarea1') Item Description
-						textarea#exampleFormControlTextarea1.form-control(rows='3')
-					.form-group.col-6.mb-2
-						label.form-label(for='') Brand
-						input.form-control(type='text' placeholder="Brand Name")
 					.form-group.col-6.mb-2
 						label.form-label(for='') Item Name
 						input.form-control(type='text' placeholder="Item Name")
+					.form-group.col-6.mb-2
+						label.form-label(for='') Brand
+						input.form-control(type='text' placeholder="Brand Name")
 					.form-group.col-4.mb-2
 						label.form-label(for='') Size
 						select.form-select.form-select-md.mb-3
@@ -41,17 +40,9 @@ script(src='../../admin.js')
 					.form-group.col-3.mb-2
 						label.form-label(for='exampleColorInput') Color Picker
 						input#exampleColorInput.form-control.form-control-color(type='color' value='#30D5C8' title='Choose your color')
-					//- .form-group.mb-2
-					//- 	.card.mb-3(style='max-width: 540px;')
-					//- 	.row.g-0
-					//- 		.col-md-4
-					//- 			img.img-fluid.rounded-start(src='...' alt='...')
-					//- 		.col-md-8
-					//- 			.card-body
-					//- 				h5.card-title Item Name
-					//- 				p.card-text
-					//- 					| This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-					//- 				p.card-text
+					.form-group.mb-4
+						label.form-label(for='exampleFormControlTextarea1') Item Description
+						textarea#exampleFormControlTextarea1.form-control(rows='3')
 				.col(scope='col')
 					label(for='') RATING
 					.form-group.mb-2
@@ -83,20 +74,21 @@ script(src='../../admin.js')
 							option(value='5') 5 ⭐️⭐️⭐️⭐️⭐️
 					button#submit.btn.btn-primary.btn-sm.mt-3(type='submit') Submit
 			.row
+				label(for='') CATEGORIES
 				.col(scope='col')
-					label(for='') TYPE
+					label(for='') Type
 					each type, index in ['💍🕶🧢👜 Accessories', '👟/🧦 Shoes/Socks','🧥 Jackets/Sweaters', '🩱 Swimsuits/Undergarments','👗 Dresses/Skirts','👚 Tops','👖/🩳 Pants/Shorts']
 						.form-check
 							input.form-check-input(id='type' + index type='checkbox' value='type' + index)
 							label.form-check-label(for='type' + index)= type
 				.col(scope='col') 
-					label(for='') OCCASION
+					label(for='') Occasion
 					each occasion, index in ['⚽️ Sports', '🥂 Formal','🚶 Casual']
 						.form-check
 							input.form-check-input(id='occasion' + index type='checkbox' value='occasion' + index)
 							label.form-check-label(for='occasion' + index)= occasion
 				.col(scope='col') 
-					label(for='') SEASON
+					label(for='') Season
 					each season, index in ['☘️ Spring', '☀️ Summer','🍂 Fall', '❄️ Winter']
 						.form-check
 							input.form-check-input(id='season' + index type='checkbox' value='season' + index)

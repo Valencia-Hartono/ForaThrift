@@ -162,18 +162,30 @@ async function startServer() {
 		res.json(user);
 	});
 
-	app.post('/admin', async (req, res) => {
-		let data = req.body; // request body is the json sent
-		let user = users[data.username];
-		Object.assign(user, data);
-		log(user);
-		console.log('test 1');
+	// app.post('/inventory', async (req, res) => {
+	// 	let data = req.body; // request body is the json sent
+	// 	let item = inventory[data.id];
+	// 	Object.assign(item, data);
+	// 	log(item);
 
-		// save updated user info to users file
-		await fs.outputFile('inventory.json', JSON.stringify(users));
-		console.log('test 2');
-		res.json(user);
-	});
+	// 	// save updated id info to inventory file
+	// 	await fs.outputFile('inventory.json', JSON.stringify(inventory));
+
+	// 	res.json(item);
+	// });
+
+	// app.post('/admin', async (req, res) => {
+	// 	let data = req.body; // request body is the json sent
+	// 	let user = users[data.username];
+	// 	Object.assign(user, data);
+	// 	log(user);
+	// 	console.log('test 1');
+
+	// 	// save updated user info to users file
+	// 	await fs.outputFile('inventory.json', JSON.stringify(users));
+	// 	console.log('test 2');
+	// 	res.json(user);
+	// });
 
 	let server = http.createServer(app);
 

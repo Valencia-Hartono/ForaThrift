@@ -26,17 +26,29 @@
 						br
 						row#item_price
 					td.col-4 # of people lining up for item: 
-						span#numQueue
-						//if radio is clicked, user reserved[] adds itemID; item's queue array adds userID
-						br
-						input#item_Queue.form-check-input(type='checkbox' value='' name='flexCheckDefault')
-						label.form-check-label(for='itemQueue')  Queue 🕓 
-						
-						span#favorites
-						//if radio is clicked, user favorites[] adds itemID
-						br
-						input#favorites.form-check-input(type='checkbox' value='' name='flexCheckDefault')
-						label.form-check-label(for='favorites')  Favorite ♥️ 
+						form#queueFavoriteForm
+							span#numQueue
+							//if checkbox is clicked, user reserved[] adds itemID; item's queue array adds userID
+							br
+							input#item_queue.form-check-input(type='checkbox' value='' name='flexCheckDefault')
+							label.form-check-label(for='item_queue')  Queue 🕓 
+							
+							//if checkbox is clicked, user favorites[] adds itemID
+							br
+							input#item_favorite.form-check-input(type='checkbox' value='' name='flexCheckDefault')
+							label.form-check-label(for='item_favorite')  Favorite ♥️ 
+							
+							#confirmChangesModal.modal.fade(tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true')
+							.modal-dialog
+								.modal-content
+									#confirmChangesHeader.modal-header
+										h5#exampleModalLabel.modal-title Confirm Changes
+									#confirmChangesBody.modal-body
+										| Are you sure you want to redeem these points?
+									.modal-footer
+										button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Cancel
+										button#confirmChanges.btn.btn-green(type='button'  data-bs-dismiss='modal') Confirm
+							
 		//img currently not working!! (Optional though)
 		body#item_img
 					
