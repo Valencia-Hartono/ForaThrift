@@ -162,36 +162,25 @@ async function startServer() {
 		res.json(user);
 	});
 
-	// app.post('/inventory', async (req, res) => {
-	// 	let data = req.body; // request body is the json sent
-	// 	let item = inventory[data.id];
-	// 	Object.assign(item, data);
-	// 	log(item);
+	app.post('/admin/inventory', async (req, res) => {
+		let data = req.body; // request body is the json sent
+		log(data);
 
-	// 	// save updated id info to inventory file
-	// 	await fs.outputFile('inventory.json', JSON.stringify(inventory));
+		// db[data.]
 
-	// 	res.json(item);
-	// });
+		// save updated user info to users file
+		// await fs.outputFile('inventory.json', JSON.stringify(inventory));
 
-	// app.post('/admin', async (req, res) => {
-	// 	let data = req.body; // request body is the json sent
-	// 	let user = users[data.username];
-	// 	Object.assign(user, data);
-	// 	log(user);
-	// 	console.log('test 1');
-
-	// 	// save updated user info to users file
-	// 	await fs.outputFile('inventory.json', JSON.stringify(users));
-	// 	console.log('test 2');
-	// 	res.json(user);
-	// });
+		res.json(data);
+	});
 
 	let server = http.createServer(app);
 
-	server.listen(3001, () => {
-		log('server listening on port 3001');
-		// opn('http://localhost:3001');
+	let port = 3125;
+
+	server.listen(port, () => {
+		log('server listening on port ' + port);
+		// opn('http://localhost:3125');
 	});
 
 	enableDestroy(server);

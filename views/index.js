@@ -13,6 +13,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 
 function getFormData(formID) {
 	let fd = new FormData(document.getElementById(formID));
+	log(fd);
 	let data = {};
 	for (var entry of fd.entries()) {
 		data[entry[0]] = entry[1];
@@ -22,8 +23,7 @@ function getFormData(formID) {
 
 $(async () => {
 	// categories(clothing, accessories, shoes, bags), types (ex.bottoms, tops, overalls), subTypes (ex.jeans, shorts...)
-	let categories = await (await fetch('categories.json')).json();
-	log(categories);
+	let categories = await (await fetch('/categories.json')).json();
 	//instead of inputing types manually, use a function
 	for (let category of categories.names) {
 		addColumns(category);

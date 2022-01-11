@@ -1,10 +1,10 @@
 {
 	"name": "forathrift",
-	"version": "1.0.39",
+	"version": "1.0.40",
 	"description": "Fora Thrift Shop server.",
 	"main": "index.js",
 	"scripts": {
-		"start": "node server.js | open http://localhost:3001",
+		"start": "node server.js | open http://localhost:3125",
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"v": "npm version patch --force",
 		"V": "npm version minor --force",

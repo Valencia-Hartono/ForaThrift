@@ -4,10 +4,10 @@ $(async () => {
 	// jQuery wrapper
 
 	async function updateUserData(data) {
-		let url = window.location.href;
-		url = url.slice(0, url.lastIndexOf('/')) + '/user';
+		// let url = window.location.href;
+		// url = url.slice(0, url.lastIndexOf('/')) + '/user';
 		window.user = await (
-			await fetch(url, {
+			await fetch('/user', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'

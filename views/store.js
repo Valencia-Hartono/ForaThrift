@@ -33,7 +33,7 @@ $(async () => {
 			//appends item ratings to column 1
 			$('#item_descriptor #item_qualityRating').text('Quality: ' + item.qualityRating + '/5');
 			$('#item_descriptor #item_styleRating').text('Style: ' + item.styleRating + '/5');
-			$('#item_descriptor #item_discretionRating').text('Overall: ' + item.overallRating + '/5');
+			$('#item_descriptor #item_valueRating').text('Value: ' + item.valueRating + '/5');
 
 			//appends item information to column 2
 			$('#item_descriptor #item_name').text(item.name);

@@ -1,0 +1,110 @@
+include ../fora.pug
+script(src='../../../admin.js')
+#adminInventoryPage.container-fluid
+	form#adminInventoryForm
+		.row
+			.col-8: .row
+				label ITEM INFO
+				label.form-label(for='img') Item Image
+				.form-group.mb-2: .input-group
+					input#inputGroupFile02.form-control(type='file' name='img')
+					label.input-group-text(for='inputGroupFile02') Upload
+				.form-group.col-6.mb-2
+					label.form-label(for='name') Item Name
+					input.form-control(type='text' name='name' placeholder="Item Name")
+				.form-group.col-4.mb-2
+					label.form-label(for='brand') Brand
+					input.form-control(type='text' name='brand' placeholder="Brand Name")
+				.form-group.col-2.mb-2
+					label.form-label(for='price') Price
+					.input-group
+						span.input-group-text RMB
+						input.form-control(type='number' name='price' placeholder='00.00' aria-label='Amount (to the nearest dollar)')
+				.form-group.col-6.mb-2
+					label.form-label(for='donor') Donor Username
+					input.form-control(type='text' name='donor' placeholder="Donor Username")
+				.form-group.col-4.mb-2
+					label.form-label(for='colorCode') Color Name
+					select.form-select.form-select-md.mb-3(name='colorCode')
+						option(value='0') White
+						option(value='1') Black
+						option(value='2') Blue
+						option(value='3') Pink
+						option(value='4') Purple
+						option(value='5') Green
+				.form-group.col-2.mb-2
+					label.form-label(for='size') Size
+					select.form-select.form-select-md.mb-3(name='size')
+						option(value='0') NA
+						option(value='1') XS
+						option(value='2') S
+						option(value='3') M
+						option(value='4') L
+						option(value='5') XL
+				
+				//- .form-group.col-4.mb-2
+				//- 	label.form-label(for='exampleColorInput') Color Picker
+				//- 	input#exampleColorInput.form-control.form-control-color(type='color' value='#30D5C8' title='Choose your color')
+			.col-4
+				label RATING
+				.form-group.mb-2
+					label(for='styleRating') Item Style
+					select.form-select(name='styleRating')
+						option(value='0') NA
+						option(value='1') 1 ⭐️
+						option(value='2') 2 ⭐️⭐️
+						option(value='3') 3 ⭐️⭐️⭐️
+						option(value='4') 4 ⭐️⭐️⭐️⭐️
+						option(value='5') 5 ⭐️⭐️⭐️⭐️⭐️
+				.form-group.mb-2
+					label(for='qualityRating') Item Quality
+					select.form-select(name='qualityRating')
+						option(value='0') NA
+						option(value='1') 1 ⭐️
+						option(value='2') 2 ⭐️⭐️
+						option(value='3') 3 ⭐️⭐️⭐️
+						option(value='4') 4 ⭐️⭐️⭐️⭐️
+						option(value='5') 5 ⭐️⭐️⭐️⭐️⭐️
+				.form-group.mb-2
+					label(for='valueRating') Item Value
+					select.form-select(name='valueRating')
+						option(value='0') NA
+						option(value='1') 1 ⭐️
+						option(value='2') 2 ⭐️⭐️
+						option(value='3') 3 ⭐️⭐️⭐️
+						option(value='4') 4 ⭐️⭐️⭐️⭐️
+						option(value='5') 5 ⭐️⭐️⭐️⭐️⭐️
+		.row
+			.form-group.mb-4
+				label.form-label(for='description') Item Description
+				textarea.form-control(rows='3' name='description')
+		.row
+			label CATEGORIES
+			.col
+				label(for='type') Type
+				each type, index in ['💍🕶🧢👜 Accessories', '👟🧦 Shoes/Socks','🧥 Jackets/Sweaters', '🩱 Swimsuits/Undergarments','👗 Dresses/Skirts','👚 Tops','👖🩳 Pants/Shorts']
+					.form-check
+						input.form-check-input(id='type' + index type='checkbox' value='type' + index)
+						label.form-check-label(for='type' + index)= type
+			.col 
+				label(for='occasion') Occasion
+				each occasion, index in ['⚽️ Sports', '🥂 Formal','🚶 Casual']
+					.form-check
+						input.form-check-input(id='occasion' + index type='checkbox' value='occasion' + index)
+						label.form-check-label(for='occasion' + index)= occasion
+			.col 
+				label(for='season') Season
+				each season, index in ['☘️ Spring', '☀️ Summer','🍂 Fall', '❄️ Winter']
+					.form-check
+						input.form-check-input(id='season' + index type='checkbox' value='season' + index)
+						label.form-check-label(for='season' + index)= season
+			//- .col 
+			//- 	label(for='') COLOR
+			//- 	each color, index in ['Black', 'Brown','Gold', 'Gray','White','Red','Orange','Yellow', 'Green','Turquoise', 'Blue', 'Purple', 'Pink']
+			//- 		.form-check
+			//- 			input.form-check-input(id='color' + index type='checkbox' value='color' + index)
+			//- 			label.form-check-label(for='color' + index)= color
+	.row
+		.col-4
+		.col-4: button#submit.btn.btn-primary.btn-sm.mt-3(type="button" onclick='submitAdminInventoryForm()') Add Item to Inventory
+		.col-4 
