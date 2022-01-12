@@ -25,7 +25,7 @@
 			"Tote bags": []
 		},
 		"accessories": {
-			"typeNames": ["Jewelry", "Belts", "Hair accessories", "Gloves", "Scarves", "Sunglasses", "Watches"],
+			"typeNames": ["Jewelry", "Belts", "Hair accessories", "Gloves", "Scarves", "Sunglasses", "Miscellaneous"],
 			"Jewelry": ["Earrings", "Bracelets", "Necklaces"],
 			"Belts": [],
 			"Hair accessories": [],

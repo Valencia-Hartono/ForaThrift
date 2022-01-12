@@ -30,7 +30,7 @@ $(async () => {
 	// 	await updateUserData(data);
 	// };
 
-	// checkQueue(user.reserved,);
+	// checkQueue(user.reserved);
 	// checkFavorites(user.favorites);
 
 	// //everytime queue/favorite form is submitted, it takes the queue and favorites boolean for the specific user and item

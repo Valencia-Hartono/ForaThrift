@@ -22,8 +22,7 @@
 		<td>$${item.price}</td>
 	</tr>
 </table>
-$('#item_descriptor #item_image').text('item.img'); .text-center#item_image 
-//loop through array and check items, if
+$('#item_descriptor #item_image').text('item.img'); .text-center#item_image //loop through array and check items, if
 their reserve status include the username, the item should be displayed $reserveitems.append(`
 <div id="${item.id}" class="col-6 col-md-3">
 	<img src="${item.img}" />
@@ -32,4 +31,8 @@ their reserve status include the username, the item should be displayed $reserve
 		<div class="row">${item.price} RMB</div>
 	</div>
 </div>
-`);
+`); #confirmChangesModal.modal.fade(tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true') .modal-dialog
+.modal-content #confirmChangesHeader.modal-header h5#exampleModalLabel.modal-title Confirm Changes
+#confirmChangesBody.modal-body | Are you sure you want to redeem these points? .modal-footer
+button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Cancel button#confirmChanges.btn.btn-green(type='button'
+data-bs-dismiss='modal') Confirm

@@ -36,18 +36,9 @@
 							//if checkbox is clicked, user favorites[] adds itemID
 							br
 							input#item_favorite.form-check-input(type='checkbox' value='' name='flexCheckDefault')
-							label.form-check-label(for='item_favorite')  Favorite ♥️ 
-							
-							#confirmChangesModal.modal.fade(tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true')
-							.modal-dialog
-								.modal-content
-									#confirmChangesHeader.modal-header
-										h5#exampleModalLabel.modal-title Confirm Changes
-									#confirmChangesBody.modal-body
-										| Are you sure you want to redeem these points?
-									.modal-footer
-										button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Cancel
-										button#confirmChanges.btn.btn-green(type='button'  data-bs-dismiss='modal') Confirm
+							label.form-check-label(for='item_favorite')  Favorite ♥️
+		row.d-grid.gap-2
+			button.btn.btn-dark(type="button" onclick='submitQueueFavoriteForm()') Confirm Changes
 							
 		//img currently not working!! (Optional though)
 		body#item_img
