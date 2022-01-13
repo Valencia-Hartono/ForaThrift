@@ -107,22 +107,23 @@ $(async () => {
 	//after clicking on the [4], it will become [0, 2, 0, 0, 1] (you have two 25% and one 70% discount coupons)
 
 	$('#confirmRedeem')[0].onclick = async () => {
-		user.pointsForExchange -= coupon.points;
-		user.coupons[coupon.code]++;
+		if (user.pointsForExchange >= coupon.points) {
+			user.pointsForExchange -= coupon.points;
+			user.coupons[coupon.code]++;
 
-		await updateUserData(user);
+			await updateUserData(user);
+			//display newly updated span.pointsExchangable in coupons.pug, donations.pug, and profile.pug
+			$('.pointsExchangable').text(user.pointsForExchange);
+			//display newly updated coupon amount
+			$('#couponAmount' + coupon.points).text(user.coupons[coupon.code]);
+			//newly updated # of coupons in coupons.pug should be displayed in green color (CSS)
+			$('#couponAmount' + coupon.points).addClass('green');
 
-		//display newly updated span.pointsExchangable in coupons.pug, donations.pug, and profile.pug
-		$('.pointsExchangable').text(user.pointsForExchange);
-		//display newly updated coupon amount
-		$('#couponAmount' + coupon.points).text(user.coupons[coupon.code]);
-		//newly updated # of coupons in coupons.pug should be displayed in green color (CSS)
-		$('#couponAmount' + coupon.points).addClass('green');
-
-		$('#couponStatus').append(`
-<div class="alert alert-success" role="alert">
-  Coupon for ${coupon.points} points successfully redeemed!
-</div>`);
+			$('#couponStatus').append(`
+	<div class="alert alert-success" role="alert">
+		Coupon for ${coupon.points} points successfully redeemed!
+	</div>`);
+		}
 	};
 
 	// 	//make a function that checks if a user has that item in their user.___ array

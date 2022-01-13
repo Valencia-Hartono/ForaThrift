@@ -9,23 +9,26 @@ script(src='../../../admin.js')
 				.form-group.mb-2: .input-group
 					input#inputGroupFile02.form-control(type='file' name='img')
 					label.input-group-text(for='inputGroupFile02') Upload
-				.form-group.col-6.mb-2
+				.form-group.col-4.mb-2
 					label.form-label(for='name') Item Name
 					input.form-control(type='text' name='name' placeholder="Item Name")
 				.form-group.col-4.mb-2
-					label.form-label(for='brand') Brand
+					label.form-label(for='brand') Brand Name
 					input.form-control(type='text' name='brand' placeholder="Brand Name")
-				.form-group.col-2.mb-2
-					label.form-label(for='price') Price
-					.input-group
-						span.input-group-text RMB
-						input.form-control(type='number' name='price' placeholder='00.00' aria-label='Amount (to the nearest dollar)')
-				.form-group.col-6.mb-2
+				.form-group.col-4.mb-2
 					label.form-label(for='donor') Donor Username
 					input.form-control(type='text' name='donor' placeholder="Donor Username")
-				.form-group.col-4.mb-2
-					label.form-label(for='colorCode') Color Name
-					select.form-select.form-select-md.mb-3(name='colorCode')
+				.form-group.col-2.mb-1
+					label.form-label(for='size') Category
+					select.form-select.form-select-md.mb-3(name='category')
+						option(value='0') NA
+						option(value='1') Clothing
+						option(value='2') Shoes
+						option(value='3') Bags
+						option(value='4') Accessories
+				.form-group.col-3
+					label.form-label(for='colorName') Color Name
+					select.form-select.form-select-md.mb-3(name='colorName')
 						option(value='0') Black
 						option(value='1') White
 						option(value='2') Taupe
@@ -40,7 +43,7 @@ script(src='../../../admin.js')
 						option(value='11') Blue
 						option(value='12') Purple
 						option(value='13') Pink
-				.form-group.col-2.mb-2
+				.form-group.col-2
 					label.form-label(for='size') Size
 					select.form-select.form-select-md.mb-3(name='size')
 						option(value='0') NA
@@ -49,11 +52,20 @@ script(src='../../../admin.js')
 						option(value='3') M
 						option(value='4') L
 						option(value='5') XL
+				.form-group.col-5
+					label.form-label(for='price') Price
+					.input-group
+						span.input-group-text RMB
+						input.form-control(type='number' name='price' placeholder='amount (to the nearest RMB)' aria-label='amount (to the nearest dollar)')
 				
 				//- .form-group.col-4.mb-2
 				//- 	label.form-label(for='exampleColorInput') Color Picker
 				//- 	input#exampleColorInput.form-control.form-control-color(type='color' value='#30D5C8' title='Choose your color')
+				.form-group.mb-4
+					label.form-label(for='description') Item Description
+					textarea.form-control(rows='3' name='description' placeholder="Item Description")
 			.col-4
+				form#adminInventoryForm
 				label RATING
 				.form-group.mb-2
 					label(for='styleRating') Item Style
@@ -73,7 +85,7 @@ script(src='../../../admin.js')
 						option(value='3') 3 ⭐️⭐️⭐️
 						option(value='4') 4 ⭐️⭐️⭐️⭐️
 						option(value='5') 5 ⭐️⭐️⭐️⭐️⭐️
-				.form-group.mb-2
+				.form-group.mb-5
 					label(for='valueRating') Item Value
 					select.form-select(name='valueRating')
 						option(value='0') NA
@@ -82,10 +94,17 @@ script(src='../../../admin.js')
 						option(value='3') 3 ⭐️⭐️⭐️
 						option(value='4') 4 ⭐️⭐️⭐️⭐️
 						option(value='5') 5 ⭐️⭐️⭐️⭐️⭐️
-		.row
-			.form-group.mb-4
-				label.form-label(for='description') Item Description
-				textarea.form-control(rows='3' name='description')
+				.row
+					.col-8
+						div Rewarded Points For Donor:
+							br
+							span.pointsTotal= user.totalPoints || '0'
+					.col-4
+						button#submit.btn.btn-primary.mt-3(type="button" onclick='submitAdminInventoryForm()') CALCULATE REWARDED POINTS
+		//- .row
+		//- 	.form-group.mb-4
+		//- 		label.form-label(for='description') Item Description
+		//- 		textarea.form-control(rows='3' name='description')
 		.row
 			label CATEGORIES
 			.col
