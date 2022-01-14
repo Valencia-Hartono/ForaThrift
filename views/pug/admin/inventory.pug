@@ -1,5 +1,11 @@
 include ../fora.pug
-script(src='../../../admin.js')
+//- script(src='../../../admin.js')
+script(src='../../inventory.js')
+h1.mt-4.text-center FORA INVENTORY
+h3.text-center.text-secondary You can add, delete, or edit
+p.text-center.text-muted Total number of items in inventory: 
+	span#totalItems
+	
 #adminInventoryPage.container-fluid
 	form#adminInventoryForm
 		.row
@@ -43,6 +49,7 @@ script(src='../../../admin.js')
 						option(value='11') Blue
 						option(value='12') Purple
 						option(value='13') Pink
+						option(value='14') Nude
 				.form-group.col-2
 					label.form-label(for='size') Size
 					select.form-select.form-select-md.mb-3(name='size')
@@ -98,9 +105,9 @@ script(src='../../../admin.js')
 					.col-8
 						div Rewarded Points For Donor:
 							br
-							span.pointsTotal= user.totalPoints || '0'
+							span#reward pts
 					.col-4
-						button#submit.btn.btn-primary.mt-3(type="button" onclick='submitAdminInventoryForm()') CALCULATE REWARDED POINTS
+						button#calculateRewardedPoints.btn.btn-primary.mt-3(type="button") CALCULATE REWARDED POINTS
 		//- .row
 		//- 	.form-group.mb-4
 		//- 		label.form-label(for='description') Item Description
