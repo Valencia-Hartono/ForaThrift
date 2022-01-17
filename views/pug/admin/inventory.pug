@@ -39,8 +39,10 @@ p.text-center.text-muted Total number of items in inventory:
 		.row
 			form#adminSearchItemForm
 			label.form-group.col-2.mb-4.form-label(for='ID') Search Item ID
-				input.form-control(type='text' name='ID' placeholder="Item ID")
+				input.form-control(type='text' name='ID' placeholder="User ID")
 				button#submit.btn.btn-secondary.btn-sm.mt-3(type="button" onclick='submitAdminInventoryForm()') Search Item
+			label.form-group.col-3.mb-4.form-label(for='ID') Users lining Up for this item
+				input.form-control(type='text' name='ID' placeholder="Item ID")
 		.row
 			.col-9: .row
 				label ITEM INFO
