@@ -47,40 +47,16 @@ $('#calculateRewardedPoints')[0].onclick = async () => {
 			})
 		).json();
 	}
-	//submit profile changes-> takes data from form and calls above "updateUserData" function
-	window.submitProfileForm = async () => {
-		let data = getFormData('profileForm');
-		data.username = user.username;
-		await updateUserData(data);
-	};
-
-	//style, quality, value ratings are added in an arrayRatings; each holds a value from 0-5
-	//function checkRewardedPoints takes in the parameter of an array of ratings and the rewarded points for each star
-	//starValue is taken out of function as a general value instead of a set value
-	let styleRating = 2;
-	let qualityRating = 5;
-	let valueRating = 4;
-
-	let starValue1 = 10;
-	let starValue2 = 40;
-	let starValue3 = 90;
-	let starValue4 = 160;
-	let starValue5 = 250;
-
-	//ratings=[2,5,4]
-	let ratings = [styleRating, qualityRating, valueRating];
-	//starValues=[10,40,90,160,250]
-	let starValues = [starValue1, starValue2, starValue3, starValue4, starValue5];
-
+	//admin can customize if they change their mind about how the value works; 1 star can be 10pts or 20pts or 25pts etc.
+	//starValues=[0, 10, 40, 90, 160, 250] (index 0 is always 0) constant for all items
+	let starValues = [0, 10, 40, 90, 160, 250];
 	function checkRewardedPoints(ratingArray, starValueArray) {
 		let totalRewardedPoints = 0;
 		for (let i = 0; i < ratingArray.length; i++) {
-			let value = array[i] - 1;
-			totalRewardedPoints = totalRewardedPoints + starValueArray[value];
-			totalRewardedPoints = 10;
+			totalRewardedPoints = totalRewardedPoints + starValueArray[ratingArray[i]];
 		}
 		$('#reward').append(totalRewardedPoints + 'pts');
 	}
-	//admin can customize if they change their mind about how the value works; 1 star can be 10pts or 20pts or 25pts etc.
-	checkRewardedPoints(ratings, starValues);
+	//ratings=[2, 5, 4] unique to each item; corresponds with type in inventory.JSON; holds index of starValues array
+	checkRewardedPoints(item.ratings, starValues);
 };

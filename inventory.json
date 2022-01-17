@@ -1,7 +1,9 @@
 {
+	"rating": ["styleRating", "qualityRating", "valueRating"],
 	"categories": {
-		"names": ["clothing", "shoes", "bags", "accessories"],
-		"navNames": ["CLOTHES", "SHOES", "BAGS", "ACCESSORIES"],
+		"names": ["clothing", "shoes", "bags", "accessories", "miscellaneous"],
+		"navNames": ["CLOTHES", "SHOES", "BAGS", "ACCESSORIES", "MISCELLANEOUS"],
+
 		"clothing": {
 			"typeNames": ["Bottoms", "Tops", "Overalls"],
 			"Bottoms": ["Jeans", "Shorts", "Skirts", "Slacks", "Sweatpants"],
@@ -25,21 +27,27 @@
 			"Tote bags": []
 		},
 		"accessories": {
-			"typeNames": ["Jewelry", "Belts", "Hair accessories", "Gloves", "Scarves", "Sunglasses", "Miscellaneous"],
+			"typeNames": ["Jewelry", "Belts", "Headwear"],
 			"Jewelry": ["Earrings", "Bracelets", "Necklaces"],
-			"Belts": [],
-			"Hair accessories": [],
+			"Belts": ["thick", "thin"],
+			"Headwear": ["caps", "sunhats", "beanies", "headbands"]
+		},
+		"miscellaneous": {
+			"typeNames": ["Gloves", "Scarves", "Sunglasses", "Watches", "Socks", "Makeup", "Skincare"],
 			"Gloves": [],
 			"Scarves": [],
 			"Sunglasses": [],
-			"Watches": []
+			"Watches": [],
+			"Socks": [],
+			"Makeup": [],
+			"Skincare": []
 		}
 	},
 	"clothing": [
 		{
 			"id": "003280",
-			"type": 0,
-			"subtype": 8,
+			"type": 2,
+			"subtype": 1,
 			"occasion": 4,
 			"season": 2,
 
@@ -52,32 +60,7 @@
 			"price": 20.5,
 			"description": "",
 			"queue": ["valencia01", "timmy02"],
-
-			"qualityRating": 4,
-			"styleRating": 4,
-			"valueRating": 4,
-			"donor": "valencia01"
-		},
-		{
-			"id": "001563",
-			"type": 3,
-			"subtype": 3,
-			"occasion": 4,
-			"season": 2,
-
-			"img": "https://i.pinimg.com/474x/be/ca/56/beca56fa38986d7c1f7eb1b26ff0e1aa.jpg",
-			"images": [],
-			"name": "BLACK GOLD BELT",
-			"brand": "Zara",
-			"colorName": 20,
-			"size": 3,
-			"price": 20.5,
-			"description": "",
-			"queue": [],
-
-			"qualityRating": 4,
-			"styleRating": 5,
-			"valueRating": 5,
+			"rating": [4, 4, 4],
 			"donor": "valencia01"
 		},
 		{
@@ -95,11 +78,8 @@
 			"size": 3,
 			"price": 15,
 			"description": "",
-			"queue": [],
-
-			"qualityRating": 5,
-			"styleRating": 5,
-			"valueRating": 5,
+			"queue": ["valencia01", "timmy02"],
+			"rating": [5, 5, 4],
 			"donor": "valencia01"
 		},
 		{
@@ -117,11 +97,8 @@
 			"size": 3,
 			"price": 70,
 			"description": "",
-			"queue": [],
-
-			"qualityRating": 5,
-			"styleRating": 5,
-			"valueRating": 5,
+			"queue": ["valencia01", "timmy02"],
+			"rating": [5, 5, 5],
 			"donor": "valencia01"
 		},
 		{
@@ -140,10 +117,7 @@
 			"price": 20,
 			"description": "",
 			"queue": [],
-
-			"qualityRating": 4,
-			"styleRating": 4,
-			"valueRating": 5,
+			"rating": [4, 4, 5],
 			"donor": "valencia01"
 		},
 		{
@@ -162,14 +136,31 @@
 			"price": 15,
 			"description": "",
 			"queue": [],
-
-			"qualityRating": 5,
-			"styleRating": 5,
-			"valueRating": 5,
+			"rating": [3, 3, 5],
 			"donor": "valencia01"
 		}
 	],
 	"shoes": [],
 	"bags": [],
-	"accessories": []
+	"accessories": [
+		{
+			"id": "001563",
+			"type": 1,
+			"subtype": 0,
+			"occasion": 4,
+			"season": 2,
+
+			"img": "https://i.pinimg.com/474x/be/ca/56/beca56fa38986d7c1f7eb1b26ff0e1aa.jpg",
+			"images": [],
+			"name": "BLACK GOLD BELT",
+			"brand": "Zara",
+			"colorName": 20,
+			"size": 3,
+			"price": 20.5,
+			"description": "",
+			"queue": [],
+			"rating": [4, 4, 5],
+			"donor": "valencia01"
+		}
+	]
 }

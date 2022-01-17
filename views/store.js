@@ -31,9 +31,9 @@ $(async () => {
 			//image currently not working!!
 			$('#item_descriptor #item_img').text("<img src='${item.img}' />");
 			//appends item ratings to column 1
-			$('#item_descriptor #item_qualityRating').text('Quality: ' + item.qualityRating + '/5');
-			$('#item_descriptor #item_styleRating').text('Style: ' + item.styleRating + '/5');
-			$('#item_descriptor #item_valueRating').text('Value: ' + item.valueRating + '/5');
+			$('#item_descriptor #item_qualityRating').text('Quality: ' + item.rating[0] + '/5');
+			$('#item_descriptor #item_styleRating').text('Style: ' + item.rating[1] + '/5');
+			$('#item_descriptor #item_valueRating').text('Value: ' + item.rating[2] + '/5');
 
 			//appends item information to column 2
 			$('#item_descriptor #item_name').text(item.name);
