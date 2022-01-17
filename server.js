@@ -5,6 +5,7 @@ global.log = (msg) => {
 };
 global.__root = __dirname;
 
+const delay = require('delay');
 const enableDestroy = require('server-destroy');
 const express = require('express');
 const http = require('http');
@@ -162,6 +163,22 @@ async function startServer() {
 		res.json(user);
 	});
 
+	app.post('/item', async (req, res) => {
+		let data = req.body; // request body is the json sent
+		let user = users[data.username];
+
+		if (data.action == 'add') {
+			if (!user[data.list].includes(data.item)) user[data.list].push(data.item);
+		} else {
+			user[data.list].splice(user[data.list].indexOf(data.item), 1);
+		}
+
+		// save updated user info to users file
+		await fs.outputFile('users.json', JSON.stringify(users));
+
+		res.json(user[data.list]);
+	});
+
 	app.post('/admin/inventory', async (req, res) => {
 		let data = req.body; // request body is the json sent
 		log(data);
@@ -173,6 +190,11 @@ async function startServer() {
 
 		res.json(data);
 	});
+
+	// (async function saveDataPeriodically() {
+	// 	await delay(10000);
+
+	// })();
 
 	let server = http.createServer(app);
 
