@@ -3,6 +3,8 @@
 $(async () => {
 	// jQuery wrapper
 
+	let clickedItem;
+
 	//fetch items in inventory.json
 	let items = (await (await fetch('items/1/0/0')).json()).items;
 	log(items);
@@ -26,9 +28,8 @@ $(async () => {
 		//appends item information in its respective descriptor modal (found in item_descriptor.pug) and should open on click
 		$('#' + item.id)[0].onclick = () => {
 			log(item.id);
+			clickedItem = item.id;
 			$('#item_descriptor').modal('show');
-
-			//image currently not working!!
 			$('#item_descriptor #item_img').text("<img src='${item.img}' />");
 			//appends item ratings to column 1
 			$('#item_descriptor #item_qualityRating').text('Quality: ' + item.rating[0] + '/5');
@@ -42,14 +43,38 @@ $(async () => {
 			$('#item_descriptor #item_size').text(' Size: ' + item.size);
 			$('#item_descriptor #item_price').text(' Price: ' + item.price + ' RMB');
 
-			$('#item_descriptor #item_queue').value(' Price: ' + item.price + ' RMB');
-			// //appends queue checkbox to column 3 and form
-			// $('#item_descriptor #item_Queue').text();
-			// input.form-check-input(type='checkbox' value='' name='flexCheckDefault')
-			// 			label.form-check-label(for='itemQueue')  Queue 🕓
-
 			//appends number of people queueing for item to column 3 by returning length of queue array storing users' names
 			$('#item_descriptor #numQueue').text(item.queue.length);
+
+			$('#item_queue')[0].checked = user.reserved.includes(item.id);
+			$('#item_favorite')[0].checked = user.favorites.includes(item.id);
 		};
 	}
+
+	async function itemInteraction(list, action) {
+		log(action);
+		let data = {
+			username: user.username,
+			item: clickedItem,
+			list: list,
+			action: action
+		};
+		user[list] = await (
+			await fetch('/item', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(data)
+			})
+		).json();
+	}
+
+	$('#item_queue')[0].onclick = () => {
+		itemInteraction('reserved', $('#item_queue')[0].checked ? 'add' : 'remove');
+	};
+
+	$('#item_favorite')[0].onclick = () => {
+		itemInteraction('favorites', $('#item_favorite')[0].checked ? 'add' : 'remove');
+	};
 });

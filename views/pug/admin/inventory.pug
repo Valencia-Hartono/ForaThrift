@@ -1,48 +1,19 @@
 include ../fora.pug
 //- script(src='../../../admin.js')
 script(src='../../inventory.js')
-h1.mt-4.text-center FORA MENU
-h3.text-center.text-secondary You can set ratings
-p.text-center.text-muted Current status of star values: 
-	br
-	span 1 star = ___ pts; 
-	br
-	span 2 star = ___ pts; 
-	br
-	span 3 star = ___ pts; 
-	br
-	span 4 star = ___ pts; 
-	br
-	span 5 star = ___ pts; 
 #adminInventoryPage.container-fluid
-	form#adminSetRatingForm
-		.row
-			//https://stackoverflow.com/questions/8808590/number-input-type-that-takes-only-integers
-			form#adminSetRatingForm
-			label.form-group.col-2.mb-4.form-label(for='starValue1') 1 Star Value
-				input.form-control(type='number' name='starValue1' placeholder="xxx pts")
-				button#submit.btn.btn-secondary.btn-sm.mt-3(type="button" onclick='submitAdminInventoryForm()') Set Rating Values
-			label.form-group.col-2.mb-4.form-label(for='starValue2') 2 Star Value
-				input.form-control(type='number' name='starValue2' placeholder="xxx pts")
-			label.form-group.col-2.mb-4.form-label(for='starValue3') 3 Star Value
-				input.form-control(type='number' name='starValue3' placeholder="xxx pts")
-			label.form-group.col-2.mb-4.form-label(for='starValue4') 4 Star Value
-				input.form-control(type='number' name='starValue4' placeholder="xxx pts")
-			label.form-group.col-2.mb-4.form-label(for='starValue5') 5 Star Value
-				input.form-control(type='number' name='starValue5' placeholder="xxx pts")
-
-h3.text-center.text-secondary You can add, edit, or delete
+h3.text-center.text-secondary Inventory Admin Form
 p.text-center.text-muted Total number of items in inventory: 
 	span#totalItems
 #adminInventoryPage.container-fluid
 	form#adminInventoryForm
 		.row
-			form#adminSearchItemForm
-			label.form-group.col-2.mb-4.form-label(for='ID') Search Item ID
-				input.form-control(type='text' name='ID' placeholder="User ID")
-				button#submit.btn.btn-secondary.btn-sm.mt-3(type="button" onclick='submitAdminInventoryForm()') Search Item
-			label.form-group.col-3.mb-4.form-label(for='ID') Users lining Up for this item
-				input.form-control(type='text' name='ID' placeholder="Item ID")
+			.col: form#adminSearchItemForm
+				label.form-group.col-2.mb-4.form-label(for='ID') Search Item ID
+					input.form-control(type='text' name='ID' placeholder="User ID")
+					button#submit.btn.btn-secondary.btn-sm.mt-3(type="button" onclick='submitAdminInventoryForm()') Search Item
+			//- label.form-group.col-3.mb-4.form-label(for='ID') Users lining Up for this item
+			//- 	input.form-control(type='text' name='ID' placeholder="Item ID")
 		.row
 			.col-9: .row
 				label ITEM INFO

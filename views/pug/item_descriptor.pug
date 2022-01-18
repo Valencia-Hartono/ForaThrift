@@ -1,4 +1,4 @@
-#item_descriptor.modal: .modal-dialog: .modal-content(tabindex='-1'): .modal-lg
+#item_descriptor.modal: .modal-dialog.modal-lg: .modal-content(tabindex='-1')
 	.modal-header.pt-2.pb-0
 		// sign in and I'm new here tabs
 		h4#item_name
@@ -25,11 +25,11 @@
 						row#item_size
 						br
 						row#item_price
-					td.col-4 # of people lining up for item: 
-						form#queueFavoriteForm
+					td.col-4
+						p People lining up for item: 
 							span#numQueue
+						form#queueFavoriteForm
 							//if checkbox is clicked, user reserved[] adds itemID; item's queue array adds userID
-							br
 							input#item_queue.form-check-input(type='checkbox' value='' name='flexCheckDefault')
 							label.form-check-label(for='item_queue')  Queue 🕓 
 							
@@ -37,8 +37,6 @@
 							br
 							input#item_favorite.form-check-input(type='checkbox' value='' name='flexCheckDefault')
 							label.form-check-label(for='item_favorite')  Favorite ♥️
-		row.d-grid.gap-2
-			button.btn.btn-dark(type="button" onclick='submitQueueFavoriteForm()') Confirm Changes
 							
 		//img currently not working!! (Optional though)
 		body#item_img
