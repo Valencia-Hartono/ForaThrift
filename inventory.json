@@ -1,5 +1,4 @@
 {
-	"rating": ["styleRating", "qualityRating", "valueRating"],
 	"categories": {
 		"names": ["clothing", "shoes", "bags", "accessories", "miscellaneous"],
 		"navNames": ["CLOTHES", "SHOES", "BAGS", "ACCESSORIES", "MISCELLANEOUS"],
