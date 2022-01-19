@@ -13,7 +13,6 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 
 function getFormData(formID) {
 	let fd = new FormData(document.getElementById(formID));
-	log(fd);
 	let data = {};
 	for (var entry of fd.entries()) {
 		data[entry[0]] = entry[1];

@@ -1,19 +1,16 @@
 include ../fora.pug
 //- script(src='../../../admin.js')
 script(src='../../inventory.js')
-#adminInventoryPage.container-fluid
+#adminInventoryPage.container-fluid.mt-3
 h3.text-center.text-secondary Inventory Admin Form
 p.text-center.text-muted Total number of items in inventory: 
 	span#totalItems
 #adminInventoryPage.container-fluid
+	form#adminSearchItemForm
+		.row: .col: label.form-group.col-2.mb-4.form-label(for='ID') Search Item ID
+			input.form-control(type='text' name='ID' placeholder="User ID")
+			button#submit.btn.btn-secondary.btn-sm.mt-3(type="button" onclick='submitAdminInventoryForm()') Search Item
 	form#adminInventoryForm
-		.row
-			.col: form#adminSearchItemForm
-				label.form-group.col-2.mb-4.form-label(for='ID') Search Item ID
-					input.form-control(type='text' name='ID' placeholder="User ID")
-					button#submit.btn.btn-secondary.btn-sm.mt-3(type="button" onclick='submitAdminInventoryForm()') Search Item
-			//- label.form-group.col-3.mb-4.form-label(for='ID') Users lining Up for this item
-			//- 	input.form-control(type='text' name='ID' placeholder="Item ID")
 		.row
 			.col-9: .row
 				label ITEM INFO
@@ -83,11 +80,10 @@ p.text-center.text-muted Total number of items in inventory:
 					label.form-label(for='description') Item Description
 					textarea.form-control(rows='3' name='description' placeholder="Item Description")
 			.col-3
-				form#adminChooseRatingForm
 				label RATING
 				.form-group.mb-2
 					label(for='styleRating') Item Style
-					select.form-select(name='styleRating')
+					select.ratingSel.form-select(name='styleRating')
 						option(value='0') NA
 						option(value='1') 1 ⭐️
 						option(value='2') 2 ⭐️⭐️
@@ -96,7 +92,7 @@ p.text-center.text-muted Total number of items in inventory:
 						option(value='5') 5 ⭐️⭐️⭐️⭐️⭐️
 				.form-group.mb-2
 					label(for='qualityRating') Item Quality
-					select.form-select(name='qualityRating')
+					select.ratingSel.form-select(name='qualityRating')
 						option(value='0') NA
 						option(value='1') 1 ⭐️
 						option(value='2') 2 ⭐️⭐️
@@ -105,7 +101,7 @@ p.text-center.text-muted Total number of items in inventory:
 						option(value='5') 5 ⭐️⭐️⭐️⭐️⭐️
 				.form-group.mb-2
 					label(for='valueRating') Item Value
-					select.form-select(name='valueRating')
+					select.ratingSel.form-select(name='valueRating')
 						option(value='0') NA
 						option(value='1') 1 ⭐️
 						option(value='2') 2 ⭐️⭐️
@@ -116,12 +112,10 @@ p.text-center.text-muted Total number of items in inventory:
 					label.form-label(for='donor') Donor Username
 					input.form-control(type='text' name='donor' placeholder="Donor Username")
 				.row
-					.col-6
+					.col
 						div Rewarded Points For Donor:
 							br
-							span#reward pts
-					.col-6
-						button#calculateRewardedPoints.btn.btn-primary.mt-3(type="button") CALCULATE REWARDED POINTS
+							span#reward
 		//- .row
 		//- 	.form-group.mb-4
 		//- 		label.form-label(for='description') Item Description

@@ -179,6 +179,12 @@ async function startServer() {
 		res.json(user[data.list]);
 	});
 
+	app.post('/admin/inventoryNumOfItems', async (req, res) => {
+		let { clothing, shoes, bags, accessories } = db;
+		let inventoryNumOfItems = clothing.length + shoes.length + bags.length + accessories.length;
+		res.json({ inventoryNumOfItems });
+	});
+
 	app.post('/admin/inventory', async (req, res) => {
 		let data = req.body; // request body is the json sent
 		log(data);
