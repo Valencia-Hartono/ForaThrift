@@ -12,9 +12,6 @@ head
 	script(src='/node_modules/jquery/dist/jquery.min.js')
 	script(src="/node_modules/mdb-ui-kit/js/mdb.min.js")
 	script(src='../index.js')
-	
-body
-	include navs.pug
-	include login_register.pug
 	script.
 		window.user = JSON.parse('#{JSON.stringify(user)}'.replaceAll('&quot;', '"'));
+body
