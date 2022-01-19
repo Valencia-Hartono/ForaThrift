@@ -16,10 +16,9 @@ p.text-center.text-muted Current status of star values:
 form#adminSetRatingForm
 	.row
 		//https://stackoverflow.com/questions/8808590/number-input-type-that-takes-only-integers
-		form#adminSetRatingForm
 		label.form-group.col-2.mb-4.form-label(for='starValue1') 1 Star Value
 			input.form-control(type='number' name='starValue1' placeholder="xxx pts")
-			button#submit.btn.btn-secondary.btn-sm.mt-3(type="button" onclick='submitAdminInventoryForm()') Set Rating Values
+			button#submit.btn.btn-secondary.btn-sm.mt-3(type="button" onclick='submitAdminSetRatingForm()') Set Rating Values
 		label.form-group.col-2.mb-4.form-label(for='starValue2') 2 Star Value
 			input.form-control(type='number' name='starValue2' placeholder="xxx pts")
 		label.form-group.col-2.mb-4.form-label(for='starValue3') 3 Star Value

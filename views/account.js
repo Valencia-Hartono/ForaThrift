@@ -76,12 +76,37 @@ $(async () => {
 	checkRank(user.totalPoints);
 	checkAvatar(user.totalPoints, user.gender);
 
-	//takes in deduction points and checks if user has enough points to exchange for coupon
+	// let discount = [10, 25, 40, 55, 70];
+	// let deductedPts = [240, 480, 720, 960, 1200];
+	// let numCoupons = [0, 0, 0, 0, 0]
+
+	// for (int i=0; i<discount.length; i++){
+	// 	$('#discountButtons').append(`
+	// 	<p class="mt-4">
+	// 		<button id="redeem${deductedPts[i]}" class=".btn.btn-green">
+	// 			Redeem ${discount[i]}% (-${deductedPts[i]}pts)
+	// 			|	Number of ${discount[i]}% coupons you have:
+	// 		</button>
+	// 		<span id="couponAmount${deductedPts[i]}">
+	// 			= ${user.numCoupons[i]} || '0'
+	// 		</span>
+	// 	</p>
+	// 	`)
+	// }
+
+	// p.mt-4
+	// button#redeem240.btn.btn-green Redeem 10% discount (-240pts)
+	// |	Number of 10% coupons you have:
+	// span#couponAmount240= user.coupons[0] || '0'
+
+	//Checks if user has enough points to redeem points for the coupon clicked
+	//The 1st input determines the number of points the coupon deducts
+	//The 2nd input determines which index of the discount[] the points is assigned to
 	let coupon = {};
 	function couponSetter(points, code) {
 		$('#redeem' + points)[0].onclick = () => {
 			coupon = { points, code };
-			//if fail, display alert
+			//if fail, display alert saying it is unsuccessful
 			if (user.pointsForExchange < coupon.points) {
 				$('#couponStatus').append(`
 <div class="alert alert-danger" role="alert">
@@ -89,22 +114,24 @@ $(async () => {
 </div>`);
 				return;
 			}
-			//if successful, display confirm modal found in coupons.pug
+			//if user has enough points to redeem points, confirm modal in coupons.pug will be displayed
 			$('#confirmRedeemModal').modal('show');
 		};
 	}
-	//set how much points each coupon deducts, marked by the index of the corresponding discount %. (0 is 10%, 1 is 25%, 2 is 40%, 3 is 55%, 4 is 70%)
+	//set how much points each coupon deducts, marked by the index of the corresponding discount %. (ex. 0 is 10%, 1 is 25%, 2 is 40%, 3 is 55%, 4 is 70%)
+
 	couponSetter(240, 0);
 	couponSetter(480, 1);
 	couponSetter(720, 2);
 	couponSetter(960, 3);
 	couponSetter(1200, 4);
 
-	//once confirm button is clicked, corresponding points should be deducted from user's points for exchange
+	//once confirm button is clicked, corresponding points are deducted from user's "points for exchange"
 	//the element in the discount index will add one
-	//for example, alexa [0, 0, 0, 0, 0], after clicking on the [1], it will become [0, 1, 0, 0, 0] (you have a 25% discount coupon)
-	//after clicking on the [1] again, it will become [0, 2, 0, 0, 0] (you have two 25% discount coupons)
-	//after clicking on the [4], it will become [0, 2, 0, 0, 1] (you have two 25% and one 70% discount coupons)
+	//for example, alexa [0, 0, 0, 0, 0]
+	//after clicking on the [1], it becomes [0, 1, 0, 0, 0] (one 25% discount coupon is gained, 480pts are deducted)
+	//after clicking on the [3], it becomes [0, 1, 0, 1, 0] (one 55% discount coupon is gained, additional 960pts are deducted)
+	//after clicking on the [4], it becomes [0, 1, 0, 1, 1] (one 70% discount coupon is gained. additional 1200pts are deducted)
 
 	$('#confirmRedeem')[0].onclick = async () => {
 		if (user.pointsForExchange >= coupon.points) {
@@ -118,7 +145,7 @@ $(async () => {
 			$('#couponAmount' + coupon.points).text(user.coupons[coupon.code]);
 			//newly updated # of coupons in coupons.pug should be displayed in green color (CSS)
 			$('#couponAmount' + coupon.points).addClass('green');
-
+			//if successful, display alert saying it is successful
 			$('#couponStatus').append(`
 	<div class="alert alert-success" role="alert">
 		Coupon for ${coupon.points} points successfully redeemed!
