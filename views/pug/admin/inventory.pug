@@ -28,86 +28,32 @@ p.text-center.text-muted Total number of items in inventory:
 					.input-group
 						span.input-group-text RMB
 						input.form-control(type='number' name='price' placeholder='RMB')
-				label.form-group.col-3.mb-2.form-label(for='size') Category
-					select.form-select.form-select-md.mb-3(name='category')
+				label.form-group.col-3.mb-2.form-label(for='category') Category
+					select#category.form-select.form-select-md.mb-3(name='category')
 						//might want to automate this so it creates an option for all categoriesin inventory.json
-						option(value='0') NA
-						option(value='1') 👚 Clothing
-						option(value='2') 👟 Shoes
-						option(value='3') 👜 Bags
-						option(value='4') 💍 Accessories
-						option(value='4') 🧢 Miscellaneous
 				label.form-group.col-2.form-label(for='occasion') Occasion
-					select.form-select.form-select-md.mb-3(name='occasion')
-						option(value='0') NA
-						option(value='1') ⚽️ Sports
-						option(value='2') 🥂 Formal
-						option(value='3') 🚶 Casual
+					select#occasion.form-select.form-select-md.mb-3(name='occasion')
 				label.form-group.col-2.form-label(for='season') Season
-					select.form-select.form-select-md.mb-3(name='season')
-						option(value='0') NA
-						option(value='1') ☘️ Spring
-						option(value='2') ☀️ Summer
-						option(value='3') 🍂 Fall
-						option(value='4') ❄️ Winter
+					select#season.form-select.form-select-md.mb-3(name='season')
 				label.form-group.col-3.form-label(for='colorName') Color Name
-					select.form-select.form-select-md.mb-3(name='colorName')
-						option(value='0') NA
-						option(value='1') Black
-						option(value='2') White
-						option(value='3') Gold
-						option(value='4') Silver
-						option(value='5') Brown
-						option(value='6') Red
-						option(value='7') Orange
-						option(value='8') Yellow
-						option(value='9') Green
-						option(value='10') Turquoise
-						option(value='11') Blue
-						option(value='12') Purple
-						option(value='13') Pink
-						option(value='14') Nude
-						option(value='15') Taupe
+					select#colorName.form-select.form-select-md.mb-3(name='colorName')
 				label.form-group.col-2.form-label(for='size') Size
-					select.form-select.form-select-md.mb-3(name='size')
-						option(value='0') NA
-						option(value='1') XS
-						option(value='2') S
-						option(value='3') M
-						option(value='4') L
-						option(value='5') XL
+					select#size.form-select.form-select-md.mb-3(name='size')
 				.form-group.col-12.mb-2
 					label.form-label(for='description') Item Description
 					textarea.form-control(rows='3' name='description' placeholder="Item Description")
 			.col-3
 				label RATING
 				.form-group.mb-2
-					label(for='styleRating') Item Style
-					select.ratingSel.form-select(name='styleRating')
-						option(value='0') NA
-						option(value='1') 1 ⭐️
-						option(value='2') 2 ⭐️⭐️
-						option(value='3') 3 ⭐️⭐️⭐️
-						option(value='4') 4 ⭐️⭐️⭐️⭐️
-						option(value='5') 5 ⭐️⭐️⭐️⭐️⭐️
-				.form-group.mb-2
-					label(for='qualityRating') Item Quality
-					select.ratingSel.form-select(name='qualityRating')
-						option(value='0') NA
-						option(value='1') 1 ⭐️
-						option(value='2') 2 ⭐️⭐️
-						option(value='3') 3 ⭐️⭐️⭐️
-						option(value='4') 4 ⭐️⭐️⭐️⭐️
-						option(value='5') 5 ⭐️⭐️⭐️⭐️⭐️
-				.form-group.mb-2
-					label(for='valueRating') Item Value
-					select.ratingSel.form-select(name='valueRating')
-						option(value='0') NA
-						option(value='1') 1 ⭐️
-						option(value='2') 2 ⭐️⭐️
-						option(value='3') 3 ⭐️⭐️⭐️
-						option(value='4') 4 ⭐️⭐️⭐️⭐️
-						option(value='5') 5 ⭐️⭐️⭐️⭐️⭐️
+					each rating in [['styleRating', 'Item Style'], ['qualityRating', 'Item Quality'], ['valueRating', 'Item Rating']]
+						label(for=rating[0])= rating[1]
+						select.ratingSel.form-select(name=rating[0])
+							option(value='0') NA
+							option(value='1') 1 ⭐️
+							option(value='2') 2 ⭐️⭐️
+							option(value='3') 3 ⭐️⭐️⭐️
+							option(value='4') 4 ⭐️⭐️⭐️⭐️
+							option(value='5') 5 ⭐️⭐️⭐️⭐️⭐️
 				.form-group.mb-2
 					label.form-label(for='donor') Donor Username
 					input.form-control(type='text' name='donor' placeholder="Donor Username")

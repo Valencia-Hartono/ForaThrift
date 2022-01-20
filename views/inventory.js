@@ -48,4 +48,42 @@ $(async () => {
 			checkRewardedPoints(ratings);
 		};
 	}
+
+	function addOptions() {
+		//add ID
+		let selectors = {
+			category: ['NA', '👚 Clothing', '👟 Shoes', '👜 Bags', '💍 Accessories', '🧢 Miscellaneous'],
+			occasion: ['NA', '⚽️ Sports', '🥂 Formal', '🚶 Casual'],
+			season: ['NA', '☘️ Spring', '☀️ Summer', '🍂 Fall', '❄️ Winter'],
+			colorName: [
+				'NA',
+				'Black',
+				'White',
+				'Gold',
+				'Silver',
+				'Brown',
+				'Red',
+				'Orange',
+				'Yellow',
+				'Green',
+				'Turquoise',
+				'Blue',
+				'Purple',
+				'Pink',
+				'Nude',
+				'Taupe'
+			],
+			size: ['NA', 'XS', 'S', 'M', 'L', 'XL']
+		};
+		//"in" loops through keys; "of" loops through key's values (in this case the arrays)
+		for (let selName in selectors) {
+			let options = selectors[selName];
+			for (let j = 0; j < options.length; j++) {
+				log(selName);
+				$(`#${selName}`).append(`<option value="${j}"> ${options[j]} </option>`);
+			}
+		}
+	}
+
+	addOptions();
 });
