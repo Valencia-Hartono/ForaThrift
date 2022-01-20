@@ -28,8 +28,10 @@ p.text-center.text-muted Total number of items in inventory:
 					.input-group
 						span.input-group-text RMB
 						input.form-control(type='number' name='price' placeholder='RMB')
+
 				label.form-group.col-3.mb-2.form-label(for='category') Category
 					select#category.form-select.form-select-md.mb-3(name='category')
+						//https://getbootstrap.com/2.3.2/components.html for categories tab
 						//might want to automate this so it creates an option for all categoriesin inventory.json
 				label.form-group.col-2.form-label(for='occasion') Occasion
 					select#occasion.form-select.form-select-md.mb-3(name='occasion')
@@ -39,6 +41,7 @@ p.text-center.text-muted Total number of items in inventory:
 					select#colorName.form-select.form-select-md.mb-3(name='colorName')
 				label.form-group.col-2.form-label(for='size') Size
 					select#size.form-select.form-select-md.mb-3(name='size')
+					
 				.form-group.col-12.mb-2
 					label.form-label(for='description') Item Description
 					textarea.form-control(rows='3' name='description' placeholder="Item Description")
@@ -62,30 +65,6 @@ p.text-center.text-muted Total number of items in inventory:
 						div Rewarded Points For Donor:
 							br
 							span#reward
-		//- .row
-		//- 	.form-group.mb-4
-		//- 		label.form-label(for='description') Item Description
-		//- 		textarea.form-control(rows='3' name='description')
-		//- .row
-		//- 	label CATEGORIES
-		//- 	.col 
-		//- 		label(for='occasion') Occasion
-		//- 		each occasion, index in ['⚽️ Sports', '🥂 Formal','🚶 Casual']
-		//- 			.form-check
-		//- 				input.form-check-input(id='occasion' + index type='checkbox' value='occasion' + index)
-		//- 				label.form-check-label(for='occasion' + index)= occasion
-		//- 	.col 
-		//- 		label(for='season') Season
-		//- 		each season, index in ['☘️ Spring', '☀️ Summer','🍂 Fall', '❄️ Winter']
-		//- 			.form-check
-		//- 				input.form-check-input(id='season' + index type='checkbox' value='season' + index)
-		//- 				label.form-check-label(for='season' + index)= season
-			//- .col 
-			//- 	label(for='') COLOR
-			//- 	each color, index in ['Black', 'Brown','Gold', 'Gray','White','Red','Orange','Yellow', 'Green','Turquoise', 'Blue', 'Purple', 'Pink']
-			//- 		.form-check
-			//- 			input.form-check-input(id='color' + index type='checkbox' value='color' + index)
-			//- 			label.form-check-label(for='color' + index)= color
 	.row
 		.col-4.mb-4.d-grid.gap-2: button#submit.btn.btn-success.btn-sm.mt-3(type="button" onclick='submitAdminInventoryForm()') Add Item
 		.col-4.mb-4.d-grid.gap-2: button#submit.btn.btn-warning.btn-sm.mt-3(type="button" onclick='submitAdminInventoryForm()') Save Edit

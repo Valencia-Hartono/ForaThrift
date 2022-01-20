@@ -39,8 +39,29 @@ $(async () => {
 			//appends item information to column 2
 			$('#item_descriptor #item_name').text(item.name);
 			$('#item_descriptor #item_brand').text(' Brand: ' + item.brand);
-			$('#item_descriptor #item_colorName').text(' Color: ' + item.colorName);
-			$('#item_descriptor #item_size').text(' Size: ' + item.size);
+
+			let colorName = [
+				'NA',
+				'Black',
+				'White',
+				'Gold',
+				'Silver',
+				'Brown',
+				'Red',
+				'Orange',
+				'Yellow',
+				'Green',
+				'Turquoise',
+				'Blue',
+				'Purple',
+				'Pink',
+				'Nude',
+				'Taupe'
+			];
+			$('#item_descriptor #item_colorName').text(' Color: ' + colorName[item.colorName]);
+
+			let size = ['NA', 'XS', 'S', 'M', 'L', 'XL'];
+			$('#item_descriptor #item_size').text(' Size: ' + size[item.size]);
 			$('#item_descriptor #item_price').text(' Price: ' + item.price + ' RMB');
 
 			//appends number of people queueing for item to column 3 by returning length of queue array storing users' names

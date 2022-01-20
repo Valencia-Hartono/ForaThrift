@@ -76,6 +76,7 @@ $(async () => {
 			size: ['NA', 'XS', 'S', 'M', 'L', 'XL']
 		};
 		//"in" loops through keys; "of" loops through key's values (in this case the arrays)
+
 		for (let selName in selectors) {
 			let options = selectors[selName];
 			for (let j = 0; j < options.length; j++) {
