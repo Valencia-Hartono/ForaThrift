@@ -19,12 +19,40 @@ function getFormData(formID) {
 	}
 	return data;
 }
+window.fora = {};
+
+fora.selectors = {
+	category: ['NA', '👚 Clothing', '👟 Shoes', '👜 Bags', '💍 Accessories', '🧢 Miscellaneous'],
+	occasion: ['NA', '⚽️ Sports', '🥂 Formal', '🚶 Casual'],
+	season: ['NA', '☘️ Spring', '☀️ Summer', '🍂 Fall', '❄️ Winter'],
+	colorName: [
+		'NA',
+		'Black',
+		'White',
+		'Gold',
+		'Silver',
+		'Brown',
+		'Red',
+		'Orange',
+		'Yellow',
+		'Green',
+		'Turquoise',
+		'Blue',
+		'Purple',
+		'Pink',
+		'Nude',
+		'Taupe',
+		'Champagne'
+	],
+	size: ['NA', 'XS', 'S', 'M', 'L', 'XL']
+};
 
 $(async () => {
 	// categories(clothing, accessories, shoes, bags), types (ex.bottoms, tops, overalls), subTypes (ex.jeans, shorts...)
-	let categories = await (await fetch('/categories.json')).json();
+	fora.categories = await (await fetch('/categories.json')).json();
+
 	//instead of inputing types manually, use a function
-	for (let category of categories.names) {
+	for (let category of fora.categories.names) {
 		addColumns(category);
 	}
 
@@ -40,7 +68,7 @@ $(async () => {
 		$categories.append('<div id="' + category + 'Sidebar" class="row"></div>'); //ex. id=clothingSidebar
 		let $category = $('#' + category + 'Sidebar'); // retrieves the element
 		$category.hide();
-		let types = categories[category].typeNames; // get the array of type names ex. tops, bottoms
+		let types = fora.categories[category].typeNames; // get the array of type names ex. tops, bottoms
 
 		//evenly distribute category types within the three columns
 		let cols = [0, 0, 0];
@@ -60,7 +88,7 @@ $(async () => {
 			$cols.eq(colNumMin).append('<div class="row"><a href="#" class="col">' + type + '</a></div>');
 			$category.append('<a href="#" class="col-12">' + type + '</a>');
 
-			let subtypes = categories[category][type]; // retrieves the array of the type names
+			let subtypes = fora.categories[category][type]; // retrieves the array of the type names
 			for (let j = 0; j < subtypes.length; j++) {
 				let subtype = subtypes[j];
 				$cols.eq(colNumMin).append('<div class="row"><a href="#" class="col"> ➤ ' + subtype + '</a></div>');

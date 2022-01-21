@@ -57,7 +57,7 @@
 			"colorName": 1,
 			"size": 4,
 			"price": 20.5,
-			"description": "",
+			"description": "This is new",
 			"queue": ["valencia01", "timmy02"],
 			"rating": [4, 4, 4],
 			"donor": "valencia01"
@@ -76,9 +76,28 @@
 			"colorName": 2,
 			"size": 3,
 			"price": 15,
-			"description": "",
+			"description": "this is old",
 			"queue": ["valencia01", "timmy02"],
 			"rating": [5, 5, 4],
+			"donor": "valencia01"
+		},
+		{
+			"id": "035789",
+			"type": 1,
+			"subtype": 8,
+			"occasion": 2,
+			"season": 1,
+
+			"img": "https://i.pinimg.com/736x/bf/23/5d/bf235dad62a8b476e89dab021e68b01d.jpg",
+			"images": [],
+			"name": "WHITE BRIDAL DRESS",
+			"brand": "CHANEL",
+			"colorName": 2,
+			"size": 3,
+			"price": 1000,
+			"description": "this has feathers",
+			"queue": ["valencia01", "timmy02"],
+			"rating": [5, 5, 5],
 			"donor": "valencia01"
 		},
 		{
@@ -95,7 +114,7 @@
 			"colorName": 3,
 			"size": 3,
 			"price": 70,
-			"description": "",
+			"description": "this is crazy good quality",
 			"queue": ["valencia01", "timmy02"],
 			"rating": [5, 5, 5],
 			"donor": "valencia01"

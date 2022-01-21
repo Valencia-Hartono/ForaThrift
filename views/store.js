@@ -40,6 +40,9 @@ $(async () => {
 			$('#item_descriptor #item_name').text(item.name);
 			$('#item_descriptor #item_brand').text(' Brand: ' + item.brand);
 
+			//appends item information to second row
+			$('#item_descriptor #item_description').text(' Item Description: ' + item.description);
+
 			let colorName = [
 				'NA',
 				'Black',
@@ -60,8 +63,7 @@ $(async () => {
 			];
 			$('#item_descriptor #item_colorName').text(' Color: ' + colorName[item.colorName]);
 
-			let size = ['NA', 'XS', 'S', 'M', 'L', 'XL'];
-			$('#item_descriptor #item_size').text(' Size: ' + size[item.size]);
+			$('#item_descriptor #item_size').text(' Size: ' + fora.selectors.size[item.size]);
 			$('#item_descriptor #item_price').text(' Price: ' + item.price + ' RMB');
 
 			//appends number of people queueing for item to column 3 by returning length of queue array storing users' names
