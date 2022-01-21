@@ -71,7 +71,8 @@ $(async () => {
 				'Purple',
 				'Pink',
 				'Nude',
-				'Taupe'
+				'Taupe',
+				'Champagne'
 			],
 			size: ['NA', 'XS', 'S', 'M', 'L', 'XL']
 		};
