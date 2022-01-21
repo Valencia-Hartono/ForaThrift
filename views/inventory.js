@@ -54,7 +54,7 @@ $(async () => {
 		//"in" loops through keys; "of" loops through key's values (in this case the arrays)
 
 		for (let selName in fora.selectors) {
-			let options = selectors[selName];
+			let options = fora.selectors[selName];
 			for (let j = 0; j < options.length; j++) {
 				log(selName);
 				$(`#${selName}`).append(`<option value="${j}"> ${options[j]} </option>`);
@@ -63,4 +63,26 @@ $(async () => {
 	}
 
 	addOptions();
+
+	$('#search')[0].onclick = async () => {
+		let url = '/item/' + $('#searchItemID').val();
+		log(url);
+		let res = await (
+			await fetch(url, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
+		).json();
+		if (!res.item) console.warn('Item not found!');
+		let item = res.item;
+		for (let prop in item) {
+			if (prop == 'img') continue;
+			$('#' + prop).val(item[prop]);
+		}
+		$('#styleRating').val(item.rating[0]);
+		$('#qualityRating').val(item.rating[1]);
+		$('#valueRating').val(item.rating[2]);
+	};
 });

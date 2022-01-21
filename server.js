@@ -123,32 +123,49 @@ async function startServer() {
 	// category is a number (0 is not valid)
 	// type is a number (0 for all)
 	// subtype is a number (0 for all)
-	app.all('/items/:category/:type/:subtype', (req, res) => {
+	function searchForItems(req, res) {
 		try {
-			let p = req.params;
 			let inventory = [];
-			if (p.category == 0) {
+			if (req.category == 0) {
 				for (let category of db.categories.names) {
 					inventory = inventory.concat(db[category]);
 				}
 			} else {
-				inventory = db[db.categories.names[p.category - 1]];
+				inventory = db[db.categories.names[req.category - 1]];
 			}
 			let items = [];
 			let count = 0;
 			for (let item of inventory) {
-				if (p.type == 0 || item.type == p.type) {
-					if (p.subtype == 0 || item.subtype == p.subtype) {
-						items.push(item);
+				if (req.type == 0 || item.type == req.type - 1) {
+					if (req.subtype == 0 || item.subtype == req.subtype - 1) {
+						if (!req.id || item.id == req.id) {
+							items.push(item);
+						}
 						count++;
 						if (count > 30) break;
 					}
 				}
 			}
-			res.json({ items });
+			if (!req.id) {
+				res.json({ items });
+			} else {
+				res.json({ item: items[0] });
+			}
 		} catch (e) {
 			res.send('404 Not found or invalid format ' + e.message);
 		}
+	}
+
+	app.all('/items/:category/:type/:subtype', (req, res) => {
+		searchForItems(req.params, res);
+	});
+
+	app.all('/item/:id', (req, res) => {
+		req = req.params;
+		req.category = Number(req.id[0]) + 1;
+		req.type = Number(req.id[1]) + 1;
+		req.subtype = Number(req.id[2]) + 1;
+		searchForItems(req, res);
 	});
 
 	app.post('/user', async (req, res) => {
