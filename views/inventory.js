@@ -66,7 +66,6 @@ $(async () => {
 
 	$('#search')[0].onclick = async () => {
 		let url = '/item/' + $('#searchItemID').val();
-		log(url);
 		let res = await (
 			await fetch(url, {
 				method: 'POST',

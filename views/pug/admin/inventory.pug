@@ -12,7 +12,7 @@ p.text-center.text-muted Total number of items in inventory:
 			button#search.btn.btn-secondary.btn-sm.mt-3(type="button" onclick='submitAdminInventoryForm()') Search Item
 	form#adminInventoryForm
 		.row
-			.col-9: .row
+			.col-10: .row
 				label ITEM INFO
 				label.form-label.col-3.mb-2(for='ID') Item ID
 					input#id.form-control(type='text' name='ID' placeholder="Item ID")
@@ -35,17 +35,17 @@ p.text-center.text-muted Total number of items in inventory:
 						//might want to automate this so it creates an option for all categoriesin inventory.json
 				label.form-group.col-2.form-label(for='occasion') Occasion
 					select#occasion.form-select.form-select-md.mb-3(name='occasion')
-				label.form-group.col-2.form-label(for='season') Season
+				label.form-group.col-3.form-label(for='season') Season
 					select#season.form-select.form-select-md.mb-3(name='season')
-				label.form-group.col-3.form-label(for='colorName') Color Name
+				label.form-group.col-2.form-label(for='colorName') Color Name
 					select#colorName.form-select.form-select-md.mb-3(name='colorName')
 				label.form-group.col-2.form-label(for='size') Size
 					select#size.form-select.form-select-md.mb-3(name='size')
 					
 				.form-group.col-12.mb-2
 					label.form-label(for='description') Item Description
-					textarea.form-control(rows='3' name='description' placeholder="Item Description")
-			.col-3
+					textarea#description.form-control(rows='3' name='description' placeholder="Item Description")
+			.col-2
 				label RATING
 				.form-group.mb-2
 					each rating in [['styleRating', 'Item Style'], ['qualityRating', 'Item Quality'], ['valueRating', 'Item Rating']]
@@ -59,7 +59,7 @@ p.text-center.text-muted Total number of items in inventory:
 							option(value='5') 5 ⭐️⭐️⭐️⭐️⭐️
 				.form-group.mb-2
 					label.form-label(for='donor') Donor Username
-					input.form-control(type='text' name='donor' placeholder="Donor Username")
+					input#donor.form-control(type='text' name='donor' placeholder="Donor Username")
 				.row
 					.col
 						div Rewarded Points For Donor:
