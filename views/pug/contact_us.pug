@@ -3,59 +3,32 @@ include navs.pug
 h1.display-3.mt-4.text-center HELLO
 p.text-center.text-muted What can we help you with?
 figure
-	blockquote.blockquote.text-center
-		p MEET OUR TEAM
 	figcaption.blockquote-footer.text-center
-		cite(title='') Our team is happy to answer your questions. 
-
-.container
-	.row.mb-10
-		.col-4
-			.card(style='width: 18rem; height:38rem')
-				img.card-img-top(src='https://i.pinimg.com/564x/b0/11/d5/b011d5f8ddb03b8dd59873cdef8fb4db.jpg' alt='...')
-				.card-body
-					p.card-text
-						| Founder
-						<br> James Wang
-						<br> Wechat ID: wr1sts
-		.col-4
-			.card(style='width: 18rem; height:38rem')
-				img.card-img-top(src='https://i.pinimg.com/564x/91/4d/a9/914da9136705e4ba3785b6a73fe0c11e.jpg' alt='...')
-				.card-body
-					p.card-text
-						| Head of Management
-						<br> Mandy Tsai
-						<br> Wechat ID: mandytsai031122
-		.col-4
-			.card(style='width: 18rem; height:38rem')
-				img.card-img-top(src='https://i.pinimg.com/564x/b1/f8/72/b1f8725e42414e93f0fba6bd9ce351b5.jpg' alt='...')
-				.card-body
-					p.card-text
-						|	Technical Support
-						<br> Valencia Hartono
-						<br> Wechat ID: Val227
-	.row.mb-10
-		.col-4
-			.card(style='width: 18rem; height:5Orem')
-				img.card-img-top(src='https://i.pinimg.com/564x/77/44/8c/77448c60eb27fe319250d34764d8fac8.jpg' alt='...')
-				.card-body
-					p.card-text
-						| Head of Public Relation
-						<br> Gelina Liu
-						<br> Wechat ID: ge7ina
-		.col-4
-			.card(style='width: 18rem; height:30rem')
-				img.card-img-top(src='https://i.pinimg.com/564x/b5/c6/00/b5c600f70a01461411e6ff2c97f08bb2.jpg' alt='...')
-				.card-body
-					p.card-text
-						| Head of Operations
-						<br> Jasmine Picard
-						<br> Wechat ID: jj_picard
-		.col-4
-			.card(style='width: 18rem; height:30rem')
-				img.card-img-top(src='https://i.pinimg.com/564x/b5/c6/00/b5c600f70a01461411e6ff2c97f08bb2.jpg' alt='...')
-				.card-body
-					p.card-text
-						| Head of Finance
-						<br> Daisy Dai
-						<br> Wechat ID: daizeddxx
+		cite(title='') Add us on wechat or send us an email if you have any questions. We are more than willing to help address any problems.
+.container-sm
+	// name form
+	.mb-3
+		label.form-label(for='email') Name
+		input.form-control(type='email' name='email' placeholder='optional')
+	// email form
+	.mb-3
+		label.form-label(for='email') *Email
+		input.form-control(type='email' name='email' required placeholder='required')
+	// subject form
+	.mb-3
+		label.form-label(for='subject') Subject
+		input.form-control(type='password' name='subject')
+	// img form
+	.mb-3.form-group
+		label.form-label(for='img') Image
+		p.text-muted (Upload pictures if necessary for us to better address issues, such as product dissatisfaction or technical issues)
+			.form-group: .input-group
+				input#img.form-control(type='file' name='img')
+				label.input-group-text(for='imgFile') Upload
+	// message form
+	.mb-3.form-group
+		label.form-label(for='message') Message
+		textarea#description.form-control(rows='4' name='message' placeholder="Input Message")
+	//submission button
+	.text-center.mt-3.mb-3
+		button.btn.btn-dark(type="button" onclick='') Send Message

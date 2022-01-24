@@ -9,43 +9,56 @@ p.text-center.text-muted Total number of items in inventory:
 	form#adminSearchItemForm
 		.row: .col: label.form-group.col-2.mb-4.form-label(for='ID') Search Item ID
 			input#searchItemID.form-control(type='text' name='ID' placeholder="User ID")
+			//links to inventory.js
 			button#search.btn.btn-secondary.btn-sm.mt-3(type="button" onclick='submitAdminInventoryForm()') Search Item
 	form#adminInventoryForm
 		.row
 			.col-10: .row
 				label ITEM INFO
+				// id form
 				label.form-label.col-3.mb-2(for='ID') Item ID
 					input#id.form-control(type='text' name='ID' placeholder="Item ID")
+				// img form
 				label.form-label.col-9.mb-2(for='img') Item Image
 					.form-group: .input-group
 						input#img.form-control(type='file' name='img')
 						label.input-group-text(for='imgFile') Upload
+				// name form
 				label.form-group.col-4.mb-2.form-label(for='name') Item Name
 					input#name.form-control(type='text' name='name' placeholder="Item Name")
+				// brand form
 				label.form-group.col-4.mb-2.form-label(for='brand') Brand Name
 					input#brand.form-control(type='text' name='brand' placeholder="Brand Name")
+				// price form
 				label.form-group.col-4.mb-2.form-label(for='price') Price
 					.input-group
 						span.input-group-text RMB
 						input#price.form-control(type='number' name='price' placeholder='RMB')
 
+				//dropdown form options automated from addOptions() functions from inventor.js
+				// category form
 				label.form-group.col-3.mb-2.form-label(for='category') Category
 					select#category.form-select.form-select-md.mb-3(name='category')
 						//https://getbootstrap.com/2.3.2/components.html for categories tab
-						//might want to automate this so it creates an option for all categoriesin inventory.json
+				// occasion form
 				label.form-group.col-2.form-label(for='occasion') Occasion
 					select#occasion.form-select.form-select-md.mb-3(name='occasion')
+				// season form
 				label.form-group.col-3.form-label(for='season') Season
 					select#season.form-select.form-select-md.mb-3(name='season')
+				// color form
 				label.form-group.col-2.form-label(for='colorName') Color Name
 					select#colorName.form-select.form-select-md.mb-3(name='colorName')
+				// size form
 				label.form-group.col-2.form-label(for='size') Size
 					select#size.form-select.form-select-md.mb-3(name='size')
-					
+				
+				// item description form
 				.form-group.col-12.mb-2
 					label.form-label(for='description') Item Description
 					textarea#description.form-control(rows='3' name='description' placeholder="Item Description")
 			.col-2
+				// rating form
 				label RATING
 				.form-group.mb-2
 					each rating in [['styleRating', 'Item Style'], ['qualityRating', 'Item Quality'], ['valueRating', 'Item Rating']]
@@ -57,6 +70,7 @@ p.text-center.text-muted Total number of items in inventory:
 							option(value='3') 3 ⭐️⭐️⭐️
 							option(value='4') 4 ⭐️⭐️⭐️⭐️
 							option(value='5') 5 ⭐️⭐️⭐️⭐️⭐️
+				// donor form
 				.form-group.mb-2
 					label.form-label(for='donor') Donor Username
 					input#donor.form-control(type='text' name='donor' placeholder="Donor Username")

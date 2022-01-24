@@ -49,6 +49,7 @@ $(async () => {
 		};
 	}
 
+	//links to index.js as it takes in fora.selectors global variables
 	function addOptions() {
 		//add ID
 		//"in" loops through keys; "of" loops through key's values (in this case the arrays)
