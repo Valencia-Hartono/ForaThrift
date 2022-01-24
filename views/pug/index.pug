@@ -3,20 +3,4 @@ include navs.pug
 // categories
 .container-fluid
 	.row: .col
-		.btn-group.dropend
-			button.btn.dropdown-toggle(type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false")
-				| Dropright
-			ul.dropdown-menu
-				li: a.dropdown-item(href="#") Action
-				li.btn-group.dropend
-					button.btn.dropdown-toggle(type="button" data-bs-toggle="dropdown" aria-expanded="false")
-						| Dropright
-					ul.dropdown-menu
-						li: a.dropdown-item(href="#") Action
-						li: a.dropdown-item(href="#") Another action
-						li: a.dropdown-item(href="#") Something else here
-						li: hr.dropdown-divider
-						li: a.dropdown-item(href="#") Separated link
-				li: a.dropdown-item(href="#") Something else here
-				li: hr.dropdown-divider
-				li: a.dropdown-item(href="#") Separated link
+		include categorySelector
