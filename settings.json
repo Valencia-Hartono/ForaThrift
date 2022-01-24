@@ -1,0 +1,28 @@
+{
+	"selectors": {
+		"category": ["NA", "👚 Clothing", "👟 Shoes", "👜 Bags", "💍 Accessories", "🧢 Miscellaneous"],
+		"occasion": ["NA", "⚽️ Sports", "🥂 Formal", "🚶 Casual"],
+		"season": ["NA", "☘️ Spring", "☀️ Summer", "🍂 Fall", "❄️ Winter"],
+		"colorName": [
+			"NA",
+			"Black",
+			"White",
+			"Gold",
+			"Silver",
+			"Brown",
+			"Red",
+			"Orange",
+			"Yellow",
+			"Green",
+			"Turquoise",
+			"Blue",
+			"Purple",
+			"Pink",
+			"Nude",
+			"Taupe",
+			"Champagne"
+		],
+		"size": ["NA", "XS", "S", "M", "L", "XL"]
+	},
+	"starValues": [0, 10, 40, 90, 160, 250]
+}

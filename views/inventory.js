@@ -1,5 +1,8 @@
 // /* INVENTORY */
 $(async () => {
+	await fora.load();
+
+	// get total number of items in the inventory
 	let inventoryNumOfItems = (
 		await (
 			await fetch('/admin/inventoryNumOfItems', {
@@ -13,10 +16,12 @@ $(async () => {
 	$('#totalItems').text(inventoryNumOfItems);
 
 	window.submitAdminInventoryForm = async () => {
-		let data = getFormData('adminInventoryForm');
+		let item = getFormData('adminInventoryForm');
 
-		if (!data.img.size) data.img = null;
-		log(data);
+		if (!item.img.size) item.img = null;
+		log(item);
+
+		item.rating = [item.qualityRating, item.styleRating, item.valueRating];
 
 		window.user = await (
 			await fetch('/admin/inventory', {
@@ -24,18 +29,17 @@ $(async () => {
 				headers: {
 					'Content-Type': 'application/json'
 				},
-				body: JSON.stringify(data)
+				body: JSON.stringify(item)
 			})
 		).json();
 	};
 
-	function checkRewardedPoints(ratings) {
-		//admin can customize if they change their mind about how the value works; 1 star can be 10pts or 20pts or 25pts etc.
-		//starValues=[0, 10, 40, 90, 160, 250] (index 0 is always 0) constant for all items
-		let starValues = [0, 10, 40, 90, 160, 250];
+	function showRewardPoints(ratings) {
+		// admin can customize if they change their mind about how the value works
+		// by editing the settings.json file. 1 star can be 10pts or 20pts or 25pts etc.
 		let points = 0;
 		for (let i = 0; i < ratings.length; i++) {
-			points += starValues[ratings[i]];
+			points += fora.starValues[ratings[i]];
 		}
 		//ratings=[2, 5, 4] unique to each item; corresponds with type in inventory.JSON; holds index of starValues array
 		$('#reward').text(points + 'pts');
@@ -45,7 +49,7 @@ $(async () => {
 		$('.ratingSel')[i].onchange = async () => {
 			let item = getFormData('adminInventoryForm');
 			let ratings = [item.qualityRating, item.styleRating, item.valueRating];
-			checkRewardedPoints(ratings);
+			showRewardPoints(ratings);
 		};
 	}
 

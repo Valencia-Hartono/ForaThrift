@@ -61,6 +61,7 @@ global.pug = (str, locals, insert) => {
 // load database;fs = file system
 let db = JSON.parse(fs.readFileSync('inventory.json'));
 let users = JSON.parse(fs.readFileSync('users.json'));
+let settings = JSON.parse(fs.readFileSync('settings.json'));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -118,6 +119,10 @@ async function startServer() {
 
 	app.all('/categories.json', (req, res) => {
 		res.json(db.categories);
+	});
+
+	app.all('/settings.json', (req, res) => {
+		res.json(settings);
 	});
 
 	// category is a number (0 is not valid)
@@ -203,15 +208,25 @@ async function startServer() {
 	});
 
 	app.post('/admin/inventory', async (req, res) => {
-		let data = req.body; // request body is the json sent
-		log(data);
+		let item = req.body; // request body is the json sent
+		log(item);
 
-		// db[data.]
+		let items = db[item.category];
+
+		// if item should be edited it will be found in the inventory
+		let idx = items.findIndex((x) => x == item.id);
+		// if idx is 0 or greater it was found
+		if (idx >= 0) {
+			items[idx] = item;
+		} else {
+			// if item was not found in the list add it
+			items.push(item);
+		}
 
 		// save updated user info to users file
-		// await fs.outputFile('inventory.json', JSON.stringify(inventory));
+		await fs.outputFile('inventory.json', JSON.stringify(db));
 
-		res.json(data);
+		res.json(item);
 	});
 
 	// (async function saveDataPeriodically() {

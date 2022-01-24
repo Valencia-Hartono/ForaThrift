@@ -3,6 +3,8 @@
 $(async () => {
 	// jQuery wrapper
 
+	await fora.load();
+
 	let clickedItem;
 
 	//fetch items in inventory.json

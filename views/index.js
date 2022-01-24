@@ -21,35 +21,16 @@ function getFormData(formID) {
 }
 window.fora = {};
 
-fora.selectors = {
-	category: ['NA', '👚 Clothing', '👟 Shoes', '👜 Bags', '💍 Accessories', '🧢 Miscellaneous'],
-	occasion: ['NA', '⚽️ Sports', '🥂 Formal', '🚶 Casual'],
-	season: ['NA', '☘️ Spring', '☀️ Summer', '🍂 Fall', '❄️ Winter'],
-	colorName: [
-		'NA',
-		'Black',
-		'White',
-		'Gold',
-		'Silver',
-		'Brown',
-		'Red',
-		'Orange',
-		'Yellow',
-		'Green',
-		'Turquoise',
-		'Blue',
-		'Purple',
-		'Pink',
-		'Nude',
-		'Taupe',
-		'Champagne'
-	],
-	size: ['NA', 'XS', 'S', 'M', 'L', 'XL']
-};
+fora.load = async () => {
+	// prevents the rest of this function from
+	// running if it is called twice
+	if (fora.loading) return;
+	fora.loading = true;
 
-$(async () => {
 	// categories(clothing, accessories, shoes, bags), types (ex.bottoms, tops, overalls), subTypes (ex.jeans, shorts...)
 	fora.categories = await (await fetch('/categories.json')).json();
+	let settings = await (await fetch('/settings.json')).json();
+	Object.assign(fora, settings);
 
 	//instead of inputing types manually, use a function
 	for (let category of fora.categories.names) {
@@ -97,4 +78,4 @@ $(async () => {
 			cols[colNumMin] += subtypes.length + 1;
 		}
 	}
-});
+};

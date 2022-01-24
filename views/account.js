@@ -3,6 +3,8 @@
 $(async () => {
 	// jQuery wrapper
 
+	await fora.load();
+
 	async function updateUserData(data) {
 		// let url = window.location.href;
 		// url = url.slice(0, url.lastIndexOf('/')) + '/user';
