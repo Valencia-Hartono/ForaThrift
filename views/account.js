@@ -25,19 +25,6 @@ $(async () => {
 		await updateUserData(data);
 	};
 
-	// //submit queue changes !!! need editing
-	// window.submitQueueFavoriteForm = async () => {
-	// 	let data = getFormData('queueFavoriteForm');
-	// 	data.username = user.username;
-	// 	await updateUserData(data);
-	// };
-
-	// checkQueue(user.reserved);
-	// checkFavorites(user.favorites);
-
-	// //everytime queue/favorite form is submitted, it takes the queue and favorites boolean for the specific user and item
-	// function updateQueue(queue, favorites) {}
-
 	//display ranking based on checking points
 	function checkRank(points) {
 		let rank = '🥉Bronze';
@@ -78,23 +65,26 @@ $(async () => {
 	checkRank(user.totalPoints);
 	checkAvatar(user.totalPoints, user.gender);
 
-	// let discount = [10, 25, 40, 55, 70];
-	// let deductedPts = [240, 480, 720, 960, 1200];
-	// let numCoupons = [0, 0, 0, 0, 0]
+	let discount = [10, 25, 40, 55, 70];
+	let deductionPts = [400, 480, 720, 960, 1200];
 
-	// for (int i=0; i<discount.length; i++){
-	// 	$('#discountButtons').append(`
-	// 	<p class="mt-4">
-	// 		<button id="redeem${deductedPts[i]}" class=".btn.btn-green">
-	// 			Redeem ${discount[i]}% (-${deductedPts[i]}pts)
-	// 			|	Number of ${discount[i]}% coupons you have:
-	// 		</button>
-	// 		<span id="couponAmount${deductedPts[i]}">
-	// 			= ${user.numCoupons[i]} || '0'
-	// 		</span>
-	// 	</p>
-	// 	`)
-	// }
+	function appendCouponButtons(discountArray, deductionArray) {
+		// $(`#discountButtons`).append(`new version`);
+		for (let i = 0; i < discountArray.length; i++) {
+			$(`#discountButtons`).append(`
+			<p>
+				<button id="redeem${deductionArray[i]}" class="btn btn-green">
+					Redeem ${discountArray[i]}% discount (-${deductionArray[i]}pts)
+				</button>
+				Number of ${discountArray[i]}% coupons you have:
+				<span id="couponAmount${deductionPts[i]}">
+					${user.coupons[i] || '0'}
+				</span>
+			</p>
+			`);
+		}
+	}
+	appendCouponButtons(discount, deductionPts);
 
 	// p.mt-4
 	// button#redeem240.btn.btn-green Redeem 10% discount (-240pts)
@@ -102,31 +92,29 @@ $(async () => {
 	// span#couponAmount240= user.coupons[0] || '0'
 
 	//Checks if user has enough points to redeem points for the coupon clicked
-	//The 1st input determines the number of points the coupon deducts
-	//The 2nd input determines which index of the discount[] the points is assigned to
 	let coupon = {};
-	function couponSetter(points, code) {
-		$('#redeem' + points)[0].onclick = () => {
-			coupon = { points, code };
-			//if fail, display alert saying it is unsuccessful
-			if (user.pointsForExchange < coupon.points) {
-				$('#couponStatus').append(`
-<div class="alert alert-danger" role="alert">
-  Failed to redeem points! Not enough points: ${user.pointsForExchange}
-</div>`);
-				return;
-			}
-			//if user has enough points to redeem points, confirm modal in coupons.pug will be displayed
-			$('#confirmRedeemModal').modal('show');
-		};
-	}
 	//set how much points each coupon deducts, marked by the index of the corresponding discount %. (ex. 0 is 10%, 1 is 25%, 2 is 40%, 3 is 55%, 4 is 70%)
+	function couponSetter(deductionArray) {
+		for (let i = 0; i < deductionArray.length; i++) {
+			let code = i;
+			let points = deductionArray[i];
 
-	couponSetter(240, 0);
-	couponSetter(480, 1);
-	couponSetter(720, 2);
-	couponSetter(960, 3);
-	couponSetter(1200, 4);
+			$('#redeem' + points)[0].onclick = () => {
+				coupon = { points, code };
+				//if fail, display alert saying it is unsuccessful
+				if (user.pointsForExchange < coupon.points) {
+					$('#couponStatus').append(`
+	<div class="alert alert-danger" role="alert">
+		Failed to redeem points! Not enough points: ${user.pointsForExchange}
+	</div>`);
+					return;
+				}
+				//if user has enough points to redeem points, confirm modal in coupons.pug will be displayed
+				$('#confirmRedeemModal').modal('show');
+			};
+		}
+	}
+	couponSetter(deductionPts);
 
 	//once confirm button is clicked, corresponding points are deducted from user's "points for exchange"
 	//the element in the discount index will add one

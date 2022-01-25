@@ -1,8 +1,15 @@
 include ../fora.pug
 //- script(src='../../../admin.js')
 script(src='../../inventory.js')
+nav#blackNav.navbar.navbar-expand-sm.navbar-dark.bg-dark.p-2
+	.container-fluid
+			a.navbar-brand.active.fs-1(href='/store') FORA THRIFT
+			button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent')
+				span.navbar-toggler-icon
 #adminInventoryPage.container-fluid.mt-3
-h3.text-center.text-secondary Inventory Admin Form
+h1.display-3.mt-5.mb-4.text-center Inventory Admin Form
+h3.text-center.text-secondary
+	a(href='admin') BACK TO ADMIN HOME
 p.text-center.text-muted Total number of items in inventory: 
 	span#totalItems
 #adminInventoryPage.container-fluid

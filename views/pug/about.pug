@@ -1,10 +1,13 @@
 include fora.pug
 include navs.pug
 .container
-	h1.display-3.mt-4.mb-4.text-center WELCOME TO FORA THRIFT
+	h1.display-3.mt-5.mb-4.text-center WELCOME TO FORA THRIFT
+	
 	h2.text-center.text-secondary Mission Statement
-	p.text-center.text-muted Fora Thrift strips away the stigma of buying second-hand clothing, creating a community-wide shift towards sustainable
-		| apparel consumption.
+	figure.mt-3.mb-5.text-center.text-muted
+		figcaption
+			cite(title='') Fora Thrift strips away the stigma of buying second-hand clothing, creating a community-wide shift towards sustainable
+			| apparel consumption.
 	figure
 		blockquote.blockquote.text-center
 			p Fashion shouldn't cost the earth
@@ -24,10 +27,11 @@ include navs.pug
 			| FOUNDER
 
 	h2.text-center.text-secondary Fora Thrift Location
-	figure.mb-5
-		figcaption.text-center.mb-4
+	figure.mt-3.mb-5.text-center
+		figcaption
 			cite(title='') 1600 Lingbai Road, Pudong District, Shanghai, China 201201
-			<br> 上海市浦东新区 凌白公路1600号 201201
+		figcaption
+			cite(title='') 上海市浦东新区 凌白公路1600号 201201
 	.row
 		.col-md-4.text-center
 			img.rounded(style='width: 20rem; height:20rem' src='https://i.pinimg.com/564x/7c/12/9d/7c129d2f0db65685b4611416fbb37524.jpg')

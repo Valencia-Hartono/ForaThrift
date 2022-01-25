@@ -1,6 +1,6 @@
 include fora.pug
 include navs.pug
-h1.display-3.mt-4.text-center HELLO
+h1.display-3.mt-5.mb-4.text-center HELLO
 p.text-center.text-muted What can we help you with?
 figure
 	figcaption.blockquote-footer.text-center
@@ -8,8 +8,8 @@ figure
 .container-sm
 	// name form
 	.mb-3
-		label.form-label(for='email') Name
-		input.form-control(type='email' name='email' placeholder='optional')
+		label.form-label(for='name') Name
+		input.form-control(type='text' name='name' placeholder='optional')
 	// email form
 	.mb-3
 		label.form-label(for='email') *Email
@@ -29,6 +29,6 @@ figure
 	.mb-3.form-group
 		label.form-label(for='message') Message
 		textarea#description.form-control(rows='4' name='message' placeholder="Input Message")
-	//submission button
+	//submission button-> links to 
 	.text-center.mt-3.mb-3
 		button.btn.btn-dark(type="button" onclick='') Send Message
