@@ -53,13 +53,13 @@ $(async () => {
 		};
 	}
 
-	//links to index.js as it takes in fora.selectors global variables
+	// requires the fora global variable created in index.js
 	function addOptions() {
 		//add ID
 		//"in" loops through keys; "of" loops through key's values (in this case the arrays)
 
-		for (let selName in fora.selectors) {
-			let options = fora.selectors[selName];
+		for (let selName in ['category', 'occasion', 'season', 'colorName', 'size']) {
+			let options = fora[selName];
 			for (let j = 0; j < options.length; j++) {
 				log(selName);
 				$(`#${selName}`).append(`<option value="${j}"> ${options[j]} </option>`);
@@ -70,17 +70,8 @@ $(async () => {
 	addOptions();
 
 	$('#search')[0].onclick = async () => {
-		let url = '/item/' + $('#searchItemID').val();
-		let res = await (
-			await fetch(url, {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json'
-				}
-			})
-		).json();
-		if (!res.item) console.warn('Item not found!');
-		let item = res.item;
+		let item = getItem($('#searchItemID').val());
+
 		for (let prop in item) {
 			if (prop == 'img') continue;
 			$('#' + prop).val(item[prop]);

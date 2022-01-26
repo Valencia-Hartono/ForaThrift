@@ -1,6 +1,16 @@
 h4 My Favorites
-p View products you’ve added to your favorites list. Favorite an item by clicking on the heart icon until it turns white. 
-p.text-center: a(href="store") You haven’t liked any items yet (direct to shop)
+p View items you’ve added to your favorites list. 
+	span
+		a(data-bs-toggle='modal' href='#points_system') How to favorite items?
 
-//- .container-fluid: .row
-//- 	#favoriteItems.row
+
+p.my-0 Total points: 
+	span.pointsTotal= user.totalPoints || '0'
+p.my-0 Points for exchange: 
+	span.pointsExchangable= user.pointsForExchange || '0'
+a(data-bs-toggle='modal' href='#points_system') How to earn points?
+
+if user.favorites.length == 0
+	p.text-center: a(href="store") You haven’t added any items yet (view shop)
+else
+	.container-fluid: #favoritesItems.row

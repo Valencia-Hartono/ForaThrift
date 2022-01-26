@@ -1,5 +1,5 @@
 h4 My Donations
-p Check the status of donation or browse through your past donations.
+p Browse through your donation history. Each donated item will be rewarded points.
 
 p.my-0 Total points: 
 	span.pointsTotal= user.totalPoints || '0'
@@ -7,5 +7,7 @@ p.my-0 Points for exchange:
 	span.pointsExchangable= user.pointsForExchange || '0'
 a(data-bs-toggle='modal' href='#points_system') How to earn points?
 
-//- .container-fluid: .row
-//- 	#donationItems.row
+if user.donations.length == 0
+	p.text-center: a(href="") You haven’t donated any items yet
+else
+	.container-fluid: #donationItems.row

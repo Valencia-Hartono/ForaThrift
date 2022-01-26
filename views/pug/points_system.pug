@@ -15,22 +15,26 @@
 			#points_purchases.tab-pane.fade.show.active.mb-2(role='tabpanel')
 				p Every 1rmb spent will be rewarded 2pts
 			#points_donations.tab-pane.fade.mb-2(role='tabpanel')
-				p Each piece of clothing will be evaluated on style, quality, and value using a 5 star scale for each category. Earning a minimum of 30pts to a maximum of 750pts per piece.
+				p Each piece of clothing will be evaluated on style, quality, and value using a 5 star scale for each category. Earning a minimum of 
+					span#minPts
+					|  to a maximum of 
+					span#maxPts 
+					|  per piece.
 				.justify-content-center(style='display: flex;')
 					table.table.table-invisible(style='width: max-content;')
 						tbody
 							tr
-								td 10pts
+								td#1star
 								td ⭐️
 							tr
-								td 40pts 
+								td#2star
 								td ⭐️⭐️
 							tr
-								td 90pts 
+								td#3star
 								td ⭐️⭐️⭐️
 							tr
-								td 160pts 
+								td#4star
 								td ⭐️⭐️⭐️⭐️
 							tr
-								td 250pts 
+								td#5star
 								td ⭐️⭐️⭐️⭐️⭐️

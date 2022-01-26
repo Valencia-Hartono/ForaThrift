@@ -18,6 +18,8 @@ $(async () => {
 			})
 		).json();
 	}
+
+	//PROFILE.PUG
 	//submit profile changes-> takes data from form and calls above "updateUserData" function
 	window.submitProfileForm = async () => {
 		let data = getFormData('profileForm');
@@ -65,9 +67,7 @@ $(async () => {
 	checkRank(user.totalPoints);
 	checkAvatar(user.totalPoints, user.gender);
 
-	let discount = [10, 25, 40, 55, 70];
-	let deductionPts = [400, 480, 720, 960, 1200];
-
+	//COUPONS.PUG
 	function appendCouponButtons(discountArray, deductionArray) {
 		// $(`#discountButtons`).append(`new version`);
 		for (let i = 0; i < discountArray.length; i++) {
@@ -77,14 +77,14 @@ $(async () => {
 					Redeem ${discountArray[i]}% discount (-${deductionArray[i]}pts)
 				</button>
 				Number of ${discountArray[i]}% coupons you have:
-				<span id="couponAmount${deductionPts[i]}">
+				<span id="couponAmount${deductionArray[i]}">
 					${user.coupons[i] || '0'}
 				</span>
 			</p>
 			`);
 		}
 	}
-	appendCouponButtons(discount, deductionPts);
+	appendCouponButtons(fora.discount, fora.deductionPts);
 
 	// p.mt-4
 	// button#redeem240.btn.btn-green Redeem 10% discount (-240pts)
@@ -114,14 +114,10 @@ $(async () => {
 			};
 		}
 	}
-	couponSetter(deductionPts);
+	couponSetter(fora.deductionPts);
 
 	//once confirm button is clicked, corresponding points are deducted from user's "points for exchange"
-	//the element in the discount index will add one
-	//for example, alexa [0, 0, 0, 0, 0]
-	//after clicking on the [1], it becomes [0, 1, 0, 0, 0] (one 25% discount coupon is gained, 480pts are deducted)
-	//after clicking on the [3], it becomes [0, 1, 0, 1, 0] (one 55% discount coupon is gained, additional 960pts are deducted)
-	//after clicking on the [4], it becomes [0, 1, 0, 1, 1] (one 70% discount coupon is gained. additional 1200pts are deducted)
+	//check if points is enough to deduct points, because modal may be still opened
 
 	$('#confirmRedeem')[0].onclick = async () => {
 		if (user.pointsForExchange >= coupon.points) {
@@ -142,140 +138,18 @@ $(async () => {
 	</div>`);
 		}
 	};
+	//RESERVED.PUG
+	let reserved = await getItems(user.reserved);
+	displayItems('#reservedItems', reserved);
 
-	// 	//make a function that checks if a user has that item in their user.___ array
-	// 	//takes in parameter user.__ array and item.ID and return a boolean value true or false
-	// 	function checkArrayForItem(searchedArray, searchedItemID){
-	// 		let found=0;
-	// 		for (let i = 0; i < length; i++) {
-	// 			//loops through array
-	// 			if (searchedArray[i]==searchedItemID){
-	// 				found++;
-	// 			}
-	// 		}
-	// 		if (found==1){
-	// 			return true;
-	// 		}
-	// 		else {
-	// 			return false;
-	// 		}
-	// 	}
+	//FAVORITES.PUG
+	let favorites = await getItems(user.favorites);
+	displayItems('#favoritesItems', favorites);
 
-	// 	$('#confirmChanges')[0].onclick = async () => {
-	// 		// var warningSpeech;
-	// 		// //if item is not
-	// 		// if (!checkArrayForItem(reserved))//queue is unchecked){
-	// 		// 	warningSpeech="give up your spot in line for this item";
-	// 		// }
-	// 		// else if (//confirmRedeemModal is
-
-	// 		// $('#confirmChangesAlert').text('Are you sure you want to ' + warningSpeech + ' ?');
-	// 		if (//#item_queue checkbox in item_descriptor.pug is checked){
-	// 			//check if user.reserved array contains item.ID
-	// 			//if yes, leave it
-	// 			//if no, add it
-	// 		}
-	// 		else if (//#item_queue checkbox in item_descriptor.pug is not checked){
-	// 			//check if user.reserved array contains item.ID
-	// 			//if yes, remove it
-	// 			//if no, leave it
-	// 		}
-	// 		if (//#item_favorite checkbox in item_descriptor.pug is checked){
-	// 			//check if user.favorites array contains item.ID
-	// 			//if yes, leave it
-	// 			//if no, add it
-	// 		}
-	// 		else if (//#item_favorite checkbox in item_descriptor.pug is not checked){
-	// 			//check if user.favorites array contains item.ID
-	// 			//if yes, remove it
-	// 			//if no, leave it
-	// 		}
-
-	// 		//modified IF statements
-	// 		if (checked&&existing || !checked&&!existing){
-	// 			//leave it
-	// 		}
-	// 		else if (checked&&!existing){
-	// 			//add it
-	// 		}
-	// 		else if (!checked&&existing){
-	// 			//delete it
-	// 		}
-	// 		user.reserved -= coupon.points;
-	// 		user.coupons[coupon.code]++;
-
-	// 		await updateUserData(user);
-
-	// 		//display newly updated items in reserved.pug and favorites.pug (format similar to store.pug)
-	// 		//reserved.pug only loops through user.reserved array
-	// 		//favorites.pug only loops through user.favorites array
-
-	// 		//update item queue and favorite status in store.pug when modals are opened
-	// 		//or just set it so that in the item_descriptor area it always displays the boolean value (same one checked in above if statement)
-	// 		//boolean value is if user.reserved array contains item.ID & user.favorites array contains item.ID
-
-	// 		$('.pointsExchangable').text(user.pointsForExchange);
-	// 		//display newly updated coupon amount
-	// 		$('#couponAmount' + coupon.points).text(user.coupons[coupon.code]);
-	// 		//newly updated # of coupons in coupons.pug should be displayed in green color (CSS)
-	// 		$('#couponAmount' + coupon.points).addClass('green');
-
-	// 		$('#couponStatus').append(`
-	// <div class="alert alert-success" role="alert">
-	//   Coupon for ${coupon.points} points successfully redeemed!
-	// </div>`);
-	// 	};
-	// });
-
-	// $(async () => {
-	// 	// categories(clothing, accessories, shoes, bags), types (ex.bottoms, tops, overalls), subTypes (ex.jeans, shorts...)
-	// 	let reserved = await (await fetch('reserved.json')).json();
-	// 	log(reserved);
-
-	// 	//instead of inputing types manually, use a function
-	// 	for (let category of categories.names) {
-	// 		addColumns(category);
-	// 	}
-
-	// 	$('#clothingSidebar').show();
-
-	// 	$('#shoes').show();
-
-	// 	//for nav bar; adds category types and subtypes on second nav bar, evenly split in three column
-	// 	function addColumns(category) {
-	// 		let $menu = $('#' + category + 'Menu');
-	// 		let $cols = $menu.find('.col');
-	// 		let $categories = $('#categories');
-	// 		$categories.append('<div id="' + category + 'Sidebar" class="row"></div>'); //ex. id=clothingSidebar
-	// 		let $category = $('#' + category + 'Sidebar'); // retrieves the element
-	// 		$category.hide();
-	// 		let types = categories[category].typeNames; // get the array of type names ex. tops, bottoms
-
-	// 		//evenly distribute category types within the three columns
-	// 		let cols = [0, 0, 0];
-
-	// 		for (let i = 0; i < types.length; i++) {
-	// 			//loops through array of type names
-	// 			let type = types[i]; //retrieves a type name (ex.top or bottom)
-	// 			// find which column has the least amount of items
-	// 			// place the type and sub-cat options in that column
-	// 			let colNumMin = 0;
-	// 			for (let i = 1; i < cols.length; i++) {
-	// 				if (cols[colNumMin] > cols[i]) {
-	// 					colNumMin = i;
-	// 				}
-	// 			}
-
-	// 			$cols.eq(colNumMin).append('<div class="row"><a href="#" class="col">' + type + '</a></div>');
-	// 			$category.append('<a href="#" class="col-12">' + type + '</a>');
-
-	// 			let subtypes = categories[category][type]; // retrieves the array of the type names
-	// 			for (let j = 0; j < subtypes.length; j++) {
-	// 				let subtype = subtypes[j];
-	// 				$cols.eq(colNumMin).append('<div class="row"><a href="#" class="col"> ➤ ' + subtype + '</a></div>');
-	// 				$category.append('<a href="#" class="col-12"> ➤ ' + subtype + '</a>');
-	// 			}
-	// 			cols[colNumMin] += subtypes.length + 1;
-	// 		}
-	// 	}
+	//POINTS_SYSTEM.PUG
+	$(`#minPts`).text(fora.starValues[1] * 3 + 'pts');
+	$(`#maxPts`).text(fora.starValues[5] * 3 + 'pts');
+	for (let i = 1; i < fora.starValues.length; i++) {
+		$(`#${i}star`).text(fora.starValues[i]);
+	}
 });

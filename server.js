@@ -196,7 +196,7 @@ async function startServer() {
 		}
 
 		// save updated user info to users file
-		await fs.outputFile('users.json', JSON.stringify(users));
+		await fs.outputFile('users.json', JSON.stringify(users, null, 2));
 
 		res.json(user[data.list]);
 	});

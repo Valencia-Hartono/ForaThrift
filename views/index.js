@@ -19,6 +19,118 @@ function getFormData(formID) {
 	}
 	return data;
 }
+
+async function getItem(id) {
+	let url = '/item/' + id;
+	let res = await fetch(url, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		}
+	});
+	res = await res.json();
+	if (!res.item) {
+		console.warn('Item not found: ' + id);
+		return null;
+	}
+	return res.item;
+}
+
+async function getItems(itemIDs) {
+	let items = [];
+	for (let id of itemIDs) {
+		items.push(await getItem(id));
+	}
+	return items;
+}
+
+function displayItems(elem, items) {
+	if (!items || !items.length) {
+		console.warn('no items in array!');
+		return;
+	}
+	// gets the element with id="items"
+	let $items = $(elem);
+	//loop through items array
+	for (let item of items) {
+		//in each grid, add the div with item's id. This div includes the image, and then a container on the bottom with the name and the price
+		$items.append(`
+		<div id="${item.id}" class="col-6 col-md-3 mt-3 mb-3">
+			<img src="${item.img}" object-fit width="320" height="350"/>
+			<div class="container mt-2">
+				<font size="2px">
+					<div class="row">
+						${item.name}
+					</div>
+					<div class="row">
+						${item.price} RMB
+					</div>
+				</font>
+			</div>
+		</div>`);
+		//appends item information in its respective descriptor modal (found in item_descriptor.pug) and should open on click
+		$('#' + item.id)[0].onclick = () => {
+			log(item.id);
+			clickedItem = item.id;
+			$('#item_descriptor').modal('show');
+			// $('#item_descriptor #item_img').prepend(`<img src='${item.img}' />`);
+
+			//appends item information to modal header
+			$('#item_descriptor #item_name').text(item.name);
+			$('#item_descriptor #item_id').text(item.id);
+
+			//appends item ratings to column 1
+			$('#item_descriptor #item_qualityRating').text('Quality: ' + item.rating[0] + '/5');
+			$('#item_descriptor #item_styleRating').text('Style: ' + item.rating[1] + '/5');
+			$('#item_descriptor #item_valueRating').text('Value: ' + item.rating[2] + '/5');
+
+			//appends item information to column 2
+			$('#item_descriptor #item_brand').text(' Brand: ' + item.brand);
+			$('#item_descriptor #item_colorName').text(' Color: ' + fora.colorName[item.colorName]);
+			$('#item_descriptor #item_size').text(' Size: ' + fora.size[item.size]);
+			$('#item_descriptor #item_price').text(' Price: ' + item.price + ' RMB');
+
+			//appends number of people queueing for item to column 3 by returning length of queue array storing users' names
+			$('#item_descriptor #numQueue').text(item.queue.length);
+
+			$('#item_queue')[0].checked = user.reserved.includes(item.id);
+			$('#item_favorite')[0].checked = user.favorites.includes(item.id);
+
+			//appends item information to second row
+			$('#item_descriptor #item_description').text(' Item Description: ' + item.description);
+		};
+	}
+}
+
+function enableItemModal() {
+	async function itemInteraction(list, action) {
+		log(action);
+		let data = {
+			username: user.username,
+			item: clickedItem,
+			list: list,
+			action: action
+		};
+		user[list] = await (
+			await fetch('/item', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(data)
+			})
+		).json();
+	}
+
+	$('#item_queue')[0].onclick = () => {
+		itemInteraction('reserved', $('#item_queue')[0].checked ? 'add' : 'remove');
+	};
+
+	$('#item_favorite')[0].onclick = () => {
+		itemInteraction('favorites', $('#item_favorite')[0].checked ? 'add' : 'remove');
+	};
+}
+
 window.fora = {};
 
 fora.load = async () => {

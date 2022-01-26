@@ -6,22 +6,24 @@ nav#blackNav.navbar.navbar-expand-sm.navbar-dark.bg-dark.p-2
 			a.navbar-brand.active.fs-1(href='/store') FORA THRIFT
 			button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent')
 				span.navbar-toggler-icon
-#adminInventoryPage.container-fluid.mt-3
+
 h1.display-3.mt-5.mb-4.text-center Inventory Admin Form
 h3.text-center.text-secondary
 	a(href='admin') BACK TO ADMIN HOME
 p.text-center.text-muted Total number of items in inventory: 
 	span#totalItems
-#adminInventoryPage.container-fluid
+
+#adminInventoryPage.container-lg.mb-5
+	label.mb-2 EDIT OR REMOVE ITEM FROM INVENTORY
 	form#adminSearchItemForm
 		.row: .col: label.form-group.col-2.mb-4.form-label(for='ID') Search Item ID
-			input#searchItemID.form-control(type='text' name='ID' placeholder="User ID")
+			input#searchItemID.form-control(type='text' name='ID' placeholder="item ID")
 			//links to inventory.js
 			button#search.btn.btn-secondary.btn-sm.mt-3(type="button" onclick='submitAdminInventoryForm()') Search Item
 	form#adminInventoryForm
 		.row
 			.col-10: .row
-				label ITEM INFO
+				label.mb-2 ADD NEW ITEM
 				// id form
 				label.form-label.col-3.mb-2(for='id') Item ID
 					input#id.form-control(type='text' name='id' placeholder="Item ID")
@@ -31,17 +33,16 @@ p.text-center.text-muted Total number of items in inventory:
 						input#img.form-control(type='file' name='img')
 						label.input-group-text(for='imgFile') Upload
 				// name form
-				label.form-group.col-4.mb-2.form-label(for='name') Item Name
+				label.form-group.col-5.mb-2.form-label(for='name') Item Name
 					input#name.form-control(type='text' name='name' placeholder="Item Name")
 				// brand form
 				label.form-group.col-4.mb-2.form-label(for='brand') Brand Name
 					input#brand.form-control(type='text' name='brand' placeholder="Brand Name")
 				// price form
-				label.form-group.col-4.mb-2.form-label(for='price') Price
+				label.form-group.col-3.mb-2.form-label(for='price') Price
 					.input-group
 						span.input-group-text RMB
 						input#price.form-control(type='number' name='price' placeholder='RMB')
-
 				//dropdown form options automated from addOptions() functions from inventor.js
 				// category form
 				label.form-group.col-3.mb-2.form-label(for='category') Category
@@ -66,7 +67,7 @@ p.text-center.text-muted Total number of items in inventory:
 					textarea#description.form-control(rows='3' name='description' placeholder="Item Description")
 			.col-2
 				// rating form
-				label RATING
+				label.mb-2 RATING
 				.form-group.mb-2
 					each rating in [['styleRating', 'Item Style'], ['qualityRating', 'Item Quality'], ['valueRating', 'Item Rating']]
 						label(for=rating[0])= rating[1]
@@ -87,8 +88,34 @@ p.text-center.text-muted Total number of items in inventory:
 							br
 							span#reward
 	.row
-		.col-4.mb-4.d-grid.gap-2: button#submit.btn.btn-success.btn-sm.mt-3(type="button" onclick='submitAdminInventoryForm()') Add Item
-		.col-4.mb-4.d-grid.gap-2: button#submit.btn.btn-warning.btn-sm.mt-3(type="button" onclick='submitAdminInventoryForm()') Save Edit
-		.col-4.mb-4.d-grid.gap-2: button#submit.btn.btn-danger.btn-sm.mt-3(type="button" onclick='submitAdminInventoryForm()') Delete Item
-	
+		.col-3.d-grid.gap-2: button#submit.btn.btn-success.btn-sm.mt-3(type="button" onclick='submitAdminInventoryForm()') Add to inventory
+		.col-3.d-grid.gap-2: button#submit.btn.btn-warning.btn-sm.mt-3(type="button" onclick='submitAdminInventoryForm()') Save to inventory
+		.col-3.d-grid.gap-2: button#submit.btn.btn-danger.btn-sm.mt-3(type="button" onclick='submitAdminInventoryForm()') Delete from inventory
+		.col-3.d-grid.gap-2: button#submit.btn.btn-dark.btn-sm.mt-3(type="button" onclick='submitAdminInventoryForm()') Clear form
+
+h1.display-3.mt-5.mb-4.text-center Checkout Form
+h3.text-center.text-secondary
+	a(href='admin') BACK TO ADMIN HOME
+p.text-center.text-muted Total number of items in check out: 
+	span#totalItems
+
+#adminCheckoutPage.container-lg.mb-5
+	.row
+		.col-6
+			form#adminSearchItemForm.row
+				.col-6
+					label.form-group.form-label(for='buyer') Buyer Username
+					input#buyer.form-control(type='text' name='buyer' placeholder="Buyer Username")
+				.col-6
+					label.form-group.form-label(for='ID') Search Item ID
+					input#searchItemID.form-control(type='text' name='ID' placeholder="item ID")
+			.row
+				.col-6.d-grid.gap-2: button#submit.btn.btn-dark.btn-sm.mt-3(type="button" onclick='submitAdminInventoryForm()') Confirm Checkout
+				.col-6.d-grid.gap-2: button#submit.btn.btn-primary.btn-sm.mt-3(type="button" onclick='submitAdminInventoryForm()') Add to list
+			.row
+				.col-6.d-grid.gap-2: button#submit.btn.btn-danger.btn-sm.mt-3(type="button" onclick='submitAdminInventoryForm()') Clear list
+				.col-6.d-grid.gap-2: button#submit.btn.btn-warning.btn-sm.mt-3(type="button" onclick='submitAdminInventoryForm()') Remove from list
+				
+		.col-6 List of checkout items:
+			.mb-4.d-grid.gap-2
 			

@@ -52,15 +52,16 @@
 
 			"img": "https://www.lulus.com/images/product/xlarge/2958280_586292.jpg?w=560&hdpi=1",
 			"images": [],
-			"name": "NAVY DRESS",
+			"name": "Navy lace dress",
 			"brand": "H&M",
-			"colorName": 1,
+			"colorName": 11,
 			"size": 4,
-			"price": 20.5,
+			"price": 20.99,
 			"description": "This is new",
 			"queue": ["valencia01", "timmy02"],
 			"rating": [4, 4, 4],
-			"donor": "valencia01"
+			"donor": "valencia01",
+			"buyer": "valencia01"
 		},
 		{
 			"id": "008264",
@@ -71,15 +72,16 @@
 
 			"img": "https://i.pinimg.com/474x/a2/df/ed/a2dfed1b26c215b30b5fada14ced83a3.jpg",
 			"images": [],
-			"name": "CHECKERED WRAP BUSINESS CASUAL DRESS",
+			"name": "Checkered wrap business casual dress",
 			"brand": "DKNY",
-			"colorName": 2,
+			"colorName": 4,
 			"size": 3,
-			"price": 15,
+			"price": 15.99,
 			"description": "this is old",
 			"queue": ["valencia01", "timmy02"],
 			"rating": [5, 5, 4],
-			"donor": "valencia01"
+			"donor": "valencia01",
+			"buyer": ""
 		},
 		{
 			"id": "0188789",
@@ -90,15 +92,16 @@
 
 			"img": "https://i.pinimg.com/736x/bf/23/5d/bf235dad62a8b476e89dab021e68b01d.jpg",
 			"images": [],
-			"name": "WHITE BRIDAL DRESS",
+			"name": "White bridal dress",
 			"brand": "CHANEL",
 			"colorName": 2,
 			"size": 3,
-			"price": 1000,
+			"price": 999.99,
 			"description": "this has feathers",
 			"queue": ["valencia01", "timmy02"],
 			"rating": [5, 5, 5],
-			"donor": "valencia01"
+			"donor": "valencia01",
+			"buyer": ""
 		},
 		{
 			"id": "0083027",
@@ -109,15 +112,16 @@
 
 			"img": "https://i.pinimg.com/564x/8a/06/03/8a06031cbd0925b3afe3a0c56cde396d.jpg",
 			"images": [],
-			"name": "WHITE CASUAL JUMPSUIT",
+			"name": "White collared jumpsuit",
 			"brand": "Vera Moda",
-			"colorName": 3,
+			"colorName": 2,
 			"size": 3,
-			"price": 70,
+			"price": 70.99,
 			"description": "this is crazy good quality",
 			"queue": ["valencia01", "timmy02"],
 			"rating": [5, 5, 5],
-			"donor": "valencia01"
+			"donor": "valencia01",
+			"buyer": ""
 		},
 		{
 			"id": "0085937",
@@ -128,19 +132,20 @@
 
 			"img": "https://i.pinimg.com/564x/65/3f/1a/653f1a8f1c948ce626ac441d5e50964f.jpg",
 			"images": [],
-			"name": "BLUE ROMPER",
+			"name": "Blue romper",
 			"brand": "Catch",
-			"colorName": 4,
+			"colorName": 11,
 			"size": 3,
-			"price": 20,
+			"price": 20.99,
 			"description": "",
 			"queue": [],
 			"rating": [4, 4, 5],
-			"donor": "valencia01"
+			"donor": "valencia01",
+			"buyer": ""
 		},
 		{
 			"id": "0089707",
-			"name": "NUDE DRESS",
+			"name": "Nude spaghetti strap midi dress",
 			"type": 0,
 			"subtype": 8,
 			"occasion": 3,
@@ -149,13 +154,14 @@
 			"img": "https://i.pinimg.com/474x/e3/64/f6/e364f63d4d276f369a3a459f71ca4c22.jpg",
 			"images": [],
 			"brand": "Chanel",
-			"colorName": 5,
+			"colorName": 14,
 			"size": 3,
-			"price": 15,
+			"price": 15.99,
 			"description": "",
 			"queue": [],
 			"rating": [3, 3, 5],
-			"donor": "valencia01"
+			"donor": "valencia01",
+			"buyer": ""
 		}
 	],
 	"shoes": [],
@@ -170,15 +176,16 @@
 
 			"img": "https://i.pinimg.com/474x/be/ca/56/beca56fa38986d7c1f7eb1b26ff0e1aa.jpg",
 			"images": [],
-			"name": "BLACK GOLD BELT",
+			"name": "Black gold belt",
 			"brand": "Zara",
-			"colorName": 6,
+			"colorName": 1,
 			"size": 3,
-			"price": 20.5,
+			"price": 31.99,
 			"description": "",
 			"queue": [],
 			"rating": [4, 4, 5],
-			"donor": "valencia01"
+			"donor": "valencia01",
+			"buyer": ""
 		}
 	]
 }

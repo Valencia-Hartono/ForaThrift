@@ -2,6 +2,7 @@
 	.modal-header.pt-2.pb-0
 		// sign in and I'm new here tabs
 		h4#item_name
+		h5#item_id
 	//modal receives information from store.pug
 	.modal-body
 		table.table
@@ -12,13 +13,13 @@
 					th.text-center(scope='col') User Profile 🔒
 			tbody
 				tr
-					td.col-3
+					td.col-4
 						row#item_qualityRating
 						br
 						row#item_styleRating
 						br
 						row#item_valueRating
-					td.col-5
+					td.col-4
 						row#item_brand
 						br
 						row#item_colorName
@@ -40,7 +41,5 @@
 							label.form-check-label(for='item_favorite')  Favorite ♥️
 		row
 			#item_description
-							
-		//img currently not working!! (Optional though)
-		body#item_img
+						
 					

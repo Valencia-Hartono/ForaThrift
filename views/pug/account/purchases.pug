@@ -1,6 +1,13 @@
 h4 My Purchases
-p Check the status of orders or browse through your past purchases. Every 1rmb spent will be rewarded 2pts.
-p.text-center: a(href="store") You haven’t purchased any items yet (direct to shop)
+p Browse through your purchase history. Each purchased item will be rewarded points.
 
-//- .container-fluid: .row
-//- 	#purchaseItems.row
+p.my-0 Total points: 
+	span.pointsTotal= user.totalPoints || '0'
+p.my-0 Points for exchange: 
+	span.pointsExchangable= user.pointsForExchange || '0'
+a(data-bs-toggle='modal' href='#points_system') How to earn points?
+
+if user.purchases.length == 0
+	p.text-center: a(href="store") You haven’t purchased any items yet (view shop)
+else
+	.container-fluid: #purchaseItems.row
