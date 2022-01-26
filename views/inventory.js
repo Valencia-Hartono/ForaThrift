@@ -70,7 +70,7 @@ $(async () => {
 	addOptions();
 
 	$('#search')[0].onclick = async () => {
-		let item = getItem($('#searchItemID').val());
+		let item = await getItem($('#searchItemID').val());
 
 		for (let prop in item) {
 			if (prop == 'img') continue;
