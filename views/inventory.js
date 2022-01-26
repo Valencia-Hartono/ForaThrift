@@ -58,7 +58,7 @@ $(async () => {
 		//add ID
 		//"in" loops through keys; "of" loops through key's values (in this case the arrays)
 
-		for (let selName in ['category', 'occasion', 'season', 'colorName', 'size']) {
+		for (let selName of ['category', 'occasion', 'season', 'colorName', 'size']) {
 			let options = fora[selName];
 			for (let j = 0; j < options.length; j++) {
 				log(selName);

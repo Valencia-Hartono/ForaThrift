@@ -61,7 +61,7 @@ global.pug = (str, locals, insert) => {
 // load database;fs = file system
 let db = JSON.parse(fs.readFileSync('inventory.json'));
 let users = JSON.parse(fs.readFileSync('users.json'));
-let settings = JSON.parse(fs.readFileSync('settings.json'));
+let fora = JSON.parse(fs.readFileSync('settings.json'));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -98,7 +98,7 @@ async function loadViews() {
 
 		let locals = {
 			//set locals.cats equal to categories objects, use : instead of =
-			cats: db.categories,
+			cats: fora.categories,
 			user: null
 		};
 
@@ -117,12 +117,8 @@ async function loadViews() {
 async function startServer() {
 	await loadViews();
 
-	app.all('/categories.json', (req, res) => {
-		res.json(db.categories);
-	});
-
 	app.all('/settings.json', (req, res) => {
-		res.json(settings);
+		res.json(fora);
 	});
 
 	// category is a number (0 is not valid)
@@ -132,11 +128,11 @@ async function startServer() {
 		try {
 			let inventory = [];
 			if (req.category == 0) {
-				for (let category of db.categories.names) {
+				for (let category of fora.categories.names) {
 					inventory = inventory.concat(db[category]);
 				}
 			} else {
-				inventory = db[db.categories.names[req.category - 1]];
+				inventory = db[fora.categories.names[req.category - 1]];
 			}
 			let items = [];
 			let count = 0;

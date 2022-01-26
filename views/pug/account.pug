@@ -32,8 +32,7 @@ include navs.pug
 			#profile-favorites.tab-pane.fade(role='tabpanel'): include account/favorites.pug
 			#profile-reserved.tab-pane.fade(role='tabpanel'): include account/reserved.pug
 			#profile-purchases.tab-pane.fade(role='tabpanel'): include account/purchases.pug
-include points_system.pug
+include pointsSystem.pug
 script(src='../../account.js')
 
-//- include item_descriptor
-//- script(src='../store.js')
+include itemModal

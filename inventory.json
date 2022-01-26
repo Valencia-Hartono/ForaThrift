@@ -1,47 +1,4 @@
 {
-	"categories": {
-		"names": ["clothing", "shoes", "bags", "accessories", "miscellaneous"],
-		"navNames": ["CLOTHES", "SHOES", "BAGS", "ACCESSORIES", "MISCELLANEOUS"],
-
-		"clothing": {
-			"typeNames": ["Bottoms", "Tops", "Overalls"],
-			"Bottoms": ["Jeans", "Shorts", "Skirts", "Slacks", "Sweatpants"],
-			"Tops": ["Shirts", "Blazers", "Coats", "Hoodies", "Jackets", "Sweater"],
-			"Overalls": ["Beachwear", "Dresses", "Jumpsuits", "Loungewear"]
-		},
-		"shoes": {
-			"typeNames": ["Boots", "Heels", "Formal", "Casual"],
-			"Boots": ["Leather"],
-			"Heels": [],
-			"Formal": [],
-			"Casual": ["Espadrilles"]
-		},
-		"bags": {
-			"typeNames": ["Backpacks", "Chain bags", "Clutches", "Duffle bags", "Shoulder bags", "Tote bags"],
-			"Backpacks": [],
-			"Chain bags": [],
-			"Clutches": [],
-			"Duffle bags": [],
-			"Shoulder bags": [],
-			"Tote bags": []
-		},
-		"accessories": {
-			"typeNames": ["Jewelry", "Belts", "Headwear"],
-			"Jewelry": ["Earrings", "Bracelets", "Necklaces"],
-			"Belts": ["thick", "thin"],
-			"Headwear": ["caps", "sunhats", "beanies", "headbands"]
-		},
-		"miscellaneous": {
-			"typeNames": ["Gloves", "Scarves", "Sunglasses", "Watches", "Socks", "Makeup", "Skincare"],
-			"Gloves": [],
-			"Scarves": [],
-			"Sunglasses": [],
-			"Watches": [],
-			"Socks": [],
-			"Makeup": [],
-			"Skincare": []
-		}
-	},
 	"clothing": [
 		{
 			"id": "0213280",

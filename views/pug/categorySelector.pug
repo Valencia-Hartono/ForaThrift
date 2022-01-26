@@ -4,12 +4,14 @@
 	ul.dropdown-menu
 		each categoryName, i in cats.names
 			li.btn-group.dropend
-				button.btn.dropdown-toggle(type="button" data-bs-toggle="dropdown" aria-expanded="false")= categoryName
+				button.btn.dropdown-toggle(type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false")= categoryName
 				ul.dropdown-menu
 					each typeName, j in cats[categoryName].typeNames
-						li.btn-group.dropend
-							button.btn.dropdown-toggle(type="button" data-bs-toggle="dropdown" aria-expanded="false")= typeName
-							ul.dropdown-menu
-								//- if typeof cats[categoryName][typeName] == 'array'
-								each subtypeName, k in cats[categoryName][typeName]
-									li: a.dropdown-item(href="#")= subtypeName
+						if cats[categoryName][typeName].length
+							li.btn-group.dropend
+								button.btn.dropdown-toggle(type="button" data-bs-toggle="dropdown" aria-expanded="false")= typeName
+								ul.dropdown-menu
+									each subtypeName, k in cats[categoryName][typeName]
+										li: a.dropdown-item(href="#")= subtypeName
+						else
+							li: a.dropdown-item(href="#")= typeName

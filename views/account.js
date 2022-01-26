@@ -5,6 +5,8 @@ $(async () => {
 
 	await fora.load();
 
+	fora.account = {};
+
 	async function updateUserData(data) {
 		// let url = window.location.href;
 		// url = url.slice(0, url.lastIndexOf('/')) + '/user';
@@ -138,13 +140,14 @@ $(async () => {
 	</div>`);
 		}
 	};
+
 	//RESERVED.PUG
-	let reserved = await getItems(user.reserved);
-	displayItems('#reservedItems', reserved);
+	fora.account.reserved = await getItems(user.reserved);
+	displayItems('#reservedItems', fora.account.reserved);
 
 	//FAVORITES.PUG
-	let favorites = await getItems(user.favorites);
-	displayItems('#favoritesItems', favorites);
+	fora.account.favorites = await getItems(user.favorites);
+	displayItems('#favoritesItems', fora.account.favorites);
 
 	//POINTS_SYSTEM.PUG
 	$(`#minPts`).text(fora.starValues[1] * 3 + 'pts');
