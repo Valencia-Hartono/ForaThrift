@@ -17,10 +17,16 @@ p.text-center.text-muted Total number of items in check out:
 				label.form-group.form-label(for='ID') Search Item ID
 				input#searchItemID.form-control(type='text' name='ID' placeholder="Item ID")
 		.row
+			//confirm checkout, items should fade in store and pop up in user purchased history page
+			//should also make function to get each item price, add them up and double them-> points added to user account
 			.col-6.d-grid.gap-2: button#submit.btn.btn-dark.btn-sm.mt-3(type="button" onclick='submitAdminInventoryForm()') Confirm Checkout
+			//listArray = array with item IDs of checkout stuff
+			//append the item names and ID to list of items
 			.col-6.d-grid.gap-2: button#submit.btn.btn-primary.btn-sm.mt-3(type="button" onclick='submitAdminInventoryForm()') Add to list
 		.row
-			.col-6.d-grid.gap-2: button#submit.btn.btn-danger.btn-sm.mt-3(type="button" onclick='submitAdminInventoryForm()') Clear list
+			.col-6.d-grid.gap-2: button#submit.btn.btn-danger.btn-sm.mt-3(type="button" onclick='location.reload()') Clear list
+			//remove itemID from listArray
+			//update appended item names in listArray 
 			.col-6.d-grid.gap-2: button#submit.btn.btn-warning.btn-sm.mt-3(type="button" onclick='submitAdminInventoryForm()') Remove from list
 			
 	.col-6 List of checkout items:
