@@ -43,8 +43,7 @@ p.text-center.text-muted Total number of items in inventory:
 				//dropdown form options automated from addOptions() functions from inventor.js
 				// category form
 				label.form-group.col-3.mb-2.form-label(for='category') Category
-					select#category.form-select.form-select-md.mb-3(name='category')
-						//https://getbootstrap.com/2.3.2/components.html for categories tab
+					.row.px-3: include ../categorySelector
 				// occasion form
 				label.form-group.col-2.form-label(for='occasion') Occasion
 					select#occasion.form-select.form-select-md.mb-3(name='occasion')

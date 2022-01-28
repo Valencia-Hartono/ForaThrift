@@ -19,6 +19,10 @@ img {
 	z-index: 2000;
 }
 
+.dropdown-menu {
+	width: fit-content;
+}
+
 #greenNav li ul {
 	width: 100vw !important;
 	max-width: none !important;
