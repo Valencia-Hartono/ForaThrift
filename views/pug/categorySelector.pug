@@ -1,16 +1,18 @@
-button#categorySelector.btn.dropend.col-12.dropdown-toggle(type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false") Select
-ul.dropdown-menu
-	each categoryName, i in cats.names
-		li.btn-group.dropend
-			button.btn.dropdown-toggle(type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false")= categoryName
-			ul.dropdown-menu
-				each typeName, j in cats[categoryName].typeNames
-					if cats[categoryName][typeName].length
-						li.btn-group.dropend
-							button.btn.dropdown-toggle(type="button" data-bs-toggle="dropdown" aria-expanded="false")= typeName
-							ul.dropdown-menu
-								each subtypeName, k in cats[categoryName][typeName]
-									li: a.dropdown-item(href="#" onclick="categorySelection()")= subtypeName
-					else
-						li: a.dropdown-item(href="#" onclick="categorySelection()")= typeName
-script(src='categorySelector.js')
+#categorySelector
+	input#category.form-control.hide(name="category" style="display: none;" required)
+	button.btn.dropend.col-12.dropdown-toggle(type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false") Select
+	ul.dropdown-menu
+		each categoryName, i in cats.names
+			li.btn-group.dropend
+				button.btn.dropdown-toggle(type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false")= categoryName
+				ul.dropdown-menu
+					each typeName, j in cats[categoryName].typeNames
+						if cats[categoryName][typeName].length
+							li.btn-group.dropend
+								button.btn.dropdown-toggle(type="button" data-bs-toggle="dropdown" aria-expanded="false")= typeName
+								ul.dropdown-menu
+									each subtypeName, k in cats[categoryName][typeName]
+										li: a.dropdown-item(href="#" onclick="categorySelection('" + categoryName + " | " + typeName + " | " + subtypeName + "')")= subtypeName
+						else
+							li: a.dropdown-item(href="#" onclick="categorySelection('" + categoryName + " | " + typeName + "')")= typeName
+	script(src='../categorySelector.js')

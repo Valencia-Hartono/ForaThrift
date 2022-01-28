@@ -21,9 +21,20 @@ $(async () => {
 		if (!item.img.size) item.img = null;
 		log(item);
 
+		for (let prop in item) {
+			if (!item[prop]) {
+				console.warn('admin did not enter item ' + prop + ' information');
+				return;
+			}
+		}
+
 		item.rating = [item.qualityRating, item.styleRating, item.valueRating];
 
-		window.user = await (
+		let catCombo = item.category.split(' | ');
+
+		return;
+
+		await (
 			await fetch('/admin/inventory', {
 				method: 'POST',
 				headers: {
@@ -79,5 +90,15 @@ $(async () => {
 		$('#styleRating').val(item.rating[0]);
 		$('#qualityRating').val(item.rating[1]);
 		$('#valueRating').val(item.rating[2]);
+
+		let cat = fora.categories.names[item.id[0]];
+		let type = fora.categories[cat].typeNames[item.type];
+		let catCombo = [cat, type];
+		if (fora.categories[cat][type].length) {
+			catCombo.push(fora.categories[cat][type][item.subtype]);
+		}
+		let val = catCombo.join(' | ');
+		$('#categorySelector button').eq(0).text(val);
+		$('#categorySelector input').val(val);
 	};
 });
