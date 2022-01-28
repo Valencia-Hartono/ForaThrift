@@ -29,8 +29,8 @@ $(async () => {
 		}
 	}
 
-	$('#item_queue')[0].onclick = () => {
-		itemInteraction('reserved', $('#item_queue')[0].checked ? 'add' : 'remove');
+	$('#item_reserved')[0].onclick = () => {
+		itemInteraction('reserved', $('#item_reserved')[0].checked ? 'add' : 'remove');
 	};
 
 	$('#item_favorite')[0].onclick = () => {

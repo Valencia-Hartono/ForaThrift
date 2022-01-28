@@ -141,9 +141,14 @@ $(async () => {
 		}
 	};
 
-	//RESERVED.PUG
+	//CART.PUG
 	fora.account.reserved = await getItems(user.reserved);
 	displayItems('#reservedItems', fora.account.reserved);
+	let totalBilling = 0;
+	for (let i = 0; i < user.reserved.length; i++) {
+		totalBilling += fora.account.reserved[i].price;
+	}
+	$('#orderBilling').text(Math.floor(totalBilling * 100) / 100);
 
 	//FAVORITES.PUG
 	fora.account.favorites = await getItems(user.favorites);

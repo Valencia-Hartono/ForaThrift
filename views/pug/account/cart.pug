@@ -1,0 +1,28 @@
+.container-fluid.mb-5
+	h4 My Cart
+	p View items you’ve added to your cart. 
+		span 
+			a(data-bs-toggle='modal' href='#pointsSystem') How to add items to cart?
+
+	p.my-0 Total points: 
+		span.pointsTotal= user.totalPoints || '0'
+	p.my-0 Points for exchange: 
+		span.pointsExchangable= user.pointsForExchange || '0'
+	a(data-bs-toggle='modal' href='#pointsSystem') How to earn points?
+
+.container-fluid
+	h4 Total Billing
+	p.my-0 Total number of items in cart: 
+		span#numOrder= user.reserved.length || '0'
+	p.my-0 Total billing: 
+		//traverse through user.reserved to get ID, and use ID to get item price, and add them up
+		span#orderBilling
+	a(data-bs-toggle='modal' href='#pointsSystem') How to earn points?
+	p
+		button#redeem240.btn.btn-green Request Order
+
+if user.reserved.length == 0
+	p.text-center: a(href="store") You haven’t added any items yet (view shop)
+else
+	.container-fluid: #reservedItems.row
+

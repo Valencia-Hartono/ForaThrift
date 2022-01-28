@@ -1,15 +1,16 @@
-h4 My Offers/Discount Coupons
-p Points may be redeemed for discount coupons, they will be automatically deducted from your points for exchange but 
-	| remain in total points as an indicator of your journey with us.
+.container-fluid
+	h4 My Offers/Discount Coupons
+	p Points may be redeemed for discount coupons, they will be automatically deducted from your points for exchange but 
+		| remain in total points as an indicator of your journey with us.
 
-p.my-0 Total points: 
-	span.pointsTotal= user.totalPoints || '0'
-p.my-0 Points for exchange: 
-	span.pointsExchangable= user.pointsForExchange || '0'
-a(data-bs-toggle='modal' href='#pointsSystem') How to earn points?
+	p.my-0 Total points: 
+		span.pointsTotal= user.totalPoints || '0'
+	p.my-0 Points for exchange: 
+		span.pointsExchangable= user.pointsForExchange || '0'
+	a(data-bs-toggle='modal' href='#pointsSystem') How to earn points?
 
-#couponStatus.mt-3
-#discountButtons.mt-4
+	#couponStatus.mt-3
+	#discountButtons.mt-4
 //- p old version
 //- p
 //- 	button#redeem240.btn.btn-green Redeem 10% discount (-240pts)

@@ -56,7 +56,7 @@ function displayItems(elem, items) {
 		//in each grid, add the div with item's id. This div includes the image, and then a container on the bottom with the name and the price
 		$items.append(`
 		<div id="${item.id}" class="col-6 col-md-3 mt-3 mb-3">
-			<img src="${item.img}" object-fit width="320" height="350"/>
+			<img src="${item.img}" object-fit width="300" height="300"/>
 			<div class="container mt-2">
 				<font size="2px">
 					<div class="row">
@@ -93,7 +93,7 @@ function displayItems(elem, items) {
 			//appends number of people queueing for item to column 3 by returning length of queue array storing users' names
 			$('#itemModal #numQueue').text(item.queue.length);
 
-			$('#item_queue')[0].checked = user.reserved.includes(item.id);
+			$('#item_reserved')[0].checked = user.reserved.includes(item.id);
 			$('#item_favorite')[0].checked = user.favorites.includes(item.id);
 
 			//appends item information to second row
