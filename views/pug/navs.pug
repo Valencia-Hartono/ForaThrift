@@ -28,13 +28,13 @@ nav#blackNav.navbar.navbar-expand-sm.navbar-dark.bg-dark.p-2
 nav.navbar.navbar-expand-sm.navbar-dark.bg-dark.sticky-top.p-0
 	// One of the primary actions on mobile is to call a business - This displays a phone button on mobile only
 	.navbar-toggler-right
-		button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbar' aria-controls='navbarTogglerDemo02' aria-expanded='false' aria-label='Toggle navigation')
+		button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbar')
 			span.navbar-toggler-icon
 	#greenNav.collapse.navbar-collapse.row
 		ul.col-6.navbar-nav.pe-0.p-1
 			each name, i in cats.names
 				li.flex-sm-fill.text-sm-center.nav-item.dropdown
-					a.nav-link(role='button' data-bs-toggle='dropdown' aria-expanded='false')= cats.navNames[i]
+					a.nav-link(role='button' data-bs-toggle='dropdown')= cats.navNames[i]
 					ul.dropdown-menu.container.p-2(id=`${name}Menu`): .row.mb-4
 							.col-8.px-4
 								.row

@@ -91,7 +91,7 @@ function displayItems(elem, items) {
 			$('#itemModal #item_price').text(' Price: ' + item.price + ' RMB');
 
 			//appends number of people queueing for item to column 3 by returning length of queue array storing users' names
-			$('#itemModal #numQueue').text(item.queue.length);
+			$('#itemModal #numReserve').text(item.reserved.length);
 
 			$('#item_reserved')[0].checked = user.reserved.includes(item.id);
 			$('#item_favorite')[0].checked = user.favorites.includes(item.id);

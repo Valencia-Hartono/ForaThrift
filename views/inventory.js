@@ -42,7 +42,7 @@ $(async () => {
 			points += fora.starValues[ratings[i]];
 		}
 		//ratings=[2, 5, 4] unique to each item; corresponds with type in inventory.JSON; holds index of starValues array
-		$('#reward').text(points + 'pts');
+		$('#donationRewardedPts').text(points + 'pts');
 	}
 
 	for (let i = 0; i < 3; i++) {

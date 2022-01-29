@@ -15,7 +15,7 @@
 			"size": 4,
 			"price": 20.99,
 			"description": "This is new",
-			"queue": ["valencia01", "timmy02"],
+			"reserved": ["valencia01", "timmy02"],
 			"rating": [4, 4, 4],
 			"donor": "valencia01",
 			"buyer": "valencia01"
@@ -35,7 +35,7 @@
 			"size": 3,
 			"price": 15.99,
 			"description": "this is old",
-			"queue": ["valencia01", "timmy02"],
+			"reserved": ["valencia01", "timmy02"],
 			"rating": [5, 5, 4],
 			"donor": "valencia01",
 			"buyer": ""
@@ -55,7 +55,7 @@
 			"size": 3,
 			"price": 999.99,
 			"description": "this has feathers",
-			"queue": ["valencia01", "timmy02"],
+			"reserved": ["valencia01", "timmy02"],
 			"rating": [5, 5, 5],
 			"donor": "valencia01",
 			"buyer": ""
@@ -75,7 +75,7 @@
 			"size": 3,
 			"price": 70.99,
 			"description": "this is crazy good quality",
-			"queue": ["valencia01", "timmy02"],
+			"reserved": ["valencia01", "timmy02"],
 			"rating": [5, 5, 5],
 			"donor": "valencia01",
 			"buyer": ""
@@ -95,7 +95,7 @@
 			"size": 3,
 			"price": 20.99,
 			"description": "",
-			"queue": [],
+			"reserved": [],
 			"rating": [4, 4, 5],
 			"donor": "valencia01",
 			"buyer": ""
@@ -115,7 +115,7 @@
 			"size": 3,
 			"price": 15.99,
 			"description": "",
-			"queue": [],
+			"reserved": [],
 			"rating": [3, 3, 5],
 			"donor": "valencia01",
 			"buyer": ""
@@ -139,7 +139,7 @@
 			"size": 3,
 			"price": 31.99,
 			"description": "",
-			"queue": [],
+			"reserved": [],
 			"rating": [4, 4, 5],
 			"donor": "valencia01",
 			"buyer": ""

@@ -4,7 +4,7 @@
     "email": "valenciahartono@gmail.com",
     "password": "vally227",
     "totalPoints": 20000,
-    "pointsForExchange": 160,
+    "pointsForExchange": 2000,
     "coupons": [
       8,
       9,
@@ -19,15 +19,14 @@
     "address": "2888 Hunan Rd The Emerald 142",
     "donations": [],
     "favorites": [
-      "008264",
-      "0083027",
-      "0213280"
+      "0083027"
     ],
     "reserved": [
       "0083027",
-      "0213280"
+      "008264"
     ],
     "purchases": [],
+    "requestBanTime": 0,
     "flexRadioDefault": "on"
   },
   "timmy02": {
@@ -52,6 +51,7 @@
     "favorites": [],
     "reserved": [],
     "purchases": [],
+    "requestBanTime": 0,
     "flexRadioDefault": "on"
   }
 }

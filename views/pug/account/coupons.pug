@@ -9,7 +9,7 @@
 		span.pointsExchangable= user.pointsForExchange || '0'
 	a(data-bs-toggle='modal' href='#pointsSystem') How to earn points?
 
-	#couponStatus.mt-3
+	#couponStatusAlert.mt-3
 	#discountButtons.mt-4
 //- p old version
 //- p
@@ -32,11 +32,12 @@
 //- 	button#redeem1200.btn.btn-green Redeem 70% discount (-1200pts)
 //- 	|	Number of 70% coupons you have: 
 //- 	span#couponAmount1200= user.coupons[4]  || '0'
-#confirmRedeemModal.modal.fade(tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true')
+
+#confirmRedeemModal.modal.fade(tabindex='-1')
 	.modal-dialog
 		.modal-content
 			.modal-header
-				h5#exampleModalLabel.modal-title Confirm Redeem Points
+				h5.modal-title Confirm Redeem Points
 			.modal-body
 				| Are you sure you want to redeem these points?
 			.modal-footer

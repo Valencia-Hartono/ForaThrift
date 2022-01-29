@@ -17,12 +17,35 @@
 	p.my-0 Total billing: 
 		//traverse through user.reserved to get ID, and use ID to get item price, and add them up
 		span#orderBilling
-	a(data-bs-toggle='modal' href='#pointsSystem') How to earn points?
+	p.my-0 Order Ban Time: 
+		//traverse through user.reserved to get ID, and use ID to get item price, and add them up
+		span#banTime 
+		span hr
 	p
-		button#redeem240.btn.btn-green Request Order
+		button#requestOrderButton.btn.btn-green Request Order
+
+#orderStatusAlert.mt-3
 
 if user.reserved.length == 0
 	p.text-center: a(href="store") You haven’t added any items yet (view shop)
 else
 	.container-fluid: #reservedItems.row
+
+#confirmOrderModal.modal.fade(tabindex='-1')
+	.modal-dialog
+		.modal-content
+			.modal-header
+				h5.modal-title Confirm Order Request
+			.modal-body
+				label.form-group.col-10.form-label(for='discount') Please indicate which coupon you'd like to use
+					select#discountTab.form-select.form-select-md.mb-3(name='discount')
+
+				p.my-0 Discount billing: 
+					//traverse through user.reserved to get ID, and use ID to get item price, and add them up
+					span#discountBilling
+
+				| Are you sure you want to order these items? If payment via wechat is not received within 24hrs of request, request will be denied and user must wait 2 days to reorder.
+			.modal-footer
+				//- button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Cancel
+				button#confirmOrder.btn.btn-green(type='button'  data-bs-dismiss='modal') Confirm
 

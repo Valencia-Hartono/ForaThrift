@@ -105,7 +105,7 @@ $(async () => {
 				coupon = { points, code };
 				//if fail, display alert saying it is unsuccessful
 				if (user.pointsForExchange < coupon.points) {
-					$('#couponStatus').append(`
+					$('#couponStatusAlert').append(`
 	<div class="alert alert-danger" role="alert">
 		Failed to redeem points! Not enough points: ${user.pointsForExchange}
 	</div>`);
@@ -134,7 +134,7 @@ $(async () => {
 			//newly updated # of coupons in coupons.pug should be displayed in green color (CSS)
 			$('#couponAmount' + coupon.points).addClass('green');
 			//if successful, display alert saying it is successful
-			$('#couponStatus').append(`
+			$('#couponStatusAlert').append(`
 	<div class="alert alert-success" role="alert">
 		Coupon for ${coupon.points} points successfully redeemed!
 	</div>`);
@@ -144,11 +144,73 @@ $(async () => {
 	//CART.PUG
 	fora.account.reserved = await getItems(user.reserved);
 	displayItems('#reservedItems', fora.account.reserved);
-	let totalBilling = 0;
-	for (let i = 0; i < user.reserved.length; i++) {
-		totalBilling += fora.account.reserved[i].price;
+
+	function calculateBilling() {
+		let totalBilling = 0;
+		let discountBilling = [0, 0, 0, 0, 0, 0];
+		let rewardedPts = 0;
+		for (let i = 0; i < user.reserved.length; i++) {
+			//adds the price of every item in user.reserved
+			totalBilling += fora.account.reserved[i].price;
+		}
+		//Rounds billing
+		// -> 99.49230420 * 100 to 9949.230420
+		// -> math floor to 9949
+		// -> 9949 / 100 to 99.49
+		totalBilling = Math.floor(totalBilling * 100) / 100;
+		rewardedPts = totalBilling * 2;
+
+		//sets discountBilling array to the discounted price options
+		//"discount": [10, 25, 40, 55, 70]
+		//ex.totalBilling = 100 rmb -> after this loop, discountBilling = [90, 75, 60, 45, 30] rmb
+		for (let j = 0; j < discountBilling.length; j++) {
+			discountBilling[j] = (totalBilling * (100 - fora.discount[j])) / 100;
+			discountBilling[j] = Math.floor(discountBilling[j] * 100) / 100;
+			rewardedPts = discountBilling[j] * 2;
+			$(`#discountTab`).append(
+				`<option value="${j}"> ${fora.discount[j]}% discount = ${discountBilling[j]} RMB = ${rewardedPts}pts </option>`
+			);
+		}
+		$('#purchaseRewardedPts').text(totalBilling * 2 + 'pts');
+		return totalBilling;
 	}
-	$('#orderBilling').text(Math.floor(totalBilling * 100) / 100);
+
+	$('#orderBilling').text(calculateBilling() + ' RMB');
+	$('#banTime').text(user.requestBanTime);
+
+	$('#requestOrderButton')[0].onclick = () => {
+		//if fail, display alert saying it is unsuccessful
+		if (user.requestBanTime > 0) {
+			$('#orderStatusAlert').append(`
+<div class="alert alert-danger" role="alert">
+Failed to request order! Waiting time before next order: ${user.requestBanTime} hr
+</div>`);
+			return;
+		}
+		//if user has enough points to redeem points, confirm modal in coupons.pug will be displayed
+		$('#confirmOrderModal').modal('show');
+	};
+
+	$('#confirmOrder')[0].onclick = async () => {
+		//sends request to admin server
+		if (user.coupons[i] >= coupon.points) {
+			user.pointsForExchange -= coupon.points;
+			user.coupons[coupon.code]++;
+
+			await updateUserData(user);
+			//display newly updated span.pointsExchangable in coupons.pug, donations.pug, and profile.pug
+			$('.pointsExchangable').text(user.pointsForExchange);
+			//display newly updated coupon amount
+			$('#couponAmount' + coupon.points).text(user.coupons[coupon.code]);
+			//newly updated # of coupons in coupons.pug should be displayed in green color (CSS)
+			$('#couponAmount' + coupon.points).addClass('green');
+			//if successful, display alert saying it is successful
+			$('#orderStatusAlert').append(`
+	<div class="alert alert-success" role="alert">
+		Coupon for ${coupon.points} points successfully redeemed!
+	</div>`);
+		}
+	};
 
 	//FAVORITES.PUG
 	fora.account.favorites = await getItems(user.favorites);
