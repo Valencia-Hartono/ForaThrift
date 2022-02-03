@@ -39,6 +39,10 @@
 				label.form-check-label(for='nonBinaryRadio')  nonbinary 
 			// phone form
 			.mt-3.mb-3
+				label.form-label(for='wechatID') *Wechat ID
+				input.form-control(type='text' name='wechatID' value=(user.wechatID || ''))
+			// phone form
+			.mt-3.mb-3
 				label.form-label(for='phone') Phone
 				input.form-control(type='tel' name='phone' value=(user.phone || ''))
 			// address form

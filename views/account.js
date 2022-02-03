@@ -153,33 +153,32 @@ $(async () => {
 			//adds the price of every item in user.reserved
 			itemSubtotal += fora.account.reserved[i].price;
 		}
+		$('#preCouponSubtotal').text(itemSubtotal.toFixed(2) + ' RMB');
+
 		//Rounds billing
 		// -> 99.49230420 * 100 to 9949.230420
 		// -> math floor to 9949
 		// -> 9949 / 100 to 99.49
-		itemSubtotal = Math.floor(itemSubtotal * 100) / 100;
 		discountedSubtotal[0] = itemSubtotal;
-		$('#preCouponSubtotal').text(itemSubtotal + 'RMB');
 
 		//sets discountBilling array to the discounted price options
 		//"discount": [10, 25, 40, 55, 70]
 		//ex.totalBilling = 100 rmb -> after this loop, discountBilling = [90, 75, 60, 45, 30] rmb
-		$(`#discountSelector`).append(`<option value="0"> no discount | ${itemSubtotal} RMB </option>`);
+		$(`#discountSelector`).append(`<option value="0"> no discount | ${itemSubtotal.toFixed(2)} RMB </option>`);
 
 		for (let i = 0; i < 5; i++) {
 			let discount = (100 - fora.discount[i]) / 100;
-			discountedSubtotal[i + 1] = Math.floor(itemSubtotal * discount * 100) / 100;
+			discountedSubtotal[i + 1] = itemSubtotal * discount;
 			$(`#discountSelector`).append(
-				`<option value="${i + 1}" ${!user.coupons[i] ? 'disabled' : ''}> ${fora.discount[i]}% discount | ${
-					discountedSubtotal[i + 1]
-				} RMB </option>`
+				`<option value="${i + 1}" ${!user.coupons[i] ? 'disabled' : ''}> ${
+					fora.discount[i]
+				}% discount | ${discountedSubtotal[i + 1].toFixed(2)} RMB </option>`
 			);
 		}
 
 		$('#discountSelector')[0].onchange = () => {
-			let sel = $('#discountSelector').val();
-			log(sel);
-			$(`#itemSubtotal`).text(itemSubtotal + ' RMB');
+			let idx = $('#discountSelector').val();
+			calculateBilling(idx);
 		};
 	}
 
@@ -187,11 +186,17 @@ $(async () => {
 
 	function calculateBilling(discountIdx) {
 		let subtotal = discountedSubtotal[discountIdx];
-		$('#itemSubtotal').text(subtotal + ' RMB');
-		$('#purchaseRewardedPts').text(itemSubtotal * 2 + 'pts');
+		let salesTax = (subtotal * 7) / 100;
+		let rewardPoints = Math.ceil(subtotal * 2);
+		let totalBilling = subtotal + salesTax + 12;
+		$('#itemSubtotal').text(subtotal.toFixed(2) + ' RMB');
+		$('#salesTax').text(salesTax.toFixed(2) + ' RMB');
+		$('#rewardPoints').text(rewardPoints + 'pts');
+		$('#totalBilling').text(totalBilling.toFixed(2) + ' RMB');
 	}
 
 	calculateBilling(0);
+	$('#shippingCost').text('12.00 RMB');
 
 	$('#banTime').text(user.requestBanTime);
 
