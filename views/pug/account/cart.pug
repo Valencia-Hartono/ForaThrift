@@ -14,9 +14,9 @@
 	h4 Total Billing
 	p.my-0 Total number of items in cart: 
 		span#numOrder= user.reserved.length || '0'
-	p.my-0 Total billing: 
+	p.my-0 Subtotal: 
 		//traverse through user.reserved to get ID, and use ID to get item price, and add them up
-		span#orderBilling
+		span#preCouponSubtotal
 	p.my-0 Order Ban Time: 
 		//traverse through user.reserved to get ID, and use ID to get item price, and add them up
 		span#banTime 
@@ -38,12 +38,21 @@ else
 				h5.modal-title Confirm Order Request
 			.modal-body
 				label.form-group.col-10.form-label(for='discount') Please indicate which coupon you'd like to use
-					select#discountTab.form-select.form-select-md.mb-3(name='discount')
-
-				p.my-0 Discount billing: 
-					//traverse through user.reserved to get ID, and use ID to get item price, and add them up
-					span#discountBilling
-
+					select#discountSelector.form-select.form-select-md.mb-3(name='discount')
+				div.mb-3
+					p.my-0 Items in cart: 
+						span#numOrder= user.reserved.length || '0'
+					p.my-0 Item Subtotal:
+						span#itemSubtotal
+					p.my-0 Shipping and Handling Cost:
+						span#shippingCost
+					p.my-0 Estimated Sales Tax:
+						span#salesTax
+				div.mb-3
+					p.my-0 Total Billing: 
+						span#totalBilling
+					p.my-0 Total rewarded pts: 
+						span#rewardPoints
 				| Are you sure you want to order these items? If payment via wechat is not received within 24hrs of request, request will be denied and user must wait 2 days to reorder.
 			.modal-footer
 				//- button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Cancel

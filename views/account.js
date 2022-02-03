@@ -75,8 +75,8 @@ $(async () => {
 		for (let i = 0; i < discountArray.length; i++) {
 			$(`#discountButtons`).append(`
 			<p>
-				<button id="redeem${deductionArray[i]}" class="btn btn-green">
-					Redeem ${discountArray[i]}% discount (-${deductionArray[i]}pts)
+				<button id="get${deductionArray[i]}" class="btn btn-green">
+					Get ${discountArray[i]}% discount coupon (-${deductionArray[i]}pts)
 				</button>
 				Number of ${discountArray[i]}% coupons you have:
 				<span id="couponAmount${deductionArray[i]}">
@@ -101,7 +101,7 @@ $(async () => {
 			let code = i;
 			let points = deductionArray[i];
 
-			$('#redeem' + points)[0].onclick = () => {
+			$('#get' + points)[0].onclick = () => {
 				coupon = { points, code };
 				//if fail, display alert saying it is unsuccessful
 				if (user.pointsForExchange < coupon.points) {
@@ -145,37 +145,54 @@ $(async () => {
 	fora.account.reserved = await getItems(user.reserved);
 	displayItems('#reservedItems', fora.account.reserved);
 
-	function calculateBilling() {
-		let totalBilling = 0;
-		let discountBilling = [0, 0, 0, 0, 0, 0];
-		let rewardedPts = 0;
+	let discountedSubtotal = [];
+
+	function makeDiscountSelector() {
+		let itemSubtotal = 0;
 		for (let i = 0; i < user.reserved.length; i++) {
 			//adds the price of every item in user.reserved
-			totalBilling += fora.account.reserved[i].price;
+			itemSubtotal += fora.account.reserved[i].price;
 		}
 		//Rounds billing
 		// -> 99.49230420 * 100 to 9949.230420
 		// -> math floor to 9949
 		// -> 9949 / 100 to 99.49
-		totalBilling = Math.floor(totalBilling * 100) / 100;
-		rewardedPts = totalBilling * 2;
+		itemSubtotal = Math.floor(itemSubtotal * 100) / 100;
+		discountedSubtotal[0] = itemSubtotal;
+		$('#preCouponSubtotal').text(itemSubtotal + 'RMB');
 
 		//sets discountBilling array to the discounted price options
 		//"discount": [10, 25, 40, 55, 70]
 		//ex.totalBilling = 100 rmb -> after this loop, discountBilling = [90, 75, 60, 45, 30] rmb
-		for (let j = 0; j < discountBilling.length; j++) {
-			discountBilling[j] = (totalBilling * (100 - fora.discount[j])) / 100;
-			discountBilling[j] = Math.floor(discountBilling[j] * 100) / 100;
-			rewardedPts = discountBilling[j] * 2;
-			$(`#discountTab`).append(
-				`<option value="${j}"> ${fora.discount[j]}% discount = ${discountBilling[j]} RMB = ${rewardedPts}pts </option>`
+		$(`#discountSelector`).append(`<option value="0"> no discount | ${itemSubtotal} RMB </option>`);
+
+		for (let i = 0; i < 5; i++) {
+			let discount = (100 - fora.discount[i]) / 100;
+			discountedSubtotal[i + 1] = Math.floor(itemSubtotal * discount * 100) / 100;
+			$(`#discountSelector`).append(
+				`<option value="${i + 1}" ${!user.coupons[i] ? 'disabled' : ''}> ${fora.discount[i]}% discount | ${
+					discountedSubtotal[i + 1]
+				} RMB </option>`
 			);
 		}
-		$('#purchaseRewardedPts').text(totalBilling * 2 + 'pts');
-		return totalBilling;
+
+		$('#discountSelector')[0].onchange = () => {
+			let sel = $('#discountSelector').val();
+			log(sel);
+			$(`#itemSubtotal`).text(itemSubtotal + ' RMB');
+		};
 	}
 
-	$('#orderBilling').text(calculateBilling() + ' RMB');
+	makeDiscountSelector();
+
+	function calculateBilling(discountIdx) {
+		let subtotal = discountedSubtotal[discountIdx];
+		$('#itemSubtotal').text(subtotal + ' RMB');
+		$('#purchaseRewardedPts').text(itemSubtotal * 2 + 'pts');
+	}
+
+	calculateBilling(0);
+
 	$('#banTime').text(user.requestBanTime);
 
 	$('#requestOrderButton')[0].onclick = () => {

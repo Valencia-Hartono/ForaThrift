@@ -23,51 +23,51 @@ p.text-center.text-muted Total number of items in inventory:
 				label.mb-2 ITEM INFO
 				// id form
 				label.form-label.col-3.mb-2(for='id') Item ID
-					input#id.form-control(type='text' name='id' placeholder="Item ID")
+					input#id.form-control(type='text' name='id' placeholder="Item ID" required)
 				// img form
 				label.form-label.col-9.mb-2(for='img') Item Image
 					.form-group: .input-group
-						input#img.form-control(type='file' name='img')
+						input#img.form-control(type='file' name='img' required)
 						label.input-group-text(for='imgFile') Upload
 				// name form
 				label.form-group.col-5.mb-2.form-label(for='name') Item Name
-					input#name.form-control(type='text' name='name' placeholder="Item Name")
+					input#name.form-control(type='text' name='name' placeholder="Item Name" required)
 				// brand form
 				label.form-group.col-4.mb-2.form-label(for='brand') Brand Name
-					input#brand.form-control(type='text' name='brand' placeholder="Brand Name")
+					input#brand.form-control(type='text' name='brand' placeholder="Brand Name" required)
 				// price form
 				label.form-group.col-3.mb-2.form-label(for='price') Price
 					.input-group
 						span.input-group-text RMB
-						input#price.form-control(type='number' name='price' placeholder='RMB')
+						input#price.form-control(type='number' name='price' placeholder='RMB' required)
 				//dropdown form options automated from addOptions() functions from inventor.js
 				// category form
-				label.form-group.col-3.mb-2.form-label(for='category') Category
-					.row.px-3: include ../categorySelector
+				label.form-group.col-4.mb-2.form-label(for='category') Category
+					include ../categorySelector
 				// occasion form
 				label.form-group.col-2.form-label(for='occasion') Occasion
-					select#occasion.form-select.form-select-md.mb-3(name='occasion')
+					select#occasion.form-select.form-select-md.mb-3(name='occasion' required)
 				// season form
-				label.form-group.col-3.form-label(for='season') Season
-					select#season.form-select.form-select-md.mb-3(name='season')
+				label.form-group.col-2.form-label(for='season') Season
+					select#season.form-select.form-select-md.mb-3(name='season' required)
 				// color form
 				label.form-group.col-2.form-label(for='colorName') Color Name
-					select#colorName.form-select.form-select-md.mb-3(name='colorName')
+					select#colorName.form-select.form-select-md.mb-3(name='colorName' required)
 				// size form
 				label.form-group.col-2.form-label(for='size') Size
-					select#size.form-select.form-select-md.mb-3(name='size')
+					select#size.form-select.form-select-md.mb-3(name='size' required)
 				
 				// item description form
 				.form-group.col-12.mb-2
 					label.form-label(for='description') Item Description
-					textarea#description.form-control(rows='3' name='description' placeholder="Item Description")
+					textarea#description.form-control(rows='3' name='description' placeholder="Item Description" required)
 			.col-2
 				// rating form
 				label.mb-2 RATING
 				.form-group.mb-2
 					each rating in [['styleRating', 'Item Style'], ['qualityRating', 'Item Quality'], ['valueRating', 'Item Rating']]
 						label(for=rating[0])= rating[1]
-						select.ratingSel.form-select(id=rating[0] name=rating[0])
+						select.ratingSel.form-select(id=rating[0] name=rating[0] required)
 							option(value='0') NA
 							option(value='1') 1 ⭐️
 							option(value='2') 2 ⭐️⭐️
@@ -77,11 +77,12 @@ p.text-center.text-muted Total number of items in inventory:
 				// donor form
 				.form-group.mb-2
 					label.form-label(for='donor') Donor Username
-					input#donor.form-control(type='text' name='donor' placeholder="Donor Username")
+					input#donor.form-control(type='text' name='donor' placeholder="Donor Username" required)
 				.row
 					.col
 						div Rewarded Points For Donor:
 							br
+<<<<<<< HEAD
 							span#donationRewardedPts
 	.row
 		.col-3.d-grid.gap-2: button#submit.btn.btn-success.btn-sm.mt-3(type="button" onclick='submitAdminInventoryForm()') Add to inventory
@@ -89,3 +90,12 @@ p.text-center.text-muted Total number of items in inventory:
 		.col-3.d-grid.gap-2: button#submit.btn.btn-danger.btn-sm.mt-3(type="button" onclick='submitAdminInventoryForm()') Delete from inventory
 		//reference: https://www.w3schools.com/jsref/met_loc_reload.asp -> reload page to clear form
 		.col-3.d-grid.gap-2: button#submit.btn.btn-dark.btn-sm.mt-3(type="button" onclick='location.reload()') Clear form
+=======
+							span#reward
+		.row
+			.col-3.d-grid.gap-2: button#submit.btn.btn-success.btn-sm.mt-3(type="submit" onclick='submitAdminInventoryForm()') Add to inventory
+			.col-3.d-grid.gap-2: button#submit.btn.btn-warning.btn-sm.mt-3(type="submit" onclick='submitAdminInventoryForm()') Save Changes
+			.col-3.d-grid.gap-2: button#submit.btn.btn-danger.btn-sm.mt-3(type="button" onclick='') Delete from inventory
+			//reference: https://www.w3schools.com/jsref/met_loc_reload.asp -> reload page to clear form
+			.col-3.d-grid.gap-2: button#submit.btn.btn-dark.btn-sm.mt-3(type="button" onclick='location.reload()') Clear form
+>>>>>>> 2c047150bcb28b8e481c8aacb925a94e149d6475

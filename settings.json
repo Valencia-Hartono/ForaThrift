@@ -26,17 +26,17 @@
 			"Tote bags": []
 		},
 		"accessories": {
-			"typeNames": ["Jewelry", "Belts", "Headwear"],
+			"typeNames": ["Jewelry", "Belts", "Headwear", "Scarves", "Sunglasses", "Watches"],
 			"Jewelry": ["Earrings", "Bracelets", "Necklaces"],
-			"Belts": ["thick", "thin"],
-			"Headwear": ["caps", "sunhats", "beanies", "headbands"]
-		},
-		"miscellaneous": {
-			"typeNames": ["Gloves", "Scarves", "Sunglasses", "Watches", "Socks", "Makeup", "Skincare"],
-			"Gloves": [],
+			"Belts": ["Thick", "Thin"],
+			"Headwear": ["Caps", "Sunhats", "Beanies", "Headbands"],
 			"Scarves": [],
 			"Sunglasses": [],
-			"Watches": [],
+			"Watches": []
+		},
+		"miscellaneous": {
+			"typeNames": ["Gloves", "Socks", "Makeup", "Skincare"],
+			"Gloves": [],
 			"Socks": [],
 			"Makeup": [],
 			"Skincare": []
