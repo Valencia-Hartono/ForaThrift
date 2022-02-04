@@ -97,7 +97,7 @@ function displayItems(elem, items) {
 			$('#item_favorite')[0].checked = user.favorites.includes(item.id);
 
 			//appends item information to second row
-			$('#itemModal #item_description').text(' Item Description: ' + item.description);
+			$('#itemModal #item_description').text(item.description);
 		};
 	}
 }

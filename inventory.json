@@ -119,6 +119,26 @@
 			"rating": [3, 3, 5],
 			"donor": "valencia01",
 			"buyer": ""
+		},
+		{
+			"id": "0089888",
+			"name": "Calvin Klein High Rise Skinny Ankle in Dark Wash",
+			"type": 0,
+			"subtype": 8,
+			"occasion": 3,
+			"season": 3,
+
+			"img": "https://i.pinimg.com/564x/d1/8a/25/d18a255bbca15a222cf7d2d7f884b06e.jpg",
+			"images": [],
+			"brand": "CK JEANS",
+			"colorName": 1,
+			"size": 8,
+			"price": 899.99,
+			"description": "HIGH RISE SLIM THROUGH HIP + THIGH SKINNY LEG. INFINITE FLEX - advanced stretch denim for comfort and movement. DENIM: RECONSIDERED - made with less energy and water than traditional denim",
+			"reserved": [],
+			"rating": [5, 5, 5],
+			"donor": "valencia01",
+			"buyer": ""
 		}
 	],
 	"shoes": [],

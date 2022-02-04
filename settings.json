@@ -64,7 +64,7 @@
 		"Taupe",
 		"Champagne"
 	],
-	"size": ["NA", "XS", "S", "M", "L", "XL"],
+	"size": ["NA", "XS", "S", "M", "L", "XL", 23, 24, 25, 26, 27, 28],
 	"starValues": [0, 10, 40, 90, 160, 250],
 	"discount": [10, 25, 40, 55, 70],
 	"deductionPts": [240, 480, 720, 960, 1200]

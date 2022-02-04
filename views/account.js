@@ -154,6 +154,21 @@ $(async () => {
 			itemSubtotal += fora.account.reserved[i].price;
 		}
 		$('#preCouponSubtotal').text(itemSubtotal.toFixed(2) + ' RMB');
+		$('#banTime').text(user.requestBanTime);
+		$('#shippingCost').text('12.00 RMB');
+
+		$('#requestOrderButton')[0].onclick = () => {
+			//if fail, display alert saying it is unsuccessful
+			if (user.requestBanTime > 0) {
+				$('#orderStatusAlert').append(`
+	<div class="alert alert-danger" role="alert">
+	Failed to request order! Waiting time before next order: ${user.requestBanTime} hr
+	</div>`);
+				return;
+			}
+			//if user has enough points to redeem points, confirm modal in coupons.pug will be displayed
+			$('#confirmOrderModal').modal('show');
+		};
 
 		//Rounds billing
 		// -> 99.49230420 * 100 to 9949.230420
@@ -196,43 +211,20 @@ $(async () => {
 	}
 
 	calculateBilling(0);
-	$('#shippingCost').text('12.00 RMB');
 
-	$('#banTime').text(user.requestBanTime);
-
-	$('#requestOrderButton')[0].onclick = () => {
-		//if fail, display alert saying it is unsuccessful
-		if (user.requestBanTime > 0) {
-			$('#orderStatusAlert').append(`
-<div class="alert alert-danger" role="alert">
-Failed to request order! Waiting time before next order: ${user.requestBanTime} hr
-</div>`);
-			return;
-		}
-		//if user has enough points to redeem points, confirm modal in coupons.pug will be displayed
-		$('#confirmOrderModal').modal('show');
-	};
-
-	$('#confirmOrder')[0].onclick = async () => {
-		//sends request to admin server
-		if (user.coupons[i] >= coupon.points) {
-			user.pointsForExchange -= coupon.points;
-			user.coupons[coupon.code]++;
-
-			await updateUserData(user);
-			//display newly updated span.pointsExchangable in coupons.pug, donations.pug, and profile.pug
-			$('.pointsExchangable').text(user.pointsForExchange);
-			//display newly updated coupon amount
-			$('#couponAmount' + coupon.points).text(user.coupons[coupon.code]);
-			//newly updated # of coupons in coupons.pug should be displayed in green color (CSS)
-			$('#couponAmount' + coupon.points).addClass('green');
-			//if successful, display alert saying it is successful
-			$('#orderStatusAlert').append(`
-	<div class="alert alert-success" role="alert">
-		Coupon for ${coupon.points} points successfully redeemed!
-	</div>`);
-		}
-	};
+	// $('#confirmOrder')[0].onclick = async () => {
+	// 	//sends request to admin server
+	// 	let discountIdx = $('#discountSelector').val();
+	// 	if (successful) {
+	// 		await updateUserData(user);
+	// 		user.coupons[discountIdx]--;
+	// 		//if successful, display alert saying it is successful
+	// 		$('#orderStatusAlert').append(`
+	// <div class="alert alert-success" role="alert">
+	// 	Order request is successfull!
+	// </div>`);
+	// 	}
+	// };
 
 	//FAVORITES.PUG
 	fora.account.favorites = await getItems(user.favorites);
