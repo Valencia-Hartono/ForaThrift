@@ -20,14 +20,13 @@ p.text-center.text-muted Total number of items in inventory:
 	form#adminInventoryForm
 		.row
 			.col-10: .row
-				label.mb-2 ITEM INFO
-				// id form
-				label.form-label.col-3.mb-2(for='id') Item ID
-					input#id.form-control(type='text' name='id' placeholder="Item ID" required)
+				label.mb-2 ITEM INFO: 
+					span#id
 				// img form
-				label.form-label.col-9.mb-2(for='img') Item Image
+				label.form-label.col-12.mb-2(for='img') Item Image
 					.form-group: .input-group
-						input#img.form-control(type='file' name='img' required)
+						input#img.form-control(type='text' name='img')
+						input#imgFile.form-control.hide(type='file' name='imgFile' style="display: none;")
 						label.input-group-text(for='imgFile') Upload
 				// name form
 				label.form-group.col-5.mb-2.form-label(for='name') Item Name

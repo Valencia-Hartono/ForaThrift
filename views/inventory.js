@@ -18,10 +18,8 @@ $(async () => {
 	window.submitAdminInventoryForm = async () => {
 		let item = getFormData('adminInventoryForm');
 
-		if (!item.img.size) item.img = null;
-		log(item);
-
 		for (let prop in item) {
+			if (prop == 'img') continue;
 			if (!item[prop]) {
 				console.warn('admin did not enter item ' + prop + ' information');
 				return;
@@ -30,7 +28,9 @@ $(async () => {
 
 		item.rating = [item.qualityRating, item.styleRating, item.valueRating];
 
-		let catCombo = item.category.split(' | ');
+		item.subtype = item.category[2];
+		item.type = item.category[1];
+		item.category = item.category[0];
 
 		return;
 
@@ -84,9 +84,10 @@ $(async () => {
 		let item = await getItem($('#searchItemID').val());
 
 		for (let prop in item) {
-			if (prop == 'img') continue;
 			$('#' + prop).val(item[prop]);
 		}
+
+		$('#id').text(item.id);
 		$('#styleRating').val(item.rating[0]);
 		$('#qualityRating').val(item.rating[1]);
 		$('#valueRating').val(item.rating[2]);
@@ -97,8 +98,10 @@ $(async () => {
 		if (fora.categories[cat][type].length) {
 			catCombo.push(fora.categories[cat][type][item.subtype]);
 		}
-		let val = catCombo.join(' | ');
-		$('#categorySelector button').eq(0).text(val);
-		$('#categorySelector input').val(val);
+		categorySelection(catCombo.join(' | '));
+	};
+
+	$('#categorySelector input').onchange = () => {
+		$('#id').text($('#categorySelector input').val() + Math.floor(Math.random() * 9000 + 1000));
 	};
 });
