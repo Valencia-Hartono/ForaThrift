@@ -4,7 +4,7 @@
 			"id": "0213280",
 			"type": 2,
 			"subtype": 1,
-			"occasion": 3,
+			"style": 3,
 			"season": 2,
 
 			"img": "https://www.lulus.com/images/product/xlarge/2958280_586292.jpg?w=560&hdpi=1",
@@ -24,7 +24,7 @@
 			"id": "008264",
 			"type": 0,
 			"subtype": 8,
-			"occasion": 3,
+			"style": 3,
 			"season": 2,
 
 			"img": "https://i.pinimg.com/474x/a2/df/ed/a2dfed1b26c215b30b5fada14ced83a3.jpg",
@@ -44,7 +44,7 @@
 			"id": "0188789",
 			"type": 1,
 			"subtype": 8,
-			"occasion": 2,
+			"style": 2,
 			"season": 1,
 
 			"img": "https://i.pinimg.com/736x/bf/23/5d/bf235dad62a8b476e89dab021e68b01d.jpg",
@@ -64,7 +64,7 @@
 			"id": "0083027",
 			"type": 0,
 			"subtype": 8,
-			"occasion": 3,
+			"style": 3,
 			"season": 2,
 
 			"img": "https://i.pinimg.com/564x/8a/06/03/8a06031cbd0925b3afe3a0c56cde396d.jpg",
@@ -84,7 +84,7 @@
 			"id": "0085937",
 			"type": 0,
 			"subtype": 8,
-			"occasion": 3,
+			"style": 3,
 			"season": 2,
 
 			"img": "https://i.pinimg.com/564x/65/3f/1a/653f1a8f1c948ce626ac441d5e50964f.jpg",
@@ -105,7 +105,7 @@
 			"name": "Nude spaghetti strap midi dress",
 			"type": 0,
 			"subtype": 8,
-			"occasion": 3,
+			"style": 3,
 			"season": 2,
 
 			"img": "https://i.pinimg.com/474x/e3/64/f6/e364f63d4d276f369a3a459f71ca4c22.jpg",
@@ -125,7 +125,7 @@
 			"name": "Calvin Klein High Rise Skinny Ankle in Dark Wash",
 			"type": 0,
 			"subtype": 8,
-			"occasion": 3,
+			"style": 3,
 			"season": 3,
 
 			"img": "https://i.pinimg.com/564x/d1/8a/25/d18a255bbca15a222cf7d2d7f884b06e.jpg",
@@ -148,7 +148,7 @@
 			"id": "3106563",
 			"type": 1,
 			"subtype": 0,
-			"occasion": 3,
+			"style": 3,
 			"season": 2,
 
 			"img": "https://i.pinimg.com/474x/be/ca/56/beca56fa38986d7c1f7eb1b26ff0e1aa.jpg",

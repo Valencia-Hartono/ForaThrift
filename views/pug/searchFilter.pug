@@ -1,149 +1,129 @@
-include fora.pug
-include navs.pug
-.row: .col-2
-  #accordionPanelsStayOpenExample.accordion
-    .accordion-item
-      h2#panelsStayOpen-headingTwo.accordion-header
-        button.accordion-button.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#panelsStayOpen-collapseTwo')
-          | Size
-      #panelsStayOpen-collapseTwo.accordion-collapse.collapse
-        .accordion-body
-          | lalala
-    .accordion-item
-      h2#panelsStayOpen-headingThree.accordion-header
-        button.accordion-button.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#panelsStayOpen-collapseThree')
-          | Color
-      #panelsStayOpen-collapseThree.accordion-collapse.collapse
-        .accordion-body
-          | lalala
-    .accordion-item
-      h2#panelsStayOpen-headingFour.accordion-header
-        button.accordion-button.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#panelsStayOpen-collapseFour')
-          | Style
-      #panelsStayOpen-collapseFour.accordion-collapse.collapse
-        .accordion-body
-          | lalala
-    .accordion-item
-      h2#panelsStayOpen-headingFive.accordion-header
-        button.accordion-button.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#panelsStayOpen-collapseFive')
-          | Neckline
-      #panelsStayOpen-collapseFive.accordion-collapse.collapse
-        .accordion-body
-          | lalala
+#accordionPanelsStayOpenExample.accordion
+  .accordion-item
+    h2#panelsStayOpen-headingZero.accordion-header
+      button.accordion-button.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#panelsStayOpen-collapseZero')
+        | Season
+    #panelsStayOpen-collapseZero.accordion-collapse.collapse
+      .accordion-body
+        #seasonSearch
+  .accordion-item
+    h2#panelsStayOpen-headingOne.accordion-header
+      button.accordion-button.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#panelsStayOpen-collapseOne')
+        | Category
+    #panelsStayOpen-collapseOne.accordion-collapse.collapse
+      .accordion-body
+        #categorySearch
+  .accordion-item
+    h2#panelsStayOpen-headingTwo.accordion-header
+      button.accordion-button.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#panelsStayOpen-collapseTwo')
+        | Size
+    #panelsStayOpen-collapseTwo.accordion-collapse.collapse
+      .accordion-body
+        .row
+          .col-6
+            #sizeSearch1
+          .col-6
+            #sizeSearch2
+  .accordion-item
+    h2#panelsStayOpen-headingThree.accordion-header
+      button.accordion-button.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#panelsStayOpen-collapseThree')
+        | Type
+    #panelsStayOpen-collapseThree.accordion-collapse.collapse
+      .accordion-body
+        #typeSearch
+  .accordion-item
+    h2#panelsStayOpen-headingFour.accordion-header
+      button.accordion-button.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#panelsStayOpen-collapseFour')
+        | Style
+    #panelsStayOpen-collapseFour.accordion-collapse.collapse
+      .accordion-body
+        #styleSearch
+  .accordion-item
+    h2#panelsStayOpen-headingFive.accordion-header
+      button.accordion-button.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#panelsStayOpen-collapseFive')
+        | Length
+    #panelsStayOpen-collapseFive.accordion-collapse.collapse
+      .accordion-body
+        #lengthSearch
+  .accordion-item
+    h2#panelsStayOpen-headingSix.accordion-header
+      button.accordion-button.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#panelsStayOpen-collapseSix')
+        | Pattern Type
+    #panelsStayOpen-collapseSix.accordion-collapse.collapse
+      .accordion-body
+        #patternSearch
+  .accordion-item
+    h2#panelsStayOpen-headingSeven.accordion-header
+      button.accordion-button.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#panelsStayOpen-collapseSeven')
+        | Sleeve Length
+    #panelsStayOpen-collapseSeven.accordion-collapse.collapse
+      .accordion-body
+        #sleeveSearch
+  .accordion-item
+    h2#panelsStayOpen-headingEight.accordion-header
+      button.accordion-button.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#panelsStayOpen-collapseEight')
+        | Color
+    #panelsStayOpen-collapseEight.accordion-collapse.collapse
+      .accordion-body
+        #colorNameSearch
+  .accordion-item
+    h2#panelsStayOpen-headingNine.accordion-header
+      button.accordion-button.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#panelsStayOpen-collapseNine')
+        | Material
+    #panelsStayOpen-collapseNine.accordion-collapse.collapse
+      .accordion-body
+        #materialSearch
+  .accordion-item
+    h2#panelsStayOpen-headingTen.accordion-header
+      button.accordion-button.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#panelsStayOpen-collapseTen')
+        | Neckline
+    #panelsStayOpen-collapseTen.accordion-collapse.collapse
+      .accordion-body
+        #necklineSearch
 
 // Section: Sidebar
 section
-  // Section: Filters
-  section
-    h5 Filters
-    // Section: Condition
-    section.mb-4
-      h6.font-weight-bold.mb-3 Condition
-      .form-check.pl-0.mb-3
-        input#new.form-check-input.filled-in(type='checkbox')
-        label.form-check-label.small.text-uppercase.card-link-secondary(for='new') New
-      .form-check.pl-0.mb-3
-        input#used.form-check-input.filled-in(type='checkbox')
-        label.form-check-label.small.text-uppercase.card-link-secondary(for='used') Used
-      .form-check.pl-0.mb-3
-        input#collectible.form-check-input.filled-in(type='checkbox')
-        label.form-check-label.small.text-uppercase.card-link-secondary(for='collectible') Collectible
-      .form-check.pl-0.mb-3.pb-1
-        input#renewed.form-check-input.filled-in(type='checkbox')
-        label.form-check-label.small.text-uppercase.card-link-secondary(for='renewed') Renewed
-    // Section: Average
-    // Section: Price
-    section.mb-4
-      h6.font-weight-bold.mb-3 Price
-      .form-check.pl-0.mb-3
-        input#under25.form-check-input(type='radio' name='materialExampleRadios')
-        label.form-check-label.small.text-uppercase.card-link-secondary(for='under25') Under $25
-      .form-check.pl-0.mb-3
-        input#2550.form-check-input(type='radio' name='materialExampleRadios')
-        label.form-check-label.small.text-uppercase.card-link-secondary(for='2550') $25 to $50
-      .form-check.pl-0.mb-3
-        input#50100.form-check-input(type='radio' name='materialExampleRadios')
-        label.form-check-label.small.text-uppercase.card-link-secondary(for='50100') $50 to $100
-      .form-check.pl-0.mb-3
-        input#100200.form-check-input(type='radio' name='materialExampleRadios')
-        label.form-check-label.small.text-uppercase.card-link-secondary(for='100200') $100 to $200
-      .form-check.pl-0.mb-3
-        input#200above.form-check-input(type='radio' name='materialExampleRadios')
-        label.form-check-label.small.text-uppercase.card-link-secondary(for='200above') $200 &amp; Above
-      form
-        .d-flex.align-items-center.mt-4.pb-1
-          .md-form.md-outline.my-0
-            input#from.form-control.mb-0(type='text')
-            label(for='form') $ Min
-          p.px-2.mb-0.text-muted  - 
-          .md-form.md-outline.my-0
-            input#to.form-control.mb-0(type='text')
-            label(for='to') $ Max
-            // Section: Price
-    // Section: Price version 2
-    section.mb-4
-      h6.font-weight-bold.mb-3 Price
-      .slider-price.d-flex.align-items-center.my-4
-        span.font-weight-normal.small.text-muted.mr-2 $0
-        form.multi-range-field.w-100.mb-1
-          input#multi.multi-range(type='range')
-        span.font-weight-normal.small.text-muted.ml-2 $100
-    // Section: Price version 2
-    // Section: Size
-    section.mb-4
-      h6.font-weight-bold.mb-3 Size
-      .form-check.pl-0.mb-3
-        input#34.form-check-input.filled-in(type='checkbox')
-        label.form-check-label.small.text-uppercase.card-link-secondary(for='34') 34
-      .form-check.pl-0.mb-3
-        input#36.form-check-input.filled-in(type='checkbox')
-        label.form-check-label.small.text-uppercase.card-link-secondary(for='36') 36
-      .form-check.pl-0.mb-3
-        input#38.form-check-input.filled-in(type='checkbox')
-        label.form-check-label.small.text-uppercase.card-link-secondary(for='38') 38
-      .form-check.pl-0.mb-3
-        input#40.form-check-input.filled-in(type='checkbox')
-        label.form-check-label.small.text-uppercase.card-link-secondary(for='40') 40
-      a.btn.btn-link.text-muted.p-0(data-toggle='collapse' href='#collapseExample')
-        | More
-        #collapseExample.collapse.pt-3
-        .form-check.pl-0.mb-3
-          input#42.form-check-input.filled-in(type='checkbox')
-          label.form-check-label.small.text-uppercase.card-link-secondary(for='42') 42
-        .form-check.pl-0.mb-3
-          input#44.form-check-input.filled-in(type='checkbox')
-          label.form-check-label.small.text-uppercase.card-link-secondary(for='44') 44
-        .form-check.pl-0.mb-3
-          input#46.form-check-input.filled-in(type='checkbox')
-          label.form-check-label.small.text-uppercase.card-link-secondary(for='46') 46
-        .form-check.pl-0.mb-3
-          input#50.form-check-input.filled-in(type='checkbox')
-          label.form-check-label.small.text-uppercase.card-link-secondary(for='50') 50
-    // Section: Size
-    // Section: Color
-    section.mb-4
-      h6.font-weight-bold.mb-3 Color
-      .btn-group.btn-group-toggle.btn-color-group.d-block.mt-n2.ml-n2(data-toggle='buttons')
-        label.btn.rounded-circle.white.border-inset-grey.p-3.m-2
-          input(type='checkbox' autocomplete='off')
-        label.btn.rounded-circle.grey.p-3.m-2
-          input(type='checkbox' autocomplete='off')
-        label.btn.rounded-circle.black.p-3.m-2
-          input(type='checkbox' autocomplete='off')
-        label.btn.rounded-circle.green.p-3.m-2
-          input(type='checkbox' autocomplete='off')
-        label.btn.rounded-circle.blue.p-3.m-2
-          input(type='checkbox' autocomplete='off')
-        label.btn.rounded-circle.purple.p-3.m-2
-          input(type='checkbox' autocomplete='off')
-        label.btn.rounded-circle.yellow.p-3.m-2
-          input(type='checkbox' autocomplete='off')
-        label.btn.rounded-circle.indigo.p-3.m-2
-          input(type='checkbox' checked='' autocomplete='off')
-        label.btn.rounded-circle.red.p-3.m-2
-          input(type='checkbox' autocomplete='off')
-        label.btn.rounded-circle.orange.p-3.m-2
-          input(type='checkbox' autocomplete='off')
-    // Section: Color
-  // Section: Filters
+// Section: Filters
+section
+  h5 Filters
+  // Section: Price
+  section.mb-4
+    h6.font-weight-bold.mb-3 Price
+    .form-check.pl-0.mb-3
+      input#under25.form-check-input(type='radio' name='materialExampleRadios')
+      label.form-check-label.small.text-uppercase.card-link-secondary(for='under25') Under $25
+    .form-check.pl-0.mb-3
+      input#2550.form-check-input(type='radio' name='materialExampleRadios')
+      label.form-check-label.small.text-uppercase.card-link-secondary(for='2550') $25 to $50
+    .form-check.pl-0.mb-3
+      input#50100.form-check-input(type='radio' name='materialExampleRadios')
+      label.form-check-label.small.text-uppercase.card-link-secondary(for='50100') $50 to $100
+    .form-check.pl-0.mb-3
+      input#100200.form-check-input(type='radio' name='materialExampleRadios')
+      label.form-check-label.small.text-uppercase.card-link-secondary(for='100200') $100 to $200
+    .form-check.pl-0.mb-3
+      input#200above.form-check-input(type='radio' name='materialExampleRadios')
+      label.form-check-label.small.text-uppercase.card-link-secondary(for='200above') $200 &amp; Above
+    form
+      .d-flex.align-items-center.mt-4.pb-1
+        .md-form.md-outline.my-0
+          input#from.form-control.mb-0(type='text')
+          label(for='form') $ Min
+        p.px-2.mb-0.text-muted  - 
+        .md-form.md-outline.my-0
+          input#to.form-control.mb-0(type='text')
+          label(for='to') $ Max
+          // Section: Price
+  // Section: Price version 2
+  section.mb-4
+    h6.font-weight-bold.mb-3 Price
+    .slider-price.d-flex.align-items-center.my-4
+      span.font-weight-normal.small.text-muted.mr-2 $0
+      form.multi-range-field.w-100.mb-1
+        input#multi.multi-range(type='range')
+      span.font-weight-normal.small.text-muted.ml-2 $100
+  // Section: Price version 2
+  script(src='../searchFilter.js')
+  // Section: Color
+// Section: Filters
 // Section: Sidebar

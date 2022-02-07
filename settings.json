@@ -42,9 +42,25 @@
 			"Skincare": []
 		}
 	},
-	"category": ["NA", "👚 Clothing", "👟 Shoes", "👜 Bags", "💍 Accessories", "🧢 Miscellaneous"],
-	"occasion": ["NA", "⚽️ Sports", "🥂 Formal", "🚶 Casual"],
 	"season": ["NA", "☘️ Spring", "☀️ Summer", "🍂 Fall", "❄️ Winter"],
+	"category": ["NA", "👚 Clothing", "👟 Shoes", "👜 Bags", "💍 Accessories", "🧢 Miscellaneous"],
+	"type": ["NA", "bodycon", "A Line", "Tee", "Fit and Flare", "Tunic", "Tank", "Shirt", "Cami", "Fitted", "Smock"],
+	"style": ["NA", "👗 Elegant", "🥂 Romantic", "⚽️ Sporty", "💎 Glamorous", "🚶 Casual"],
+	"length": ["NA", "short", "long", "knee length", "midi", "maxi"],
+	"pattern": [
+		"NA",
+		"animal",
+		"baroque",
+		"camo",
+		"floral",
+		"geometric",
+		"graphic",
+		"plaid",
+		"plain",
+		"striped",
+		"tropical"
+	],
+	"sleeve": ["NA", "sleeveless", "cap sleeve", "short sleeve", "half sleeve", "3/4 length sleeve", "long sleeve"],
 	"colorName": [
 		"NA",
 		"Black",
@@ -63,6 +79,34 @@
 		"Nude",
 		"Taupe",
 		"Champagne"
+	],
+	"material": [
+		"NA",
+		"cotton",
+		"corduroy",
+		"lace",
+		"leather",
+		"mesh",
+		"metallic",
+		"organza",
+		"polyester",
+		"satin",
+		"sequins",
+		"suede",
+		"velvet",
+		"wool"
+	],
+	"neckline": [
+		"NA",
+		"spaghetti strap",
+		"v neck",
+		"strapless",
+		"one shoulder",
+		"off the shoulder",
+		"halter",
+		"turtleneck",
+		"collar",
+		"hooded"
 	],
 	"size": ["NA", "XS", "S", "M", "L", "XL", 23, 24, 25, 26, 27, 28],
 	"starValues": [0, 10, 40, 90, 160, 250],

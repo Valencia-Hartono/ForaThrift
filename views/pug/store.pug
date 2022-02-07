@@ -1,8 +1,8 @@
 include fora
 include navs.pug
 .container-fluid: .row
-	#categories.col-4.col-md-2
-		h4 Categories
-	.col-8.col-md-10: #items.row.me-2.me-md-4
+	.col-4.col-md-3
+		include searchFilter
+	.col-8.col-md-9: #items.row.me-2.me-md-4
 script(src='../store.js')
 include itemModal
