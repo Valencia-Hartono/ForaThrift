@@ -2,10 +2,7 @@
 	"starValues": [0, 10, 40, 90, 160, 250],
 	"discount": [10, 25, 40, 55, 70],
 	"deductionPts": [240, 480, 720, 960, 1200],
-	"season": ["NA", "☘️ Spring", "☀️ Summer", "🍂 Fall", "❄️ Winter"],
 	"category": ["NA", "👚 Clothing", "👟 Shoes", "👜 Bags", "💍 Accessories", "🧢 Miscellaneous"],
-	"style": ["NA", "👗 Elegant", "🥂 Romantic", "⚽️ Sporty", "💎 Glamorous", "🚶 Casual"],
-	"size": ["NA", "XS", "S", "M", "L", "XL"],
 	"colorName": [
 		"NA",
 		"Black",
@@ -25,6 +22,7 @@
 		"Taupe",
 		"Champagne"
 	],
+
 	"pattern": [
 		"NA",
 		"animal",
@@ -38,6 +36,7 @@
 		"striped",
 		"tropical"
 	],
+
 	"material": [
 		"NA",
 		"cotton",
@@ -54,6 +53,10 @@
 		"velvet",
 		"wool"
 	],
+	"season": ["NA", "☘️ Spring", "☀️ Summer", "🍂 Fall", "❄️ Winter"],
+	"size": ["NA", "XS", "S", "M", "L", "XL"],
+	"style": ["NA", "👗 Elegant", "🥂 Romantic", "⚽️ Sporty", "💎 Glamorous", "🚶 Casual"],
+
 	"categories": {
 		"names": ["clothing", "shoes", "bags", "accessories", "miscellaneous"],
 		"navNames": ["CLOTHES", "SHOES", "BAGS", "ACCESSORIES", "MISCELLANEOUS"],
