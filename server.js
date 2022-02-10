@@ -97,8 +97,7 @@ async function loadViews() {
 		if (dir == 'pug') dir = null;
 
 		let locals = {
-			//set locals.cats equal to categories objects, use : instead of =
-			cats: fora.categories,
+			fora: fora,
 			user: null
 		};
 

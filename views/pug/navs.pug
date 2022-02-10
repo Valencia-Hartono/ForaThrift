@@ -32,9 +32,9 @@ nav.navbar.navbar-expand-sm.navbar-dark.bg-dark.sticky-top.p-0
 			span.navbar-toggler-icon
 	#greenNav.collapse.navbar-collapse.row
 		ul.col-6.navbar-nav.pe-0.p-1
-			each name, i in cats.names
+			each name, i in fora.categories.names
 				li.flex-sm-fill.text-sm-center.nav-item.dropdown
-					a.nav-link(role='button' data-bs-toggle='dropdown')= cats.navNames[i]
+					a.nav-link(role='button' data-bs-toggle='dropdown')= fora.categories.navNames[i]
 					ul.dropdown-menu.container.p-2(id=`${name}Menu`): .row.mb-4
 							.col-8.px-4
 								.row

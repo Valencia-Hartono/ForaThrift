@@ -5,18 +5,30 @@
         | Season
     #panelsStayOpen-collapseZero.accordion-collapse.collapse
       .accordion-body
-        #seasonSearch
+        #seasonFilter
+          each label, i in fora.season
+            input(type="checkbox" class="form-check-input" id="season-" + i)
+            label(class="form-check-label" for="season-" + i)= label
+            br
   .accordion-item
     h2#panelsStayOpen-headingTwo.accordion-header
-      button.accordion-button.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#panelsStayOpen-collapseTwo')
-        | Size
+      button.accordion-button.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#panelsStayOpen-collapseTwo') Size
     #panelsStayOpen-collapseTwo.accordion-collapse.collapse
       .accordion-body
-        .row
-          .col-6
-            #sizeSearch1
-          .col-6
-            #sizeSearch2
+        #sizeFilter
+          .row
+            .col-6
+              each size, i in fora.size
+                if i % 2 == 0
+                  input(type="checkbox" class="form-check-input" id="size-" + i)
+                  label(class="form-check-label" for="size-" + i)= size
+                  br
+            .col-6
+              each size, i in fora.size
+                if i % 2 == 1
+                  input(type="checkbox" class="form-check-input" id="size-" + i)
+                  label(class="form-check-label" for="size-" + i)= size
+                  br
   .accordion-item
     h2#panelsStayOpen-headingThree.accordion-header
       button.accordion-button.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#panelsStayOpen-collapseThree')
