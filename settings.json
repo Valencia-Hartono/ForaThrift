@@ -1,6 +1,6 @@
 {
 	"starValues": [0, 10, 40, 90, 160, 250],
-	"discount": [10, 25, 40, 55, 70],
+	"discount": [20, 25, 40, 55, 70],
 	"deductionPts": [240, 480, 720, 960, 1200],
 	"category": ["NA", "👚 Clothing", "👟 Shoes", "👜 Bags", "💍 Accessories", "🧢 Miscellaneous"],
 	"colorName": [

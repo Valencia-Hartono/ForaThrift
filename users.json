@@ -5,11 +5,11 @@
     "wechatID": "xxx",
     "password": "vally227",
     "totalPoints": 20000,
-    "pointsForExchange": 2000,
+    "pointsForExchange": 1280,
     "coupons": [
       8,
       9,
-      0,
+      1,
       3,
       0
     ],
@@ -19,9 +19,17 @@
     "phone": "13162981165",
     "address": "2888 Hunan Rd The Emerald 142",
     "donations": [],
-    "favorites": [],
+    "favorites": [
+      "0188789",
+      "008264",
+      "0089707"
+    ],
     "reserved": [
-      "0213280"
+      "008264",
+      "0089888",
+      "0213280",
+      "0089707",
+      "0083027"
     ],
     "purchases": [],
     "requestBanTime": 0,
