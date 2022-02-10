@@ -1,89 +1,45 @@
 #accordionPanelsStayOpenExample.accordion
-  .accordion-item
-    h2#panelsStayOpen-headingZero.accordion-header
-      button.accordion-button.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#panelsStayOpen-collapseZero')
-        | Season
-    #panelsStayOpen-collapseZero.accordion-collapse.collapse
-      .accordion-body
-        #seasonFilter
-          each label, i in fora.season
-            input(type="checkbox" class="form-check-input" id="season-" + i)
-            label(class="form-check-label" for="season-" + i)= label
-            br
-  .accordion-item
-    h2#panelsStayOpen-headingTwo.accordion-header
-      button.accordion-button.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#panelsStayOpen-collapseTwo') Size
-    #panelsStayOpen-collapseTwo.accordion-collapse.collapse
-      .accordion-body
-        #sizeFilter
-          .row
-            .col-6
-              each size, i in fora.size
-                if i % 2 == 0
-                  input(type="checkbox" class="form-check-input" id="size-" + i)
-                  label(class="form-check-label" for="size-" + i)= size
-                  br
-            .col-6
-              each size, i in fora.size
-                if i % 2 == 1
-                  input(type="checkbox" class="form-check-input" id="size-" + i)
-                  label(class="form-check-label" for="size-" + i)= size
-                  br
-  .accordion-item
-    h2#panelsStayOpen-headingThree.accordion-header
-      button.accordion-button.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#panelsStayOpen-collapseThree')
-        | Type
-    #panelsStayOpen-collapseThree.accordion-collapse.collapse
-      .accordion-body
-        #typeSearch
-  .accordion-item
-    h2#panelsStayOpen-headingFour.accordion-header
-      button.accordion-button.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#panelsStayOpen-collapseFour')
-        | Style
-    #panelsStayOpen-collapseFour.accordion-collapse.collapse
-      .accordion-body
-        #styleSearch
-  .accordion-item
-    h2#panelsStayOpen-headingFive.accordion-header
-      button.accordion-button.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#panelsStayOpen-collapseFive')
-        | Length
-    #panelsStayOpen-collapseFive.accordion-collapse.collapse
-      .accordion-body
-        #lengthSearch
-  .accordion-item
-    h2#panelsStayOpen-headingSix.accordion-header
-      button.accordion-button.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#panelsStayOpen-collapseSix')
-        | Pattern Type
-    #panelsStayOpen-collapseSix.accordion-collapse.collapse
-      .accordion-body
-        #patternSearch
-  .accordion-item
-    h2#panelsStayOpen-headingSeven.accordion-header
-      button.accordion-button.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#panelsStayOpen-collapseSeven')
-        | Sleeve Length
-    #panelsStayOpen-collapseSeven.accordion-collapse.collapse
-      .accordion-body
-        #sleeveSearch
-  .accordion-item
-    h2#panelsStayOpen-headingEight.accordion-header
-      button.accordion-button.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#panelsStayOpen-collapseEight')
-        | Color
-    #panelsStayOpen-collapseEight.accordion-collapse.collapse
-      .accordion-body
-        #colorNameSearch
-  .accordion-item
-    h2#panelsStayOpen-headingNine.accordion-header
-      button.accordion-button.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#panelsStayOpen-collapseNine')
-        | Material
-    #panelsStayOpen-collapseNine.accordion-collapse.collapse
-      .accordion-body
-        #materialSearch
-  .accordion-item
-    h2#panelsStayOpen-headingTen.accordion-header
-      button.accordion-button.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#panelsStayOpen-collapseTen')
-        | Neckline
-    #panelsStayOpen-collapseTen.accordion-collapse.collapse
-      .accordion-body
-        #necklineSearch
+  
+  each filter in ['category','season','style','size','colorName','material','pattern','topType','neckline','length','sleeve']
+    .accordion-item
+      h2.accordion-header
+        button.accordion-button.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#accord' + filter)= filter
+      .accordion-collapse.collapse(id="accord" + filter): .accordion-body: div(id=filter + "Filter")
+          if fora[filter] && fora[filter].length
+            if fora[filter].length>12
+              .row
+                .col-6
+                  each item, i in fora[filter]
+                    if i % 2 == 0
+                      input(type="checkbox" class="form-check-input" id=filter + "-" + i)
+                      label(class="form-check-label" for=filter + "-" + i)= item
+                      br
+                .col-6
+                  each item, i in fora[filter]
+                    if i % 2 == 1
+                      input(type="checkbox" class="form-check-input" id=filter + "-" + i)
+                      label(class="form-check-label" for=filter + "-" + i)= item
+                      br
+            else if filter!="size"
+              each label, i in fora[filter]
+                input(type="checkbox" class="form-check-input" id=filter + "-" + i)
+                label(class="form-check-label" for=filter + "-" + i)= label
+                br
+            if filter=="size"
+              .row
+                each subFilter in ["size","shoeSize","jeanSize"]
+                  .col-6
+                    each size, i in fora[subFilter]
+                      if i % 2 == 0
+                        input(type="checkbox" class="form-check-input" id="size-" + i)
+                        label(class="form-check-label" for="size-" + i)= size
+                        br
+                  .col-6
+                    each size, i in fora[subFilter]
+                      if i % 2 == 1
+                        input(type="checkbox" class="form-check-input" id="size-" + i)
+                        label(class="form-check-label" for="size-" + i)= size
+                        br
+            
 
   script(src='../searchFilter.js')
