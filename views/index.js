@@ -45,12 +45,14 @@ async function getItems(itemIDs) {
 }
 
 function displayItems(elem, items) {
-	if (!items || !items.length) {
-		console.warn('no items in array!');
-		return;
-	}
 	// gets the element with id="items"
 	let $items = $(elem);
+	$items.empty();
+
+	if (!items || !items.length) {
+		$items.text('No items were found that match your search!');
+		return;
+	}
 	//loop through items array
 	for (let item of items) {
 		//in each grid, add the div with item's id. This div includes the image, and then a container on the bottom with the name and the price
@@ -86,7 +88,7 @@ function displayItems(elem, items) {
 
 			//appends item information to column 2
 			$('#itemModal #item_brand').text(' Brand: ' + item.brand);
-			$('#itemModal #item_colorName').text(' Color: ' + fora.colorName[item.colorName]);
+			$('#itemModal #item_color').text(' Color: ' + fora.color[item.color]);
 			$('#itemModal #item_size').text(' Size: ' + fora.size[item.size]);
 			$('#itemModal #item_price').text(' Price: ' + item.price + ' RMB');
 
@@ -102,6 +104,19 @@ function displayItems(elem, items) {
 	}
 }
 
+async function fetchItems(category, type, subtype) {
+	category ??= 1;
+	type ??= 0;
+	subtype ??= 0;
+	let url = `items/${category}/${type}/${subtype}`;
+	log(url);
+	let res = await fetch(url);
+	res = await res.json();
+	let items = res.items;
+	log(items);
+	displayItems('#items', items);
+}
+
 window.fora = {};
 
 fora.load = async () => {
@@ -114,8 +129,8 @@ fora.load = async () => {
 	Object.assign(fora, settings);
 
 	//instead of inputing types manually, use a function
-	for (let category of fora.categories.names) {
-		addColumns(category);
+	for (let i = 0; i < fora.categories.names.length; i++) {
+		addColumns(fora.categories.names[i], i);
 	}
 
 	$('#clothingSidebar').show();
@@ -123,38 +138,42 @@ fora.load = async () => {
 	$('#shoes').show();
 
 	//for nav bar; adds category types and subtypes on second nav bar, evenly split in three column
-	function addColumns(category) {
+	function addColumns(category, i) {
 		let $menu = $('#' + category + 'Menu');
 		let $cols = $menu.find('.col');
-		let $categories = $('#categories');
-		$categories.append('<div id="' + category + 'Sidebar" class="row"></div>'); //ex. id=clothingSidebar
-		let $category = $('#' + category + 'Sidebar'); // retrieves the element
-		$category.hide();
 		let types = fora.categories[category].typeNames; // get the array of type names ex. tops, bottoms
 
 		//evenly distribute category types within the three columns
 		let cols = [0, 0, 0];
 
-		for (let i = 0; i < types.length; i++) {
+		for (let j = 0; j < types.length; j++) {
 			//loops through array of type names
-			let type = types[i]; //retrieves a type name (ex.top or bottom)
+			let type = types[j]; //retrieves a type name (ex.top or bottom)
 			// find which column has the least amount of items
 			// place the type and sub-cat options in that column
 			let colNumMin = 0;
-			for (let i = 1; i < cols.length; i++) {
-				if (cols[colNumMin] > cols[i]) {
-					colNumMin = i;
+			for (let colIdx = 1; colIdx < cols.length; colIdx++) {
+				if (cols[colNumMin] > cols[colIdx]) {
+					colNumMin = colIdx;
 				}
 			}
 
-			$cols.eq(colNumMin).append('<div class="row"><a href="#" class="col">' + type + '</a></div>');
-			$category.append('<a href="#" class="col-12">' + type + '</a>');
+			$cols
+				.eq(colNumMin)
+				.append(
+					`<div class="row"><a href="#" onclick="fetchItems(${i + 1}, ${j + 1})" class="col">` + type + '</a></div>'
+				);
 
 			let subtypes = fora.categories[category][type]; // retrieves the array of the type names
-			for (let j = 0; j < subtypes.length; j++) {
-				let subtype = subtypes[j];
-				$cols.eq(colNumMin).append('<div class="row"><a href="#" class="col"> ➤ ' + subtype + '</a></div>');
-				$category.append('<a href="#" class="col-12"> ➤ ' + subtype + '</a>');
+			for (let k = 0; k < subtypes.length; k++) {
+				let subtype = subtypes[k];
+				$cols
+					.eq(colNumMin)
+					.append(
+						`<div class="row"><a href="#" onclick="fetchItems(${i + 1}, ${j + 1}, ${
+							k + 1
+						})" class="col"> ➤ ${subtype}</a></div>`
+					);
 			}
 			cols[colNumMin] += subtypes.length + 1;
 		}

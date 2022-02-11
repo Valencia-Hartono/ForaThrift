@@ -47,7 +47,7 @@
 	"discount": [20, 25, 40, 55, 70],
 	"deductionPts": [240, 480, 720, 960, 1200],
 
-	"colorName": [
+	"color": [
 		"NA",
 		"Black",
 		"White",

@@ -1,9 +1,9 @@
 #accordionPanelsStayOpenExample.accordion
   
-  each filter in ['category','season','style','size','colorName','material','pattern','topType','neckline','length','sleeve']
+  each filter in ['category','season','style','size','color','material','pattern','topType','neckline','length','sleeve']
     .accordion-item
       h2.accordion-header
-        button.accordion-button.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#accord' + filter)= filter
+        button.accordion-button.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#accord' + filter)= (!filter.includes('Type')) ? filter[0].toUpperCase() + filter.slice(1) : 'Type'
       .accordion-collapse.collapse(id="accord" + filter): .accordion-body: div(id=filter + "Filter")
           if fora[filter] && fora[filter].length
             if fora[filter].length>12
@@ -26,8 +26,8 @@
                 label(class="form-check-label" for=filter + "-" + i)= label
                 br
             if filter=="size"
-              .row
-                each subFilter in ["size","shoeSize","jeanSize"]
+              each subFilter in ["size","shoeSize","jeanSize"]
+                .row(id=subFilter +'SubFilter')
                   .col-6
                     each size, i in fora[subFilter]
                       if i % 2 == 0

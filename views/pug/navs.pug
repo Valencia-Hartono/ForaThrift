@@ -38,7 +38,7 @@ nav.navbar.navbar-expand-sm.navbar-dark.bg-dark.sticky-top.p-0
 					ul.dropdown-menu.container.p-2(id=`${name}Menu`): .row.mb-4
 							.col-8.px-4
 								.row
-									a.col-12.fs-4.green(href='/store/clothing')= 'Shop ' + name[0].toUpperCase() + name.slice(1)
+									a.col-12.fs-4.green(href='#' onclick='fetchItems(' + (i+1) +')')= 'Shop ' + name[0].toUpperCase() + name.slice(1)
 									.col  _____________ 
 									.col  _____________ 
 									.col  _____________ 

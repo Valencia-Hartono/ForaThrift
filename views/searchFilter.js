@@ -10,7 +10,7 @@ $(async () => {
 		'length',
 		'pattern',
 		'sleeve',
-		'colorName',
+		'color',
 		'material',
 		'neckline'
 	];
