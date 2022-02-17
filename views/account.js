@@ -146,16 +146,22 @@ $(async () => {
 	displayItems('#reservedItems', fora.account.reserved);
 
 	let discountedSubtotal = [];
-
 	function makeDiscountSelector() {
 		let itemSubtotal = 0;
+		let discountIdx = 0;
+		let pickUpIdx = 0;
+		for (let i = 0; i < user.address.length; i++) {
+			$(`#selectedDeliveryAddress`).append(
+				//NEED HELP
+				`<option value="${i}" ${(pickUpIdx = 0 ? 'disabled' : '')}> ${user.address[i]} </option>`
+			);
+		}
 		for (let i = 0; i < user.reserved.length; i++) {
 			//adds the price of every item in user.reserved
 			itemSubtotal += fora.account.reserved[i].price;
 		}
 		$('#preCouponSubtotal').text(itemSubtotal.toFixed(2) + ' RMB');
 		$('#banTime').text(user.requestBanTime);
-		$('#shippingCost').text('12.00 RMB');
 
 		$('#requestOrderButton')[0].onclick = () => {
 			//if fail, display alert saying it is unsuccessful
@@ -170,10 +176,6 @@ $(async () => {
 			$('#confirmOrderModal').modal('show');
 		};
 
-		//Rounds billing
-		// -> 99.49230420 * 100 to 9949.230420
-		// -> math floor to 9949
-		// -> 9949 / 100 to 99.49
 		discountedSubtotal[0] = itemSubtotal;
 
 		//sets discountBilling array to the discounted price options
@@ -192,22 +194,59 @@ $(async () => {
 		}
 
 		$('#discountSelector')[0].onchange = () => {
-			let idx = $('#discountSelector').val();
-			calculateBilling(idx);
+			discountIdx = $('#discountSelector').val();
+			calculateBilling(discountIdx, pickUpIdx);
+		};
+
+		$('#pickupMethodSelector')[0].onchange = () => {
+			pickUpIdx = $('#pickupMethodSelector').val();
+			calculateBilling(discountIdx, pickUpIdx);
 		};
 	}
 
 	makeDiscountSelector();
 
-	function calculateBilling(discountIdx) {
+	//calculates discounted price, sales tax, rewarded points
+	function calculateDiscount(discountIdx) {
 		let subtotal = discountedSubtotal[discountIdx];
 		let salesTax = (subtotal * 7) / 100;
 		let rewardPoints = Math.ceil(subtotal * 2);
-		let totalBilling = subtotal + salesTax + 12;
+
 		$('#itemSubtotal').text(subtotal.toFixed(2) + ' RMB');
 		$('#salesTax').text(salesTax.toFixed(2) + ' RMB');
 		$('#rewardPoints').text(rewardPoints + 'pts');
+		return subtotal + salesTax;
+	}
+
+	//calculates shipping fee
+	function calculateShipping(pickUpIdx) {
+		let shippingCost;
+		if (pickUpIdx == 0) {
+			shippingCost = 0;
+		} else {
+			shippingCost = 12;
+		}
+		$('#shippingCost').text(shippingCost + ' RMB');
+		return shippingCost;
+	}
+
+	{
+		/* <select class="form-select">
+  <option selected>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</select>
+label.form-group.col-10.form-label(for='address') Please select your delivery address
+select#selectedDeliveryAddress.form-select.form-select-md.mb-3(name='address') */
+	}
+
+	//calculate Billing function calculates both Discount and Shipping
+	function calculateBilling(discountIdx, pickUpIdx) {
+		let totalBilling = calculateDiscount(discountIdx) + calculateShipping(pickUpIdx);
 		$('#totalBilling').text(totalBilling.toFixed(2) + ' RMB');
+		discountIdx = 0;
+		pickUpIdx = 0;
 	}
 
 	calculateBilling(0);
