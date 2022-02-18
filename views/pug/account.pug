@@ -22,9 +22,6 @@ include navs.pug
 					#profile-orders-tab(href="#" data-bs-toggle='pill' data-bs-target='#profile-orders' type='button' role='tab') 
 						span.fs-4 🗒 
 						label My Orders
-					#profile-purchases-tab(href="#" data-bs-toggle='pill' data-bs-target='#profile-purchases' type='button' role='tab') 
-						span.fs-4 💳 
-						label My Purchases
 					#profile-donations-tab(href="#" data-bs-toggle='pill' data-bs-target='#profile-donations' type='button' role='tab') 
 						span.fs-4 📦 
 						label My Donations
@@ -36,7 +33,6 @@ include navs.pug
 			#profile-favorites.tab-pane.fade(role='tabpanel'): include account/favorites.pug
 			#profile-reserved.tab-pane.fade(role='tabpanel'): include account/cart.pug
 			#profile-orders.tab-pane.fade(role='tabpanel'): include account/orders.pug
-			#profile-purchases.tab-pane.fade(role='tabpanel'): include account/purchases.pug
 include pointsSystem.pug
 script(src='../../account.js')
 
