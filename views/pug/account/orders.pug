@@ -7,8 +7,21 @@
 	p.my-0 Points for exchange: 
 		span.pointsExchangable= user.pointsForExchange || '0'
 	a(data-bs-toggle='modal' href='#pointsSystem') How to earn points?
+	.card
+	.card-header Featured
+	.card-body
+		h5.card-title Special title treatment
+		p.card-text With supporting text below as a natural lead-in to additional content.
+		a.btn.btn-primary(href='#') Go somewhere
+	.card
+		.card-header Featured
+		.card-body
+			h5.card-title Special title treatment
+			p.card-text With supporting text below as a natural lead-in to additional content.
+			a.btn.btn-primary(href='#') Go somewhere
 
 if user.orders.length == 0
 	p.text-center: a(href="store") You haven’t ordered anything yet (view shop)
 else
 	.container-fluid: #favoritesItems.row
+

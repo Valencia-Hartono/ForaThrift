@@ -275,4 +275,6 @@ select#selectedDeliveryAddress.form-select.form-select-md.mb-3(name='address') *
 	for (let i = 1; i < fora.starValues.length; i++) {
 		$(`#${i}star`).text(fora.starValues[i]);
 	}
+
+	//ORDERS.PUG
 });
