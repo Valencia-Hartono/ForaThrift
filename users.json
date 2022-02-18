@@ -11,21 +11,25 @@
 		"birthday": "2004-02-27",
 		"gender": "f",
 		"phone": "13162981165",
-		"address": ["2888 Hunan Rd The Emerald 142"],
+		"address": "2888 Hunan Rd The Emerald 142",
+		"city": "",
+		"region": "",
+		"postalCode": "",
 		"donations": [],
 		"favorites": ["0188789", "008264", "0089707", "0213280"],
 		"reserved": ["008264", "0089888", "0213280", "0089707", "0083027", "0188789"],
 		"orders": [
 			{
-				"items": ["0089707"],
-				"time": 164944748484
+				"items": ["008264", "0213280", "0089707", "0083027"],
+				"time": 1645195568251,
+				"confirmed": false
 			},
 			{
-				"items": ["0089707"],
-				"time": 164944748484
+				"items": ["0089888"],
+				"time": 1645195568251,
+				"confirmed": true
 			}
 		],
-		"purchases": [],
 		"requestBanTime": 0,
 		"flexRadioDefault": "on"
 	},
@@ -41,11 +45,14 @@
 		"birthday": "2004-07-13",
 		"gender": "n",
 		"phone": "",
-		"address": ["98 James St."],
+		"address": "98 James St.",
+		"city": "",
+		"region": "",
+		"postalCode": "",
 		"donations": [],
 		"favorites": [],
 		"reserved": [],
-		"purchases": [],
+		"orders": [],
 		"requestBanTime": 0,
 		"flexRadioDefault": "on"
 	}

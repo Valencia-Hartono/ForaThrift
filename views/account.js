@@ -200,6 +200,11 @@ $(async () => {
 
 		$('#pickupMethodSelector')[0].onchange = () => {
 			pickUpIdx = $('#pickupMethodSelector').val();
+			if (pickUpIdx == 0) {
+				$('#delivery').hide();
+			} else {
+				$('#delivery').show();
+			}
 			calculateBilling(discountIdx, pickUpIdx);
 		};
 	}
@@ -277,4 +282,9 @@ select#selectedDeliveryAddress.form-select.form-select-md.mb-3(name='address') *
 	}
 
 	//ORDERS.PUG
+	//entire order history
+	for (let i = 0; i < user.orders.length; i++) {
+		//each item ordered-> append to card
+		displayItems('#orderedItems' + i, await getItems(user.orders[i].items));
+	}
 });

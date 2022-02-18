@@ -41,9 +41,9 @@ else
 					select#pickupMethodSelector.form-select.form-select-md.mb-3(name='pickupMethod')
 						option(value='0') Pick up at store
 						option(value='1') Delivery
-				
-				label.col-10 Deliver to following address:
-				label.col-10.form-label= user.address || 'please enter your address on your profile page'
+				#delivery(style="display:none")
+					label.col-10 Deliver to following address:
+					label.col-10.form-label= user.address || 'please enter your address on your profile page'
 				
 				div.mb-3
 					p.my-0 Items in cart: 
