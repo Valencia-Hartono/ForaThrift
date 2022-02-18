@@ -41,9 +41,7 @@ else
 					select#pickupMethodSelector.form-select.form-select-md.mb-3(name='pickupMethod')
 						option(value='0') Pick up at store
 						option(value='1') Delivery
-				#delivery(style="display:none")
-					label.col-10 Deliver to following address:
-					label.col-10.form-label= user.address || 'please enter your address on your profile page'
+				
 				
 				div.mb-3
 					p.my-0 Items in cart: 
@@ -59,6 +57,10 @@ else
 						span#totalBilling
 					p.my-0 Total rewarded pts: 
 						span#rewardPoints 
+				#delivery(style="display:none")
+					label.col-10 Deliver to following address:
+					label.col-10.form-label= user.address || 'please enter your address on your profile page'
+					
 				| Are you sure you want to order these items? If payment via wechat is not received within 24hrs of request, request will be denied and user must wait 48hrs before next request.
 			.modal-footer
 				//- button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Cancel

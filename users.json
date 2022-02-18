@@ -6,7 +6,7 @@
 		"password": "vally227",
 		"totalPoints": 20000,
 		"pointsForExchange": 320,
-		"coupons": [8, 9, 1, 4, 0],
+		"coupons": [0, 8, 9, 1, 4, 0],
 		"name": "Valencia",
 		"birthday": "2004-02-27",
 		"gender": "f",
@@ -22,12 +22,26 @@
 			{
 				"items": ["008264", "0213280", "0089707", "0083027"],
 				"time": 1645195568251,
-				"confirmed": false
+				"confirmed": false,
+				"couponUsed": 1,
+				"delivery": false,
+				"subtotal": 2024,
+				"salesTax": 141,
+				"shippingCost": 0,
+				"totalBilling": 2164,
+				"totalRewardedPoints": 4046
 			},
 			{
 				"items": ["0089888"],
 				"time": 1645195568251,
-				"confirmed": true
+				"confirmed": true,
+				"couponUsed": 0,
+				"delivery": true,
+				"subtotal": 899,
+				"salesTax": 63,
+				"shippingCost": 12,
+				"totalBilling": 974,
+				"totalRewardedPoints": 1798
 			}
 		],
 		"requestBanTime": 0,
@@ -40,7 +54,7 @@
 		"password": "timmy02",
 		"totalPoints": 5203,
 		"pointsForExchange": 4000,
-		"coupons": [6, 2, 9, 0, 0],
+		"coupons": [0, 6, 2, 9, 0, 0],
 		"name": "Timmy",
 		"birthday": "2004-07-13",
 		"gender": "n",

@@ -183,7 +183,7 @@ $(async () => {
 		//ex.totalBilling = 100 rmb -> after this loop, discountBilling = [90, 75, 60, 45, 30] rmb
 		$(`#discountSelector`).append(`<option value="0"> no discount | ${itemSubtotal.toFixed(2)} RMB </option>`);
 
-		for (let i = 0; i < 5; i++) {
+		for (let i = 1; i < 6; i++) {
 			let discount = (100 - fora.discount[i]) / 100;
 			discountedSubtotal[i + 1] = itemSubtotal * discount;
 			$(`#discountSelector`).append(
