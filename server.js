@@ -85,6 +85,11 @@ app.use(express.static(__root + '/views'));
 // pug is template framework for rendering html dynamically
 app.set('view engine', 'pug');
 
+let defaultLocals = {
+	fora: fora,
+	user: users['valencia01']
+};
+
 async function loadViews() {
 	let files = await klaw(__root + '/views/pug');
 	for (file of files) {
@@ -96,14 +101,8 @@ async function loadViews() {
 		let dir = file.dir.split('/').slice(-1);
 		if (dir == 'pug') dir = null;
 
-		let locals = {
-			fora: fora,
-			user: null
-		};
-
 		app.get('/' + (dir ? dir + '/' : '') + file.name, (req, res) => {
-			locals.user = users['valencia01'];
-
+			let locals = defaultLocals;
 			if (req.url == '/') {
 				req.url = 'index';
 			}
@@ -119,6 +118,29 @@ async function startServer() {
 	app.all('/settings.json', (req, res) => {
 		res.json(fora);
 	});
+
+	function getStorePage(req, res) {
+		let { category, type, subtype } = req.params;
+		let locals = defaultLocals;
+		// numbers go here
+		locals.store = {
+			category: fora.categories.names.indexOf(category) + 1,
+			type: fora.categories[category].typeNames.indexOf(type) + 1
+		};
+
+		if (type) {
+			locals.store.subtype = fora.categories[category][type].indexOf(subtype) + 1;
+		} else {
+			locals.store.subtype = 0;
+		}
+		res.render('pug/store', locals);
+	}
+
+	app.get('/store/:category', getStorePage);
+
+	app.get('/store/:category/:type', getStorePage);
+
+	app.get('/store/:category/:type/:subtype', getStorePage);
 
 	// category is a number (0 is not valid)
 	// type is a number (0 for all)

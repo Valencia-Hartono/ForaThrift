@@ -104,19 +104,6 @@ function displayItems(elem, items) {
 	}
 }
 
-async function fetchItems(category, type, subtype) {
-	category ??= 1;
-	type ??= 0;
-	subtype ??= 0;
-	let url = `items/${category}/${type}/${subtype}`;
-	log(url);
-	let res = await fetch(url);
-	res = await res.json();
-	let items = res.items;
-	log(items);
-	displayItems('#items', items);
-}
-
 window.fora = {};
 
 fora.load = async () => {
@@ -127,6 +114,30 @@ fora.load = async () => {
 
 	let settings = await (await fetch('/settings.json')).json();
 	Object.assign(fora, settings);
+
+	window.fetchItems = async (category, type, subtype) => {
+		category ??= 1;
+		type ??= 0;
+		subtype ??= 0;
+		let itemsUrl = `/items/${category}/${type}/${subtype}`;
+		log(itemsUrl);
+
+		let storeUrl = '/store/' + fora.categories.names[category - 1];
+		if (type) {
+			storeUrl += '/' + fora.categories[category - 1].typeNames[type - 1];
+		}
+		if (subtype) {
+			storeUrl += '/' + fora.categories[category - 1][type - 1][subtype - 1];
+		}
+
+		history.pushState({}, 'test', storeUrl);
+
+		let res = await fetch(itemsUrl);
+		res = await res.json();
+		let items = res.items;
+		log(items);
+		displayItems('#items', items);
+	};
 
 	//instead of inputing types manually, use a function
 	for (let i = 0; i < fora.categories.names.length; i++) {
@@ -160,9 +171,7 @@ fora.load = async () => {
 
 			$cols
 				.eq(colNumMin)
-				.append(
-					`<div class="row"><a href="#" onclick="fetchItems(${i + 1}, ${j + 1})" class="col">` + type + '</a></div>'
-				);
+				.append(`<div class="row"><a onclick="fetchItems(${i + 1}, ${j + 1})" class="col">` + type + '</a></div>');
 
 			let subtypes = fora.categories[category][type]; // retrieves the array of the type names
 			for (let k = 0; k < subtypes.length; k++) {
@@ -170,9 +179,7 @@ fora.load = async () => {
 				$cols
 					.eq(colNumMin)
 					.append(
-						`<div class="row"><a href="#" onclick="fetchItems(${i + 1}, ${j + 1}, ${
-							k + 1
-						})" class="col"> ➤ ${subtype}</a></div>`
+						`<div class="row"><a onclick="fetchItems(${i + 1}, ${j + 1}, ${k + 1})" class="col"> ➤ ${subtype}</a></div>`
 					);
 			}
 			cols[colNumMin] += subtypes.length + 1;

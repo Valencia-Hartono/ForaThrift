@@ -13,9 +13,9 @@ if user.orders.length == 0
 else
 	.container-fluid
 		each order, i in user.orders
-			.row: .card
-				h4.card-header
-					p= ((order.confirmed)?'Admin Confirmed Order':'Pending Order Confirmation')
+			.row.mt-4: .card
+				h5.card-heade.mt-5.mx-4
+					p= ((order.confirmed)?'Admin Confirmed Order':'Pending Order Confirmation...')
 				.card-body
 					h5.card-title My Order Details
 					.card-text
@@ -39,23 +39,8 @@ else
 									span=order.totalBilling + " RMB"
 								p Total rewarded pts: 
 									span=order.totalRewardedPoints + " pts"
-				#carouselExampleControls.carousel.slide(data-bs-ride='carousel')
-					.carousel-inner
-						.carousel-item
-						img.d-block.w-100(src='...' alt='...')
-					button.carousel-control-prev(type='button' data-bs-target='#carouselExampleControls' data-bs-slide='prev')
-						span.carousel-control-prev-icon(aria-hidden='true')
-						span.visually-hidden Previous
-					button.carousel-control-next(type='button' data-bs-target='#carouselExampleControls' data-bs-slide='next')
-						span.carousel-control-next-icon(aria-hidden='true')
-						span.visually-hidden Next
 				div(id="orderedItems" + i).row
 
-	.card
-	.card-header Featured
-	.card-body
-		h5.card-title Special title treatment
-		p.card-text With supporting text below as a natural lead-in to additional content.
-		a.btn.btn-primary(href='#') Go somewhere
+	
 
 

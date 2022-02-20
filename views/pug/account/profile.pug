@@ -29,13 +29,13 @@
 			.mb-0
 				label.form-label(for='gender') Gender
 			.form-check.form-check-inline
-				input#femaleRadio.form-check-input(type='radio' name='flexRadioDefault' checked=(user.gender == 'f'))
+				input#femaleRadio.form-check-input(type='radio' name='gender' checked=(user.gender == 'f') value='f')
 				label.form-check-label(for='femaleRadio')  female 
 			.form-check.form-check-inline
-				input#maleRadio.form-check-input(type='radio' name='flexRadioDefault' checked=(user.gender == 'm'))
+				input#maleRadio.form-check-input(type='radio' name='gender' checked=(user.gender == 'm') value='m')
 				label.form-check-label(for='maleRadio')  male 
 			.form-check.form-check-inline
-				input#nonBinaryRadio.form-check-input(type='radio' name='flexRadioDefault' checked=(user.gender == 'b'))
+				input#nonBinaryRadio.form-check-input(type='radio' name='gender' checked=(user.gender == 'b') value='b')
 				label.form-check-label(for='nonBinaryRadio')  nonbinary 
 			// phone form
 			.mt-3.mb-3

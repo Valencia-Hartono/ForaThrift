@@ -1,6 +1,6 @@
-#accordionPanelsStayOpenExample.accordion
-  
-  each filter in ['category','season','style','size','color','material','pattern','topType','neckline','length','sleeve']
+
+form#searchFilterForm.accordion
+  each filter in ['season','style','size','color','material','pattern','topType','neckline','length','sleeve']
     .accordion-item
       h2.accordion-header
         button.accordion-button.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#accord' + filter)= (!filter.includes('Type')) ? filter[0].toUpperCase() + filter.slice(1) : 'Type'
@@ -11,35 +11,35 @@
                 .col-6
                   each item, i in fora[filter]
                     if i % 2 == 0
-                      input(type="checkbox" class="form-check-input" id=filter + "-" + i)
+                      input(type="checkbox" class="form-check-input" value=filter + "-" + i)
                       label(class="form-check-label" for=filter + "-" + i)= item
                       br
                 .col-6
                   each item, i in fora[filter]
                     if i % 2 == 1
-                      input(type="checkbox" class="form-check-input" id=filter + "-" + i)
+                      input(type="checkbox" class="form-check-input" value=filter + "-" + i)
                       label(class="form-check-label" for=filter + "-" + i)= item
                       br
             else if filter!="size"
               each label, i in fora[filter]
-                input(type="checkbox" class="form-check-input" id=filter + "-" + i)
+                input(type="checkbox" class="form-check-input" value=filter + "-" + i)
                 label(class="form-check-label" for=filter + "-" + i)= label
                 br
-            if filter=="size"
+            else
               each subFilter in ["size","shoeSize","jeanSize"]
                 .row(id=subFilter +'SubFilter')
                   .col-6
                     each size, i in fora[subFilter]
                       if i % 2 == 0
-                        input(type="checkbox" class="form-check-input" id="size-" + i)
+                        input(type="checkbox" class="form-check-input" value=subFilter + "-" + i)
                         label(class="form-check-label" for="size-" + i)= size
                         br
                   .col-6
                     each size, i in fora[subFilter]
                       if i % 2 == 1
-                        input(type="checkbox" class="form-check-input" id="size-" + i)
+                        input(type="checkbox" class="form-check-input" value=subFilter + "-" + i)
                         label(class="form-check-label" for="size-" + i)= size
                         br
             
 
-  script(src='../searchFilter.js')
+  script(src='/searchFilter.js')

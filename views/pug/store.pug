@@ -4,5 +4,10 @@ include navs.pug
 	.col-4.col-md-3
 		include searchFilter
 	.col-8.col-md-9: #items.row.me-2.me-md-4
-script(src='../store.js')
+script(src='/store.js')
 include itemModal
+script.
+	$(async () => {
+		await fora.load();
+		fetchItems(#{store.category}, #{store.type}, #{store.subtype});
+	});
