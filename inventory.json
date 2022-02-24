@@ -22,8 +22,8 @@
 		},
 		{
 			"id": "008264",
-			"type": 0,
-			"subtype": 8,
+			"type": 2,
+			"subtype": 1,
 			"style": 3,
 			"season": 2,
 
@@ -42,8 +42,8 @@
 		},
 		{
 			"id": "0188789",
-			"type": 1,
-			"subtype": 4,
+			"type": 2,
+			"subtype": 1,
 			"style": 2,
 			"season": 1,
 
@@ -62,8 +62,8 @@
 		},
 		{
 			"id": "0083027",
-			"type": 0,
-			"subtype": 8,
+			"type": 2,
+			"subtype": 2,
 			"style": 3,
 			"season": 2,
 
@@ -82,8 +82,8 @@
 		},
 		{
 			"id": "0085937",
-			"type": 0,
-			"subtype": 8,
+			"type": 2,
+			"subtype": 0,
 			"style": 3,
 			"season": 2,
 
@@ -103,8 +103,8 @@
 		{
 			"id": "0089707",
 			"name": "Nude spaghetti strap midi dress",
-			"type": 0,
-			"subtype": 8,
+			"type": 2,
+			"subtype": 1,
 			"style": 3,
 			"season": 2,
 
@@ -124,7 +124,7 @@
 			"id": "0089888",
 			"name": "Calvin Klein High Rise Skinny Ankle in Dark Wash",
 			"type": 0,
-			"subtype": 8,
+			"subtype": 0,
 			"style": 3,
 			"season": 3,
 

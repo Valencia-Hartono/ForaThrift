@@ -282,5 +282,6 @@ select#selectedDeliveryAddress.form-select.form-select-md.mb-3(name='address') *
 	for (let i = 0; i < user.orders.length; i++) {
 		//each item ordered-> append to card
 		displayItems('#orderedItems' + i, await getItems(user.orders[i].items));
+		displayItems('#requestItems' + i, await getItems(user.orders[i].items));
 	}
 });
