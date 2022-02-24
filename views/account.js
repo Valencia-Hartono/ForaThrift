@@ -1,10 +1,6 @@
 /* ACCOUNT */
 
-$(async () => {
-	// jQuery wrapper
-
-	await fora.load();
-
+fora.scripts.push(async () => {
 	fora.account = {};
 
 	async function updateUserData(data) {

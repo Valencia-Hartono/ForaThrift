@@ -104,17 +104,11 @@ function displayItems(elem, items) {
 	}
 }
 
-window.fora = {};
+window.fora = {
+	scripts: []
+};
 
-fora.load = async () => {
-	// prevents the rest of this function from
-	// running if it is called twice
-	if (fora.loading) return;
-	fora.loading = true;
-
-	let settings = await (await fetch('/settings.json')).json();
-	Object.assign(fora, settings);
-
+fora.scripts.push(() => {
 	window.fetchItems = async (category, type, subtype) => {
 		category ??= 1;
 		type ??= 0;
@@ -122,12 +116,16 @@ fora.load = async () => {
 		let itemsUrl = `/items/${category}/${type}/${subtype}`;
 		log(itemsUrl);
 
-		let storeUrl = '/store/' + fora.categories.names[category - 1];
+		category = fora.categories.names[category - 1];
+
+		let storeUrl = '/store/' + category;
 		if (type) {
-			storeUrl += '/' + fora.categories[category - 1].typeNames[type - 1];
-		}
-		if (subtype) {
-			storeUrl += '/' + fora.categories[category - 1][type - 1][subtype - 1];
+			type = fora.categories[category].typeNames[type - 1];
+			storeUrl += '/' + type;
+			if (subtype) {
+				subtype = fora.categories[category][type][subtype - 1];
+				storeUrl += '/' + subtype;
+			}
 		}
 
 		history.pushState({}, 'test', storeUrl);
@@ -171,7 +169,12 @@ fora.load = async () => {
 
 			$cols
 				.eq(colNumMin)
-				.append(`<div class="row"><a onclick="fetchItems(${i + 1}, ${j + 1})" class="col">` + type + '</a></div>');
+				.append(
+					`<div class="row"><a onclick="fetchItems(${i + 1}, ${j + 1})" class="col">` +
+						type[0].toUpperCase() +
+						type.slice(1) +
+						'</a></div>'
+				);
 
 			let subtypes = fora.categories[category][type]; // retrieves the array of the type names
 			for (let k = 0; k < subtypes.length; k++) {
@@ -179,10 +182,21 @@ fora.load = async () => {
 				$cols
 					.eq(colNumMin)
 					.append(
-						`<div class="row"><a onclick="fetchItems(${i + 1}, ${j + 1}, ${k + 1})" class="col"> ➤ ${subtype}</a></div>`
+						`<div class="row"><a onclick="fetchItems(${i + 1}, ${j + 1}, ${k + 1})" class="col"> ➤ ${
+							subtype[0].toUpperCase() + subtype.slice(1)
+						}</a></div>`
 					);
 			}
 			cols[colNumMin] += subtypes.length + 1;
 		}
 	}
-};
+});
+
+$(async () => {
+	let settings = await (await fetch('/settings.json')).json();
+	Object.assign(fora, settings);
+
+	for (let scr of fora.scripts) {
+		scr();
+	}
+});

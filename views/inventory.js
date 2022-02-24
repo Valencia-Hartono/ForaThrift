@@ -1,7 +1,5 @@
 // /* INVENTORY */
-$(async () => {
-	await fora.load();
-
+fora.scripts.push(async () => {
 	// get total number of items in the inventory
 	let inventoryNumOfItems = (
 		await (
@@ -69,7 +67,7 @@ $(async () => {
 		//add ID
 		//"in" loops through keys; "of" loops through key's values (in this case the arrays)
 
-		for (let selName of ['category', 'style', 'season', 'color', 'size']) {
+		for (let selName of ['style', 'season', 'color', 'size']) {
 			let options = fora[selName];
 			for (let j = 0; j < options.length; j++) {
 				log(selName);
@@ -101,7 +99,7 @@ $(async () => {
 		categorySelection(catCombo.join(' | '));
 	};
 
-	$('#categorySelector input').onchange = () => {
+	$('#categorySelector a.dropdown-item').on('click', () => {
 		$('#id').text($('#categorySelector input').val() + Math.floor(Math.random() * 9000 + 1000));
-	};
+	});
 });

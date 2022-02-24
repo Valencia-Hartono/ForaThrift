@@ -124,14 +124,18 @@ async function startServer() {
 		let locals = defaultLocals;
 		// numbers go here
 		locals.store = {
-			category: fora.categories.names.indexOf(category) + 1,
-			type: fora.categories[category].typeNames.indexOf(type) + 1
+			category: fora.categories.names.indexOf(category) + 1
 		};
 
 		if (type) {
-			locals.store.subtype = fora.categories[category][type].indexOf(subtype) + 1;
+			locals.store.type = fora.categories[category].typeNames.indexOf(type) + 1;
+			if (subtype) {
+				locals.store.subtype = fora.categories[category][type].indexOf(subtype) + 1;
+			} else {
+				locals.store.subtype = 0;
+			}
 		} else {
-			locals.store.subtype = 0;
+			locals.store.type = 0;
 		}
 		res.render('pug/store', locals);
 	}

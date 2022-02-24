@@ -1,6 +1,4 @@
-$(async () => {
-	await fora.load();
-
+fora.scripts.push(async () => {
 	let onAccountPage = window.location.href.includes('account');
 
 	async function itemInteraction(list, action) {

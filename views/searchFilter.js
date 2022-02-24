@@ -1,5 +1,4 @@
-$(async () => {
-	await fora.load();
+fora.scripts.push(async () => {
 	[
 		'season',
 		'category',

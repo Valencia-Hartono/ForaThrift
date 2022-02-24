@@ -1,9 +1,5 @@
 /* STORE */
 
-$(async () => {
-	// jQuery wrapper
-
-	await fora.load();
-
+fora.scripts.push(async () => {
 	fora.clickedItemID = null;
 });

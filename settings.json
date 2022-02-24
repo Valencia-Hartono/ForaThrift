@@ -2,45 +2,43 @@
 	"category": ["NA", "👚 Clothing", "👟 Shoes", "👜 Bags", "💍 Accessories", "🧢 Miscellaneous"],
 	"categories": {
 		"names": ["clothing", "shoes", "bags", "accessories", "miscellaneous"],
-		"navNames": ["CLOTHES", "SHOES", "BAGS", "ACCESSORIES", "MISCELLANEOUS"],
-
 		"clothing": {
-			"typeNames": ["Bottoms", "Tops", "Overalls"],
-			"Bottoms": ["Jeans", "Shorts", "Skirts", "Slacks", "Sweatpants"],
-			"Tops": ["Coats", "Blazers", "Jackets", "Shirts", "Sweatshirts", "Sweater", "Hoodies", "Quarterzips"],
-			"Overalls": ["Beachwear", "Dresses", "Jumpsuits", "Loungewear"]
+			"typeNames": ["bottoms", "tops", "overalls"],
+			"bottoms": ["jeans", "shorts", "skirts", "slacks", "sweatpants"],
+			"tops": ["coats", "blazers", "jackets", "shirts", "sweatshirts", "sweater", "hoodies", "quarterzips"],
+			"overalls": ["beachwear", "dresses", "jumpsuits", "loungewear"]
 		},
 		"shoes": {
-			"typeNames": ["Boots", "Casual", "Heels", "Formal"],
-			"Boots": ["Leather"],
-			"Heels": [],
-			"Formal": [],
-			"Casual": ["Espadrilles"]
+			"typeNames": ["boots", "casual", "heels", "formal"],
+			"boots": ["leather"],
+			"heels": [],
+			"formal": [],
+			"casual": ["espadrilles"]
 		},
 		"bags": {
-			"typeNames": ["Backpacks", "Chain bags", "Clutches", "Duffle bags", "Shoulder bags", "Tote bags"],
-			"Backpacks": [],
-			"Chain bags": [],
-			"Clutches": [],
-			"Duffle bags": [],
-			"Shoulder bags": [],
-			"Tote bags": []
+			"typeNames": ["backpacks", "chain bags", "clutches", "duffle bags", "shoulder bags", "tote bags"],
+			"backpacks": [],
+			"chain bags": [],
+			"clutches": [],
+			"duffle bags": [],
+			"shoulder bags": [],
+			"tote bags": []
 		},
 		"accessories": {
-			"typeNames": ["Jewelry", "Belts", "Headwear", "Scarves", "Sunglasses", "Watches"],
-			"Jewelry": ["Earrings", "Bracelets", "Necklaces"],
-			"Belts": ["Thick", "Thin"],
-			"Headwear": ["Caps", "Sunhats", "Beanies", "Headbands"],
-			"Scarves": [],
-			"Sunglasses": [],
-			"Watches": []
+			"typeNames": ["jewelry", "belts", "headwear", "scarves", "sunglasses", "watches"],
+			"jewelry": ["earrings", "bracelets", "necklaces"],
+			"belts": ["thick", "thin"],
+			"headwear": ["caps", "sunhats", "beanies", "headbands"],
+			"scarves": [],
+			"sunglasses": [],
+			"watches": []
 		},
 		"miscellaneous": {
-			"typeNames": ["Gloves", "Socks", "Makeup", "Skincare"],
-			"Gloves": [],
-			"Socks": [],
-			"Makeup": [],
-			"Skincare": []
+			"typeNames": ["gloves", "socks", "makeup", "skincare"],
+			"gloves": [],
+			"socks": [],
+			"makeup": [],
+			"skincare": []
 		}
 	},
 	"starValues": [0, 10, 40, 90, 160, 250],
@@ -102,9 +100,9 @@
 	"style": ["NA", "👗 Elegant", "🥂 Romantic", "⚽️ Sporty", "💎 Glamorous", "🚶 Casual"],
 
 	"attributes": {
-		"Clothing|Tops": ["neckline", "sleeve", "topType"],
-		"Clothing|Overalls|Dresses": ["dresslength"],
-		"Clothing|Bottoms|Jeans": ["jeanSize"],
+		"clothing|tops": ["neckline", "sleeve", "topType"],
+		"clothing|overalls|dresses": ["dresslength"],
+		"clothing|bottoms|jeans": ["jeanSize"],
 		"shoes": ["shoeSize"]
 	},
 	"length": ["NA", "short", "long", "knee length", "midi", "maxi"],

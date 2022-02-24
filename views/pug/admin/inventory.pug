@@ -12,16 +12,18 @@ p.text-center.text-muted Total number of items in inventory:
 	span#totalItems
 
 #adminInventoryPage.container-lg.mb-5
-	form#adminSearchItemForm
-		.row: .col: label.form-group.col-2.mb-4.form-label(for='ID') Search Item ID
-			input#searchItemID.form-control(type='text' name='ID' placeholder="Item ID")
-			//links to inventory.js
-			button#search.btn.btn-secondary.btn-sm.mt-3(type="button" onclick='submitAdminInventoryForm()') Search Item
+	form#adminSearchItemForm.mb-4
+		
 	form#adminInventoryForm
 		.row
 			.col-10: .row
 				label.mb-2 ITEM INFO: 
-					span#id
+				.row: .col
+			label.form-group.col-2.form-label(for='ID') Item ID
+		.row
+			.col-6: input#searchItemID.form-control(type='text' name='ID' placeholder="Item ID")
+			//links to inventory.js
+			.col-6: button#search.btn.btn-secondary.btn-sm.mt-1(type="button" onclick='submitAdminInventoryForm()') Search for Existing Item
 				// img form
 				label.form-label.col-12.mb-2(for='img') Item Image
 					.form-group: .input-group

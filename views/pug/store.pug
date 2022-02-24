@@ -7,7 +7,6 @@ include navs.pug
 script(src='/store.js')
 include itemModal
 script.
-	$(async () => {
-		await fora.load();
+	fora.scripts.push(async () => {
 		fetchItems(#{store.category}, #{store.type}, #{store.subtype});
 	});
