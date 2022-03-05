@@ -282,6 +282,12 @@ select#selectedDeliveryAddress.form-select.form-select-md.mb-3(name='address') *
 	for (let i = 0; i < user.orders.length; i++) {
 		//each item ordered-> append to card
 		displayItems('#orderedItems' + i, await getItems(user.orders[i].items));
-		displayItems('#requestItems' + i, await getItems(user.orders[i].items));
 	}
+
+	//DONATIONS.PUG
+	//entire donation history
+	// for (let i = 0; i < user.donations.length; i++) {
+	// 	//each item donated-> append to card
+	// 	displayItems('#donatedItems' + i, await getItems(user.donations[i].items));
+	// }
 });

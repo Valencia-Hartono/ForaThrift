@@ -39,7 +39,8 @@ async function getItem(id) {
 async function getItems(itemIDs) {
 	let items = [];
 	for (let id of itemIDs) {
-		items.push(await getItem(id));
+		let item = await getItem(id);
+		if (item) items.push(item);
 	}
 	return items;
 }

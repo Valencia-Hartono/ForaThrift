@@ -15,19 +15,18 @@ p.text-center.text-muted Total number of items in inventory:
 	form#adminSearchItemForm.mb-4
 		
 	form#adminInventoryForm
-		.row
-			.col-10: .row
-				label.mb-2 ITEM INFO: 
-				.row: .col
-			label.form-group.col-2.form-label(for='ID') Item ID
-		.row
-			.col-6: input#searchItemID.form-control(type='text' name='ID' placeholder="Item ID")
+		.row.mb-2
+			label.mb-2 Item ID: 
+			.col-3
+				input#searchItemID.form-control(type='text' name='ID' placeholder="Item ID")
+			.col: button#search.btn.btn-secondary.btn-sm.mt-1(type="button") Search for Existing Item
 			//links to inventory.js
-			.col-6: button#search.btn.btn-secondary.btn-sm.mt-1(type="button" onclick='submitAdminInventoryForm()') Search for Existing Item
+		.row
+			.col-12.col-md-10
 				// img form
 				label.form-label.col-12.mb-2(for='img') Item Image
 					.form-group: .input-group
-						input#img.form-control(type='text' name='img')
+						input#img.form-control(type='text' name='img' placeholder='Item Image')
 						input#imgFile.form-control.hide(type='file' name='imgFile' style="display: none;")
 						label.input-group-text(for='imgFile') Upload
 				// name form
@@ -62,7 +61,7 @@ p.text-center.text-muted Total number of items in inventory:
 				.form-group.col-12.mb-2
 					label.form-label(for='description') Item Description
 					textarea#description.form-control(rows='3' name='description' placeholder="Item Description" required)
-			.col-2
+			.col-12.col-md-2
 				// rating form
 				label.mb-2 RATING
 				.form-group.mb-2

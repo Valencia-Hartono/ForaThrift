@@ -9,22 +9,21 @@ nav#blackNav.navbar.navbar-expand-sm.navbar-dark.bg-dark.p-2
 			//- 	li.nav-item: a.nav-link(href='#') MENS
 			ul.me-auto
 			ul.navbar-nav.me-0
-				form.mx-2.my-auto.d-flex
-					#topSearchBar.input-group
-						input.form-control(type='text' placeholder='Search for items or brands')
-						span.input-group-append
-							button.btn.btn-outline-secondary(type='button') 🔍
+				//- form.mx-2.my-auto.d-flex
+				//- 	#topSearchBar.input-group
+				//- 		input.form-control(type='text' placeholder='Search for items or brands')
+				//- 		span.input-group-append
+				//- 			button.btn.btn-outline-secondary(type='button') 🔍
 				li#profileDropdown.nav-item.dropdown
 					a.nav-link.dropdown.fs-5(href='#' role='button' data-bs-toggle='dropdown')= (user) ? 'Welcome ' + user.name : 'Get Started'
 					ul.dropdown-menu.dropdown-menu-end
 						if user
 							li: a.dropdown-item(data-bs-toggle='modal' href='#loginRegisterModal') ↩️ Logout
-							li: a.dropdown-item(href='account') 👤 My Account
-							li: a.dropdown-item(href='searchFilter') 🏖 Admin Lounge
+							li: a.dropdown-item(href='/account') 👤 My Account
 						else
 							li: a.dropdown-item(data-bs-toggle='modal' href='#loginRegisterModal') Register/Sign In
-						li: a.dropdown-item(href='additionalInfo') ❓ Shipping info
-						li: a.dropdown-item(href='contactUs') 👩‍💻 Contact Us
+						li: a.dropdown-item(href='/additionalInfo') ❓ Shipping info
+						li: a.dropdown-item(href='/contactUs') 👩‍💻 Contact Us
 nav.navbar.navbar-expand-sm.navbar-dark.bg-dark.sticky-top.p-0
 	// One of the primary actions on mobile is to call a business - This displays a phone button on mobile only
 	.navbar-toggler-right

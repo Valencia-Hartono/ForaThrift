@@ -13,8 +13,8 @@ if user.orders.length == 0
 else
 	.container-fluid
 		each order, i in user.orders
-			.row.mt-4: .card
-				h5.card-heade.mt-5.mx-4
+			.row.mt-4: .card.mt-2.mx-3
+				h5.card-header
 					p= ((order.confirmed)?'Admin Confirmed Order':'Pending Order Confirmation...')
 				.card-body
 					h5.card-title My Order Details
@@ -39,7 +39,7 @@ else
 									span=order.totalBilling + " RMB"
 								p Total rewarded pts: 
 									span=order.totalRewardedPoints + " pts"
-				div(class="orderedItems" + i).row
+				div(id="orderedItems" + i).row
 
 	
 
