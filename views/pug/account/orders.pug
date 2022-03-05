@@ -19,7 +19,7 @@ else
 				.card-body
 					h5.card-title My Order Details
 					.card-text
-						.row 
+						.row
 							.col-md-4
 								p Order request time:
 									span=(d = new Date(order.time))? d.toDateString() + " " + d.getHours() + ":" + d.getMinutes() : " "
@@ -39,7 +39,7 @@ else
 									span=order.totalBilling + " RMB"
 								p Total rewarded pts: 
 									span=order.totalRewardedPoints + " pts"
-				div(id="orderedItems" + i).row
+						div(id="orderedItems" + i).row
 
 	
 
