@@ -146,6 +146,9 @@ async function startServer() {
 
 	app.get('/store/:category/:type/:subtype', getStorePage);
 
+	//reference: https://expressjs.com/en/guide/routing.html
+	app.get('/store/:category/:type/:subtype?*', getStorePage);
+
 	// category is a number (0 is not valid)
 	// type is a number (0 for all)
 	// subtype is a number (0 for all)

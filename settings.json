@@ -46,7 +46,6 @@
 	"deductionPts": [0, 240, 480, 720, 960, 1200],
 
 	"color": [
-		"NA",
 		"Black",
 		"White",
 		"Gold",
@@ -62,11 +61,11 @@
 		"Pink",
 		"Nude",
 		"Taupe",
-		"Champagne"
+		"Champagne",
+		"Other"
 	],
 
 	"pattern": [
-		"NA",
 		"animal",
 		"baroque",
 		"camo",
@@ -76,11 +75,11 @@
 		"plaid",
 		"plain",
 		"striped",
-		"tropical"
+		"tropical",
+		"other"
 	],
 
 	"material": [
-		"NA",
 		"cotton",
 		"corduroy",
 		"lace",
@@ -93,11 +92,12 @@
 		"sequins",
 		"suede",
 		"velvet",
-		"wool"
+		"wool",
+		"other"
 	],
-	"season": ["NA", "☘️ Spring", "☀️ Summer", "🍂 Fall", "❄️ Winter"],
-	"size": ["NA", "XS", "S", "M", "L", "XL"],
-	"style": ["NA", "👗 Elegant", "🥂 Romantic", "⚽️ Sporty", "💎 Glamorous", "🚶 Casual"],
+	"season": ["☘️ Spring", "☀️ Summer", "🍂 Fall", "❄️ Winter"],
+	"size": ["XS", "S", "M", "L", "XL"],
+	"style": ["👗 Elegant", "🥂 Romantic", "⚽️ Sporty", "💎 Glamorous", "🚶 Casual", "Other"],
 
 	"attributes": {
 		"clothing|tops": ["neckline", "sleeve", "topType"],
@@ -105,9 +105,8 @@
 		"clothing|bottoms|jeans": ["jeanSize"],
 		"shoes": ["shoeSize"]
 	},
-	"length": ["NA", "short", "long", "knee length", "midi", "maxi"],
+	"length": ["short", "long", "knee length", "midi", "maxi", "other"],
 	"neckline": [
-		"NA",
 		"spaghetti strap",
 		"v neck",
 		"strapless",
@@ -116,10 +115,23 @@
 		"halter",
 		"turtleneck",
 		"collar",
-		"hooded"
+		"hooded",
+		"other"
 	],
-	"sleeve": ["NA", "sleeveless", "cap sleeve", "short sleeve", "half sleeve", "3/4 length sleeve", "long sleeve"],
-	"topType": ["NA", "bodycon", "A Line", "Tee", "Fit and Flare", "Tunic", "Tank", "Shirt", "Cami", "Fitted", "Smock"],
+	"sleeve": ["sleeveless", "cap sleeve", "short sleeve", "half sleeve", "3/4 length sleeve", "long sleeve", "other"],
+	"topType": [
+		"bodycon",
+		"A Line",
+		"Tee",
+		"Fit and Flare",
+		"Tunic",
+		"Tank",
+		"Shirt",
+		"Cami",
+		"Fitted",
+		"Smock",
+		"other"
+	],
 	"jeanSize": [
 		"W23",
 		"W24",
@@ -141,7 +153,8 @@
 		"W46",
 		"W50",
 		"W54",
-		"W58"
+		"W58",
+		"other"
 	],
-	"shoeSize": ["35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49"]
+	"shoeSize": ["35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "other"]
 }

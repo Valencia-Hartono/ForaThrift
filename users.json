@@ -2,7 +2,7 @@
 	"valencia01": {
 		"username": "valencia01",
 		"email": "valenciahartono@gmail.com",
-		"wechatID": "xxx",
+		"wechatID": "cherry123",
 		"password": "vally227",
 		"totalPoints": 20000,
 		"pointsForExchange": 320,
@@ -15,17 +15,12 @@
 		"city": "",
 		"region": "",
 		"postalCode": "",
-		"donations": [
-			{
-				"items": ["0223027", "0213280"],
-				"time": 1645195568251,
-				"totalRewardedPoints": 480
-			}
-		],
+		"donations": [{ "items": ["0223027", "0213280"], "time": 1645195568251, "totalRewardedPoints": 480 }],
 		"favorites": ["0009888"],
 		"reserved": ["0223027", "0213280"],
 		"orders": [
 			{
+				"id": 0,
 				"items": ["0223027"],
 				"time": 1648195668251,
 				"confirmed": false,

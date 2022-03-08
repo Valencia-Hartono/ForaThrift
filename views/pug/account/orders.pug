@@ -1,12 +1,19 @@
 .container-fluid
-	h4 My Orders
-	p Browse through your order history. Each purchased item will be rewarded points.
-	
-	p.my-0 Total points: 
-		span.pointsTotal= user.totalPoints || '0'
-	p.my-0 Points for exchange: 
-		span.pointsExchangable= user.pointsForExchange || '0'
-	a(data-bs-toggle='modal' href='#pointsSystem') How to earn points?
+	.row
+		.col
+			h4 My Orders
+			p Browse through your order history. Each purchased item will be rewarded points.
+			
+			p.my-0 Total points: 
+				span.pointsTotal= user.totalPoints || '0'
+			p.my-0 Points for exchange: 
+				span.pointsExchangable= user.pointsForExchange || '0'
+			a(data-bs-toggle='modal' href='#pointsSystem') How to earn points?
+		.col-md-6
+			h4 Scan QR Code to wechat pay
+			p Once our staff has received payment, your order will be confirmed and we will send the package no later than 5 business days.
+				img.rounded(style='' src='https://i.pinimg.com/564x/8c/81/bf/8c81bf68e863dca94759acf24c7f1f5c.jpg')
+
 
 if user.orders.length == 0
 	p.text-center: a(href="store") You haven’t ordered anything yet (view shop)
@@ -22,6 +29,7 @@ else
 						.row
 							.col-md-4
 								p Order request time:
+									//reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse 
 									span=(d = new Date(order.time))? d.toDateString() + " " + d.getHours() + ":" + d.getMinutes() : " "
 								p Number of items ordered: 
 									span=order.items.length

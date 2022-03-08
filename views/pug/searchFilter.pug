@@ -11,18 +11,18 @@ form#searchFilterForm.accordion
                 .col-6
                   each item, i in fora[filter]
                     if i % 2 == 0
-                      input(type="checkbox" class="form-check-input" value=filter + "-" + i)
+                      input(id=filter + "-" + i type="checkbox" class="form-check-input" value=filter + "-" + i)
                       label(class="form-check-label" for=filter + "-" + i)= item
                       br
                 .col-6
                   each item, i in fora[filter]
                     if i % 2 == 1
-                      input(type="checkbox" class="form-check-input" value=filter + "-" + i)
+                      input(id=filter + "-" + i type="checkbox" class="form-check-input" value=filter + "-" + i)
                       label(class="form-check-label" for=filter + "-" + i)= item
                       br
             else if filter!="size"
               each label, i in fora[filter]
-                input(type="checkbox" class="form-check-input" value=filter + "-" + i)
+                input(id=filter + "-" + i type="checkbox" class="form-check-input" value=filter + "-" + i)
                 label(class="form-check-label" for=filter + "-" + i)= label
                 br
             else
@@ -31,13 +31,13 @@ form#searchFilterForm.accordion
                   .col-6
                     each size, i in fora[subFilter]
                       if i % 2 == 0
-                        input(type="checkbox" class="form-check-input" value=subFilter + "-" + i)
+                        input(id=subFilter + "-" + i type="checkbox" class="form-check-input" value=subFilter + "-" + i)
                         label(class="form-check-label" for="size-" + i)= size
                         br
                   .col-6
                     each size, i in fora[subFilter]
                       if i % 2 == 1
-                        input(type="checkbox" class="form-check-input" value=subFilter + "-" + i)
+                        input(id=subFilter + "-" + i type="checkbox" class="form-check-input" value=subFilter + "-" + i)
                         label(class="form-check-label" for="size-" + i)= size
                         br
             

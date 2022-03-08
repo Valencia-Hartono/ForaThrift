@@ -58,6 +58,8 @@ else
 									span=order.totalBilling + " RMB"
 								p Total rewarded pts: 
 									span=order.totalRewardedPoints + " pts"
+								p Wechat ID: 
+									span=user.wechatID
 								if (!order.confirmed)
 									.row.mt-4.mb-5
 										button.btn.btn-dark(type="button" onclick='confirmRequest()') Confirm order
