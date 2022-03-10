@@ -50,6 +50,7 @@ global.klaw = function (dir, opt) {
 };
 
 const pDog = require('pug');
+const { filters } = require('pug/lib');
 global.pug = (str, locals, insert) => {
 	str = pDog.compile(str)(locals);
 	if (insert) {
@@ -152,8 +153,14 @@ async function startServer() {
 	// category is a number (0 is not valid)
 	// type is a number (0 for all)
 	// subtype is a number (0 for all)
-	function searchForItems(req, res) {
+	function searchForItems(req, res, url) {
 		try {
+			// url: /clothing/tops?season=fall+winter&size=M&color=Black
+			if (url) {
+				// let filters = {season: ['fall', 'winter'],size: 'M',color:'Black'};
+				let filters = {};
+
+			}
 			let inventory = [];
 			if (req.category == 0) {
 				for (let category of fora.categories.names) {
@@ -168,7 +175,9 @@ async function startServer() {
 				if (req.type == 0 || item.type == req.type - 1) {
 					if (req.subtype == 0 || item.subtype == req.subtype - 1) {
 						if (!req.id || item.id == req.id) {
-							items.push(item);
+							if (!filters.season || filters.season.includes(item.season)){
+								items.push(item);
+							}
 						}
 						count++;
 						if (count > 30) break;
@@ -184,6 +193,11 @@ async function startServer() {
 			res.send('404 Not found or invalid format ' + e.message);
 		}
 	}
+
+	app.all('/items/:category/:type/:subtype?*', (req, res) => {
+		let url = req.url;
+		searchForItems(req.params, res, url);
+	});
 
 	app.all('/items/:category/:type/:subtype', (req, res) => {
 		searchForItems(req.params, res);

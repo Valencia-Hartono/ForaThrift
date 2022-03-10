@@ -129,8 +129,10 @@ fora.scripts.push(() => {
 			}
 		}
 
+		// changes the url without reloading the page
 		history.pushState({}, 'test', storeUrl);
 
+		// get items from the server
 		let res = await fetch(itemsUrl);
 		res = await res.json();
 		let items = res.items;
