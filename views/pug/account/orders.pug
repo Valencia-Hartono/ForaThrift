@@ -30,7 +30,7 @@ else
 							.col-md-4
 								p Order request time:
 									//reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse 
-									span=(d = new Date(order.time))? d.toDateString() + " " + d.getHours() + ":" + d.getMinutes() : " "
+									span=(d = new Date(order.timeRequested))? d.toDateString() + " " + d.getHours() + ":" + d.getMinutes() : " "
 								p Number of items ordered: 
 									span=order.items.length
 								p.mb-5 Coupon Used: 
@@ -47,6 +47,14 @@ else
 									span=order.totalBilling + " RMB"
 								p Total rewarded pts: 
 									span=order.totalRewardedPoints + " pts"
+								p Return status: 
+									//referece for day conversion: https://www.unitjuggler.com/convert-time-from-day-to-ms.html
+									if Date.now() - order.timeRequested <= 2*8.64e+7
+										span 🟢 Can return without penalty with full refund
+									else if Date.now() - order.timeRequested > 2*8.64e+7  && d <=7*8.64e+7
+										span 🟠 10RMB deduction per item refunded
+									else if Date.now() - order.timeRequested > 7*8.64e+7
+										span 🔴 No return
 						div(id="orderedItems" + i).row
 
 	

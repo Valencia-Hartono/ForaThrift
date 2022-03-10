@@ -18,7 +18,7 @@
 			"reserved": ["valencia01", "timmy02"],
 			"rating": [4, 4, 4],
 			"donor": "valencia01",
-			"buyer": "valencia01"
+			"purchaseTime": 0
 		},
 		{
 			"id": "021264",
@@ -38,7 +38,7 @@
 			"reserved": ["valencia01", "timmy02"],
 			"rating": [5, 5, 4],
 			"donor": "valencia01",
-			"buyer": ""
+			"purchaseTime": 0
 		},
 		{
 			"id": "0218789",
@@ -58,7 +58,7 @@
 			"reserved": ["valencia01", "timmy02"],
 			"rating": [5, 5, 5],
 			"donor": "valencia01",
-			"buyer": ""
+			"purchaseTime": 0
 		},
 		{
 			"id": "0223027",
@@ -78,7 +78,7 @@
 			"reserved": ["valencia01", "timmy02"],
 			"rating": [5, 5, 5],
 			"donor": "valencia01",
-			"buyer": ""
+			"purchaseTime": 0
 		},
 		{
 			"id": "0205937",
@@ -98,7 +98,7 @@
 			"reserved": [],
 			"rating": [4, 4, 5],
 			"donor": "valencia01",
-			"buyer": ""
+			"purchaseTime": 0
 		},
 		{
 			"id": "0219707",
@@ -118,7 +118,7 @@
 			"reserved": [],
 			"rating": [3, 3, 5],
 			"donor": "valencia01",
-			"buyer": ""
+			"purchaseTime": 0
 		},
 		{
 			"id": "0009888",
@@ -138,7 +138,7 @@
 			"reserved": [],
 			"rating": [5, 5, 5],
 			"donor": "valencia01",
-			"buyer": ""
+			"purchaseTime": 0
 		}
 	],
 	"shoes": [],
@@ -162,7 +162,7 @@
 			"reserved": [],
 			"rating": [4, 4, 5],
 			"donor": "valencia01",
-			"buyer": ""
+			"purchaseTime": 0
 		}
 	]
 }
