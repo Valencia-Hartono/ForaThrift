@@ -83,9 +83,9 @@ function displayItems(elem, items) {
 			$('#itemModal #item_id').text(item.id);
 
 			//appends item ratings to column 1
-			$('#itemModal #item_qualityRating').text('Quality: ' + item.rating[0] + '/5');
-			$('#itemModal #item_styleRating').text('Style: ' + item.rating[1] + '/5');
-			$('#itemModal #item_valueRating').text('Value: ' + item.rating[2] + '/5');
+			$('#itemModal #item_qualityRating').text('Quality: ' + item.qualityRating + '/5');
+			$('#itemModal #item_styleRating').text('Style: ' + item.styleRating + '/5');
+			$('#itemModal #item_valueRating').text('Value: ' + item.valueRating + '/5');
 
 			//appends item information to column 2
 			$('#itemModal #item_brand').text(' Brand: ' + item.brand);

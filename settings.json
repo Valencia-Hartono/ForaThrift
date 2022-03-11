@@ -1,5 +1,4 @@
 {
-	"category": ["NA", "👚 Clothing", "👟 Shoes", "👜 Bags", "💍 Accessories", "🧢 Miscellaneous"],
 	"categories": {
 		"names": ["clothing", "shoes", "bags", "accessories", "miscellaneous"],
 		"clothing": {
@@ -45,6 +44,20 @@
 	"discount": [0, 10, 25, 40, 55, 70],
 	"deductionPts": [0, 240, 480, 720, 960, 1200],
 
+	"numberProps": [
+		"category",
+		"type",
+		"subtype",
+		"style",
+		"season",
+		"color",
+		"size",
+		"price",
+		"purchaseTime",
+		"styleRating",
+		"qualityRating",
+		"valueRating"
+	],
 	"color": [
 		"Black",
 		"White",

@@ -13,6 +13,8 @@ fora.scripts.push(async () => {
 	).inventoryNumOfItems;
 	$('#totalItems').text(inventoryNumOfItems);
 
+	let ogItem = {};
+
 	window.submitAdminInventoryForm = async () => {
 		let item = getFormData('adminInventoryForm');
 
@@ -24,15 +26,20 @@ fora.scripts.push(async () => {
 			}
 		}
 
-		item.rating = [item.qualityRating, item.styleRating, item.valueRating];
-
+		delete item.imgFile;
 		item.subtype = item.category[2];
 		item.type = item.category[1];
 		item.category = item.category[0];
 
-		return;
+		if (ogItem.id && ogItem.id == $('#searchItemID').val()) {
+			item = Object.assign(ogItem, item);
+		}
 
-		await (
+		log(item);
+
+		let newItem = !item.id;
+
+		item = await (
 			await fetch('/admin/inventory', {
 				method: 'POST',
 				headers: {
@@ -41,6 +48,15 @@ fora.scripts.push(async () => {
 				body: JSON.stringify(item)
 			})
 		).json();
+
+		if (item.id && newItem) {
+			$('#searchItemID').val(item.id);
+			alert('Item #' + item.id + ' added!');
+		} else if (item.id) {
+			alert('Item #' + item.id + ' updated!');
+		} else {
+			alert('Failed to add/update item!');
+		}
 	};
 
 	function showRewardPoints(ratings) {
@@ -51,7 +67,8 @@ fora.scripts.push(async () => {
 			points += fora.starValues[ratings[i]];
 		}
 		//ratings=[2, 5, 4] unique to each item; corresponds with type in inventory.JSON; holds index of starValues array
-		$('#reward').text(points + 'pts');
+		$('#rewardPoints').text(points + 'pts');
+		$('#reward').val(points);
 	}
 
 	for (let i = 0; i < 3; i++) {
@@ -79,16 +96,19 @@ fora.scripts.push(async () => {
 	addOptions();
 
 	$('#search')[0].onclick = async () => {
-		let item = await getItem($('#searchItemID').val());
+		if (!$('#searchItemID').val()) return;
+		ogItem = await getItem($('#searchItemID').val());
+		let item = ogItem;
 
 		for (let prop in item) {
 			$('#' + prop).val(item[prop]);
 		}
 
-		$('#id').text(item.id);
-		$('#styleRating').val(item.rating[0]);
-		$('#qualityRating').val(item.rating[1]);
-		$('#valueRating').val(item.rating[2]);
+		$('#styleRating').val(item.styleRating);
+		$('#qualityRating').val(item.qualityRating);
+		$('#valueRating').val(item.valueRating);
+
+		showRewardPoints([item.qualityRating, item.styleRating, item.valueRating]);
 
 		let cat = fora.categories.names[item.id[0]];
 		let type = fora.categories[cat].typeNames[item.type];
@@ -98,8 +118,4 @@ fora.scripts.push(async () => {
 		}
 		categorySelection(catCombo.join(' | '));
 	};
-
-	$('#categorySelector a.dropdown-item').on('click', () => {
-		$('#id').text($('#categorySelector input').val() + Math.floor(Math.random() * 9000 + 1000));
-	});
 });

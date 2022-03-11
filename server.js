@@ -107,6 +107,7 @@ async function loadViews() {
 			if (req.url == '/') {
 				req.url = 'index';
 			}
+			req.url = req.url.split('?')[0];
 			log('requested ' + req.url);
 			res.render('pug/' + req.url, locals);
 		});
@@ -120,24 +121,29 @@ async function startServer() {
 		res.json(fora);
 	});
 
-	function getStorePage(req, res) {
-		let { category, type, subtype } = req.params;
-		let locals = defaultLocals;
-		// numbers go here
-		locals.store = {
+	function getItemIDNums(category, type, subtype) {
+		let id = {
 			category: fora.categories.names.indexOf(category) + 1
 		};
 
 		if (type) {
-			locals.store.type = fora.categories[category].typeNames.indexOf(type) + 1;
+			id.type = fora.categories[category].typeNames.indexOf(type) + 1;
 			if (subtype) {
-				locals.store.subtype = fora.categories[category][type].indexOf(subtype) + 1;
+				id.subtype = fora.categories[category][type].indexOf(subtype) + 1;
 			} else {
-				locals.store.subtype = 0;
+				id.subtype = 0;
 			}
 		} else {
-			locals.store.type = 0;
+			id.type = 0;
 		}
+		return id;
+	}
+
+	function getStorePage(req, res) {
+		let { category, type, subtype } = req.params;
+		let locals = defaultLocals;
+		// numbers go here
+		locals.store = getItemIDNums(category, type, subtype);
 		res.render('pug/store', locals);
 	}
 
@@ -159,7 +165,6 @@ async function startServer() {
 			if (url) {
 				// let filters = {season: ['fall', 'winter'],size: 'M',color:'Black'};
 				let filters = {};
-
 			}
 			let inventory = [];
 			if (req.category == 0) {
@@ -175,7 +180,7 @@ async function startServer() {
 				if (req.type == 0 || item.type == req.type - 1) {
 					if (req.subtype == 0 || item.subtype == req.subtype - 1) {
 						if (!req.id || item.id == req.id) {
-							if (!filters.season || filters.season.includes(item.season)){
+							if (!filters.season || filters.season.includes(item.season)) {
 								items.push(item);
 							}
 						}
@@ -218,7 +223,7 @@ async function startServer() {
 		log(user);
 
 		// save updated user info to users file
-		await fs.outputFile('users.json', JSON.stringify(users));
+		await fs.outputFile('users.json', JSON.stringify(users, null, 2));
 
 		res.json(user);
 	});
@@ -249,10 +254,25 @@ async function startServer() {
 		let item = req.body; // request body is the json sent
 		log(item);
 
-		let items = db[item.category];
+		for (let prop of fora.numberProps) {
+			if (item[prop]) item[prop] = Number(item[prop]);
+		}
 
+		let newItem = !item.id;
+
+		if (newItem) {
+			item.id = [item.category, item.type, item.subtype].join('');
+			item.id += Math.floor(Math.random() * 9000 + 1000);
+		}
 		// if item should be edited it will be found in the inventory
-		let idx = items.findIndex((x) => x == item.id);
+		let items = db[fora.categories.names[item.category]];
+		let idx = null;
+		while (idx == null || (newItem && idx >= 0)) {
+			idx = items.findIndex((x) => x.id == item.id);
+			if (newItem && idx >= 0) {
+				item.id = (item.id + 1) % 10000;
+			}
+		}
 		// if idx is 0 or greater it was found
 		if (idx >= 0) {
 			items[idx] = item;
@@ -260,17 +280,11 @@ async function startServer() {
 			// if item was not found in the list add it
 			items.push(item);
 		}
-
 		// save updated user info to users file
-		await fs.outputFile('inventory.json', JSON.stringify(db));
+		await fs.outputFile('inventory.json', JSON.stringify(db, null, 2));
 
 		res.json(item);
 	});
-
-	// (async function saveDataPeriodically() {
-	// 	await delay(10000);
-
-	// })();
 
 	let server = http.createServer(app);
 
