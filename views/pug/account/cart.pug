@@ -31,7 +31,7 @@ else
 
 #confirmOrderModal.modal.fade(tabindex='-1')
 	.modal-dialog
-		.modal-content
+		form#cartForm.modal-content
 			.modal-header.mx-2
 				h5.modal-title Confirm Order Request
 			.modal-body.mx-2
@@ -41,8 +41,6 @@ else
 					select#pickupMethodSelector.form-select.form-select-md.mb-3(name='pickupMethod')
 						option(value='0') Pick up at store
 						option(value='1') Delivery
-				
-				
 				div.mb-3
 					p.my-0 Items in cart: 
 						span#numOrder= user.reserved.length || '0'
@@ -64,5 +62,6 @@ else
 				| Are you sure you want to order these items? If payment via wechat is not received within 24hrs of request, request will be denied and user must wait 48hrs before next request.
 			.modal-footer
 				//- button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Cancel
-				button#confirmOrder.btn.btn-green(type='button'  data-bs-dismiss='modal') Confirm
+				button#confirmOrder.btn.btn-green(type='button' onclick='submitCartForm()' data-bs-dismiss='modal') Confirm
 
+script(src="../js/account/cart.js") 

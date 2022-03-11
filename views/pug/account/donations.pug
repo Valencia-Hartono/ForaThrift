@@ -21,7 +21,7 @@ else
 						.row 
 							.col-md-4
 								p Donation time:
-									span=(d = new Date(donation.time))? d.toDateString() + " " + d.getHours() + ":" + d.getMinutes() : " "
+									span=(d = new Date(donation.time))? d.toDateString() + " " + d.getHours().toString().padStart(2, '0') + ":" + d.getMinutes().toString().padStart(2, '0') : " "
 								p Number of items donated: 
 									span=donation.items.length
 							.col-md-4
