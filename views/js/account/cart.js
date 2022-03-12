@@ -4,16 +4,16 @@ fora.scripts.push(async () => {
 	displayItems('#reservedItems', fora.account.reserved);
 
 	let cart = {};
-
 	let discountedSubtotal = [];
+
 	function makeDiscountSelector() {
 		let itemSubtotal = 0;
 		let discountIdx = 0;
-		let pickUpIdx = 0;
+		let deliveryIdx = 0;
 		for (let i = 0; i < user.address.length; i++) {
 			$(`#selectedDeliveryAddress`).append(
 				//NEED HELP
-				`<option value="${i}" ${(pickUpIdx = 0 ? 'disabled' : '')}> ${user.address[i]} </option>`
+				`<option value="${i}" ${(deliveryIdx = 0 ? 'disabled' : '')}> ${user.address[i]} </option>`
 			);
 		}
 		for (let i = 0; i < user.reserved.length; i++) {
@@ -55,17 +55,17 @@ fora.scripts.push(async () => {
 
 		$('#discountSelector')[0].onchange = () => {
 			discountIdx = $('#discountSelector').val();
-			calculateBilling(discountIdx, pickUpIdx);
+			calculateBilling(discountIdx, deliveryIdx);
 		};
 
-		$('#pickupMethodSelector')[0].onchange = () => {
-			pickUpIdx = $('#pickupMethodSelector').val();
-			if (pickUpIdx == 0) {
+		$('#deliveryMethodSelector')[0].onchange = () => {
+			deliveryIdx = $('#deliveryMethodSelector').val();
+			if (deliveryIdx == 0) {
 				$('#delivery').hide();
 			} else {
 				$('#delivery').show();
 			}
-			calculateBilling(discountIdx, pickUpIdx);
+			calculateBilling(discountIdx, deliveryIdx);
 		};
 	}
 
@@ -73,41 +73,54 @@ fora.scripts.push(async () => {
 
 	//calculates discounted price, sales tax, rewarded points
 	function calculateDiscount(discountIdx) {
-		let subtotal = discountedSubtotal[discountIdx];
-		let salesTax = (subtotal * 7) / 100;
-		let rewardPoints = Math.ceil(subtotal * 2);
+		//set discounted price
+		cart.subtotal = discountedSubtotal[discountIdx];
+		//set sales tax
+		cart.salesTax = (cart.subtotal * 7) / 100;
+		//set rewarded pts
+		cart.totalRewardedPoints = Math.ceil(cart.subtotal * 2);
 
-		$('#itemSubtotal').text(subtotal.toFixed(2) + ' RMB');
-		$('#salesTax').text(salesTax.toFixed(2) + ' RMB');
-		$('#rewardPoints').text(rewardPoints + 'pts');
-		return subtotal + salesTax;
+		$('#itemSubtotal').text(cart.subtotal.toFixed(2) + ' RMB');
+		$('#salesTax').text(cart.salesTax.toFixed(2) + ' RMB');
+		$('#totalRewardedPoints').text(cart.totalRewardedPoints + 'pts');
+		//set discounted price + sales tax
+		cart.total = cart.subtotal + cart.salesTax;
 	}
 
 	//calculates shipping fee
-	function calculateShipping(pickUpIdx) {
-		let shippingCost;
-		if (pickUpIdx == 0) {
-			shippingCost = 0;
+	function calculateShipping(deliveryIdx) {
+		//set shipping cost
+		if (deliveryIdx == 0) {
+			cart.shippingCost = 0;
 		} else {
-			shippingCost = 12;
+			cart.shippingCost = 12;
 		}
-		$('#shippingCost').text(shippingCost + ' RMB');
-		return shippingCost;
+		$('#shippingCost').text(cart.shippingCost + ' RMB');
 	}
 
 	//calculate Billing function calculates both Discount and Shipping
-	function calculateBilling(discountIdx, pickUpIdx) {
-		cart.subtotal = calculateDiscount(discountIdx);
-		cart.shipping = calculateShipping(pickUpIdx);
-		cart.totalBilling = cart.subtotal + cart.shipping;
+	function calculateBilling(discountIdx, deliveryIdx) {
+		calculateDiscount(discountIdx);
+		calculateShipping(deliveryIdx);
+		//set totalBilling= discounted price + sales tax + shipping cost
+		cart.totalBilling = cart.total + cart.shipping;
 		$('#totalBilling').text(cart.totalBilling.toFixed(2) + ' RMB');
+
+		//cart.items[] copies user.reserved[]
+		cart.items = user.reserved;
+		//cart.couponUsed copies selected discountIdx
+		cart.couponUsed = discountIdx;
+
+		//set variables back to 0
 		discountIdx = 0;
-		pickUpIdx = 0;
+		deliveryIdx = 0;
+		itemSubtotal = 0;
 	}
 
-	calculateBilling(0);
+	calculateBilling(0, 0);
 
 	window.submitCartForm = async () => {
 		// send cart to server
+		//let cart.timeRequested= Date.now()
 	};
 });
