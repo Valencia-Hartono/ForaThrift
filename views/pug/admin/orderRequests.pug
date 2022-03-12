@@ -41,26 +41,26 @@ else
 								//reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart 
 								p Order request time:
 									span=(d = new Date(order.timeRequested))? d.toDateString() + " " + d.getHours().toString().padStart(2, '0') + ":" + d.getMinutes().toString().padStart(2, '0') : " "
-								p Number of items ordered: 
-									span=order.items.length
+								p Wechat ID: 
+									span=user.wechatID
 								p.mb-5 Coupon Used: 
 									span=fora.discount[order.couponUsed] + "% discount"
-								p.mb-5 Delivery Status: 
-									span=order.delivery + "% discount"
 							.col-md-4
 								p Items subtotal: 
 									span=order.subtotal + " RMB"
 								p Estimated sales tax: 
 									span=order.salesTax + " RMB"
-								p.mb-5 Shipping and handling cost: 
-									span=order.shippingCost + " RMB"
+								p Total rewarded pts: 
+									span=order.totalRewardedPoints + " pts"
 							.col-md-4
 								p Total billing: 
 									span=order.totalBilling + " RMB"
-								p Total rewarded pts: 
-									span=order.totalRewardedPoints + " pts"
-								p Wechat ID: 
-									span=user.wechatID
+								if (order.shippingCost==0)
+									p Customer pick up from store
+								else 
+									p Customer paid for delivery
+								p Number of items ordered: 
+									span=order.items.length
 								if (!order.confirmed)
 									.row.mt-4.mb-5
 										button.btn.btn-dark(type="button" onclick='confirmRequest()') Confirm order
