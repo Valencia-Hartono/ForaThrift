@@ -4,7 +4,7 @@ fora.scripts.push(async () => {
 	let inventoryNumOfItems = (
 		await (
 			await fetch('/admin/inventoryNumOfItems', {
-				method: 'POST',
+				method: 'GET',
 				headers: {
 					'Content-Type': 'application/json'
 				}

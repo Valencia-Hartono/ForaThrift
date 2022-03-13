@@ -20,7 +20,8 @@ fora.scripts.push(async () => {
 			//adds the price of every item in user.reserved
 			itemSubtotal += fora.account.reserved[i].price;
 		}
-		$('#preCouponSubtotal').text(itemSubtotal.toFixed(2) + ' RMB');
+		itemSubtotal = Number(itemSubtotal.toFixed(2));
+		$('#preCouponSubtotal').text(itemSubtotal + ' RMB');
 		$('#banTime').text(user.requestBanTime);
 
 		$('#requestOrderButton')[0].onclick = () => {
@@ -40,21 +41,21 @@ fora.scripts.push(async () => {
 
 		//sets discountBilling array to the discounted price options
 		//"discount": [10, 25, 40, 55, 70]
-		//ex.totalBilling = 100 rmb -> after this loop, discountBilling = [90, 75, 60, 45, 30] rmb
-		$(`#discountSelector`).append(`<option value="0"> no discount | ${itemSubtotal.toFixed(2)} RMB </option>`);
+		//ex.total = 100 rmb -> after this loop, discountBilling = [90, 75, 60, 45, 30] rmb
+		$(`#discountSelector`).append(`<option value="0"> no discount | ${itemSubtotal} RMB </option>`);
 
 		for (let i = 1; i < 6; i++) {
 			let discount = (100 - fora.discount[i]) / 100;
-			discountedSubtotal[i + 1] = itemSubtotal * discount;
+			discountedSubtotal[i + 1] = Number((itemSubtotal * discount).toFixed(2));
 			$(`#discountSelector`).append(
-				`<option value="${i + 1}" ${!user.coupons[i] ? 'disabled' : ''}> ${
-					fora.discount[i]
-				}% discount | ${discountedSubtotal[i + 1].toFixed(2)} RMB </option>`
+				`<option value="${i + 1}" ${!user.coupons[i] ? 'disabled' : ''}> ${fora.discount[i]}% discount | ${
+					discountedSubtotal[i + 1]
+				} RMB </option>`
 			);
 		}
 
 		$('#discountSelector')[0].onchange = () => {
-			discountIdx = $('#discountSelector').val();
+			discountIdx = Number($('#discountSelector').val());
 			calculateBilling(discountIdx, deliveryIdx);
 		};
 
@@ -75,41 +76,39 @@ fora.scripts.push(async () => {
 	function calculateDiscount(discountIdx) {
 		//set discounted price
 		cart.subtotal = discountedSubtotal[discountIdx];
-		//set sales tax
-		cart.salesTax = (cart.subtotal * 7) / 100;
+		//set sales tax at 7%
+		cart.salesTax = Number((cart.subtotal * 0.07).toFixed(2));
 		//set rewarded pts
-		cart.totalRewardedPoints = Math.ceil(cart.subtotal * 2);
+		cart.rewardPoints = Math.ceil(cart.subtotal * 2);
 
-		$('#itemSubtotal').text(cart.subtotal.toFixed(2) + ' RMB');
+		$('#subtotal').text(cart.subtotal.toFixed(2) + ' RMB');
 		$('#salesTax').text(cart.salesTax.toFixed(2) + ' RMB');
-		$('#totalRewardedPoints').text(cart.totalRewardedPoints + 'pts');
-		//set discounted price + sales tax
-		cart.total = cart.subtotal + cart.salesTax;
+		$('#rewardPoints').text(cart.rewardPoints + 'pts');
 	}
 
 	//calculates shipping fee
 	function calculateShipping(deliveryIdx) {
 		//set shipping cost
 		if (deliveryIdx == 0) {
-			cart.shippingCost = 0;
+			cart.shipping = 0;
 		} else {
-			cart.shippingCost = 12;
+			cart.shipping = 12;
 		}
-		$('#shippingCost').text(cart.shippingCost + ' RMB');
+		$('#shipping').text(cart.shipping.toFixed(2) + ' RMB');
 	}
 
 	//calculate Billing function calculates both Discount and Shipping
 	function calculateBilling(discountIdx, deliveryIdx) {
 		calculateDiscount(discountIdx);
 		calculateShipping(deliveryIdx);
-		//set totalBilling= discounted price + sales tax + shipping cost
-		cart.totalBilling = cart.total + cart.shipping;
-		$('#totalBilling').text(cart.totalBilling.toFixed(2) + ' RMB');
+		//set total= discounted price + sales tax + shipping cost
+		cart.total = Number((cart.subtotal + cart.salesTax + cart.shipping).toFixed(2));
+		$('#total').text(cart.total.toFixed(2) + ' RMB');
 
 		//cart.items[] copies user.reserved[]
 		cart.items = user.reserved;
-		//cart.couponUsed copies selected discountIdx
-		cart.couponUsed = discountIdx;
+		//cart.coupon copies selected discountIdx
+		cart.coupon = discountIdx;
 
 		//set variables back to 0
 		discountIdx = 0;
@@ -121,6 +120,17 @@ fora.scripts.push(async () => {
 
 	window.submitCartForm = async () => {
 		// send cart to server
-		//let cart.timeRequested= Date.now()
+		cart.timeRequested = Date.now();
+		cart.username = user.username;
+		cart.wechatID = user.wechatID;
+		let res = await (
+			await fetch('/account/cart/orderRequest', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(cart)
+			})
+		).json();
 	};
 });

@@ -60,6 +60,7 @@ global.pug = (str, locals, insert) => {
 };
 
 // load database;fs = file system
+let orders = JSON.parse(fs.readFileSync('orders.json'));
 let db = JSON.parse(fs.readFileSync('inventory.json'));
 let users = JSON.parse(fs.readFileSync('users.json'));
 let fora = JSON.parse(fs.readFileSync('settings.json'));
@@ -86,9 +87,11 @@ app.use(express.static(__root + '/views'));
 // pug is template framework for rendering html dynamically
 app.set('view engine', 'pug');
 
+let currentUser = 'valencia01';
+
 let defaultLocals = {
 	fora: fora,
-	user: users['valencia01']
+	user: users[currentUser]
 };
 
 async function loadViews() {
@@ -107,6 +110,9 @@ async function loadViews() {
 			if (req.url == '/') {
 				req.url = 'index';
 			}
+			if (req.url == '/account') {
+				locals.userOrders = getUserOrders();
+			}
 			req.url = req.url.split('?')[0];
 			log('requested ' + req.url);
 			res.render('pug/' + req.url, locals);
@@ -114,8 +120,27 @@ async function loadViews() {
 	}
 }
 
+function getUserOrders() {
+	let userOrders = [];
+	let user = users[currentUser];
+
+	for (let orderID of user.orders) {
+		let order = orders.unconfirmed.find((x) => x.id == orderID);
+		if (!order) order = orders.confirmed.find((x) => x.id == orderID);
+		userOrders.push(order);
+	}
+	log(userOrders);
+	return userOrders;
+}
+
 async function startServer() {
 	await loadViews();
+
+	app.get('/userOrders', (req, res) => {
+		res.json({
+			userOrders: getUserOrders()
+		});
+	});
 
 	app.all('/settings.json', (req, res) => {
 		res.json(fora);
@@ -284,6 +309,24 @@ async function startServer() {
 		await fs.outputFile('inventory.json', JSON.stringify(db, null, 2));
 
 		res.json(item);
+	});
+
+	app.post('/account/cart/orderRequest', async (req, res) => {
+		let order = req.body;
+		log(order);
+
+		order.id = orders.numOfOrders;
+
+		orders.unconfirmed.push(order);
+
+		users[currentUser].orders.push(order.id);
+
+		await fs.outputFile('orders.json', JSON.stringify(orders, null, 2));
+		await fs.outputFile('users.json', JSON.stringify(users, null, 2));
+
+		res.json({
+			msg: 'success'
+		});
 	});
 
 	let server = http.createServer(app);

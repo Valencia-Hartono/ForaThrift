@@ -18,22 +18,7 @@
 		"donations": [{ "items": ["0223027", "0213280"], "time": 1645195568251, "totalRewardedPoints": 480 }],
 		"favorites": ["0009888"],
 		"reserved": ["0223027", "0213280"],
-		"orders": [
-			{
-				"id": 0,
-				"items": ["0223027"],
-				"timeRequested": 1646820466000,
-				"timeConfirmed": 0,
-				"confirmed": false,
-				"couponUsed": 1,
-				"delivery": false,
-				"subtotal": 2024,
-				"salesTax": 141,
-				"shippingCost": 0,
-				"totalBilling": 2164,
-				"totalRewardedPoints": 4046
-			}
-		],
+		"orders": [0],
 		"requestBanTime": 0,
 		"flexRadioDefault": "on",
 		"femaleRadio": "on",

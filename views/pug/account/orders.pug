@@ -19,7 +19,7 @@ if user.orders.length == 0
 	p.text-center: a(href="store") You haven’t ordered anything yet (view shop)
 else
 	.container-fluid
-		each order, i in user.orders
+		each order, i in userOrders
 			.row.mt-4: .card.mt-2.mx-3
 				h5.card-header
 					p= ((order.confirmed)?'Admin Confirmed Order':'Pending Order Confirmation...')
@@ -34,19 +34,19 @@ else
 								p Number of items ordered: 
 									span=order.items.length
 								p.mb-5 Coupon Used: 
-									span=fora.discount[order.couponUsed] + "% discount"
+									span=fora.discount[order.coupon] + "% discount"
 							.col-md-4
 								p Items subtotal: 
-									span=order.subtotal + " RMB"
+									span=order.subtotal.toFixed(2) + " RMB"
 								p Estimated sales tax: 
-									span=order.salesTax + " RMB"
+									span=order.salesTax.toFixed(2) + " RMB"
 								p.mb-5 Shipping and handling cost: 
-									span=order.shippingCost + " RMB"
+									span=order.shipping.toFixed(2) + " RMB"
 							.col-md-4
 								p Total billing: 
-									span=order.totalBilling + " RMB"
+									span=order.total.toFixed(2) + " RMB"
 								p Total rewarded pts: 
-									span=order.totalRewardedPoints + " pts"
+									span=order.rewardPoints + " pts"
 								p Return status: 
 									//referece for day conversion: https://www.unitjuggler.com/convert-time-from-day-to-ms.html
 									if Date.now() - order.timeRequested <= 2*8.64e+7

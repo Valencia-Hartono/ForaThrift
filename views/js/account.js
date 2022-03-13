@@ -28,9 +28,20 @@ fora.scripts.push(async () => {
 
 	//ORDERS.PUG
 	//entire order history
-	for (let i = 0; i < user.orders.length; i++) {
+	let userOrders = (
+		await (
+			await fetch('/userOrders', {
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
+		).json()
+	).userOrders;
+
+	for (let i = 0; i < userOrders.length; i++) {
 		//each item ordered-> append to card
-		displayItems('#orderedItems' + i, await getItems(user.orders[i].items));
+		displayItems('#orderedItems' + i, await getItems(userOrders[i].items));
 	}
 
 	//DONATIONS.PUG
