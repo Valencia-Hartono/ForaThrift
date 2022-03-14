@@ -319,7 +319,14 @@ async function startServer() {
 
 		orders.unconfirmed.push(order);
 
-		users[currentUser].orders.push(order.id);
+		let user = users[currentUser];
+		user.orders.push(order.id);
+
+		user.reserved = [];
+		if (order.coupon != 0) {
+			user.coupons[order.coupon]--;
+		}
+		orders.numOfOrders++;
 
 		await fs.outputFile('orders.json', JSON.stringify(orders, null, 2));
 		await fs.outputFile('users.json', JSON.stringify(users, null, 2));

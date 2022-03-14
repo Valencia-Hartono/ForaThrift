@@ -4,18 +4,13 @@ fora.scripts.push(async () => {
 	displayItems('#reservedItems', fora.account.reserved);
 
 	let cart = {};
-	let discountedSubtotal = [];
+	let subtotals = [];
 
 	function makeDiscountSelector() {
 		let itemSubtotal = 0;
 		let discountIdx = 0;
 		let deliveryIdx = 0;
-		for (let i = 0; i < user.address.length; i++) {
-			$(`#selectedDeliveryAddress`).append(
-				//NEED HELP
-				`<option value="${i}" ${(deliveryIdx = 0 ? 'disabled' : '')}> ${user.address[i]} </option>`
-			);
-		}
+
 		for (let i = 0; i < user.reserved.length; i++) {
 			//adds the price of every item in user.reserved
 			itemSubtotal += fora.account.reserved[i].price;
@@ -37,7 +32,7 @@ fora.scripts.push(async () => {
 			$('#confirmOrderModal').modal('show');
 		};
 
-		discountedSubtotal[0] = itemSubtotal;
+		subtotals[0] = itemSubtotal;
 
 		//sets discountBilling array to the discounted price options
 		//"discount": [10, 25, 40, 55, 70]
@@ -46,11 +41,11 @@ fora.scripts.push(async () => {
 
 		for (let i = 1; i < 6; i++) {
 			let discount = (100 - fora.discount[i]) / 100;
-			discountedSubtotal[i + 1] = Number((itemSubtotal * discount).toFixed(2));
+			subtotals[i] = Number((itemSubtotal * discount).toFixed(2));
 			$(`#discountSelector`).append(
-				`<option value="${i + 1}" ${!user.coupons[i] ? 'disabled' : ''}> ${fora.discount[i]}% discount | ${
-					discountedSubtotal[i + 1]
-				} RMB </option>`
+				`<option value="${i}" ${!user.coupons[i] ? 'disabled' : ''}> ${fora.discount[i]}% discount | ${subtotals[
+					i
+				].toFixed(2)} RMB </option>`
 			);
 		}
 
@@ -75,7 +70,7 @@ fora.scripts.push(async () => {
 	//calculates discounted price, sales tax, rewarded points
 	function calculateDiscount(discountIdx) {
 		//set discounted price
-		cart.subtotal = discountedSubtotal[discountIdx];
+		cart.subtotal = subtotals[discountIdx];
 		//set sales tax at 7%
 		cart.salesTax = Number((cart.subtotal * 0.07).toFixed(2));
 		//set rewarded pts
@@ -108,7 +103,7 @@ fora.scripts.push(async () => {
 		//cart.items[] copies user.reserved[]
 		cart.items = user.reserved;
 		//cart.coupon copies selected discountIdx
-		cart.coupon = discountIdx;
+		cart.coupon = discountIdx - 1;
 
 		//set variables back to 0
 		discountIdx = 0;
@@ -132,5 +127,23 @@ fora.scripts.push(async () => {
 				body: JSON.stringify(cart)
 			})
 		).json();
+
+		if (res.msg == 'success') {
+			$('#orderStatusAlert').append(`
+	<div class="alert alert-success" role="alert">
+	Your request is successful! Payment should be received within 24hrs (view payment QR code and your order in "orders" tab). It may take 2 business days for admin to confirm your order. 
+	</div>`);
+			//reference to clear array: https://stackoverflow.com/questions/1232040/how-do-i-empty-an-array-in-javascript
+			// user.reserved = [];
+			user.coupons[cart.coupon]--;
+			//orders.JSON counter adds one
+			cart = {};
+			$('#confirmOrderModal').modal('hide');
+		} else {
+			$('#orderStatusAlert').append(`
+	<div class="alert alert-danger" role="alert">
+	Order failed :(
+	</div>`);
+		}
 	};
 });
