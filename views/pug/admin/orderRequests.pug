@@ -13,60 +13,88 @@ if user.orders.length == 0
 	p.text-center There are no orders yet
 else
 	.container-sm
-		//- .row
-		//- 	.col-md-4.text-center.text-muted
-		//- 		a(href='admin') ALL ORDERS
-		//- 	.col-md-4.text-center.text-muted
-		//- 		a(href='admin') CONFIRMED ORDERS
-		//- 	.col-md-4.text-center.text-muted
-		//- 		a(href='admin') UNCONFIRMED ORDERS
-		ul.nav.nav-tabs
-			li.nav-item
-				a.nav-link.active(href='#') ALL ORDERS
-			li.nav-item
-				a.nav-link(href='#') CONFIRMED ORDERS
-			li.nav-item
-				a.nav-link(href='#') UNCONFIRMED ORDERS
-
-		each order, i in user.orders
-			.row.mt-4: .card.mt-2.mx-3
-				h5.card-header
-					p= ((order.confirmed)?'Admin Confirmed Order':'Pending Order Confirmation...')
-				.card-body
-					h5.card-title.mb-4 Order Request From: 
-						=user.username
-					.card-text
-						.row 
-							.col-md-4
-								//reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart 
-								p Order request time:
-									span=(d = new Date(order.timeRequested))? d.toDateString() + " " + d.getHours().toString().padStart(2, '0') + ":" + d.getMinutes().toString().padStart(2, '0') : " "
-								p Wechat ID: 
-									span=user.wechatID
-								p.mb-5 Coupon Used: 
-									span=fora.discount[order.couponUsed] + "% discount"
-							.col-md-4
-								p Items subtotal: 
-									span=order.subtotal + " RMB"
-								p Estimated sales tax: 
-									span=order.salesTax + " RMB"
-								p Total rewarded pts: 
-									span=order.totalRewardedPoints + " pts"
-							.col-md-4
-								p Total billing: 
-									span=order.totalBilling + " RMB"
-								if (order.shippingCost==0)
-									p Customer pick up from store
-								else 
-									p Customer paid for delivery
-								p Number of items ordered: 
-									span=order.items.length
-								if (!order.confirmed)
-									.row.mt-4.mb-5
-										button.btn.btn-dark(type="button" onclick='confirmRequest()') Confirm order
-								else
-									.row.mt-4.mb-5 
-										button.btn.btn-success(type="button" onclick='confirmRequest()' disabled) [ Order has been confirmed ] 
-				//- div(id="requestItems" + i).row
-
-				
+		ul.nav.nav-tabs(role='tablist')
+			li.nav-item(role='presentation')
+				button.nav-link.fs-6.active(data-bs-toggle='tab' data-bs-target='#unconfirmed' type='button' role='tab') UNCONFIRMED ORDERS
+			li.nav-item(role='presentation')
+				button.nav-link.fs-6(data-bs-toggle='tab' data-bs-target='#confirmed' type='button' role='tab') CONFIRMED ORDERS
+		.tab-content.mx-4
+			#unconfirmed.tab-pane.fade.show.active(role='tabpanel')
+				each order, i in unconfirmed
+					.row.mt-4: .card.mt-2.mx-3
+						h5.card-header
+							p Pending Order Confirmation...
+							.d-flex.flex-row-reverse 
+								button.btn.btn-dark(type="button" onclick='confirmRequest()') Confirm order
+						.card-body
+							h5.card-title.mb-4 Order Request From: 
+								=user.username
+							.card-text
+								.row 
+									.col-md-4
+										//reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart 
+										p Order request time:
+											span=(d = new Date(order.timeRequested))? d.toDateString() + " " + d.getHours().toString().padStart(2, '0') + ":" + d.getMinutes().toString().padStart(2, '0') : " "
+										p Wechat ID: 
+											span=user.wechatID
+										p.mb-5 Coupon Used: 
+											span=fora.discount[order.coupon+1] + "% discount"
+									.col-md-4
+										p Items subtotal: 
+											span=order.subtotal.toFixed(2) + " RMB"
+										p Estimated sales tax: 
+											span=order.salesTax.toFixed(2) + " RMB"
+										p Total rewarded pts: 
+											span=order.rewardPoints + " pts"
+									.col-md-4
+										p Total billing: 
+											span=order.total.toFixed(2) + " RMB"
+										if (order.shipping==0)
+											p Customer pick up from store
+										else 
+											p Customer paid for delivery
+										p Number of items ordered: 
+											span=order.items.length
+										.row.mt-4.mb-5
+											
+						div(id="unconfirmedItems" + i).row
+			#confirmed.tab-pane.fade.show(role='tabpanel')
+				each order, i in confirmed
+					.row.mt-4: .card.mt-2.mx-3
+						h5.card-header
+							p Admin Confirmed Order
+						.card-body
+							h5.card-title.mb-4 Order Request From: 
+								=user.username
+							.card-text
+								.row 
+									.col-md-4
+										//reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart 
+										p Order request time:
+											span=(d = new Date(order.timeRequested))? d.toDateString() + " " + d.getHours().toString().padStart(2, '0') + ":" + d.getMinutes().toString().padStart(2, '0') : " "
+										p Wechat ID: 
+											span=user.wechatID
+										p.mb-5 Coupon Used: 
+											span=fora.discount[order.coupon+1] + "% discount"
+									.col-md-4
+										p Items subtotal: 
+											span=order.subtotal.toFixed(2) + " RMB"
+										p Estimated sales tax: 
+											span=order.salesTax.toFixed(2) + " RMB"
+										p Total rewarded pts: 
+											span=order.rewardPoints + " pts"
+									.col-md-4
+										p Total billing: 
+											span=order.total.toFixed(2) + " RMB"
+										if (order.shipping==0)
+											p Customer pick up from store
+										else 
+											p Customer paid for delivery
+										p Number of items ordered: 
+											span=order.items.length
+										.row.mt-4.mb-5 
+											button.btn.btn-success(type="button" onclick='confirmRequest()' disabled) [ Order has been confirmed ] 
+						div(id="confirmedItems" + i).row
+						
+script(src="../js/admin/orderRequests.js") 
+						

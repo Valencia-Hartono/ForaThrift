@@ -16,7 +16,7 @@
 
 
 if user.orders.length == 0
-	p.text-center: a(href="store") You haven’t ordered anything yet (view shop)
+	p.text-center: a(href="/store/clothing") You haven’t ordered anything yet (view shop)
 else
 	.container-fluid
 		each order, i in userOrders
@@ -34,7 +34,7 @@ else
 								p Number of items ordered: 
 									span=order.items.length
 								p.mb-5 Coupon Used: 
-									span=fora.discount[order.coupon] + "% discount"
+									span=fora.discount[order.coupon+1] + "% discount"
 							.col-md-4
 								p Items subtotal: 
 									span=order.subtotal.toFixed(2) + " RMB"

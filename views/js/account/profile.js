@@ -4,6 +4,7 @@ fora.scripts.push(async () => {
 		let data = getFormData('profileForm');
 		data.username = user.username;
 		await updateUserData(data);
+		location.reload();
 	};
 
 	//display ranking based on checking points

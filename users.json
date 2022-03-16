@@ -5,7 +5,7 @@
     "wechatID": "cherry123",
     "password": "vally227",
     "totalPoints": 20000,
-    "pointsForExchange": 320,
+    "pointsForExchange": 80,
     "coupons": [
       8,
       6,
@@ -34,14 +34,13 @@
     "favorites": [
       "0009888"
     ],
-    "reserved": [
-      "0009888"
-    ],
+    "reserved": [],
     "orders": [
-      0,
+      1,
       2,
-      2,
-      3
+      3,
+      4,
+      5
     ],
     "requestBanTime": 0,
     "flexRadioDefault": "on",

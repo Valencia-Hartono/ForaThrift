@@ -42,6 +42,7 @@ fora.scripts.push(async () => {
 	for (let i = 0; i < userOrders.length; i++) {
 		//each item ordered-> append to card
 		displayItems('#orderedItems' + i, await getItems(userOrders[i].items));
+		displayItems('#requestItems' + i, await getItems(userOrders[i].items));
 	}
 
 	//DONATIONS.PUG

@@ -113,6 +113,10 @@ async function loadViews() {
 			if (req.url == '/account') {
 				locals.userOrders = getUserOrders();
 			}
+			if (req.url == '/admin/orderRequests') {
+				locals.unconfirmed = orders.unconfirmed;
+				locals.confirmed = orders.confirmed;
+			}
 			req.url = req.url.split('?')[0];
 			log('requested ' + req.url);
 			res.render('pug/' + req.url, locals);
@@ -139,6 +143,18 @@ async function startServer() {
 	app.get('/userOrders', (req, res) => {
 		res.json({
 			userOrders: getUserOrders()
+		});
+	});
+
+	app.get('/admin/unconfirmed', (req, res) => {
+		res.json({
+			ç: orders.unconfirmed
+		});
+	});
+
+	app.get('/admin/confirmed', (req, res) => {
+		res.json({
+			confirmed: orders.confirmed
 		});
 	});
 
