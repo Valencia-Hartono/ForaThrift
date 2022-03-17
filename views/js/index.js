@@ -59,7 +59,9 @@ function displayItems(elem, items) {
 		//in each grid, add the div with item's id. This div includes the image, and then a container on the bottom with the name and the price
 		$items.append(`
 		<div id="${item.id}" class="col-6 col-md-3 mt-3 mb-3">
-			<img src="${item.img}" object-fit width="300" height="300"/>
+			<div height="300px">
+				<img src="${item.img}" width="300px"/>
+			</div>
 			<div class="container mt-2">
 				<font size="2px">
 					<div class="row">

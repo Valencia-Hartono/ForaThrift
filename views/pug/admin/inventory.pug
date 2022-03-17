@@ -24,14 +24,14 @@ p.text-center.text-muted Total number of items in inventory:
 			.col-12.col-md-10
 				label.mb-2 ITEM INFO
 				// img form
-				label.form-label.col-12.mb-2(for='img') Item Image
+				label.form-label.col-12.mb-2(for='img') Image URL
 					.form-group: .input-group
-						input#img.form-control(type='text' name='img' placeholder='Item Image')
+						input#img.form-control(type='text' name='img' placeholder='Image URL')
 						input#imgFile.form-control.hide(type='file' name='imgFile' style="display: none;")
-						label.input-group-text(for='imgFile') Upload
+						// label.input-group-text(for='imgFile') Upload
 				// name form
-				label.form-group.col-5.mb-2.form-label.pe-1(for='name') Item Name
-					input#name.form-control(type='text' name='name' placeholder="Item Name" required)
+				label.form-group.col-5.mb-2.form-label.pe-1(for='name') Name
+					input#name.form-control(type='text' name='name' placeholder="Name" required)
 				// brand form
 				label.form-group.col-4.mb-2.form-label.px-1(for='brand') Brand Name
 					input#brand.form-control(type='text' name='brand' placeholder="Brand Name" required)
@@ -57,15 +57,15 @@ p.text-center.text-muted Total number of items in inventory:
 				label.form-group.col-2.form-label.ps-1(for='size') Size
 					select#size.form-select.form-select-md.mb-3(name='size' required)
 				
-				// item description form
+				// description form
 				.form-group.col-12.mb-2
-					label.form-label(for='description') Item Description
-					textarea#description.form-control(rows='3' name='description' placeholder="Item Description" required)
+					label.form-label(for='description') Description
+					textarea#description.form-control(rows='3' name='description' placeholder="Description" required)
 			.col-12.col-md-2
 				// rating form
 				label.mb-2 RATING
 				.form-group.mb-2
-					each rating in [['styleRating', 'Item Style'], ['qualityRating', 'Item Quality'], ['valueRating', 'Item Rating']]
+					each rating in [['styleRating', 'Style'], ['qualityRating', 'Quality'], ['valueRating', 'Value']]
 						label(for=rating[0])= rating[1]
 						select.ratingSel.form-select.mb-1(id=rating[0] name=rating[0] required)
 							option(value='1') 1 ⭐️

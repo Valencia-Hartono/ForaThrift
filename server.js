@@ -155,7 +155,7 @@ async function startServer() {
 	//create request for unconfirmed orders through this link
 	app.get('/admin/unconfirmed', (req, res) => {
 		res.json({
-			ç: orders.unconfirmed
+			unconfirmed: orders.unconfirmed
 		});
 	});
 
@@ -163,6 +163,38 @@ async function startServer() {
 	app.get('/admin/confirmed', (req, res) => {
 		res.json({
 			confirmed: orders.confirmed
+		});
+	});
+
+	app.get('/admin/confirmRequest/:id', async (req, res) => {
+		let { id } = req.params;
+
+		// find order in unconfrimed orders array
+
+		// move to beginning of confirmed orders array
+
+		// change confirmed attr with time confirmed
+
+		// save orders in order.json
+
+		log(id);
+
+		res.json({
+			msg: 'success'
+		});
+	});
+
+	app.get('/admin/sendItemsRequest/:id', async (req, res) => {
+		let { id } = req.params;
+
+		// find order in confirmed orders array
+
+		// change sent attr with time sent
+
+		// save orders in orders.json
+
+		res.json({
+			msg: 'success'
 		});
 	});
 
@@ -293,7 +325,7 @@ async function startServer() {
 		res.json(user[data.list]);
 	});
 
-	app.post('/admin/inventoryNumOfItems', async (req, res) => {
+	app.get('/admin/inventoryNumOfItems', (req, res) => {
 		let { clothing, shoes, bags, accessories } = db;
 		let inventoryNumOfItems = clothing.length + shoes.length + bags.length + accessories.length;
 		res.json({ inventoryNumOfItems });
@@ -341,10 +373,11 @@ async function startServer() {
 
 		order.id = orders.numOfOrders;
 
-		orders.unconfirmed.push(order);
+		//add to beginning of array instead of end
+		orders.unconfirmed.unshift(order);
 
 		let user = users[currentUser];
-		user.orders.push(order.id);
+		user.orders.unshift(order.id);
 
 		user.reserved = [];
 		if (order.coupon != 0) {

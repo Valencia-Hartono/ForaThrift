@@ -12,7 +12,7 @@
 		.col-md-6
 			h4 Scan QR Code to wechat pay
 			p Once our staff has received payment, your order will be confirmed and we will send the package no later than 5 business days.
-				img.rounded(style='' src='https://i.pinimg.com/564x/8c/81/bf/8c81bf68e863dca94759acf24c7f1f5c.jpg')
+			img.rounded(style='' src='https://i.pinimg.com/564x/8c/81/bf/8c81bf68e863dca94759acf24c7f1f5c.jpg')
 
 
 if user.orders.length == 0
@@ -22,13 +22,15 @@ else
 		each order, i in userOrders
 			.row.mt-4: .card.mt-2.mx-3
 				h5.card-header
-					p= ((order.confirmed)?'Admin Confirmed Order':'Pending Order Confirmation...')
+					if (order.confirmed)
+						p Admin Confirmed Order
+					else 
+						p Pending Order Confirmation...
 				.card-body
-					h5.card-title My Order Details
 					.card-text
 						.row
 							.col-md-4
-								p Order request time:
+								p Order request time: 
 									//reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse 
 									span=(d = new Date(order.timeRequested))? d.toDateString() + " " + d.getHours().toString().padStart(2, '0') + ":" + d.getMinutes().toString().padStart(2, '0') : " "
 								p Number of items ordered: 

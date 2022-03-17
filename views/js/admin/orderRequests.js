@@ -36,12 +36,36 @@ fora.scripts.push(async () => {
 		displayItems('#confirmedItems' + i, await getItems(confirmed[i].items));
 	}
 
-	window.confirmRequest = async () => {
+	window.confirmRequest = async (id) => {
 		// move order from unconfirmed array to confirmed array in orders.JSON and reload page
+		let response = (
+			await (
+				await fetch('/admin/confirmRequest/' + id, {
+					method: 'GET',
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				})
+			).json()
+		).msg;
+
+		if (response == 'success') {
+			// reload page
+		} else {
+			alert('Order request confirmation failed!');
+		}
 	};
 
-	window.sendItems = async () => {
+	window.sendItems = async (id) => {
 		// change order's "sent" attribute in orders.JSON to true
 		//display "item has been sent"
+		await (
+			await fetch('/admin/sendItems/' + id, {
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
+		).json();
 	};
 });
