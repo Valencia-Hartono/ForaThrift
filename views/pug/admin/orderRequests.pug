@@ -23,9 +23,12 @@ else
 				each order, i in unconfirmed
 					.row.mt-4: .card.mt-2.mx-3
 						h5.card-header
-							p Pending Order Confirmation...
-							.d-flex.flex-row-reverse 
-								button.btn.btn-dark(type="button" onclick='confirmRequest()') Confirm order
+							.row 
+								.col-6 
+									p.d-flex.justify-content-start Pending Order Confirmation...
+								.col-6 
+									p.d-flex.justify-content-end
+										button.btn.btn-dark(type="button" onclick='confirmRequest()') Confirm order
 						.card-body
 							h5.card-title.mb-4 Order Request From: 
 								=user.username
@@ -55,14 +58,19 @@ else
 											p Customer paid for delivery
 										p Number of items ordered: 
 											span=order.items.length
-										.row.mt-4.mb-5
-											
 						div(id="unconfirmedItems" + i).row
 			#confirmed.tab-pane.fade.show(role='tabpanel')
 				each order, i in confirmed
 					.row.mt-4: .card.mt-2.mx-3
 						h5.card-header
-							p Admin Confirmed Order
+							.row 
+								.col-6 
+									p.d-flex.justify-content-start Admin Confirmed Order
+								.col-6 
+									//only display sendItems button if order requires delivery
+									if (order.shipping!=0)
+										p.d-flex.justify-content-end
+											button.btn.btn-info(type="button" onclick='sendItems()') Send Items
 						.card-body
 							h5.card-title.mb-4 Order Request From: 
 								=user.username
@@ -92,8 +100,6 @@ else
 											p Customer paid for delivery
 										p Number of items ordered: 
 											span=order.items.length
-										.row.mt-4.mb-5 
-											button.btn.btn-success(type="button" onclick='confirmRequest()' disabled) [ Order has been confirmed ] 
 						div(id="confirmedItems" + i).row
 						
 script(src="../js/admin/orderRequests.js") 

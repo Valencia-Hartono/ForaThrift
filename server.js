@@ -111,9 +111,11 @@ async function loadViews() {
 				req.url = 'index';
 			}
 			if (req.url == '/account') {
+				//must get from specific user
 				locals.userOrders = getUserOrders();
 			}
 			if (req.url == '/admin/orderRequests') {
+				//can access orders.JSON file directly
 				locals.unconfirmed = orders.unconfirmed;
 				locals.confirmed = orders.confirmed;
 			}
@@ -128,12 +130,16 @@ function getUserOrders() {
 	let userOrders = [];
 	let user = users[currentUser];
 
+	//user.orders is an array of order IDs
 	for (let orderID of user.orders) {
+		//check if the orderID is in the unconfirmed section in orders.JSON
 		let order = orders.unconfirmed.find((x) => x.id == orderID);
+		//if not found, it checks in the confirmed section in orders.JSON
 		if (!order) order = orders.confirmed.find((x) => x.id == orderID);
 		userOrders.push(order);
 	}
 	log(userOrders);
+	//userOrders return an array of order objects
 	return userOrders;
 }
 
@@ -146,12 +152,14 @@ async function startServer() {
 		});
 	});
 
+	//create request for unconfirmed orders through this link
 	app.get('/admin/unconfirmed', (req, res) => {
 		res.json({
 			ç: orders.unconfirmed
 		});
 	});
 
+	//create request for confirmed orders through this link
 	app.get('/admin/confirmed', (req, res) => {
 		res.json({
 			confirmed: orders.confirmed

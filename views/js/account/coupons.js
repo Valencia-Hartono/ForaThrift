@@ -2,7 +2,7 @@ fora.scripts.push(async () => {
 	//COUPONS.PUG
 	function appendCouponButtons(discountArray, deductionArray) {
 		// $(`#discountButtons`).append(`new version`);
-		for (let i = 0; i < discountArray.length; i++) {
+		for (let i = 1; i < discountArray.length; i++) {
 			$(`#discountButtons`).append(`
 			<p>
 				<button id="get${deductionArray[i]}" class="btn btn-green">

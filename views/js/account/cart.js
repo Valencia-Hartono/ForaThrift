@@ -118,6 +118,7 @@ fora.scripts.push(async () => {
 		cart.timeRequested = Date.now();
 		cart.username = user.username;
 		cart.wechatID = user.wechatID;
+		cart.sent = false;
 		let res = await (
 			await fetch('/account/cart/orderRequest', {
 				method: 'POST',
@@ -127,7 +128,6 @@ fora.scripts.push(async () => {
 				body: JSON.stringify(cart)
 			})
 		).json();
-
 		if (res.msg == 'success') {
 			$('#orderStatusAlert').append(`
 	<div class="alert alert-success" role="alert">

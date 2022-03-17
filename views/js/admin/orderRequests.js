@@ -1,6 +1,7 @@
 fora.scripts.push(async () => {
 	let unconfirmed = (
-		await (
+		await //use link created in server to get the unconfirmed order objects
+		(
 			await fetch('/admin/unconfirmed', {
 				method: 'GET',
 				headers: {
@@ -16,7 +17,8 @@ fora.scripts.push(async () => {
 	}
 
 	let confirmed = (
-		await (
+		await //use link created in server to get the confirmed order objects
+		(
 			await fetch('/admin/confirmed', {
 				method: 'GET',
 				headers: {
@@ -26,8 +28,20 @@ fora.scripts.push(async () => {
 		).json()
 	).confirmed;
 
+	for (let i = 0; i < unconfirmed.length; i++) {
+		displayItems('#unconfirmedItems' + i, await getItems(unconfirmed[i].items));
+	}
+
 	for (let i = 0; i < confirmed.length; i++) {
-		//each item ordered-> append to card
 		displayItems('#confirmedItems' + i, await getItems(confirmed[i].items));
 	}
+
+	window.confirmRequest = async () => {
+		// move order from unconfirmed array to confirmed array in orders.JSON and reload page
+	};
+
+	window.sendItems = async () => {
+		// change order's "sent" attribute in orders.JSON to true
+		//display "item has been sent"
+	};
 });

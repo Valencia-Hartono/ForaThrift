@@ -1,7 +1,7 @@
 {
   "valencia01": {
     "username": "valencia01",
-    "email": "valenciahartono@gmail.com",
+    "email": "cherryvally27@gmail.com",
     "wechatID": "cherry123",
     "password": "vally227",
     "totalPoints": 20000,
@@ -9,7 +9,7 @@
     "coupons": [
       8,
       6,
-      1,
+      0,
       4,
       0
     ],
@@ -32,7 +32,11 @@
       }
     ],
     "favorites": [
-      "0009888"
+      "0009888",
+      "021264",
+      "0219707",
+      "0218789",
+      "0205937"
     ],
     "reserved": [],
     "orders": [
@@ -40,7 +44,7 @@
       2,
       3,
       4,
-      5
+      4
     ],
     "requestBanTime": 0,
     "flexRadioDefault": "on",
