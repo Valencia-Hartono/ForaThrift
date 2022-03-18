@@ -1,6 +1,6 @@
 {
 	"name": "forathrift",
-	"version": "1.0.116",
+	"version": "1.0.117",
 	"description": "Fora Thrift Shop server.",
 	"main": "index.js",
 	"scripts": {

@@ -171,11 +171,14 @@ async function startServer() {
 
 		// find order in unconfrimed orders array
 		let order = orders.unconfirmed.find((x) => x.id == orderID);
-		// move to beginning of confirmed orders array
-		orders.confirmed.unshift(order);
 		// change confirmed attr with time confirmed
 		order.confirmed = Date.now();
+		// move to beginning of confirmed orders array
+		orders.confirmed.unshift(order);
+		// remove from array
+
 		// save orders in order.json
+		await fs.outputFile('orders.json', JSON.stringify(orders, null, 2));
 
 		log(id);
 
