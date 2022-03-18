@@ -1,4 +1,4 @@
-.container-fluid.mb-5
+include account
 	h4 My Cart
 	p View items you’ve added to your cart. 
 
@@ -8,60 +8,60 @@
 		span.pointsExchangable= user.pointsForExchange || '0'
 	a(data-bs-toggle='modal' href='#pointsSystem') How to earn points?
 
-.container-fluid
-	h4 Total Billing
-	p.my-0 Total number of items in cart: 
-		span#numOrder= user.reserved.length || '0'
-	p.my-0 Subtotal: 
-		//traverse through user.reserved to get ID, and use ID to get item price, and add them up
-		span#preCouponSubtotal
-	p.my-0 Order Ban Time: 
-		//traverse through user.reserved to get ID, and use ID to get item price, and add them up
-		span#banTime 
-		span hr
-	p
-		button#requestOrderButton.btn.btn-green Request Order
+	.row.mt-3
+		h4 Total Billing
+		p.my-0 Total number of items in cart: 
+			span#numOrder= user.reserved.length || '0'
+		p.my-0 Subtotal: 
+			//traverse through user.reserved to get ID, and use ID to get item price, and add them up
+			span#preCouponSubtotal
+		p.my-0 Order Ban Time: 
+			//traverse through user.reserved to get ID, and use ID to get item price, and add them up
+			span#banTime 
+			span hr
+		p
+			button#requestOrderButton.btn.btn-green Request Order
 
-#orderStatusAlert.mt-3
+	#orderStatusAlert.mt-3
 
-if user.reserved.length == 0
-	p.text-center: a(href="/store/clothing") You haven’t added any items yet (view shop)
-else
-	.container-fluid: #reservedItems.row
+	if user.reserved.length == 0
+		p.text-center: a(href="/store/clothing") You haven’t added any items yet (view shop)
+	else
+		.row: #reservedItems.row
 
-#confirmOrderModal.modal.fade(tabindex='-1')
-	.modal-dialog
-		form#cartForm.modal-content
-			.modal-header.mx-2
-				h5.modal-title Confirm Order Request
-			.modal-body.mx-2
-				label.form-group.col-10.form-label(for='discount') Please indicate which coupon you'd like to use
-					select#discountSelector.form-select.form-select-md.mb-3(name='discount')
-				label.form-group.col-10.form-label(for='pickupMethod') Please indicate your pickup method
-					select#deliveryMethodSelector.form-select.form-select-md.mb-3(name='deliveryMethod')
-						option(value='0') Pick up at store
-						option(value='1') Delivery
-				div.mb-3
-					p.my-0 Items in cart: 
-						span#numOrder= user.reserved.length || '0'
-					p.my-0 Item Subtotal: 
-						span#subtotal
-					p.my-0 Estimated Sales Tax: 
-						span#salesTax 
-					p.my-0 Shipping and Handling Cost: 
-						span#shipping
-				div.mb-3
-					p.my-0 Total Billing: 
-						span#total
-					p.my-0 Total rewarded pts: 
-						span#rewardPoints 
-				#delivery(style="display:none")
-					label.col-10 Deliver to following address:
-					label.col-10.form-label= user.address || 'please enter your address on your profile page'
-					
-				| Are you sure you want to order these items? If payment via wechat is not received within 24hrs of request, request will be denied and user must wait 48hrs before next request.
-			.modal-footer
-				//- button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Cancel
-				button#confirmOrder.btn.btn-green(type='button' onclick='submitCartForm()' data-bs-dismiss='modal') Confirm
+	#confirmOrderModal.modal.fade(tabindex='-1')
+		.modal-dialog
+			form#cartForm.modal-content
+				.modal-header.mx-2
+					h5.modal-title Confirm Order Request
+				.modal-body.mx-2
+					label.form-group.col-10.form-label(for='discount') Please indicate which coupon you'd like to use
+						select#discountSelector.form-select.form-select-md.mb-3(name='discount')
+					label.form-group.col-10.form-label(for='pickupMethod') Please indicate your pickup method
+						select#deliveryMethodSelector.form-select.form-select-md.mb-3(name='deliveryMethod')
+							option(value='0') Pick up at store
+							option(value='1') Delivery
+					div.mb-3
+						p.my-0 Items in cart: 
+							span#numOrder= user.reserved.length || '0'
+						p.my-0 Item Subtotal: 
+							span#subtotal
+						p.my-0 Estimated Sales Tax: 
+							span#salesTax 
+						p.my-0 Shipping and Handling Cost: 
+							span#shipping
+					div.mb-3
+						p.my-0 Total Billing: 
+							span#total
+						p.my-0 Total rewarded pts: 
+							span#rewardPoints 
+					#delivery(style="display:none")
+						label.col-10 Deliver to following address:
+						label.col-10.form-label= user.address || 'please enter your address on your profile page'
+						
+					| Are you sure you want to order these items? If payment via wechat is not received within 24hrs of request, request will be denied and user must wait 48hrs before next request.
+				.modal-footer
+					//- button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Cancel
+					button#confirmOrder.btn.btn-green(type='button' onclick='submitCartForm()' data-bs-dismiss='modal') Confirm
 
-script(src="../js/account/cart.js") 
+	script(src="../js/account/cart.js") 

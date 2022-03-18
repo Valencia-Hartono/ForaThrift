@@ -110,7 +110,7 @@ async function loadViews() {
 			if (req.url == '/') {
 				req.url = 'index';
 			}
-			if (req.url == '/account') {
+			if (req.url == '/account/orders') {
 				//must get from specific user
 				locals.userOrders = getUserOrders();
 			}
@@ -333,7 +333,6 @@ async function startServer() {
 
 	app.post('/admin/inventory', async (req, res) => {
 		let item = req.body; // request body is the json sent
-		log(item);
 
 		for (let prop of fora.numberProps) {
 			if (item[prop]) item[prop] = Number(item[prop]);
@@ -361,6 +360,7 @@ async function startServer() {
 			// if item was not found in the list add it
 			items.push(item);
 		}
+		log(item);
 		// save updated user info to users file
 		await fs.outputFile('inventory.json', JSON.stringify(db, null, 2));
 

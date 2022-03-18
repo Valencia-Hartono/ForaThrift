@@ -27,7 +27,7 @@ p.text-center.text-muted Total number of items in inventory:
 				label.form-label.col-12.mb-2(for='img') Image URL
 					.form-group: .input-group
 						input#img.form-control(type='text' name='img' placeholder='Image URL')
-						input#imgFile.form-control.hide(type='file' name='imgFile' style="display: none;")
+						// input#imgFile.form-control.hide(type='file' name='imgFile' style="display: none;")
 						// label.input-group-text(for='imgFile') Upload
 				// name form
 				label.form-group.col-5.mb-2.form-label.pe-1(for='name') Name
@@ -83,8 +83,8 @@ p.text-center.text-muted Total number of items in inventory:
 							span#rewardPoints 0 pts
 							input#reward(style='display:none;')
 		.row
-			.col-3.d-grid.gap-2: button#submit.btn.btn-success.btn-sm.mt-3(type="button" onclick='submitAdminInventoryForm()') Add to inventory
-			.col-3.d-grid.gap-2: button#submit.btn.btn-warning.btn-sm.mt-3(type="button" onclick='submitAdminInventoryForm()') Save Changes
-			.col-3.d-grid.gap-2: button#submit.btn.btn-danger.btn-sm.mt-3(type="button" onclick='') Delete from inventory
+			.col-3.d-grid.gap-2: button.btn.btn-success.btn-sm.mt-3(type="submit" onclick='submitAdminInventoryForm();') Add to inventory
+			.col-3.d-grid.gap-2: button.btn.btn-warning.btn-sm.mt-3(type="submit" onclick='submitAdminInventoryForm();') Save Changes
+			.col-3.d-grid.gap-2: button.btn.btn-danger.btn-sm.mt-3(type="button" onclick='') Delete from inventory
 			//reference: https://www.w3schools.com/jsref/met_loc_reload.asp -> reload page to clear form
-			.col-3.d-grid.gap-2: button#submit.btn.btn-dark.btn-sm.mt-3(type="button" onclick='location.reload()') Clear form
+			.col-3.d-grid.gap-2: button.btn.btn-dark.btn-sm.mt-3(type="button" onclick='location.reload()') Clear form

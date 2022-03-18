@@ -1,4 +1,4 @@
-.container-fluid
+include account
 	h4 My Donations
 	p Browse through your donation history. Each donated item will be rewarded points.
 
@@ -8,24 +8,24 @@
 		span.pointsExchangable= user.pointsForExchange || '0'
 	a(data-bs-toggle='modal' href='#pointsSystem') How to earn points?
 
-if user.donations.length == 0
-	p.text-center: a(href="") You haven’t donated any items yet
-else
-	.container-fluid
-		each donation, i in user.donations
-			.row.mt-4: .card.mt-2.mx-3
-				h5.card-header Donation
-				.card-body
-					h5.card-title.mb-4 My Donation Details
-					.card-text
-						.row 
-							.col-md-4
-								p Donation time:
-									span=(d = new Date(donation.time))? d.toDateString() + " " + d.getHours().toString().padStart(2, '0') + ":" + d.getMinutes().toString().padStart(2, '0') : " "
-								p Number of items donated: 
-									span=donation.items.length
-							.col-md-4
-							.col-md-4
-								p Total rewarded pts: 
-									span=donation.totalRewardedPoints + " pts"
-						div(id="donatedItems" + i).row
+	if user.donations.length == 0
+		p.text-center: a(href="") You haven’t donated any items yet
+	else
+		.row
+			each donation, i in user.donations
+				.row.mt-4: .card.mt-2.mx-3
+					h5.card-header Donation
+					.card-body
+						h5.card-title.mb-4 My Donation Details
+						.card-text
+							.row 
+								.col-md-4
+									p Donation time:
+										span=(d = new Date(donation.time))? d.toDateString() + " " + d.getHours().toString().padStart(2, '0') + ":" + d.getMinutes().toString().padStart(2, '0') : " "
+									p Number of items donated: 
+										span=donation.items.length
+								.col-md-4
+								.col-md-4
+									p Total rewarded pts: 
+										span=donation.totalRewardedPoints + " pts"
+							div(id="donatedItems" + i).row

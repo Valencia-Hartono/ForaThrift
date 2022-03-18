@@ -11,7 +11,7 @@ fora.scripts.push(async () => {
 		let discountIdx = 0;
 		let deliveryIdx = 0;
 
-		for (let i = 0; i < user.reserved.length; i++) {
+		for (let i = 0; i < fora.account.reserved.length; i++) {
 			//adds the price of every item in user.reserved
 			itemSubtotal += fora.account.reserved[i].price;
 		}

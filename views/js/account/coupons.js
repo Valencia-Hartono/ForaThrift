@@ -10,7 +10,7 @@ fora.scripts.push(async () => {
 				</button>
 				Number of ${discountArray[i]}% coupons you have:
 				<span id="couponAmount${deductionArray[i]}">
-					${user.coupons[i] || '0'}
+					${user.coupons[i - 1] || '0'}
 				</span>
 			</p>
 			`);
@@ -26,27 +26,25 @@ fora.scripts.push(async () => {
 	//Checks if user has enough points to redeem points for the coupon clicked
 	let coupon = {};
 	//set how much points each coupon deducts, marked by the index of the corresponding discount %. (ex. 0 is 10%, 1 is 25%, 2 is 40%, 3 is 55%, 4 is 70%)
-	function couponSetter(deductionArray) {
-		for (let i = 0; i < deductionArray.length; i++) {
-			let code = i;
-			let points = deductionArray[i];
 
-			$('#get' + points)[0].onclick = () => {
-				coupon = { points, code };
-				//if fail, display alert saying it is unsuccessful
-				if (user.pointsForExchange < coupon.points) {
-					$('#couponStatusAlert').append(`
+	for (let i = 1; i < fora.deductionPts.length; i++) {
+		let code = i;
+		let points = fora.deductionPts[i];
+
+		$('#get' + points)[0].onclick = () => {
+			coupon = { points, code };
+			//if fail, display alert saying it is unsuccessful
+			if (user.pointsForExchange < coupon.points) {
+				$('#couponStatusAlert').append(`
 	<div class="alert alert-danger" role="alert">
 		Failed to redeem points! Not enough points: ${user.pointsForExchange}
 	</div>`);
-					return;
-				}
-				//if user has enough points to redeem points, confirm modal in coupons.pug will be displayed
-				$('#confirmRedeemModal').modal('show');
-			};
-		}
+				return;
+			}
+			//if user has enough points to redeem points, confirm modal in coupons.pug will be displayed
+			$('#confirmRedeemModal').modal('show');
+		};
 	}
-	couponSetter(fora.deductionPts);
 
 	//once confirm button is clicked, corresponding points are deducted from user's "points for exchange"
 	//check if points is enough to deduct points, because modal may be still opened

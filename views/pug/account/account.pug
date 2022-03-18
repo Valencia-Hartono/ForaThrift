@@ -1,0 +1,31 @@
+include ../fora
+include ../blackNav
+include ../pointsSystem
+include ../itemModal
+script(src='../../js/account.js')
+.mb-2
+// categories
+.container-fluid
+	.row
+		.col-4.col-md-3.col-lg-2#accountSidebar
+			h4 MY ACCOUNT
+			.nav.flex-column.me-3
+				a(href="profile")
+					span.fs-4.avatar  
+					label My Profile
+				a(href="coupons")
+					span.fs-4 🎫 
+					label My Coupons
+				a(href="favorites") 
+					span.fs-4 ♥️
+					label My Favorites
+				a(href="cart") 
+					span.fs-4 🛒 
+					label My Cart
+				a(href="orders") 
+					span.fs-4 🗒 
+					label My Orders
+				a(href="donations") 
+					span.fs-4 📦 
+					label My Donations
+		.col-8.col-md-9.col-lg-10: div

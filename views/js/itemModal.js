@@ -29,11 +29,9 @@ fora.scripts.push(async () => {
 
 	$('#item_reserved')[0].onclick = () => {
 		itemInteraction('reserved', $('#item_reserved')[0].checked ? 'add' : 'remove');
-		location.reload();
 	};
 
 	$('#item_favorite')[0].onclick = () => {
 		itemInteraction('favorites', $('#item_favorite')[0].checked ? 'add' : 'remove');
-		location.reload();
 	};
 });

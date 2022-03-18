@@ -20,13 +20,15 @@ fora.scripts.push(async () => {
 
 		for (let prop in item) {
 			if (prop == 'img') continue;
-			if (!item[prop]) {
+			if (!item[prop] && prop != 'id') {
 				console.warn('admin did not enter item ' + prop + ' information');
+				if (prop == 'category') {
+					alert('Please select a category for the item!');
+				}
 				return;
 			}
 		}
 
-		delete item.imgFile;
 		item.subtype = item.category[2];
 		item.type = item.category[1];
 		item.category = item.category[0];

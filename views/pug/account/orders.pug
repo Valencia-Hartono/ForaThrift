@@ -1,4 +1,4 @@
-.container-fluid
+include account
 	.row
 		.col
 			h4 My Orders
@@ -15,46 +15,46 @@
 			img.rounded(style='' src='https://i.pinimg.com/564x/8c/81/bf/8c81bf68e863dca94759acf24c7f1f5c.jpg')
 
 
-if user.orders.length == 0
-	p.text-center: a(href="/store/clothing") You haven’t ordered anything yet (view shop)
-else
-	.container-fluid
-		each order, i in userOrders
-			.row.mt-4: .card.mt-2.mx-3
-				h5.card-header
-					if (order.confirmed)
-						p Admin Confirmed Order
-					else 
-						p Pending Order Confirmation...
-				.card-body
-					.card-text
-						.row
-							.col-md-4
-								p Order request time: 
-									//reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse 
-									span=(d = new Date(order.timeRequested))? d.toDateString() + " " + d.getHours().toString().padStart(2, '0') + ":" + d.getMinutes().toString().padStart(2, '0') : " "
-								p Number of items ordered: 
-									span=order.items.length
-								p.mb-5 Coupon Used: 
-									span=fora.discount[order.coupon+1] + "% discount"
-							.col-md-4
-								p Items subtotal: 
-									span=order.subtotal.toFixed(2) + " RMB"
-								p Estimated sales tax: 
-									span=order.salesTax.toFixed(2) + " RMB"
-								p.mb-5 Shipping and handling cost: 
-									span=order.shipping.toFixed(2) + " RMB"
-							.col-md-4
-								p Total billing: 
-									span=order.total.toFixed(2) + " RMB"
-								p Total rewarded pts: 
-									span=order.rewardPoints + " pts"
-								p Return status: 
-									//referece for day conversion: https://www.unitjuggler.com/convert-time-from-day-to-ms.html
-									if Date.now() - order.timeRequested <= 2*8.64e+7
-										span 🟢 Can return without penalty with full refund
-									else if Date.now() - order.timeRequested > 2*8.64e+7  && Date.now() - order.timeRequested <=7*8.64e+7
-										span 🟠 10RMB deduction per item refunded
-									else if Date.now() - order.timeRequested > 7*8.64e+7
-										span 🔴 No return
-						div(id="orderedItems" + i).row
+	if user.orders.length == 0
+		p.text-center: a(href="/store/clothing") You haven’t ordered anything yet (view shop)
+	else
+		.row
+			each order, i in userOrders
+				.row.mt-4: .card.mt-2.mx-3
+					h5.card-header
+						if (order.confirmed)
+							p Admin Confirmed Order
+						else 
+							p Pending Order Confirmation...
+					.card-body
+						.card-text
+							.row
+								.col-md-4
+									p Order request time: 
+										//reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse 
+										span=(d = new Date(order.timeRequested))? d.toDateString() + " " + d.getHours().toString().padStart(2, '0') + ":" + d.getMinutes().toString().padStart(2, '0') : " "
+									p Number of items ordered: 
+										span=order.items.length
+									p.mb-5 Coupon Used: 
+										span=fora.discount[order.coupon+1] + "% discount"
+								.col-md-4
+									p Items subtotal: 
+										span=order.subtotal.toFixed(2) + " RMB"
+									p Estimated sales tax: 
+										span=order.salesTax.toFixed(2) + " RMB"
+									p.mb-5 Shipping and handling cost: 
+										span=order.shipping.toFixed(2) + " RMB"
+								.col-md-4
+									p Total billing: 
+										span=order.total.toFixed(2) + " RMB"
+									p Total rewarded pts: 
+										span=order.rewardPoints + " pts"
+									p Return status: 
+										//referece for day conversion: https://www.unitjuggler.com/convert-time-from-day-to-ms.html
+										if Date.now() - order.timeRequested <= 2*8.64e+7
+											span 🟢 Can return without penalty with full refund
+										else if Date.now() - order.timeRequested > 2*8.64e+7  && Date.now() - order.timeRequested <=7*8.64e+7
+											span 🟠 10RMB deduction per item refunded
+										else if Date.now() - order.timeRequested > 7*8.64e+7
+											span 🔴 No return
+							div(id="orderedItems" + i).row

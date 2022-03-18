@@ -95,14 +95,17 @@ function displayItems(elem, items) {
 			$('#itemModal #item_size').text(' Size: ' + fora.size[item.size]);
 			$('#itemModal #item_price').text(' Price: ' + item.price + ' RMB');
 
-			//appends number of people queueing for item to column 3 by returning length of queue array storing users' names
-			$('#itemModal #numReserve').text(item.reserved.length);
-
 			$('#item_reserved')[0].checked = user.reserved.includes(item.id);
 			$('#item_favorite')[0].checked = user.favorites.includes(item.id);
 
 			//appends item information to second row
-			$('#itemModal #item_description').text(item.description);
+			let des = item.description.split('\n');
+			let desHTML = '';
+			for (let elem of des) {
+				desHTML += '<p>' + elem + '</p>';
+			}
+
+			$('#itemModal #item_description')[0].innerHTML = desHTML;
 		};
 	}
 }

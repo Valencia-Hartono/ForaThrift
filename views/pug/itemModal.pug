@@ -8,9 +8,9 @@
 		table.table
 			thead
 				tr
-					th.text-center(scope='col') Rating ⚜️
-					th.text-center(scope='col') Type 🧷
-					th.text-center(scope='col') User Profile 🔒
+					th.text-center(scope='col'): h6 Rating ⚜️
+					th.text-center(scope='col'): h6 Type 🧷
+					th.text-center(scope='col'): h6 User Profile 🔒
 			tbody
 				tr
 					td.col-4
@@ -39,7 +39,7 @@
 							br
 							input#item_favorite.form-check-input(type='checkbox' value='' name='flexCheckDefault')
 							label.form-check-label(for='item_favorite')  Favorite ♥️
-		row Item description: 
+		row
 			#item_description
 
 script(src='/js/itemModal.js')
