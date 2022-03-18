@@ -191,10 +191,11 @@ async function startServer() {
 		let { id } = req.params;
 
 		// find order in confirmed orders array
-
+		let order = orders.confirmed.find((x) => x.id == orderID);
 		// change sent attr with time sent
-
+		order.sent = Date.now();
 		// save orders in orders.json
+		await fs.outputFile('orders.json', JSON.stringify(orders, null, 2));
 
 		res.json({
 			msg: 'success'
