@@ -170,11 +170,11 @@ async function startServer() {
 		let { id } = req.params;
 
 		// find order in unconfrimed orders array
-
+		let order = orders.unconfirmed.find((x) => x.id == orderID);
 		// move to beginning of confirmed orders array
-
+		orders.confirmed.unshift(order);
 		// change confirmed attr with time confirmed
-
+		order.confirmed = Date.now();
 		// save orders in order.json
 
 		log(id);

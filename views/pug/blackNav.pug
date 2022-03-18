@@ -18,10 +18,10 @@ nav#blackNav.navbar.navbar-expand-sm.navbar-dark.bg-dark.p-2
 					a.nav-link.dropdown.fs-5(href='#' role='button' data-bs-toggle='dropdown')= (user) ? 'Welcome ' + user.name : 'Get Started'
 					ul.dropdown-menu.dropdown-menu-end
 						if user
-							li: a.dropdown-item(data-bs-toggle='modal' href='#loginRegisterModal') ↩️ Logout
-							li: a.dropdown-item(href='/account') 👤 My Account
+							li: a.dropdown-item(data-bs-toggle='modal' href='#loginRegisterModal') ↩️ LOGOUT
+							li: a.dropdown-item(href='/account') 👤 MY ACCOUNT
 						else
-							li: a.dropdown-item(data-bs-toggle='modal' href='#loginRegisterModal') Register/Sign In
-						li: a.dropdown-item(href='/additionalInfo') ❓ Shipping info
-						li: a.dropdown-item(href='/contactUs') 👩‍💻 Contact Us
+							li: a.dropdown-item(data-bs-toggle='modal' href='#loginRegisterModal') REGISTER/SIGN IN
+						li: a.dropdown-item(href='/additionalInfo') ❓ ADDITIONAL INFO
+						li: a.dropdown-item(href='/contactUs') 👩‍💻 CONTACT US
 include loginRegister.pug
