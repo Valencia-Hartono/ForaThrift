@@ -166,8 +166,8 @@ async function startServer() {
 		});
 	});
 
-	app.get('/admin/confirmRequest/:id', async (req, res) => {
-		let { id } = req.params;
+	app.get('/admin/confirmRequest/:orderID', async (req, res) => {
+		let { orderID } = req.params;
 
 		// find order in unconfrimed orders array
 		let order = orders.unconfirmed.find((x) => x.id == orderID);
@@ -180,15 +180,15 @@ async function startServer() {
 		// save orders in order.json
 		await fs.outputFile('orders.json', JSON.stringify(orders, null, 2));
 
-		log(id);
+		log(orderID);
 
 		res.json({
 			msg: 'success'
 		});
 	});
 
-	app.get('/admin/sendItemsRequest/:id', async (req, res) => {
-		let { id } = req.params;
+	app.get('/admin/sendItems/:orderID', async (req, res) => {
+		let { orderID } = req.params;
 
 		// find order in confirmed orders array
 		let order = orders.confirmed.find((x) => x.id == orderID);

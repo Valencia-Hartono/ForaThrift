@@ -1,84 +1,57 @@
 {
-  "valencia01": {
-    "username": "valencia01",
-    "email": "cherryvally27@gmail.com",
-    "wechatID": "cherry123",
-    "password": "vally227",
-    "totalPoints": 20000,
-    "pointsForExchange": 80,
-    "coupons": [
-      8,
-      6,
-      0,
-      4,
-      0
-    ],
-    "name": "Valencia",
-    "birthday": "2004-02-27",
-    "gender": "f",
-    "phone": "13162981165",
-    "address": "2888 Hunan Rd The Emerald 142",
-    "city": "",
-    "region": "",
-    "postalCode": "",
-    "donations": [
-      {
-        "items": [
-          "0223027",
-          "0213280"
-        ],
-        "time": 1645195568251,
-        "totalRewardedPoints": 480
-      }
-    ],
-    "favorites": [
-      "0212684",
-      "0213283"
-    ],
-    "reserved": [],
-    "orders": [
-      7,
-      6,
-      5,
-      5,
-      4,
-      3,
-      2,
-      1
-    ],
-    "requestBanTime": 0,
-    "flexRadioDefault": "on",
-    "femaleRadio": "on",
-    "gender-f": "on",
-    "gender-m": "on"
-  },
-  "timmy02": {
-    "username": "timmy02",
-    "email": "timmy@gmail.com",
-    "wechatID": "xxx",
-    "password": "timmy02",
-    "totalPoints": 5203,
-    "pointsForExchange": 4000,
-    "coupons": [
-      6,
-      2,
-      9,
-      0,
-      0
-    ],
-    "name": "Timmy",
-    "birthday": "2004-07-13",
-    "gender": "n",
-    "phone": "",
-    "address": "98 James St.",
-    "city": "",
-    "region": "",
-    "postalCode": "",
-    "donations": [],
-    "favorites": [],
-    "reserved": [],
-    "orders": [],
-    "requestBanTime": 0,
-    "flexRadioDefault": "on"
-  }
+	"valencia01": {
+		"username": "valencia01",
+		"email": "cherryvally27@gmail.com",
+		"wechatID": "cherry123",
+		"password": "vally227",
+		"totalPoints": 20000,
+		"pointsForExchange": 80,
+		"coupons": [8, 6, 0, 4, 0],
+		"name": "Valencia",
+		"birthday": "2004-02-27",
+		"gender": "f",
+		"phone": "13162981165",
+		"address": "2888 Hunan Rd The Emerald 142",
+		"city": "",
+		"region": "",
+		"postalCode": "",
+		"donations": [
+			{
+				"items": ["0223027", "0213280"],
+				"time": 1645195568251,
+				"totalRewardedPoints": 480
+			}
+		],
+		"favorites": ["0212684", "0213283"],
+		"reserved": [],
+		"orders": [2, 1],
+		"requestBanTime": 0,
+		"flexRadioDefault": "on",
+		"femaleRadio": "on",
+		"gender-f": "on",
+		"gender-m": "on"
+	},
+	"timmy02": {
+		"username": "timmy02",
+		"email": "timmy@gmail.com",
+		"wechatID": "xxx",
+		"password": "timmy02",
+		"totalPoints": 5203,
+		"pointsForExchange": 4000,
+		"coupons": [6, 2, 9, 0, 0],
+		"name": "Timmy",
+		"birthday": "2004-07-13",
+		"gender": "n",
+		"phone": "",
+		"address": "98 James St.",
+		"city": "",
+		"region": "",
+		"postalCode": "",
+		"donations": [],
+		"favorites": [],
+		"reserved": [],
+		"orders": [],
+		"requestBanTime": 0,
+		"flexRadioDefault": "on"
+	}
 }

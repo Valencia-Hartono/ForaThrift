@@ -65,6 +65,10 @@ a:visited {
 	color: #00ab8e;
 }
 
+.black a {
+	color: #4f4f4f;
+}
+
 a:hover,
 a:active {
 	color: #05816d;
