@@ -1,5 +1,4 @@
 fora.scripts.push(async () => {
-	//COUPONS.PUG
 	function appendCouponButtons(discountArray, deductionArray) {
 		// $(`#discountButtons`).append(`new version`);
 		for (let i = 1; i < discountArray.length; i++) {

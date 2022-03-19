@@ -1,5 +1,4 @@
 fora.scripts.push(async () => {
-	//CART.PUG
 	fora.account.reserved = await getItems(user.reserved);
 	displayItems('#reservedItems', fora.account.reserved);
 

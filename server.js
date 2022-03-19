@@ -262,6 +262,9 @@ async function startServer() {
 			let items = [];
 			let count = 0;
 			for (let item of inventory) {
+				if (item.id == req.id) {
+					items.push(item);
+				}
 				if (req.type == 0 || item.type == req.type - 1) {
 					if (req.subtype == 0 || item.subtype == req.subtype - 1) {
 						if (!req.id || item.id == req.id) {
@@ -388,6 +391,10 @@ async function startServer() {
 			user.coupons[order.coupon]--;
 		}
 		orders.numOfOrders++;
+
+		for (let item of orders.items) {
+			item.sold = true;
+		}
 
 		await fs.outputFile('orders.json', JSON.stringify(orders, null, 2));
 		await fs.outputFile('users.json', JSON.stringify(users, null, 2));
