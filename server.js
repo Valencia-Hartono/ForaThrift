@@ -241,67 +241,82 @@ async function startServer() {
 	//reference: https://expressjs.com/en/guide/routing.html
 	app.get('/store/:category/:type/:subtype?*', getStorePage);
 
+	function findItem(id) {
+		let items = findItems(id);
+		if (items.length) {
+			return items[0];
+		}
+		return null;
+	}
+
+	function findItems(category, type, subtype, filters) {
+		let id;
+		if (typeof type == 'undefined') {
+			id = category;
+			category = id[0] + 1;
+		}
+		let inventory = db[fora.categories.names[category - 1]];
+		let items = [];
+		let count = 0;
+		for (let item of inventory) {
+			if (item.id == id) {
+				items.push(item);
+			}
+			if (type == 0 || item.type == type - 1) {
+				if (subtype == 0 || item.subtype == subtype - 1) {
+					if (!id || item.id == id) {
+						if (!filters.season || filters.season.includes(item.season)) {
+							if (typeof filters.sold == 'undefined' && !item.sold == filters.sold) {
+								items.push(item);
+							}
+						}
+					}
+					count++;
+					if (count > 30) break;
+				}
+			}
+		}
+		return items;
+	}
+
 	// category is a number (0 is not valid)
 	// type is a number (0 for all)
 	// subtype is a number (0 for all)
-	function searchForItems(req, res, url) {
+	function respondWithItems(req, res, url) {
 		try {
 			// url: /clothing/tops?season=fall+winter&size=M&color=Black
 			if (url) {
 				// let filters = {season: ['fall', 'winter'],size: 'M',color:'Black'};
-				let filters = {};
-			}
-			let inventory = [];
-			if (req.category == 0) {
-				for (let category of fora.categories.names) {
-					inventory = inventory.concat(db[category]);
-				}
-			} else {
-				inventory = db[fora.categories.names[req.category - 1]];
-			}
-			let items = [];
-			let count = 0;
-			for (let item of inventory) {
-				if (item.id == req.id) {
-					items.push(item);
-				}
-				if (req.type == 0 || item.type == req.type - 1) {
-					if (req.subtype == 0 || item.subtype == req.subtype - 1) {
-						if (!req.id || item.id == req.id) {
-							if (!filters.season || filters.season.includes(item.season)) {
-								items.push(item);
-							}
-						}
-						count++;
-						if (count > 30) break;
-					}
-				}
+				let filters = {
+					sold: false
+				};
 			}
 			if (!req.id) {
+				let items = findItems(req.category, req.type, req.subtype, filters);
 				res.json({ items });
 			} else {
-				res.json({ item: items[0] });
+				let item = findItem(req.id);
+				res.json({ item: item });
 			}
 		} catch (e) {
-			res.send('404 Not found or invalid format ' + e.message);
+			log(e.message);
+			res.json({
+				msg: '404 Not found or invalid format ' + e.message
+			});
 		}
 	}
 
 	app.all('/items/:category/:type/:subtype?*', (req, res) => {
 		let url = req.url;
-		searchForItems(req.params, res, url);
+		respondWithItems(req.params, res, url);
 	});
 
 	app.all('/items/:category/:type/:subtype', (req, res) => {
-		searchForItems(req.params, res);
+		respondWithItems(req.params, res);
 	});
 
 	app.all('/item/:id', (req, res) => {
-		req = req.params;
-		req.category = Number(req.id[0]) + 1;
-		req.type = Number(req.id[1]) + 1;
-		req.subtype = Number(req.id[2]) + 1;
-		searchForItems(req, res);
+		respondWithItems(req.params, res);
 	});
 
 	app.post('/user', async (req, res) => {

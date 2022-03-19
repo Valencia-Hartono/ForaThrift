@@ -101,6 +101,10 @@ fora.scripts.push(async () => {
 		if (!$('#searchItemID').val()) return;
 		ogItem = await getItem($('#searchItemID').val());
 		let item = ogItem;
+		if (item == null) {
+			alert('Item not found!');
+			return;
+		}
 
 		for (let prop in item) {
 			$('#' + prop).val(item[prop]);

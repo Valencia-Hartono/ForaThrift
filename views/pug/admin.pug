@@ -1,5 +1,5 @@
-include ../fora.pug
-script(src='../../../js/admin.js')
+include fora
+script(src='../../js/admin.js')
 nav#blackNav.navbar.navbar-expand-sm.navbar-dark.bg-dark.p-2
 	.container-fluid
 			a.navbar-brand.active.fs-1(href='/store/clothing') FORA THRIFT
@@ -7,7 +7,7 @@ nav#blackNav.navbar.navbar-expand-sm.navbar-dark.bg-dark.p-2
 				span.navbar-toggler-icon
 #adminPage.container-fluid
 	h1.display-3.mt-5.mb-4.text-center WELCOME ADMIN
-	h3.text-center.text-secondary: a(href="checkout") CHECKOUT ITEMS
-	h3.text-center.text-secondary: a(href="inventory") MANAGE INVENTORY
-	h3.text-center.text-secondary: a(href="orderRequests") ORDER REQUESTS
+	h3.text-center.text-secondary: a(href="/admin/checkout") CHECKOUT ITEMS
+	h3.text-center.text-secondary: a(href="/admin/inventory") MANAGE INVENTORY
+	h3.text-center.text-secondary: a(href="/admin/orderRequests") ORDER REQUESTS
 	
