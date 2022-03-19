@@ -15,7 +15,7 @@ nav#blackNav.navbar.navbar-expand-sm.navbar-dark.bg-dark.p-2
 				//- 		span.input-group-append
 				//- 			button.btn.btn-outline-secondary(type='button') 🔍
 				li#profileDropdown.nav-item.dropdown
-					a.nav-link.dropdown.fs-5(href='#' role='button' data-bs-toggle='dropdown')= (user) ? 'Welcome ' + user.name : 'Get Started'
+					a.nav-link.dropdown.fs-5(role='button' data-bs-toggle='dropdown')= (user) ? 'Welcome ' + user.name : 'Get Started'
 					ul.dropdown-menu.dropdown-menu-end
 						if user
 							li: a.dropdown-item(data-bs-toggle='modal' href='#loginRegisterModal') ↩️ LOGOUT

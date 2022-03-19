@@ -166,8 +166,8 @@ async function startServer() {
 		});
 	});
 
-	app.get('/admin/confirmRequest/:orderID', async (req, res) => {
-		let { orderID } = req.params;
+	app.get('/admin/confirmRequest/:id', async (req, res) => {
+		let { id } = req.params;
 
 		// find order in unconfrimed orders array
 		let order = orders.unconfirmed.find((x) => x.id == orderID);
@@ -180,15 +180,15 @@ async function startServer() {
 		// save orders in order.json
 		await fs.outputFile('orders.json', JSON.stringify(orders, null, 2));
 
-		log(orderID);
+		log(id);
 
 		res.json({
 			msg: 'success'
 		});
 	});
 
-	app.get('/admin/shipped/:orderID', async (req, res) => {
-		let { orderID } = req.params;
+	app.get('/admin/sendItemsRequest/:id', async (req, res) => {
+		let { id } = req.params;
 
 		// find order in confirmed orders array
 		let order = orders.confirmed.find((x) => x.id == orderID);
@@ -269,13 +269,7 @@ async function startServer() {
 						for (let fitlerName in filters) {
 							let filter = filters[fitlerName];
 							if (Array.isArray(filter)) {
-								filteredOut = true;
-								for (let el of filter) {
-									if (item[fitlerName] == el) {
-										filteredOut = false;
-										break;
-									}
-								}
+								filteredOut = filter.includes(item[fitlerName]);
 							} else if (typeof filter == 'boolean') {
 								filteredOut = !!item[fitlerName] != filter;
 							} else {
@@ -297,34 +291,30 @@ async function startServer() {
 	// category is a number (0 is not valid)
 	// type is a number (0 for all)
 	// subtype is a number (0 for all)
-	function respondWithItems(req, res) {
-		let url = req.url;
-		req = req.params;
-		let filters = {
-			sold: false
-		};
-
-		url = url.split('?');
-		log(url);
-		// if url contains filters
-		if (url.length > 1) {
+	function respondWithItems(req, res, url) {
+		let req = req.params;
+		try {
+			let filters = {
+				sold: false
+			};
 			// example url:
 			// /clothing/tops?season=fall+winter&size=M&color=Black
 			// creates a filter object like this:
 			// {season: ['fall', 'winter'],size: 'M',color:'Black'};
-			let params = url[1].split('&');
-			for (let param of params) {
-				param = param.split('=');
-				log(param[1]);
-				if (param[1].includes('+')) {
-					filters[param[0]] = param[1].split('+');
-				} else {
-					filters[param[0]] = param[1];
+			if (url) {
+				url = url.split('?');
+				if (url.length > 1) {
+					let params = url[1].split('&');
+					for (let param of params) {
+						param = param.split('=');
+						if (param[1].includes('+')) {
+							filter[param[0]] = param[1];
+						} else {
+							filter[param[0]] = param[1].split('+');
+						}
+					}
 				}
 			}
-			log(filters);
-		}
-		try {
 			if (!req.id) {
 				let items = findItems(req.category, req.type, req.subtype, filters);
 				res.json({ items });
@@ -340,11 +330,18 @@ async function startServer() {
 		}
 	}
 
-	app.get('/item/:id', respondWithItems);
+	app.all('/items/:category/:type/:subtype?*', (req, res) => {
+		let url = req.url;
+		respondWithItems(req.params, res, url);
+	});
 
-	app.get('/items/:category/:type/:subtype', respondWithItems);
+	app.all('/items/:category/:type/:subtype', (req, res) => {
+		respondWithItems(req.params, res);
+	});
 
-	app.get('/items/:category/:type/:subtype?*', respondWithItems);
+	app.all('/item/:id', (req, res) => {
+		respondWithItems(req.params, res);
+	});
 
 	app.post('/user', async (req, res) => {
 		let data = req.body; // request body is the json sent

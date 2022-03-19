@@ -115,27 +115,75 @@ window.fora = {
 };
 
 fora.scripts.push(() => {
-	window.fetchItems = async (category, type, subtype) => {
-		category ??= 1;
-		type ??= 0;
-		subtype ??= 0;
-		let itemsUrl = `/items/${category}/${type}/${subtype}`;
-		log(itemsUrl);
+	window.fetchItems = async (url) => {
+		log(url);
+		url = url.slice(1);
+		let storeUrl, itemsUrl;
 
-		category = fora.categories.names[category - 1];
+		let attrsAreNumbers = /[0-9]/.test(url[0]);
 
-		let storeUrl = '/store/' + category;
-		if (type) {
-			type = fora.categories[category].typeNames[type - 1];
-			storeUrl += '/' + type;
+		url = url.split('?');
+		let quest = '';
+		if (url.length > 1) quest = '?' + url[1];
+		let attrs = url[0].split('/');
+		let category = attrs[0];
+		let type = attrs[1];
+		let subtype = attrs[2];
+
+		function convertText() {
+			category = fora.categories.names.indexOf(category) + 1;
+			if (type) {
+				type = fora.categories[category].typeNames.indexOf(type) + 1;
+			} else {
+				type = 0;
+			}
 			if (subtype) {
-				subtype = fora.categories[category][type][subtype - 1];
-				storeUrl += '/' + subtype;
+				subtype = fora.categories[category][type].indexOf(subtype) + 1;
+			} else {
+				subtype = 0;
 			}
 		}
 
+		function convertNumbers() {
+			category = fora.categories.names[category - 1];
+			if (type) {
+				type = fora.categories[category].typeNames[type - 1];
+			} else {
+				type = undefined;
+			}
+			if (subtype) {
+				subtype = fora.categories[category][type][subtype - 1];
+			} else {
+				subtype = undefined;
+			}
+		}
+
+		function createUrl(kind) {
+			let u = '/' + kind + '/' + category;
+			if (type || type === 0) u += '/' + type;
+			if (subtype || subtype === 0) u += '/' + subtype;
+			return u + quest;
+		}
+
+		// if the url starts with a number
+		if (attrsAreNumbers) {
+			category = Number(category);
+			type ??= 0;
+			subtype ??= 0;
+			type = Number(type);
+			subtype = Number(subtype);
+
+			itemsUrl = createUrl('items');
+			convertNumbers();
+			storeUrl = createUrl('store');
+		} else {
+			storeUrl = createUrl('store');
+			convertText();
+			itemsUrl = createUrl('items');
+		}
+
 		// changes the url without reloading the page
-		history.pushState({}, 'test', storeUrl);
+		history.pushState({}, 'store', storeUrl);
 
 		// get items from the server
 		let res = await fetch(itemsUrl);
@@ -178,7 +226,7 @@ fora.scripts.push(() => {
 			$cols
 				.eq(colNumMin)
 				.append(
-					`<div class="row"><a onclick="fetchItems(${i + 1}, ${j + 1})" class="col">` +
+					`<div class="row"><a onclick="fetchItems('/${i + 1}/${j + 1}')" class="col">` +
 						type[0].toUpperCase() +
 						type.slice(1) +
 						'</a></div>'
@@ -190,7 +238,7 @@ fora.scripts.push(() => {
 				$cols
 					.eq(colNumMin)
 					.append(
-						`<div class="row"><a onclick="fetchItems(${i + 1}, ${j + 1}, ${k + 1})" class="col"> ➤ ${
+						`<div class="row"><a onclick="fetchItems('/${i + 1}/${j + 1}/${k + 1}')" class="col"> ➤ ${
 							subtype[0].toUpperCase() + subtype.slice(1)
 						}</a></div>`
 					);

@@ -10,5 +10,5 @@ script(src='/js/store.js')
 include itemModal
 script.
 	fora.scripts.push(async () => {
-		fetchItems(#{store.category}, #{store.type}, #{store.subtype});
+		fetchItems(location.href.split('/store')[1]);
 	});
