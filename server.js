@@ -266,7 +266,7 @@ async function startServer() {
 				if (subtype == 0 || item.subtype == subtype - 1) {
 					if (!id || item.id == id) {
 						if (!filters.season || filters.season.includes(item.season)) {
-							if (typeof filters.sold == 'undefined' && !item.sold == filters.sold) {
+							if (typeof filters.sold == 'undefined' || !!item.sold == filters.sold) {
 								items.push(item);
 							}
 						}
@@ -285,11 +285,11 @@ async function startServer() {
 	function respondWithItems(req, res, url) {
 		try {
 			// url: /clothing/tops?season=fall+winter&size=M&color=Black
+			let filters = {
+				sold: false
+			};
 			if (url) {
 				// let filters = {season: ['fall', 'winter'],size: 'M',color:'Black'};
-				let filters = {
-					sold: false
-				};
 			}
 			if (!req.id) {
 				let items = findItems(req.category, req.type, req.subtype, filters);
