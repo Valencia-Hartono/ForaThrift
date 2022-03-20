@@ -23,7 +23,7 @@ function getFormData(formID) {
 async function getItem(id) {
 	let url = '/item/' + id;
 	let res = await fetch(url, {
-		method: 'POST',
+		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json'
 		}

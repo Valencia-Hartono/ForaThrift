@@ -51,6 +51,7 @@ fora.scripts.push(async () => {
 
 		if (response == 'success') {
 			// reload page
+			location.reload();
 		} else {
 			alert('Order request confirmation failed!');
 		}
@@ -59,13 +60,22 @@ fora.scripts.push(async () => {
 	window.sendItems = async (id) => {
 		// change order's "sent" attribute in orders.JSON to true
 		//display "item has been sent"
-		await (
-			await fetch('/admin/sendItems/' + id, {
-				method: 'GET',
-				headers: {
-					'Content-Type': 'application/json'
-				}
-			})
-		).json();
+		let response = (
+			await (
+				await fetch('/admin/sendItems/' + id, {
+					method: 'GET',
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				})
+			).json()
+		).msg;
+
+		if (response == 'success') {
+			// reload page
+			location.reload();
+		} else {
+			alert('Order shipped confirmation failed!');
+		}
 	};
 });

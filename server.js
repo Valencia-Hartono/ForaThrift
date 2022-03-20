@@ -176,6 +176,7 @@ async function startServer() {
 		// move to beginning of confirmed orders array
 		orders.confirmed.unshift(order);
 		// remove from array
+		orders.unconfirmed.splice(orders.unconfirmed.indexOf(order), 1);
 
 		// save orders in order.json
 		await fs.outputFile('orders.json', JSON.stringify(orders, null, 2));
@@ -434,7 +435,7 @@ async function startServer() {
 		}
 		orders.numOfOrders++;
 
-		for (let itemID of orders.items) {
+		for (let itemID of order.items) {
 			let item = findItem(itemID);
 			item.sold = true;
 		}

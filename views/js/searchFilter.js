@@ -1,6 +1,4 @@
 fora.scripts.push(async () => {
-	['season', 'style', 'size', 'color', 'material', 'pattern', 'topType', 'neckline', 'length', 'sleeve'];
-
 	$('.filter-check').on('click', async function () {
 		let url = window.location.href.split('/store')[1].split('?')[0];
 
