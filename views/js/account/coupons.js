@@ -53,7 +53,6 @@ fora.scripts.push(async () => {
 			user.pointsForExchange -= coupon.points;
 			user.coupons[coupon.code]++;
 
-			await updateUserData(user);
 			//display newly updated span.pointsExchangable in coupons.pug, donations.pug, and profile.pug
 			$('.pointsExchangable').text(user.pointsForExchange);
 			//display newly updated coupon amount
@@ -66,5 +65,6 @@ fora.scripts.push(async () => {
 		Coupon for ${coupon.points} points successfully redeemed!
 	</div>`);
 		}
+		await updateUserData(user);
 	};
 });

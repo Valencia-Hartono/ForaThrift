@@ -42,7 +42,7 @@ fora.scripts.push(async () => {
 			let discount = (100 - fora.discount[i]) / 100;
 			subtotals[i] = Number((itemSubtotal * discount).toFixed(2));
 			$(`#discountSelector`).append(
-				`<option value="${i}" ${!user.coupons[i] ? 'disabled' : ''}> ${fora.discount[i]}% discount | ${subtotals[
+				`<option value="${i}" ${!user.coupons[i - 1] ? 'disabled' : ''}> ${fora.discount[i]}% discount | ${subtotals[
 					i
 				].toFixed(2)} RMB </option>`
 			);

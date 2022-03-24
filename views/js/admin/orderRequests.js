@@ -62,7 +62,7 @@ fora.scripts.push(async () => {
 		//display "item has been sent"
 		let response = (
 			await (
-				await fetch('/admin/sendItems/' + id, {
+				await fetch('/admin/shipped/' + id, {
 					method: 'GET',
 					headers: {
 						'Content-Type': 'application/json'

@@ -174,7 +174,8 @@
       "valueRating": 4,
       "donor": "valencia01",
       "subtype": 1,
-      "type": 2
+      "type": 2,
+      "sold": true
     },
     {
       "id": "0213282",
@@ -193,7 +194,8 @@
       "valueRating": 4,
       "donor": "valencia01",
       "subtype": 1,
-      "type": 2
+      "type": 2,
+      "sold": true
     },
     {
       "id": "0213283",

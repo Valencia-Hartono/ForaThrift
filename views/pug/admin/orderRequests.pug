@@ -67,9 +67,11 @@ else
 										=user.username
 								.col-6 
 									//only display sendItems button if order requires delivery
-									if (order.shipping!=0)
+									if (order.shipping!=0 && order.sent==0)
 										.d-flex.justify-content-end
 											button.btn.btn-info(type="button" onclick='sendItems('+ order.id +')') Send Items
+									if (order.shipping!=0 && order.sent!=0)
+										.d-flex.justify-content-end Items have been sent
 						.card-body
 							.card-text
 								.row 
