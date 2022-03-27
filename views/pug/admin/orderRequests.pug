@@ -5,9 +5,6 @@ h1.display-3.mt-5.mb-4.text-center Order Admin Form
 h3.text-center.text-secondary
 	a(href='/admin') BACK TO ADMIN HOME
 
-p.text-center.text-muted Total number of orders unconfirmed: 
-	span#totalUnconfirmedOrders
-
 if user.orders.length == 0
 	p.text-center There are no orders yet
 else
@@ -28,7 +25,11 @@ else
 										=user.username
 								.col-6 
 									.d-flex.justify-content-end
-										button.btn.btn-dark(type="button" onclick='confirmRequest(' + order.id +')') Confirm order
+										.col-4
+										.col-4
+											button.btn.btn-dark(type="button" onclick='confirmRequest(' + order.id +')') Confirm order
+										.col-4
+											button.btn.btn-danger(type="button" onclick='denyRequest(' + order.id +')') Deny order
 						.card-body
 							.card-text
 								.row 
@@ -65,13 +66,24 @@ else
 								.col-6 
 									.d-flex.justify-content-start Admin confirmed order for: 
 										=user.username
+									p Wechat ID: 
+											span=user.wechatID
 								.col-6 
 									//only display sendItems button if order requires delivery
-									if (order.shipping!=0 && order.sent==0)
-										.d-flex.justify-content-end
-											button.btn.btn-info(type="button" onclick='sendItems('+ order.id +')') Send Items
-									if (order.shipping!=0 && order.sent!=0)
-										.d-flex.justify-content-end Items have been sent
+									.d-flex.justify-content-end
+										if (order.shipping!=0)
+											if (order.sent==0)
+												button.btn.btn-primary(type="button" onclick='sendItems('+ order.id +')') Admin Has Sent Items 📦
+											else 
+												p Items have been shipped 🚚: 
+													span=(d = new Date(order.sent))? d.toDateString() + " " + d.getHours().toString().padStart(2, '0') + ":" + d.getMinutes().toString().padStart(2, '0') : " "
+										else
+											if (order.pickedUp==0)
+												button.btn.btn-info(type="button" onclick='pickUpItems('+ order.id +')') User Has Picked Up Items 📦
+											else
+												p Items have been picked up 🛍: 
+													span=(d = new Date(order.pickedUp))? d.toDateString() + " " + d.getHours().toString().padStart(2, '0') + ":" + d.getMinutes().toString().padStart(2, '0') : " "
+												
 						.card-body
 							.card-text
 								.row 
@@ -79,8 +91,8 @@ else
 										//reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart 
 										p Order request time: 
 											span=(d = new Date(order.timeRequested))? d.toDateString() + " " + d.getHours().toString().padStart(2, '0') + ":" + d.getMinutes().toString().padStart(2, '0') : " "
-										p Wechat ID: 
-											span=user.wechatID
+										p Number of items ordered: 
+											span=order.items.length
 										p Coupon Used: 
 											span=fora.discount[order.coupon+1] + "% discount"
 									.col-md-4
@@ -88,17 +100,23 @@ else
 											span=order.subtotal.toFixed(2) + " RMB"
 										p Estimated sales tax: 
 											span=order.salesTax.toFixed(2) + " RMB"
-										p Total rewarded pts: 
-											span=order.rewardPoints + " pts"
-									.col-md-4
-										p Total billing: 
-											span=order.total.toFixed(2) + " RMB"
 										if (order.shipping==0)
 											p Customer pick up from store
 										else 
 											p Customer paid for delivery
-										p Number of items ordered: 
-											span=order.items.length
+									.col-md-4
+										p Total billing: 
+											span=order.total.toFixed(2) + " RMB"
+										p Total rewarded pts: 
+											span=order.rewardPoints + " pts"
+										p Return status: 
+											//referece for day conversion: https://www.unitjuggler.com/convert-time-from-day-to-ms.html
+											if Date.now() - order.timeRequested <= 2*8.64e+7
+												span 🟢 Can return without penalty with full refund
+											else if Date.now() - order.timeRequested > 2*8.64e+7  && Date.now() - order.timeRequested <=7*8.64e+7
+												span 🟠 10RMB deduction per item refunded
+											else if Date.now() - order.timeRequested > 7*8.64e+7
+												span 🔴 No return
 								div(id="confirmedItems" + i).row
 						
 script(src="../js/admin/orderRequests.js") 

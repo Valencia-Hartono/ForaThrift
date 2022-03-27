@@ -4,13 +4,13 @@
     "email": "cherryvally27@gmail.com",
     "wechatID": "cherry123",
     "password": "vally227",
-    "totalPoints": 4000,
-    "pointsForExchange": 160,
+    "totalPoints": 103464,
+    "pointsForExchange": 81784,
     "coupons": [
-      8,
-      14,
-      13,
       10,
+      15,
+      14,
+      9,
       1
     ],
     "name": "Valencia",
@@ -32,14 +32,15 @@
       }
     ],
     "favorites": [
-      "0212684",
-      "0213283"
+      "0213280"
     ],
-    "reserved": [
-      "0133288",
-      "0213283"
-    ],
+    "reserved": [],
     "orders": [
+      7,
+      6,
+      5,
+      4,
+      4,
       3,
       2,
       1
@@ -55,8 +56,8 @@
     "email": "timmy@gmail.com",
     "wechatID": "xxx",
     "password": "timmy02",
-    "totalPoints": 5203,
-    "pointsForExchange": 4000,
+    "totalPoints": 500,
+    "pointsForExchange": 500,
     "coupons": [
       6,
       2,

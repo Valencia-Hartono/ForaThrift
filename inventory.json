@@ -50,7 +50,7 @@
       "id": "0218789",
       "type": 2,
       "subtype": 1,
-      "style": 2,
+      "style": 0,
       "season": 1,
       "img": "https://i.pinimg.com/736x/bf/23/5d/bf235dad62a8b476e89dab021e68b01d.jpg",
       "images": [],
@@ -59,7 +59,7 @@
       "color": 1,
       "size": 3,
       "price": 999.99,
-      "description": "this has feathers",
+      "description": "Gorgeous bridal dress",
       "reserved": [
         "valencia01",
         "timmy02"
@@ -68,7 +68,9 @@
       "styleRating": 4,
       "qualityRating": 3,
       "valueRating": 4,
-      "purchaseTime": 0
+      "purchaseTime": 0,
+      "sold": false,
+      "category": 0
     },
     {
       "id": "0223027",
@@ -175,7 +177,7 @@
       "donor": "valencia01",
       "subtype": 1,
       "type": 2,
-      "sold": true
+      "sold": false
     },
     {
       "id": "0213282",
@@ -214,7 +216,8 @@
       "valueRating": 5,
       "donor": "valencia01",
       "subtype": 1,
-      "type": 2
+      "type": 2,
+      "sold": true
     },
     {
       "id": "0213284",
@@ -233,7 +236,8 @@
       "valueRating": 4,
       "donor": "valencia01",
       "subtype": 1,
-      "type": 2
+      "type": 2,
+      "sold": false
     },
     {
       "id": "0213285",
@@ -252,7 +256,8 @@
       "valueRating": 5,
       "donor": "valencia01",
       "subtype": 1,
-      "type": 2
+      "type": 2,
+      "sold": false
     },
     {
       "id": "0213286",
@@ -309,7 +314,8 @@
       "valueRating": 5,
       "donor": "valencia01",
       "subtype": 3,
-      "type": 1
+      "type": 1,
+      "sold": false
     },
     {
       "id": "0133289",
@@ -328,7 +334,8 @@
       "valueRating": 4,
       "donor": "valencia01",
       "subtype": 3,
-      "type": 1
+      "type": 1,
+      "sold": false
     },
     {
       "id": "0143290",
@@ -367,9 +374,88 @@
       "donor": "valencia01",
       "subtype": 6,
       "type": 1
+    },
+    {
+      "id": "0118871",
+      "img": "https://i.pinimg.com/564x/eb/3f/5c/eb3f5c0b5cda50a98076fe198ae32b79.jpg",
+      "name": "Blazer",
+      "brand": "CHANEL",
+      "price": 200,
+      "category": 0,
+      "style": 5,
+      "season": 2,
+      "color": 1,
+      "size": 0,
+      "description": "Amazing",
+      "styleRating": 5,
+      "qualityRating": 5,
+      "valueRating": 5,
+      "donor": "valencia01",
+      "subtype": 1,
+      "type": 1
+    },
+    {
+      "id": "0132983",
+      "img": "https://i.pinimg.com/564x/6e/96/35/6e9635490c80c7f18fd1f47c092be74b.jpg",
+      "name": "Black silk collar shirt",
+      "brand": "CHANEL",
+      "price": 80,
+      "category": 0,
+      "style": 0,
+      "season": 0,
+      "color": 0,
+      "size": 1,
+      "description": "nice",
+      "styleRating": 5,
+      "qualityRating": 5,
+      "valueRating": 5,
+      "donor": "valencia01",
+      "subtype": 3,
+      "type": 1
+    },
+    {
+      "id": "0117407",
+      "img": "https://i.pinimg.com/564x/87/74/ca/8774ca5ee89b4aff4cfc185c16715f04.jpg",
+      "name": "kylie blazer",
+      "brand": "kylie",
+      "price": 150,
+      "category": 0,
+      "style": 4,
+      "season": 0,
+      "color": 0,
+      "size": 3,
+      "description": "kkk",
+      "styleRating": 4,
+      "qualityRating": 4,
+      "valueRating": 4,
+      "donor": "valencia01",
+      "subtype": 1,
+      "type": 1,
+      "donationRewardPoints": 480
     }
   ],
-  "shoes": [],
+  "shoes": [
+    {
+      "id": "1002772",
+      "img": "https://i.pinimg.com/564x/8c/33/6c/8c336cac3ac72fa1c05193342c77d33a.jpg",
+      "name": "black long boots",
+      "brand": "Dr.Martin",
+      "price": 200,
+      "category": 1,
+      "style": 4,
+      "season": 2,
+      "color": 0,
+      "size": 1,
+      "description": "boots for winter",
+      "styleRating": 5,
+      "qualityRating": 5,
+      "valueRating": 4,
+      "donor": "timmy02",
+      "subtype": 0,
+      "type": 0,
+      "donationRewardPoints": 660
+    }
+  ],
   "bags": [],
   "accessories": [
     {
@@ -393,6 +479,26 @@
       "valueRating": 4,
       "purchaseTime": 0,
       "category": 3
+    },
+    {
+      "id": "3007156",
+      "img": "https://i.pinimg.com/564x/ff/ee/6e/ffee6eff1bc9eaed366c8977f32f6ee5.jpg",
+      "name": "Butterfly Ear-Cuff Earrings",
+      "brand": "SLVR jewelry",
+      "price": 20,
+      "category": 3,
+      "style": 0,
+      "season": 0,
+      "color": 2,
+      "size": 0,
+      "description": "pretty",
+      "styleRating": 5,
+      "qualityRating": 3,
+      "valueRating": 4,
+      "donor": "timmy02",
+      "subtype": 0,
+      "type": 0,
+      "donationRewardPoints": 500
     }
   ]
 }

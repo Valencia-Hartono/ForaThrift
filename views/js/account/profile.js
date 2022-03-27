@@ -21,31 +21,7 @@ fora.scripts.push(async () => {
 
 	//append/display avatar based on checking points and gender
 	function checkAvatar(points, gender) {
-		var avatar = '🧚';
-		let arrayF = ['🧞‍♀️', '🧜‍♀️', '🧚‍♀️'];
-		let arrayM = ['🧞‍♂️', '🧜', '🧚‍♂️'];
-		let arrayN = ['🧞', '🧜‍♂️', '🧚'];
-		let pointsCheck = [5200, 2600, 0];
-		for (let i = pointsCheck.length - 1; i >= 0; i--) {
-			if (points >= pointsCheck[i]) {
-				if (gender == 'f') {
-					avatar = arrayF[i];
-				} else if (gender == 'm') {
-					avatar = arrayM[i];
-				} else if (gender == 'n') {
-					avatar = arrayN[i];
-				}
-			}
-		}
-		// if (points >= 5200) {
-		// 	if (gender == 'f') {
-		// 		avatar = '🧞‍♀️';
-		// 	} else if (gender == 'm') {
-		// 		avatar = '🧞‍♂️';
-		// 	} else if (gender == 'n') {
-		// 		avatar = '🧞';
-		// 	}
-		// }
+		// this is the original hard code the function below replaced:
 		// if (points >= 5200 && gender == 'f') {
 		// 	avatar = '🧞‍♀️';
 		// } else if (points >= 5200 && gender == 'm') {
@@ -65,6 +41,22 @@ fora.scripts.push(async () => {
 		// } else if (points < 2600 && gender == 'n') {
 		// 	avatar = '🧚';
 		// }
+		var avatar = '🧚';
+		let arrayF = ['🧞‍♀️', '🧜‍♀️', '🧚‍♀️'];
+		let arrayM = ['🧞‍♂️', '🧜', '🧚‍♂️'];
+		let arrayN = ['🧞', '🧜‍♂️', '🧚'];
+		let pointsCheck = [5200, 2600, 0];
+		for (let i = pointsCheck.length - 1; i >= 0; i--) {
+			if (points >= pointsCheck[i]) {
+				if (gender == 'f') {
+					avatar = arrayF[i];
+				} else if (gender == 'm') {
+					avatar = arrayM[i];
+				} else if (gender == 'n') {
+					avatar = arrayN[i];
+				}
+			}
+		}
 		$('.avatar').empty();
 		$('.avatar').append(avatar);
 	}

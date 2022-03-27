@@ -83,6 +83,11 @@ function displayItems(elem, items) {
 			//appends item information to modal header
 			$('#itemModal #item_name').text(item.name);
 			$('#itemModal #item_id').text(item.id);
+			if (item.sold) {
+				$('#itemModal #item_availability').text('Item is sold :(');
+			} else {
+				$('#itemModal #item_availability').text('Item is available :)');
+			}
 
 			//appends item ratings to column 1
 			$('#itemModal #item_qualityRating').text('Quality: ' + item.qualityRating + '/5');

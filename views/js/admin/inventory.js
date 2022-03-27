@@ -32,6 +32,7 @@ fora.scripts.push(async () => {
 		item.subtype = item.category[2];
 		item.type = item.category[1];
 		item.category = item.category[0];
+		item.donationRewardPoints = donationRewardPoints;
 
 		if (ogItem.id && ogItem.id == $('#searchItemID').val()) {
 			item = Object.assign(ogItem, item);
@@ -61,6 +62,7 @@ fora.scripts.push(async () => {
 		}
 	};
 
+	let donationRewardPoints;
 	function showRewardPoints(ratings) {
 		// admin can customize if they change their mind about how the value works
 		// by editing the settings.json file. 1 star can be 10pts or 20pts or 25pts etc.
@@ -69,8 +71,9 @@ fora.scripts.push(async () => {
 			points += fora.starValues[ratings[i]];
 		}
 		//ratings=[2, 5, 4] unique to each item; corresponds with type in inventory.JSON; holds index of starValues array
-		$('#rewardPoints').text(points + 'pts');
+		$('#donationRewardPoints').text(points + 'pts');
 		$('#reward').val(points);
+		donationRewardPoints = points;
 	}
 
 	for (let i = 0; i < 3; i++) {

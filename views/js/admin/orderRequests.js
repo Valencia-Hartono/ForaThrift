@@ -52,8 +52,31 @@ fora.scripts.push(async () => {
 		if (response == 'success') {
 			// reload page
 			location.reload();
+			alert('Order request confirmation success.');
 		} else {
 			alert('Order request confirmation failed!');
+		}
+	};
+
+	window.denyRequest = async (id) => {
+		// move order from unconfirmed array to confirmed array in orders.JSON and reload page
+		let response = (
+			await (
+				await fetch('/admin/denyRequest/' + id, {
+					method: 'GET',
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				})
+			).json()
+		).msg;
+
+		if (response == 'success') {
+			// reload page
+			location.reload();
+			alert('Order deny success.');
+		} else {
+			alert('Order deny failed!');
 		}
 	};
 
@@ -76,6 +99,28 @@ fora.scripts.push(async () => {
 			location.reload();
 		} else {
 			alert('Order shipped confirmation failed!');
+		}
+	};
+
+	window.pickUpItems = async (id) => {
+		// change order's "sent" attribute in orders.JSON to true
+		//display "item has been sent"
+		let response = (
+			await (
+				await fetch('/admin/pickedUp/' + id, {
+					method: 'GET',
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				})
+			).json()
+		).msg;
+
+		if (response == 'success') {
+			// reload page
+			location.reload();
+		} else {
+			alert('Order pick up confirmation failed!');
 		}
 	};
 });

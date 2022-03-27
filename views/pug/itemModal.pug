@@ -28,8 +28,7 @@
 						br
 						row#item_price
 					td.col-4
-						p Number of people who has this item in cart: 
-							span#numReserve
+						p#item_availability
 						form#queueFavoriteForm
 							//if checkbox is clicked, user reserved[] adds itemID; item's queue array adds userID
 							input#item_reserved.form-check-input(type='checkbox' value='' name='flexCheckDefault')

@@ -16,7 +16,15 @@ fora.scripts.push(async () => {
 		}
 		itemSubtotal = Number(itemSubtotal.toFixed(2));
 		$('#preCouponSubtotal').text(itemSubtotal + ' RMB');
-		$('#banTime').text(user.requestBanTime);
+		$('#banTime').text(
+			(d = new Date(user.requestBanTime))
+				? d.toDateString() +
+						' ' +
+						d.getHours().toString().padStart(2, '0') +
+						':' +
+						d.getMinutes().toString().padStart(2, '0')
+				: ' '
+		);
 
 		$('#requestOrderButton')[0].onclick = () => {
 			//if fail, display alert saying it is unsuccessful
@@ -117,7 +125,8 @@ fora.scripts.push(async () => {
 		cart.timeRequested = Date.now();
 		cart.username = user.username;
 		cart.wechatID = user.wechatID;
-		cart.sent = false;
+		cart.sent = 0;
+		cart.pickedUp = 0;
 		let res = await (
 			await fetch('/account/cart/orderRequest', {
 				method: 'POST',

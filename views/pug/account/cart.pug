@@ -15,10 +15,12 @@ include account
 		p.my-0 Subtotal: 
 			//traverse through user.reserved to get ID, and use ID to get item price, and add them up
 			span#preCouponSubtotal
-		p.my-0 Order Ban Time: 
-			//traverse through user.reserved to get ID, and use ID to get item price, and add them up
-			span#banTime 
-			span hr
+		if Date.now() > user.requestBanTime
+			p.my-0 You may request order 
+		else 
+			p.my-0 Sorry you must wait till 
+				span#banTime 
+				span  to request order 
 		p
 			button#requestOrderButton.btn.btn-green Request Order
 

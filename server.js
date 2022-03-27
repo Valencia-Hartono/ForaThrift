@@ -168,9 +168,15 @@ async function startServer() {
 
 	app.get('/admin/confirmRequest/:orderID', async (req, res) => {
 		let { orderID } = req.params;
-
-		// find order in unconfrimed orders array
+		let user = users[currentUser];
+		// find order in unconfirmed orders array
 		let order = orders.unconfirmed.find((x) => x.id == orderID);
+		let rewardPoints = order.rewardPoints;
+
+		// add points to user account
+		user.pointsForExchange += rewardPoints;
+		user.totalPoints += rewardPoints;
+
 		// change confirmed attr with time confirmed
 		order.confirmed = Date.now();
 		// move to beginning of confirmed orders array
@@ -180,6 +186,44 @@ async function startServer() {
 
 		// save orders in order.json
 		await fs.outputFile('orders.json', JSON.stringify(orders, null, 2));
+		// save updated user info to users file
+		await fs.outputFile('users.json', JSON.stringify(users, null, 2));
+
+		log(orderID);
+
+		res.json({
+			msg: 'success'
+		});
+	});
+
+	app.get('/admin/denyRequest/:orderID', async (req, res) => {
+		// find user
+		let user = users[currentUser];
+		// user has to wait two day before requesting to order again
+		// user.requestBanTime = Date.now() + 2 * 8.64e7;
+
+		// find order in unconfirmed orders array
+		let { orderID } = req.params;
+		let order = orders.unconfirmed.find((x) => x.id == orderID);
+
+		// used coupon is returned
+		user.coupons[order.coupon++];
+
+		// item sold status turns to false
+		for (let itemID of order.items) {
+			let item = findItem(itemID);
+			item.sold = false;
+		}
+
+		// remove from order unconfirmed request array
+		orders.unconfirmed.splice(orders.unconfirmed.indexOf(order), 1);
+
+		// save items in inventory.json
+		await fs.outputFile('inventory.json', JSON.stringify(db, null, 2));
+		// save orders in order.json
+		await fs.outputFile('orders.json', JSON.stringify(orders, null, 2));
+		// save updated user info to users file
+		await fs.outputFile('users.json', JSON.stringify(users, null, 2));
 
 		log(orderID);
 
@@ -195,6 +239,21 @@ async function startServer() {
 		let order = orders.confirmed.find((x) => x.id == orderID);
 		// change sent attr with time sent
 		order.sent = Date.now();
+		// save orders in orders.json
+		await fs.outputFile('orders.json', JSON.stringify(orders, null, 2));
+
+		res.json({
+			msg: 'success'
+		});
+	});
+
+	app.get('/admin/pickedUp/:orderID', async (req, res) => {
+		let { orderID } = req.params;
+
+		// find order in confirmed orders array
+		let order = orders.confirmed.find((x) => x.id == orderID);
+		// change pickedUp attr with time pickedUp
+		order.pickedUp = Date.now();
 		// save orders in orders.json
 		await fs.outputFile('orders.json', JSON.stringify(orders, null, 2));
 
@@ -383,6 +442,7 @@ async function startServer() {
 
 	app.post('/admin/inventory', async (req, res) => {
 		let item = req.body; // request body is the json sent
+		let donor = users[item.donor];
 
 		for (let prop of fora.numberProps) {
 			if (item[prop]) item[prop] = Number(item[prop]);
@@ -393,6 +453,9 @@ async function startServer() {
 		if (newItem) {
 			item.id = [item.category, item.type, item.subtype].join('');
 			item.id += Math.floor(Math.random() * 9000 + 1000);
+
+			donor.totalPoints += item.donationRewardPoints;
+			donor.pointsForExchange += item.donationRewardPoints;
 		}
 		// if item should be edited it will be found in the inventory
 		let items = db[fora.categories.names[item.category]];
@@ -413,6 +476,7 @@ async function startServer() {
 		log(item);
 		// save updated user info to users file
 		await fs.outputFile('inventory.json', JSON.stringify(db, null, 2));
+		await fs.outputFile('users.json', JSON.stringify(users, null, 2));
 
 		res.json(item);
 	});
@@ -423,13 +487,20 @@ async function startServer() {
 
 		order.id = orders.numOfOrders;
 
-		//add to beginning of array instead of end
+		//unshift adds to beginning of array instead of end
 		orders.unconfirmed.unshift(order);
 
 		let user = users[currentUser];
 		user.orders.unshift(order.id);
 
+		//reserved array is set to empty
 		user.reserved = [];
+		//search through order items, get their ID, find their index in user.favorites, remove the item
+		for (let itemID of order.items) {
+			let index = user.favorites.find((x) => x.id == itemID);
+			user.favorites.splice(user.favorites.indexOf(index), 1);
+		}
+
 		if (order.coupon != 0) {
 			user.coupons[order.coupon]--;
 		}
@@ -440,8 +511,11 @@ async function startServer() {
 			item.sold = true;
 		}
 
+		// save items in inventory.json
 		await fs.outputFile('inventory.json', JSON.stringify(db, null, 2));
+		// save orders in order.json
 		await fs.outputFile('orders.json', JSON.stringify(orders, null, 2));
+		// save updated user info to users file
 		await fs.outputFile('users.json', JSON.stringify(users, null, 2));
 
 		res.json({
