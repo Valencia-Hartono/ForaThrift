@@ -4,10 +4,10 @@
     "email": "cherryvally27@gmail.com",
     "wechatID": "cherry123",
     "password": "vally227",
-    "totalPoints": 103464,
-    "pointsForExchange": 81784,
+    "totalPoints": 103648,
+    "pointsForExchange": 81968,
     "coupons": [
-      10,
+      9,
       15,
       14,
       9,
@@ -31,21 +31,19 @@
         "totalRewardedPoints": 480
       }
     ],
-    "favorites": [
-      "0213280"
-    ],
+    "favorites": [],
     "reserved": [],
     "orders": [
-      7,
+      10,
+      8,
       6,
       5,
       4,
       4,
       3,
-      2,
-      1
+      2
     ],
-    "requestBanTime": 0,
+    "requestBanTime": 1648547853326,
     "flexRadioDefault": "on",
     "femaleRadio": "on",
     "gender-f": "on",

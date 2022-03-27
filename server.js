@@ -197,26 +197,27 @@ async function startServer() {
 	});
 
 	app.get('/admin/denyRequest/:orderID', async (req, res) => {
-		// find user
-		let user = users[currentUser];
-		// user has to wait two day before requesting to order again
-		// user.requestBanTime = Date.now() + 2 * 8.64e7;
-
-		// find order in unconfirmed orders array
 		let { orderID } = req.params;
+		// find order in unconfirmed orders array
 		let order = orders.unconfirmed.find((x) => x.id == orderID);
+		let user = users[currentUser];
 
-		// used coupon is returned
-		user.coupons[order.coupon++];
+		// user has to wait two day before requesting to order again
+		user.requestBanTime = Date.now() + 2 * 8.64e7;
 
-		// item sold status turns to false
+		// removes new order from beginning of order.unconfirmed array
+		orders.unconfirmed.splice(orders.unconfirmed.indexOf(order), 1);
+		// removes new orderID from beginning of user.orders array
+		user.orders.splice(user.orders.indexOf(order.id), 1);
+		// adds back coupon used in order from user.coupons array
+		if (order.coupon != -1) {
+			user.coupons[order.coupon]++;
+		}
+		// returns items's "sold" attribute in order to false
 		for (let itemID of order.items) {
 			let item = findItem(itemID);
 			item.sold = false;
 		}
-
-		// remove from order unconfirmed request array
-		orders.unconfirmed.splice(orders.unconfirmed.indexOf(order), 1);
 
 		// save items in inventory.json
 		await fs.outputFile('inventory.json', JSON.stringify(db, null, 2));
@@ -483,29 +484,29 @@ async function startServer() {
 
 	app.post('/account/cart/orderRequest', async (req, res) => {
 		let order = req.body;
+		let user = users[currentUser];
 		log(order);
 
+		//set order's id to current counter
 		order.id = orders.numOfOrders;
-
-		//unshift adds to beginning of array instead of end
+		//current counter adds one for next id
+		orders.numOfOrders++;
+		//adds new order to orders.unconfirmed array (unshift adds in front)
 		orders.unconfirmed.unshift(order);
-
-		let user = users[currentUser];
+		//adds new orderID to user.orders array (unshift adds in front)
 		user.orders.unshift(order.id);
-
-		//reserved array is set to empty
+		//user.reserved array is set to empty
 		user.reserved = [];
 		//search through order items, get their ID, find their index in user.favorites, remove the item
 		for (let itemID of order.items) {
 			let index = user.favorites.find((x) => x.id == itemID);
 			user.favorites.splice(user.favorites.indexOf(index), 1);
 		}
-
-		if (order.coupon != 0) {
+		//subtracts coupon used in order from user.coupons array
+		if (order.coupon != -1) {
 			user.coupons[order.coupon]--;
 		}
-		orders.numOfOrders++;
-
+		//sets items's "sold" attribute in order to true
 		for (let itemID of order.items) {
 			let item = findItem(itemID);
 			item.sold = true;

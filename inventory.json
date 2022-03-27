@@ -69,7 +69,7 @@
       "qualityRating": 3,
       "valueRating": 4,
       "purchaseTime": 0,
-      "sold": false,
+      "sold": true,
       "category": 0
     },
     {
@@ -94,7 +94,8 @@
       "styleRating": 4,
       "qualityRating": 3,
       "valueRating": 4,
-      "purchaseTime": 0
+      "purchaseTime": 0,
+      "sold": true
     },
     {
       "id": "0205937",
@@ -115,7 +116,8 @@
       "styleRating": 4,
       "qualityRating": 3,
       "valueRating": 4,
-      "purchaseTime": 0
+      "purchaseTime": 0,
+      "sold": true
     },
     {
       "id": "0219707",
@@ -136,7 +138,8 @@
       "styleRating": 4,
       "qualityRating": 3,
       "valueRating": 4,
-      "purchaseTime": 0
+      "purchaseTime": 0,
+      "sold": false
     },
     {
       "id": "0009888",
@@ -157,7 +160,8 @@
       "styleRating": 4,
       "qualityRating": 3,
       "valueRating": 4,
-      "purchaseTime": 0
+      "purchaseTime": 0,
+      "sold": false
     },
     {
       "id": "0213281",
@@ -217,7 +221,7 @@
       "donor": "valencia01",
       "subtype": 1,
       "type": 2,
-      "sold": true
+      "sold": false
     },
     {
       "id": "0213284",
@@ -276,7 +280,8 @@
       "valueRating": 4,
       "donor": "valencia01",
       "subtype": 1,
-      "type": 2
+      "type": 2,
+      "sold": false
     },
     {
       "id": "0133287",
@@ -295,7 +300,8 @@
       "valueRating": 4,
       "donor": "valencia01",
       "subtype": 3,
-      "type": 1
+      "type": 1,
+      "sold": false
     },
     {
       "id": "0133288",
