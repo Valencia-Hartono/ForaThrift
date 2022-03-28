@@ -139,7 +139,7 @@
       "qualityRating": 3,
       "valueRating": 4,
       "purchaseTime": 0,
-      "sold": false
+      "sold": true
     },
     {
       "id": "0009888",
@@ -152,7 +152,7 @@
       "images": [],
       "brand": "CK JEANS",
       "color": 0,
-      "size": 8,
+      "size": 1,
       "price": 899.99,
       "description": "HIGH RISE SLIM THROUGH HIP + THIGH SKINNY LEG. INFINITE FLEX - advanced stretch denim for comfort and movement. DENIM: RECONSIDERED - made with less energy and water than traditional denim",
       "reserved": [],
@@ -161,7 +161,9 @@
       "qualityRating": 3,
       "valueRating": 4,
       "purchaseTime": 0,
-      "sold": false
+      "sold": false,
+      "category": 0,
+      "donationRewardPoints": 410
     },
     {
       "id": "0213281",
@@ -221,7 +223,7 @@
       "donor": "valencia01",
       "subtype": 1,
       "type": 2,
-      "sold": false
+      "sold": true
     },
     {
       "id": "0213284",
@@ -241,7 +243,7 @@
       "donor": "valencia01",
       "subtype": 1,
       "type": 2,
-      "sold": false
+      "sold": true
     },
     {
       "id": "0213285",
@@ -393,12 +395,14 @@
       "color": 1,
       "size": 0,
       "description": "Amazing",
-      "styleRating": 5,
+      "styleRating": 3,
       "qualityRating": 5,
       "valueRating": 5,
       "donor": "valencia01",
       "subtype": 1,
-      "type": 1
+      "type": 1,
+      "sold": false,
+      "donationRewardPoints": 590
     },
     {
       "id": "0132983",
@@ -417,7 +421,8 @@
       "valueRating": 5,
       "donor": "valencia01",
       "subtype": 3,
-      "type": 1
+      "type": 1,
+      "sold": true
     },
     {
       "id": "0117407",
@@ -437,7 +442,28 @@
       "donor": "valencia01",
       "subtype": 1,
       "type": 1,
-      "donationRewardPoints": 480
+      "donationRewardPoints": 480,
+      "sold": false
+    },
+    {
+      "id": "0023184",
+      "img": "https://i.pinimg.com/564x/4b/c8/09/4bc809c07db043c437f03e8deaee1ca5.jpg",
+      "name": "skirt",
+      "brand": "CHANEL",
+      "price": 50,
+      "category": 0,
+      "style": 4,
+      "season": 2,
+      "color": 0,
+      "size": 0,
+      "description": "awesome",
+      "styleRating": 5,
+      "qualityRating": 5,
+      "valueRating": 5,
+      "donor": "valencia01",
+      "subtype": 2,
+      "type": 0,
+      "donationRewardPoints": 750
     }
   ],
   "shoes": [

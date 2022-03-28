@@ -118,6 +118,7 @@ async function loadViews() {
 				//can access orders.JSON file directly
 				locals.unconfirmed = orders.unconfirmed;
 				locals.confirmed = orders.confirmed;
+				// locals.declined = orders.declined;
 			}
 			req.url = req.url.split('?')[0];
 			log('requested ' + req.url);
@@ -137,6 +138,9 @@ function getUserOrders() {
 		//if not found, it checks in the confirmed section in orders.JSON
 		if (!order) order = orders.confirmed.find((x) => x.id == orderID);
 		userOrders.push(order);
+		// //if not found, it checks in the declined section in orders.JSON
+		// if (!order) order = orders.declined.find((x) => x.id == orderID);
+		// userOrders.push(order);
 	}
 	log(userOrders);
 	//userOrders return an array of order objects
@@ -165,6 +169,13 @@ async function startServer() {
 			confirmed: orders.confirmed
 		});
 	});
+
+	// //create request for declined orders through this link
+	// app.get('/admin/declined', (req, res) => {
+	// 	res.json({
+	// 		declined: orders.declined
+	// 	});
+	// });
 
 	app.get('/admin/confirmRequest/:orderID', async (req, res) => {
 		let { orderID } = req.params;
@@ -196,7 +207,7 @@ async function startServer() {
 		});
 	});
 
-	app.get('/admin/denyRequest/:orderID', async (req, res) => {
+	app.get('/admin/declineRequest/:orderID', async (req, res) => {
 		let { orderID } = req.params;
 		// find order in unconfirmed orders array
 		let order = orders.unconfirmed.find((x) => x.id == orderID);
@@ -205,10 +216,15 @@ async function startServer() {
 		// user has to wait two day before requesting to order again
 		user.requestBanTime = Date.now() + 2 * 8.64e7;
 
+		// change declined attr with time declined
+		order.declined = Date.now();
+		// move to beginning of declined orders array
+		orders.confirmed.unshift(order);
 		// removes new order from beginning of order.unconfirmed array
 		orders.unconfirmed.splice(orders.unconfirmed.indexOf(order), 1);
-		// removes new orderID from beginning of user.orders array
-		user.orders.splice(user.orders.indexOf(order.id), 1);
+		// // removes new orderID from beginning of user.orders array
+		// user.orders.splice(user.orders.indexOf(order.id), 1);
+
 		// adds back coupon used in order from user.coupons array
 		if (order.coupon != -1) {
 			user.coupons[order.coupon]++;

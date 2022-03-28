@@ -10,12 +10,10 @@ fora.scripts.push(async () => {
 			})
 		).json()
 	).unconfirmed;
-
 	for (let i = 0; i < unconfirmed.length; i++) {
 		//each item ordered-> append to card
 		displayItems('#unconfirmedItems' + i, await getItems(unconfirmed[i].items));
 	}
-
 	let confirmed = (
 		await //use link created in server to get the confirmed order objects
 		(
@@ -58,11 +56,11 @@ fora.scripts.push(async () => {
 		}
 	};
 
-	window.denyRequest = async (id) => {
-		// move order from unconfirmed array to confirmed array in orders.JSON and reload page
+	window.declineRequest = async (id) => {
+		// move order from unconfirmed array to declined array in orders.JSON and reload page
 		let response = (
 			await (
-				await fetch('/admin/denyRequest/' + id, {
+				await fetch('/admin/declineRequest/' + id, {
 					method: 'GET',
 					headers: {
 						'Content-Type': 'application/json'
@@ -74,9 +72,9 @@ fora.scripts.push(async () => {
 		if (response == 'success') {
 			// reload page
 			location.reload();
-			alert('Order deny success.');
+			alert('Order decline success.');
 		} else {
-			alert('Order deny failed!');
+			alert('Order decline failed!');
 		}
 	};
 

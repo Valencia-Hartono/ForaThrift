@@ -15,14 +15,15 @@ include account
 		p.my-0 Subtotal: 
 			//traverse through user.reserved to get ID, and use ID to get item price, and add them up
 			span#preCouponSubtotal
-		if Date.now() > user.requestBanTime
+		if Date.now()> user.requestBanTime
 			p.my-0 You may request order 
+			p
+				button#requestOrderButton.btn.btn-green Request Order
 		else 
-			p.my-0 Sorry you must wait till 
+			p.my-0 An order has been declined. You must wait till 
 				span#banTime 
 				span  to request order 
-		p
-			button#requestOrderButton.btn.btn-green Request Order
+		
 
 	#orderStatusAlert.mt-3
 
@@ -58,12 +59,15 @@ include account
 						p.my-0 Total rewarded pts: 
 							span#rewardPoints 
 					#delivery(style="display:none")
-						label.col-10 Deliver to following address:
-						label.col-10.form-label= user.address || 'please enter your address on your profile page'
+						label.col-10 📍 Deliver to following address:
+						label.col-10.form-label= user.address || '⚠️ please enter your address on your profile page'
 						
 					| Are you sure you want to order these items? If payment via wechat is not received within 24hrs of request, request will be denied and user must wait 48hrs before next request.
 				.modal-footer
 					//- button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Cancel
-					button#confirmOrder.btn.btn-green(type='button' onclick='submitCartForm()' data-bs-dismiss='modal') Confirm
+					if (user.address!="")
+						button#confirmOrder.btn.btn-green(type='button' onclick='submitCartForm()' data-bs-dismiss='modal') Confirm
+					else 
+						button#confirmOrder.btn.btn-green(type='button' onclick='submitCartForm()' data-bs-dismiss='modal' disabled) Confirm
 
 	script(src="../js/account/cart.js") 

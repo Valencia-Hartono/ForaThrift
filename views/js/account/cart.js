@@ -28,10 +28,18 @@ fora.scripts.push(async () => {
 
 		$('#requestOrderButton')[0].onclick = () => {
 			//if fail, display alert saying it is unsuccessful
-			if (user.requestBanTime > 0) {
+			if (Date.now() <= user.requestBanTime) {
 				$('#orderStatusAlert').append(`
 	<div class="alert alert-danger" role="alert">
-	Failed to request order! Waiting time before next order: ${user.requestBanTime} hr
+	Failed to request order! Wait till this time before next order: ${
+		(d = new Date(user.requestBanTime))
+			? d.toDateString() +
+			  ' ' +
+			  d.getHours().toString().padStart(2, '0') +
+			  ':' +
+			  d.getMinutes().toString().padStart(2, '0')
+			: ' '
+	}
 	</div>`);
 				return;
 			}
@@ -127,6 +135,7 @@ fora.scripts.push(async () => {
 		cart.wechatID = user.wechatID;
 		cart.sent = 0;
 		cart.pickedUp = 0;
+		cart.decline = 0;
 		let res = await (
 			await fetch('/account/cart/orderRequest', {
 				method: 'POST',

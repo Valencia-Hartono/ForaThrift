@@ -26,12 +26,21 @@ include account
 								span= (d = new Date(order.confirmed))? d.toDateString() + " " + d.getHours().toString().padStart(2, '0') + ":" + d.getMinutes().toString().padStart(2, '0') : " "
 							if order.shipping
 								if order.sent
-									p Admin Has Shipped Items 🚚: 
+									p Admin Has Shipped Items ☑️: 
 										span= (d = new Date(order.sent))? d.toDateString() + " " + d.getHours().toString().padStart(2, '0') + ":" + d.getMinutes().toString().padStart(2, '0') : " "
 								else 
 									p Admin Has Not Shipped Items 📦
 							else 
+								if order.pickedUp 
+									p Items Have Been Picked Up ☑️: 
+										span= (d = new Date(order.pickedUp))? d.toDateString() + " " + d.getHours().toString().padStart(2, '0') + ":" + d.getMinutes().toString().padStart(2, '0') : " "
+								else 
 									p Please Pick Up From Store 🛍
+									
+						else if order.declined 
+							p Admin Declined Order ❌: 
+								span= (d = new Date(order.declined))? d.toDateString() + " " + d.getHours().toString().padStart(2, '0') + ":" + d.getMinutes().toString().padStart(2, '0') : " "
+							p Items Unpaid Within A Day
 						else 
 							p Pending Order Confirmation... (please wait for admin to confirm payment)
 					.card-body
@@ -43,8 +52,12 @@ include account
 										span=(d = new Date(order.timeRequested))? d.toDateString() + " " + d.getHours().toString().padStart(2, '0') + ":" + d.getMinutes().toString().padStart(2, '0') : " "
 									p Number of items ordered: 
 										span=order.items.length
-									p.mb-5 Coupon Used: 
-										span=fora.discount[order.coupon+1] + "% discount"
+									if (!order.declined)
+										p.mb-5 Coupon Used: 
+											span=fora.discount[order.coupon+1] + "% discount"
+									else
+										p.mb-5 Coupon Returned For: 
+											span=fora.discount[order.coupon+1] + "% discount"
 								.col-md-4
 									p Items subtotal: 
 										span=order.subtotal.toFixed(2) + " RMB"
@@ -53,17 +66,26 @@ include account
 									p.mb-5 Shipping and handling cost: 
 										span=order.shipping.toFixed(2) + " RMB"
 								.col-md-4
-									p Total billing: 
-										span=order.total.toFixed(2) + " RMB"
-									p Total rewarded pts: 
-										span=order.rewardPoints + " pts"
-									p Return status: 
-										//referece for day conversion: https://www.unitjuggler.com/convert-time-from-day-to-ms.html
-										if Date.now() - order.timeRequested <= 2*8.64e+7
-											span 🟢 Can return without penalty with full refund
-										else if Date.now() - order.timeRequested > 2*8.64e+7  && Date.now() - order.timeRequested <=7*8.64e+7
-											span 🟠 10RMB deduction per item refunded
-										else if Date.now() - order.timeRequested > 7*8.64e+7
-											span 🔴 No return
+									if (!order.declined)
+										p Total billing: 
+											span=order.total.toFixed(2) + " RMB"
+										p Total rewarded pts: 
+											span=order.rewardPoints + " pts"
+										p Return status: 
+											//referece for day conversion: https://www.unitjuggler.com/convert-time-from-day-to-ms.html
+											if Date.now() - order.timeRequested <= 2*8.64e+7
+												span 🟢 Can return without penalty with full refund
+											else if Date.now() - order.timeRequested > 2*8.64e+7  && Date.now() - order.timeRequested <=7*8.64e+7
+												span 🟠 10RMB deduction per item refunded
+											else if Date.now() - order.timeRequested > 7*8.64e+7
+												span 🔴 No return
+									else
+										p Total billing of 
+											span=order.total.toFixed(2) + " RMB "
+											span was not received
+										p Total of
+											span=order.rewardPoints + " pts "
+											span are not rewarded
+										
 							div(id="orderedItems" + i).row
 script(src="../js/account/orders.js")
