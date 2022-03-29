@@ -135,7 +135,7 @@ fora.scripts.push(async () => {
 		cart.wechatID = user.wechatID;
 		cart.sent = 0;
 		cart.pickedUp = 0;
-		cart.decline = 0;
+		cart.declined = 0;
 		let res = await (
 			await fetch('/account/cart/orderRequest', {
 				method: 'POST',

@@ -4,14 +4,14 @@
     "email": "cherryvally27@gmail.com",
     "wechatID": "cherry123",
     "password": "vally227",
-    "totalPoints": 3480,
-    "pointsForExchange": 2000,
+    "totalPoints": 11842,
+    "pointsForExchange": 10122,
     "coupons": [
-      11,
-      15,
+      12,
       14,
+      13,
       9,
-      1
+      0
     ],
     "name": "Valencia Hartono",
     "birthday": "2004-02-27",
@@ -34,19 +34,7 @@
     "favorites": [],
     "reserved": [],
     "orders": [
-      17,
-      16,
-      15,
-      14,
-      12,
-      10,
-      8,
-      6,
-      5,
-      4,
-      4,
-      3,
-      2
+      1
     ],
     "requestBanTime": 0,
     "flexRadioDefault": "on",
@@ -59,8 +47,8 @@
     "email": "timmy@gmail.com",
     "wechatID": "xxx",
     "password": "timmy02",
-    "totalPoints": 500,
-    "pointsForExchange": 500,
+    "totalPoints": 1070,
+    "pointsForExchange": 1070,
     "coupons": [
       6,
       2,

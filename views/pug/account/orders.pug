@@ -57,7 +57,7 @@ include account
 											span=fora.discount[order.coupon+1] + "% discount"
 									else
 										p.mb-5 Coupon Returned For: 
-											span=fora.discount[order.coupon+1] + "% discount"
+											span=fora.discount[order.coupon+1] + "% discount ↩️"
 								.col-md-4
 									p Items subtotal: 
 										span=order.subtotal.toFixed(2) + " RMB"
@@ -70,7 +70,7 @@ include account
 										p Total billing: 
 											span=order.total.toFixed(2) + " RMB"
 										p Total rewarded pts: 
-											span=order.rewardPoints + " pts"
+											span=order.rewardPoints + "pts"
 										p Return status: 
 											//referece for day conversion: https://www.unitjuggler.com/convert-time-from-day-to-ms.html
 											if Date.now() - order.timeRequested <= 2*8.64e+7
@@ -83,8 +83,8 @@ include account
 										p Total billing of 
 											span=order.total.toFixed(2) + " RMB "
 											span was not received
-										p Total of
-											span=order.rewardPoints + " pts "
+										p Total of 
+											span=order.rewardPoints + "pts "
 											span are not rewarded
 										
 							div(id="orderedItems" + i).row

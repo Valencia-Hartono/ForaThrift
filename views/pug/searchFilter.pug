@@ -1,5 +1,5 @@
 form#searchFilterForm.accordion
-  each filter in ['season','style','size','color','material','pattern','topType','neckline','length','sleeve']
+  each filter in ['season','style','size','color']
     .accordion-item
       h2.accordion-header
         button.accordion-button.collapsed(type='button' data-bs-toggle='collapse' data-bs-target='#accord' + filter)= (!filter.includes('Type')) ? filter[0].toUpperCase() + filter.slice(1) : 'Type'

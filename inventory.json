@@ -4,21 +4,22 @@
       "id": "0213280",
       "img": "https://www.lulus.com/images/product/xlarge/2958280_586292.jpg?w=560&hdpi=1",
       "name": "Navy lace dress",
-      "sold": true,
+      "sold": false,
       "brand": "H&M",
       "price": 23.99,
       "category": 0,
       "style": 3,
       "season": 2,
       "color": 10,
-      "size": 4,
+      "size": 2,
       "description": "This is new",
       "styleRating": 4,
       "qualityRating": 4,
       "valueRating": 4,
       "donor": "valencia01",
       "subtype": 1,
-      "type": 2
+      "type": 2,
+      "donationRewardPoints": 480
     },
     {
       "id": "0212684",
@@ -44,7 +45,7 @@
         "timmy02"
       ],
       "purchaseTime": 0,
-      "sold": true
+      "sold": false
     },
     {
       "id": "0218789",
@@ -58,7 +59,7 @@
       "brand": "CHANEL",
       "color": 1,
       "size": 3,
-      "price": 999.99,
+      "price": 800,
       "description": "Gorgeous bridal dress",
       "reserved": [
         "valencia01",
@@ -69,8 +70,9 @@
       "qualityRating": 3,
       "valueRating": 4,
       "purchaseTime": 0,
-      "sold": true,
-      "category": 0
+      "sold": false,
+      "category": 0,
+      "donationRewardPoints": 410
     },
     {
       "id": "0223027",
@@ -84,8 +86,8 @@
       "brand": "Vera Moda",
       "color": 1,
       "size": 3,
-      "price": 70.99,
-      "description": "this is crazy good quality",
+      "price": 80,
+      "description": "nice",
       "reserved": [
         "valencia01",
         "timmy02"
@@ -95,7 +97,9 @@
       "qualityRating": 3,
       "valueRating": 4,
       "purchaseTime": 0,
-      "sold": true
+      "sold": false,
+      "category": 0,
+      "donationRewardPoints": 410
     },
     {
       "id": "0205937",
@@ -117,7 +121,7 @@
       "qualityRating": 3,
       "valueRating": 4,
       "purchaseTime": 0,
-      "sold": true
+      "sold": false
     },
     {
       "id": "0219707",
@@ -139,7 +143,7 @@
       "qualityRating": 3,
       "valueRating": 4,
       "purchaseTime": 0,
-      "sold": true
+      "sold": false
     },
     {
       "id": "0009888",
@@ -203,7 +207,7 @@
       "donor": "valencia01",
       "subtype": 1,
       "type": 2,
-      "sold": true
+      "sold": false
     },
     {
       "id": "0213283",
@@ -223,7 +227,7 @@
       "donor": "valencia01",
       "subtype": 1,
       "type": 2,
-      "sold": true
+      "sold": false
     },
     {
       "id": "0213284",
@@ -243,7 +247,7 @@
       "donor": "valencia01",
       "subtype": 1,
       "type": 2,
-      "sold": true
+      "sold": false
     },
     {
       "id": "0213285",
@@ -362,7 +366,8 @@
       "valueRating": 5,
       "donor": "valencia01",
       "subtype": 4,
-      "type": 1
+      "type": 1,
+      "sold": false
     },
     {
       "id": "0163291",
@@ -381,7 +386,8 @@
       "valueRating": 5,
       "donor": "valencia01",
       "subtype": 6,
-      "type": 1
+      "type": 1,
+      "sold": false
     },
     {
       "id": "0118871",
@@ -422,7 +428,7 @@
       "donor": "valencia01",
       "subtype": 3,
       "type": 1,
-      "sold": true
+      "sold": false
     },
     {
       "id": "0117407",
@@ -464,6 +470,246 @@
       "subtype": 2,
       "type": 0,
       "donationRewardPoints": 750
+    },
+    {
+      "id": "0117915",
+      "img": "https://i.pinimg.com/564x/94/c2/79/94c279633601cc0d7d3dcf9e42a29d81.jpg",
+      "name": "Cropped Blazer",
+      "brand": "CHANEL",
+      "price": 200,
+      "category": 0,
+      "style": 4,
+      "season": 2,
+      "color": 3,
+      "size": 3,
+      "description": "Brand new",
+      "styleRating": 5,
+      "qualityRating": 4,
+      "valueRating": 4,
+      "donor": "valencia01",
+      "subtype": 1,
+      "type": 1,
+      "donationRewardPoints": 570
+    },
+    {
+      "id": "0212129",
+      "img": "https://i.pinimg.com/564x/cb/50/99/cb509966489e37d0ab0c3cc4ae816488.jpg",
+      "name": "Baby Blue Bodycon Dress",
+      "brand": "H&M",
+      "price": 90,
+      "category": 0,
+      "style": 0,
+      "season": 0,
+      "color": 10,
+      "size": 2,
+      "description": "nice",
+      "styleRating": 5,
+      "qualityRating": 4,
+      "valueRating": 4,
+      "donor": "timmy02",
+      "subtype": 1,
+      "type": 2,
+      "donationRewardPoints": 570
+    },
+    {
+      "id": "0218044",
+      "img": "https://i.pinimg.com/564x/5b/94/7f/5b947f41e51177435964d4ea86432ca2.jpg",
+      "name": "White Bodycon Dress",
+      "brand": "H&M",
+      "price": 100,
+      "category": 0,
+      "style": 0,
+      "season": 0,
+      "color": 1,
+      "size": 2,
+      "description": "NIce",
+      "styleRating": 4,
+      "qualityRating": 4,
+      "valueRating": 4,
+      "donor": "valencia01",
+      "subtype": 1,
+      "type": 2,
+      "donationRewardPoints": 480
+    },
+    {
+      "id": "0218169",
+      "img": "https://i.pinimg.com/564x/a2/35/41/a235410e3f81244b6ca02f3933e5b488.jpg",
+      "name": "Pink Silk Dress",
+      "brand": "H&M",
+      "price": 100,
+      "category": 0,
+      "style": 0,
+      "season": 0,
+      "color": 12,
+      "size": 2,
+      "description": "nice",
+      "styleRating": 5,
+      "qualityRating": 5,
+      "valueRating": 5,
+      "donor": "valencia01",
+      "subtype": 1,
+      "type": 2,
+      "donationRewardPoints": 750
+    },
+    {
+      "id": "0216032",
+      "img": "https://i.pinimg.com/564x/c1/47/0f/c1470f9b646589f3240ac4ac6f40cf25.jpg",
+      "name": "White Silk Long Sleeve Dress",
+      "brand": "CHANEL",
+      "price": 230,
+      "category": 0,
+      "style": 0,
+      "season": 0,
+      "color": 1,
+      "size": 2,
+      "description": "nice",
+      "styleRating": 5,
+      "qualityRating": 5,
+      "valueRating": 5,
+      "donor": "valencia01",
+      "subtype": 1,
+      "type": 2,
+      "donationRewardPoints": 750
+    },
+    {
+      "id": "0216537",
+      "img": "https://i.pinimg.com/564x/2e/b2/5d/2eb25df440e17702557ebba1c0ed10a1.jpg",
+      "name": "Black Shimmer Low Cut Dress",
+      "brand": "CHANEL",
+      "price": 200,
+      "category": 0,
+      "style": 0,
+      "season": 0,
+      "color": 0,
+      "size": 0,
+      "description": "nice",
+      "styleRating": 5,
+      "qualityRating": 5,
+      "valueRating": 5,
+      "donor": "valencia01",
+      "subtype": 1,
+      "type": 2,
+      "donationRewardPoints": 750
+    },
+    {
+      "id": "0216163",
+      "img": "https://i.pinimg.com/564x/3a/ad/c3/3aadc396664c48f2d4d6158fa0f69c66.jpg",
+      "name": "Turquoise Shimmer Silk Dress",
+      "brand": "CHANEL",
+      "price": 200,
+      "category": 0,
+      "style": 0,
+      "season": 0,
+      "color": 9,
+      "size": 2,
+      "description": "nice",
+      "styleRating": 5,
+      "qualityRating": 5,
+      "valueRating": 5,
+      "donor": "valencia01",
+      "subtype": 1,
+      "type": 2,
+      "donationRewardPoints": 750
+    },
+    {
+      "id": "0208940",
+      "img": "https://i.pinimg.com/564x/8a/32/3e/8a323e5ff32e7c9d8886f6f6d58c9ba6.jpg",
+      "name": "Pink Swim Set",
+      "brand": "CHANEL",
+      "price": 100,
+      "category": 0,
+      "style": 3,
+      "season": 1,
+      "color": 12,
+      "size": 0,
+      "description": "nice",
+      "styleRating": 4,
+      "qualityRating": 4,
+      "valueRating": 4,
+      "donor": "valencia01",
+      "subtype": 0,
+      "type": 2,
+      "donationRewardPoints": 480
+    },
+    {
+      "id": "0208431",
+      "img": "https://i.pinimg.com/564x/ae/0e/db/ae0edb1966854b1ae8a5eed510be8a34.jpg",
+      "name": "Silk Orange Swim Set",
+      "brand": "CHANEL",
+      "price": 100,
+      "category": 0,
+      "style": 0,
+      "season": 1,
+      "color": 6,
+      "size": 0,
+      "description": "nice",
+      "styleRating": 5,
+      "qualityRating": 4,
+      "valueRating": 4,
+      "donor": "valencia01",
+      "subtype": 0,
+      "type": 2,
+      "donationRewardPoints": 570
+    },
+    {
+      "id": "0207116",
+      "img": "https://i.pinimg.com/564x/25/e0/08/25e0089d2caed5c59931968da5c963c7.jpg",
+      "name": "White Marble Print Swim Set",
+      "brand": "H&M",
+      "price": 130,
+      "category": 0,
+      "style": 3,
+      "season": 1,
+      "color": 3,
+      "size": 2,
+      "description": "nice",
+      "styleRating": 4,
+      "qualityRating": 4,
+      "valueRating": 5,
+      "donor": "valencia01",
+      "subtype": 0,
+      "type": 2,
+      "donationRewardPoints": 570
+    },
+    {
+      "id": "0139965",
+      "img": "https://i.pinimg.com/564x/94/79/9b/94799b1a72159bfb772b4eb28bf721a4.jpg",
+      "name": "Starling Strap Satin Corset",
+      "brand": "CHANEL",
+      "price": 80,
+      "category": 0,
+      "style": 3,
+      "season": 2,
+      "color": 5,
+      "size": 2,
+      "description": "nice",
+      "styleRating": 5,
+      "qualityRating": 4,
+      "valueRating": 4,
+      "donor": "valencia01",
+      "subtype": 3,
+      "type": 1,
+      "donationRewardPoints": 570
+    },
+    {
+      "id": "0139995",
+      "img": "https://i.pinimg.com/474x/a2/df/ed/a2dfed1b26c215b30b5fada14ced83a3.jpg",
+      "name": "Black silk collar shirt",
+      "brand": "HOLLISTER",
+      "price": 90,
+      "category": 0,
+      "style": 0,
+      "season": 0,
+      "color": 0,
+      "size": 0,
+      "description": "nice",
+      "styleRating": 5,
+      "qualityRating": 4,
+      "valueRating": 4,
+      "donor": "valencia01",
+      "subtype": 3,
+      "type": 1,
+      "donationRewardPoints": 570
     }
   ],
   "shoes": [
@@ -488,7 +734,28 @@
       "donationRewardPoints": 660
     }
   ],
-  "bags": [],
+  "bags": [
+    {
+      "id": "2107238",
+      "img": "https://i.pinimg.com/564x/cf/49/45/cf49459355a5d135ff11dc1f22a34191.jpg",
+      "name": "Claire Cross Body Bag",
+      "brand": "CHANEL",
+      "price": 100,
+      "category": 2,
+      "style": 0,
+      "season": 0,
+      "color": 1,
+      "size": 0,
+      "description": "A unique design thats's sure to have you showered with compliments.",
+      "styleRating": 4,
+      "qualityRating": 4,
+      "valueRating": 4,
+      "donor": "valencia01",
+      "subtype": 0,
+      "type": 1,
+      "donationRewardPoints": 480
+    }
+  ],
   "accessories": [
     {
       "id": "31006563",
@@ -531,6 +798,26 @@
       "subtype": 0,
       "type": 0,
       "donationRewardPoints": 500
+    },
+    {
+      "id": "3104870",
+      "img": "https://i.pinimg.com/474x/be/ca/56/beca56fa38986d7c1f7eb1b26ff0e1aa.jpg",
+      "name": "belt 2",
+      "brand": "H&M",
+      "price": 90,
+      "category": 3,
+      "style": 4,
+      "season": 2,
+      "color": 0,
+      "size": 0,
+      "description": "jio",
+      "styleRating": 4,
+      "qualityRating": 4,
+      "valueRating": 3,
+      "donor": "valencia01",
+      "subtype": 0,
+      "type": 1,
+      "donationRewardPoints": 410
     }
   ]
 }
