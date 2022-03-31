@@ -91,6 +91,7 @@ fora.scripts.push(async () => {
 
 		for (let selName of ['style', 'season', 'color', 'size']) {
 			let options = fora[selName];
+			$(`#${selName}`).append(`<option selected> ⚠️ ${selName} </option>`);
 			for (let j = 0; j < options.length; j++) {
 				log(selName);
 				$(`#${selName}`).append(`<option value="${j}"> ${options[j]} </option>`);

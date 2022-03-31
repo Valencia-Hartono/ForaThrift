@@ -10,6 +10,8 @@ fora.scripts.push(async () => {
 			})
 		).json()
 	).unconfirmed;
+	$('#totalUnconfirmed').text(unconfirmed.length);
+
 	for (let i = 0; i < unconfirmed.length; i++) {
 		//each item ordered-> append to card
 		displayItems('#unconfirmedItems' + i, await getItems(unconfirmed[i].items));
@@ -25,6 +27,7 @@ fora.scripts.push(async () => {
 			})
 		).json()
 	).confirmed;
+	$('#totalConfirmed').text(confirmed.length);
 
 	for (let i = 0; i < unconfirmed.length; i++) {
 		displayItems('#unconfirmedItems' + i, await getItems(unconfirmed[i].items));

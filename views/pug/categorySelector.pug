@@ -1,6 +1,6 @@
 #categorySelector
 	input#category.form-control.hide(name="category" style="display: none;" required)
-	button.btn.dropend.col-12.dropdown-toggle(type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false") Select
+	button.btn.dropend.col-12.dropdown-toggle(type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false") Category
 	ul.dropdown-menu
 		each categoryName, i in fora.categories.names
 			li.btn-group.dropend

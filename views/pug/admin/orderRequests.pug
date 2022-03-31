@@ -4,6 +4,10 @@ include adminNav
 h1.display-3.mt-5.mb-4.text-center Order Admin Form
 h3.text-center.text-secondary
 	a(href='/admin') BACK TO ADMIN HOME
+p.text-center.text-muted Total number of unconfirmed orders: 
+	span#totalUnconfirmed
+p.text-center.text-muted Total number of confirmed orders: 
+	span#totalConfirmed
 
 if user.orders.length == 0
 	p.text-center There are no orders yet
@@ -25,6 +29,8 @@ else
 								.col-6 
 									.d-flex.justify-content-start Pending order confirmation for: 
 										=user.username
+									p Wechat ID: 
+										span=user.wechatID
 								.col-6 
 									.d-flex.justify-content-end
 										.col-4
@@ -39,26 +45,44 @@ else
 										//reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart 
 										p Order request time: 
 											span=(d = new Date(order.timeRequested))? d.toDateString() + " " + d.getHours().toString().padStart(2, '0') + ":" + d.getMinutes().toString().padStart(2, '0') : " "
-										p Wechat ID: 
-											span=user.wechatID
-										p Coupon Used: 
-											span=fora.discount[order.coupon+1] + "% discount"
+										p Number of items ordered: 
+											span=order.items.length
+										if (!order.declined)
+											p.mb-5 Coupon Used: 
+												span=fora.discount[order.coupon+1] + "% discount"
+										else
+											p.mb-5 Coupon Returned For: 
+												span=fora.discount[order.coupon+1] + "% discount ↩️"
 									.col-md-4
 										p Items subtotal: 
 											span=order.subtotal.toFixed(2) + " RMB"
 										p Estimated sales tax: 
 											span=order.salesTax.toFixed(2) + " RMB"
-										p Total rewarded pts: 
-											span=order.rewardPoints + " pts"
-									.col-md-4
-										p Total billing: 
-											span=order.total.toFixed(2) + " RMB"
 										if (order.shipping==0)
 											p Customer pick up from store
 										else 
 											p Customer paid for delivery
-										p Number of items ordered: 
-											span=order.items.length
+									.col-md-4
+										if (!order.declined)
+											p Total billing: 
+												span=order.total.toFixed(2) + " RMB"
+											p Total rewarded pts: 
+												span=order.rewardPoints + "pts"
+											p Return status: 
+												//referece for day conversion: https://www.unitjuggler.com/convert-time-from-day-to-ms.html
+												if Date.now() - order.timeRequested <= 2*8.64e+7
+													span 🟢 Can return without penalty with full refund
+												else if Date.now() - order.timeRequested > 2*8.64e+7  && Date.now() - order.timeRequested <=7*8.64e+7
+													span 🟠 10RMB deduction per item refunded
+												else if Date.now() - order.timeRequested > 7*8.64e+7
+													span 🔴 No return
+										else
+											p Total billing of 
+												span=order.total.toFixed(2) + " RMB "
+												span was not received
+											p Total of 
+												span=order.rewardPoints + "pts "
+												span are not rewarded
 							div(id="unconfirmedItems" + i).row
 			#confirmed.tab-pane.fade.show(role='tabpanel')
 				each order, i in confirmed

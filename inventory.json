@@ -4,7 +4,7 @@
       "id": "0213280",
       "img": "https://www.lulus.com/images/product/xlarge/2958280_586292.jpg?w=560&hdpi=1",
       "name": "Navy lace dress",
-      "sold": false,
+      "sold": true,
       "brand": "H&M",
       "price": 23.99,
       "category": 0,
@@ -509,7 +509,8 @@
       "donor": "timmy02",
       "subtype": 1,
       "type": 2,
-      "donationRewardPoints": 570
+      "donationRewardPoints": 570,
+      "sold": true
     },
     {
       "id": "0218044",
@@ -529,7 +530,8 @@
       "donor": "valencia01",
       "subtype": 1,
       "type": 2,
-      "donationRewardPoints": 480
+      "donationRewardPoints": 480,
+      "sold": false
     },
     {
       "id": "0218169",
@@ -549,7 +551,8 @@
       "donor": "valencia01",
       "subtype": 1,
       "type": 2,
-      "donationRewardPoints": 750
+      "donationRewardPoints": 750,
+      "sold": true
     },
     {
       "id": "0216032",
@@ -589,7 +592,8 @@
       "donor": "valencia01",
       "subtype": 1,
       "type": 2,
-      "donationRewardPoints": 750
+      "donationRewardPoints": 750,
+      "sold": true
     },
     {
       "id": "0216163",
@@ -609,7 +613,8 @@
       "donor": "valencia01",
       "subtype": 1,
       "type": 2,
-      "donationRewardPoints": 750
+      "donationRewardPoints": 750,
+      "sold": true
     },
     {
       "id": "0208940",
@@ -629,7 +634,8 @@
       "donor": "valencia01",
       "subtype": 0,
       "type": 2,
-      "donationRewardPoints": 480
+      "donationRewardPoints": 480,
+      "sold": true
     },
     {
       "id": "0208431",
