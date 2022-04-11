@@ -302,13 +302,13 @@
       "size": 0,
       "description": "Amazing",
       "styleRating": 3,
-      "qualityRating": 5,
-      "valueRating": 5,
+      "qualityRating": 4,
+      "valueRating": 3,
       "donor": "valencia01",
       "subtype": 1,
       "type": 1,
       "sold": false,
-      "donationRewardPoints": 590
+      "donationRewardPoints": 340
     },
     {
       "id": "0132983",

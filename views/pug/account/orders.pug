@@ -36,7 +36,6 @@ include account
 										span= (d = new Date(order.pickedUp))? d.toDateString() + " " + d.getHours().toString().padStart(2, '0') + ":" + d.getMinutes().toString().padStart(2, '0') : " "
 								else 
 									p Please Pick Up From Store 🛍
-									
 						else if order.declined 
 							p Admin Declined Order ❌: 
 								span= (d = new Date(order.declined))? d.toDateString() + " " + d.getHours().toString().padStart(2, '0') + ":" + d.getMinutes().toString().padStart(2, '0') : " "

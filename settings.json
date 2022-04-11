@@ -41,9 +41,9 @@
 		}
 	},
 
-	"starValues": [0, 10, 40, 90, 160, 250],
+	"starValues": [0, 10, 50, 90, 160, 250],
 	"discount": [0, 10, 30, 40, 55, 70],
-	"deductionPts": [0, 240, 480, 720, 960, 1200],
+	"deductionPts": [0, 200, 480, 720, 960, 1200],
 
 	"season": ["☘️ Spring", "☀️ Summer", "🍂 Fall", "❄️ Winter"],
 	"size": ["XS", "S", "M", "L", "XL"],

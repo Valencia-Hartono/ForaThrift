@@ -170,13 +170,6 @@ async function startServer() {
 		});
 	});
 
-	// //create request for declined orders through this link
-	// app.get('/admin/declined', (req, res) => {
-	// 	res.json({
-	// 		declined: orders.declined
-	// 	});
-	// });
-
 	app.get('/admin/confirmRequest/:orderID', async (req, res) => {
 		let { orderID } = req.params;
 		let user = users[currentUser];
@@ -380,7 +373,6 @@ async function startServer() {
 		let filters = {
 			sold: false
 		};
-
 		url = url.split('?');
 		log(url);
 		// if url contains filters

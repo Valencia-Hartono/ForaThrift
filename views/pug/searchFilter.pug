@@ -19,7 +19,6 @@ form#searchFilterForm.accordion
                       input.form-check-input.filter-check(id=filter + "-" + i type="checkbox" name=filter + "-" + i)
                       label(class="form-check-label" for=filter + "-" + i)= item
                       br
-            //- else if filter!="size"
             each label, i in fora[filter]
               input.form-check-input.filter-check(id=filter + "-" + i type="checkbox" name=filter + "-" + i)
               label(class="form-check-label" for=filter + "-" + i)= label
