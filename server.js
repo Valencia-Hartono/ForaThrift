@@ -452,8 +452,8 @@ async function startServer() {
 	});
 
 	app.get('/admin/inventoryNumOfItems', (req, res) => {
-		let { clothing, shoes, bags, accessories } = db;
-		let inventoryNumOfItems = clothing.length + shoes.length + bags.length + accessories.length;
+		let { clothing, shoes, bags, accessories, miscellaneous } = db;
+		let inventoryNumOfItems = clothing.length + shoes.length + bags.length + accessories.length + miscellaneous.length;
 		res.json({ inventoryNumOfItems });
 	});
 

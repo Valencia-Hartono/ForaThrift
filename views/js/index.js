@@ -60,7 +60,7 @@ function displayItems(elem, items) {
 		$items.append(`
 		<div id="${item.id}" class="col-6 col-md-3 mt-3 mb-3">
 			<div height="300px">
-				<img src="${item.img}" width="300px"/>
+				<img src="${item.img}" width="300px" height="300px"/>
 			</div>
 			<div class="container mt-2">
 				<font size="2px">
@@ -169,7 +169,6 @@ fora.scripts.push(() => {
 			if (subtype || subtype === 0) u += '/' + subtype;
 			return u + quest;
 		}
-
 		// if the url starts with a number
 		if (attrsAreNumbers) {
 			category = Number(category);
@@ -186,10 +185,8 @@ fora.scripts.push(() => {
 			convertText();
 			itemsUrl = createUrl('items');
 		}
-
 		// changes the url without reloading the page
 		history.pushState({}, 'store', storeUrl);
-
 		// get items from the server
 		let res = await fetch(itemsUrl);
 		res = await res.json();
@@ -197,14 +194,11 @@ fora.scripts.push(() => {
 		log(items);
 		displayItems('#items', items);
 	};
-
 	//instead of inputing types manually, use a function
 	for (let i = 0; i < fora.categories.names.length; i++) {
 		addColumns(fora.categories.names[i], i);
 	}
-
 	$('#clothingSidebar').show();
-
 	$('#shoes').show();
 
 	//for nav bar; adds category types and subtypes on second nav bar, evenly split in three column

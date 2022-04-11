@@ -26,12 +26,10 @@ include account
 		
 
 	#orderStatusAlert.mt-3
-
 	if user.reserved.length == 0
 		p.text-center: a(href="/store/clothing") You haven’t added any items yet (view shop)
 	else
 		.row: #reservedItems.row
-
 	#confirmOrderModal.modal.fade(tabindex='-1')
 		.modal-dialog
 			form#cartForm.modal-content
@@ -61,10 +59,8 @@ include account
 					#delivery(style="display:none")
 						label.col-10 📍 Deliver to following address:
 						label.col-10.form-label= user.address || '⚠️ please enter your address on your profile page'
-						
 					| Are you sure you want to order these items? If payment via wechat is not received within 24hrs of request, request will be denied and user must wait 48hrs before next request.
 				.modal-footer
-					//- button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Cancel
 					if (user.address!="")
 						button#confirmOrder.btn.btn-green(type='button' onclick='submitCartForm()' data-bs-dismiss='modal') Confirm
 					else 

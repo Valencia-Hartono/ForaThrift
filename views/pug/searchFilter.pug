@@ -19,24 +19,24 @@ form#searchFilterForm.accordion
                       input.form-check-input.filter-check(id=filter + "-" + i type="checkbox" name=filter + "-" + i)
                       label(class="form-check-label" for=filter + "-" + i)= item
                       br
-            else if filter!="size"
-              each label, i in fora[filter]
-                input.form-check-input.filter-check(id=filter + "-" + i type="checkbox" name=filter + "-" + i)
-                label(class="form-check-label" for=filter + "-" + i)= label
-                br
-            else
-              each subFilter in ["size","shoeSize","jeanSize"]
-                .row(id=subFilter +'SubFilter')
-                  .col-6
-                    each size, i in fora[subFilter]
-                      if i % 2 == 0
-                        input.form-check-input.filter-check(id=subFilter + "-" + i type="checkbox" name=subFilter + "-" + i)
-                        label(class="form-check-label" for="size-" + i)= size
-                        br
-                  .col-6
-                    each size, i in fora[subFilter]
-                      if i % 2 == 1
-                        input.form-check-input.filter-check(id=subFilter + "-" + i type="checkbox" name=subFilter + "-" + i)
-                        label(class="form-check-label" for="size-" + i)= size
-                        br
+            //- else if filter!="size"
+            each label, i in fora[filter]
+              input.form-check-input.filter-check(id=filter + "-" + i type="checkbox" name=filter + "-" + i)
+              label(class="form-check-label" for=filter + "-" + i)= label
+              br
+            //- else
+            //-   each subFilter in ["size","shoeSize","jeanSize"]
+            //-     .row(id=subFilter +'SubFilter')
+            //-       .col-6
+            //-         each size, i in fora[subFilter]
+            //-           if i % 2 == 0
+            //-             input.form-check-input.filter-check(id=subFilter + "-" + i type="checkbox" name=subFilter + "-" + i)
+            //-             label(class="form-check-label" for="size-" + i)= size
+            //-             br
+            //-       .col-6
+            //-         each size, i in fora[subFilter]
+            //-           if i % 2 == 1
+            //-             input.form-check-input.filter-check(id=subFilter + "-" + i type="checkbox" name=subFilter + "-" + i)
+            //-             label(class="form-check-label" for="size-" + i)= size
+            //-             br
 script(src='/js/searchFilter.js')

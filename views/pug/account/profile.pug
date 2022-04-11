@@ -36,7 +36,7 @@ include account
 		.form-check.form-check-inline
 			input#nonBinaryRadio.form-check-input(type='radio' name='gender' checked=(user.gender == 'n') value='n')
 			label.form-check-label(for='nonBinaryRadio')  nonbinary 
-		// phone form
+		// wechat form
 		.mt-3.mb-3
 			label.form-label(for='wechatID') *Wechat ID
 			input.form-control(type='text' name='wechatID' value=(user.wechatID || ''))

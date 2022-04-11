@@ -70,7 +70,7 @@
       "qualityRating": 3,
       "valueRating": 4,
       "purchaseTime": 0,
-      "sold": false,
+      "sold": true,
       "category": 0,
       "donationRewardPoints": 410
     },
@@ -97,7 +97,7 @@
       "qualityRating": 3,
       "valueRating": 4,
       "purchaseTime": 0,
-      "sold": false,
+      "sold": true,
       "category": 0,
       "donationRewardPoints": 410
     },
@@ -143,7 +143,7 @@
       "qualityRating": 3,
       "valueRating": 4,
       "purchaseTime": 0,
-      "sold": false
+      "sold": true
     },
     {
       "id": "0009888",
@@ -181,26 +181,6 @@
       "color": 0,
       "size": 1,
       "description": "H&M DIVIDED\nEUR 36 | USA 6 | CA 6 | CN 165/84A | MX 6\nMade in Cambodia\n78% COTTON | 20% POLYESTER | 2% ELASTANE\nAdmin's note: nice to pair with sneakers or boots",
-      "styleRating": 4,
-      "qualityRating": 4,
-      "valueRating": 4,
-      "donor": "valencia01",
-      "subtype": 1,
-      "type": 2,
-      "sold": false
-    },
-    {
-      "id": "0213282",
-      "img": "https://i.pinimg.com/564x/40/ee/50/40ee5010d617e6ed51f08f86298f8805.jpg",
-      "name": "H&M skater neon pink low-back dress",
-      "brand": "H&M",
-      "price": 45,
-      "category": 0,
-      "style": 0,
-      "season": 0,
-      "color": 12,
-      "size": 2,
-      "description": "H&M DIVIDED\nEUR 38 | USA 8 | CA 8 | CN 165/88A | MX 8\nMade in Cambodia\n95% POLYESTER | 5% ELASTANE\nAdmin's note: nice to pair with flats, sandals, or boots",
       "styleRating": 4,
       "qualityRating": 4,
       "valueRating": 4,
@@ -270,26 +250,6 @@
       "sold": false
     },
     {
-      "id": "0213286",
-      "img": "https://i.pinimg.com/564x/1e/16/56/1e1656ac569a9915f9b29c472f08357b.jpg",
-      "name": "H&M flowy green dress",
-      "brand": "H&M",
-      "price": 50,
-      "category": 0,
-      "style": 0,
-      "season": 1,
-      "color": 8,
-      "size": 1,
-      "description": "H&M DIVIDED\nAUS 13 | EUR 158 | USA 12-13Y | CA 12-13A | CN 160/80 | MX 158\nMade in Indonesia\nSHELL: 100% POLYESTER \nLINING: 100% POLYESTER\nAdmin's note: super comfortable",
-      "styleRating": 4,
-      "qualityRating": 4,
-      "valueRating": 4,
-      "donor": "valencia01",
-      "subtype": 1,
-      "type": 2,
-      "sold": false
-    },
-    {
       "id": "0133287",
       "img": "https://i.pinimg.com/564x/05/a4/93/05a49386f72dab07b128666d0a809adb.jpg",
       "name": "ROME body tight long sleeve crop top ",
@@ -327,67 +287,7 @@
       "donor": "valencia01",
       "subtype": 3,
       "type": 1,
-      "sold": false
-    },
-    {
-      "id": "0133289",
-      "img": "https://i.pinimg.com/564x/f2/c3/fd/f2c3fd0860afcc3ade399d76e4df8434.jpg",
-      "name": "H&M Navy tank crop top",
-      "brand": "H&M",
-      "price": 30,
-      "category": 0,
-      "style": 4,
-      "season": 1,
-      "color": 10,
-      "size": 1,
-      "description": "Admin's note: can pair with sweatpants or jean shorts",
-      "styleRating": 4,
-      "qualityRating": 4,
-      "valueRating": 4,
-      "donor": "valencia01",
-      "subtype": 3,
-      "type": 1,
-      "sold": false
-    },
-    {
-      "id": "0143290",
-      "img": "https://i.pinimg.com/564x/42/fa/f8/42faf8e4330487cc7603b50dff6d6a35.jpg",
-      "name": "Montreal purple cropped sweatshirt",
-      "brand": "MONTREAL",
-      "price": 80,
-      "category": 0,
-      "style": 4,
-      "season": 2,
-      "color": 11,
-      "size": 2,
-      "description": "Admin's note: careful to wash",
-      "styleRating": 4,
-      "qualityRating": 5,
-      "valueRating": 5,
-      "donor": "valencia01",
-      "subtype": 4,
-      "type": 1,
-      "sold": false
-    },
-    {
-      "id": "0163291",
-      "img": "https://i.pinimg.com/564x/a5/de/10/a5de10c5616ec8759db8e6fb331d8479.jpg",
-      "name": "CHAMPIONS HARVARD hoodie",
-      "brand": "CHAMPIONS",
-      "price": 100,
-      "category": 0,
-      "style": 4,
-      "season": 3,
-      "color": 16,
-      "size": 3,
-      "description": "CHAMPIONS\n",
-      "styleRating": 4,
-      "qualityRating": 4,
-      "valueRating": 5,
-      "donor": "valencia01",
-      "subtype": 6,
-      "type": 1,
-      "sold": false
+      "sold": true
     },
     {
       "id": "0118871",
@@ -422,13 +322,14 @@
       "color": 0,
       "size": 1,
       "description": "nice",
-      "styleRating": 5,
-      "qualityRating": 5,
-      "valueRating": 5,
+      "styleRating": 3,
+      "qualityRating": 3,
+      "valueRating": 3,
       "donor": "valencia01",
       "subtype": 3,
       "type": 1,
-      "sold": false
+      "sold": false,
+      "donationRewardPoints": 270
     },
     {
       "id": "0117407",
@@ -469,7 +370,8 @@
       "donor": "valencia01",
       "subtype": 2,
       "type": 0,
-      "donationRewardPoints": 750
+      "donationRewardPoints": 750,
+      "sold": false
     },
     {
       "id": "0117915",
@@ -489,7 +391,8 @@
       "donor": "valencia01",
       "subtype": 1,
       "type": 1,
-      "donationRewardPoints": 570
+      "donationRewardPoints": 570,
+      "sold": false
     },
     {
       "id": "0212129",
@@ -510,7 +413,7 @@
       "subtype": 1,
       "type": 2,
       "donationRewardPoints": 570,
-      "sold": true
+      "sold": false
     },
     {
       "id": "0218044",
@@ -523,7 +426,7 @@
       "season": 0,
       "color": 1,
       "size": 2,
-      "description": "NIce",
+      "description": "This is a white bodycon dress",
       "styleRating": 4,
       "qualityRating": 4,
       "valueRating": 4,
@@ -552,7 +455,7 @@
       "subtype": 1,
       "type": 2,
       "donationRewardPoints": 750,
-      "sold": true
+      "sold": false
     },
     {
       "id": "0216032",
@@ -593,7 +496,7 @@
       "subtype": 1,
       "type": 2,
       "donationRewardPoints": 750,
-      "sold": true
+      "sold": false
     },
     {
       "id": "0216163",
@@ -614,7 +517,7 @@
       "subtype": 1,
       "type": 2,
       "donationRewardPoints": 750,
-      "sold": true
+      "sold": false
     },
     {
       "id": "0208940",
@@ -635,7 +538,7 @@
       "subtype": 0,
       "type": 2,
       "donationRewardPoints": 480,
-      "sold": true
+      "sold": false
     },
     {
       "id": "0208431",
@@ -688,26 +591,6 @@
       "season": 2,
       "color": 5,
       "size": 2,
-      "description": "nice",
-      "styleRating": 5,
-      "qualityRating": 4,
-      "valueRating": 4,
-      "donor": "valencia01",
-      "subtype": 3,
-      "type": 1,
-      "donationRewardPoints": 570
-    },
-    {
-      "id": "0139995",
-      "img": "https://i.pinimg.com/474x/a2/df/ed/a2dfed1b26c215b30b5fada14ced83a3.jpg",
-      "name": "Black silk collar shirt",
-      "brand": "HOLLISTER",
-      "price": 90,
-      "category": 0,
-      "style": 0,
-      "season": 0,
-      "color": 0,
-      "size": 0,
       "description": "nice",
       "styleRating": 5,
       "qualityRating": 4,
@@ -804,26 +687,7 @@
       "subtype": 0,
       "type": 0,
       "donationRewardPoints": 500
-    },
-    {
-      "id": "3104870",
-      "img": "https://i.pinimg.com/474x/be/ca/56/beca56fa38986d7c1f7eb1b26ff0e1aa.jpg",
-      "name": "belt 2",
-      "brand": "H&M",
-      "price": 90,
-      "category": 3,
-      "style": 4,
-      "season": 2,
-      "color": 0,
-      "size": 0,
-      "description": "jio",
-      "styleRating": 4,
-      "qualityRating": 4,
-      "valueRating": 3,
-      "donor": "valencia01",
-      "subtype": 0,
-      "type": 1,
-      "donationRewardPoints": 410
     }
-  ]
+  ],
+  "miscellaneous": []
 }

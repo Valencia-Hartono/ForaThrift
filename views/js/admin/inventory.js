@@ -17,7 +17,6 @@ fora.scripts.push(async () => {
 
 	window.submitAdminInventoryForm = async () => {
 		let item = getFormData('adminInventoryForm');
-
 		for (let prop in item) {
 			if (prop == 'img') continue;
 			if (!item[prop] && prop != 'id') {
@@ -28,20 +27,15 @@ fora.scripts.push(async () => {
 				return;
 			}
 		}
-
 		item.subtype = item.category[2];
 		item.type = item.category[1];
 		item.category = item.category[0];
 		item.donationRewardPoints = donationRewardPoints;
-
 		if (ogItem.id && ogItem.id == $('#searchItemID').val()) {
 			item = Object.assign(ogItem, item);
 		}
-
 		log(item);
-
 		let newItem = !item.id;
-
 		item = await (
 			await fetch('/admin/inventory', {
 				method: 'POST',
@@ -51,7 +45,6 @@ fora.scripts.push(async () => {
 				body: JSON.stringify(item)
 			})
 		).json();
-
 		if (item.id && newItem) {
 			$('#searchItemID').val(item.id);
 			alert('Item #' + item.id + ' added!');
@@ -75,7 +68,6 @@ fora.scripts.push(async () => {
 		$('#reward').val(points);
 		donationRewardPoints = points;
 	}
-
 	for (let i = 0; i < 3; i++) {
 		$('.ratingSel')[i].onchange = async () => {
 			let item = getFormData('adminInventoryForm');
@@ -83,12 +75,10 @@ fora.scripts.push(async () => {
 			showRewardPoints(ratings);
 		};
 	}
-
 	// requires the fora global variable created in index.js
 	function addOptions() {
 		//add ID
 		//"in" loops through keys; "of" loops through key's values (in this case the arrays)
-
 		for (let selName of ['style', 'season', 'color', 'size']) {
 			let options = fora[selName];
 			$(`#${selName}`).append(`<option selected> ⚠️ ${selName} </option>`);
@@ -98,7 +88,6 @@ fora.scripts.push(async () => {
 			}
 		}
 	}
-
 	addOptions();
 
 	$('#search')[0].onclick = async () => {

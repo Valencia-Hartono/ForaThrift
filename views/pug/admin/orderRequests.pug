@@ -18,8 +18,6 @@ else
 				button.nav-link.fs-6.active(data-bs-toggle='tab' data-bs-target='#unconfirmed' type='button' role='tab') UNCONFIRMED ORDERS
 			li.nav-item(role='presentation')
 				button.nav-link.fs-6(data-bs-toggle='tab' data-bs-target='#confirmed' type='button' role='tab') CONFIRMED ORDERS
-			//- li.nav-item(role='presentation')
-			//- 	button.nav-link.fs-6(data-bs-toggle='tab' data-bs-target='#declined' type='button' role='tab') DECLINED ORDERS
 		.tab-content.mx-4
 			#unconfirmed.tab-pane.fade.show.active(role='tabpanel')
 				each order, i in unconfirmed
