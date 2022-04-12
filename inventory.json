@@ -434,7 +434,7 @@
       "subtype": 1,
       "type": 2,
       "donationRewardPoints": 480,
-      "sold": false
+      "sold": true
     },
     {
       "id": "0218169",

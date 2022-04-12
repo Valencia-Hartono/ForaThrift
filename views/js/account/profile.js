@@ -21,26 +21,6 @@ fora.scripts.push(async () => {
 
 	//append/display avatar based on checking points and gender
 	function checkAvatar(points, gender) {
-		// this is the original hard code the function below replaced:
-		// if (points >= 5200 && gender == 'f') {
-		// 	avatar = '🧞‍♀️';
-		// } else if (points >= 5200 && gender == 'm') {
-		// 	avatar = '🧞‍♂️';
-		// } else if (points >= 5200 && gender == 'n') {
-		// 	avatar = '🧞';
-		// } else if (points >= 2600 && gender == 'f') {
-		// 	avatar = '🧜‍♀️';
-		// } else if (points >= 2600 && gender == 'm') {
-		// 	avatar = '🧜';
-		// } else if (points >= 2600 && gender == 'n') {
-		// 	avatar = '🧜‍♂️';
-		// } else if (points < 2600 && gender == 'f') {
-		// 	avatar = '🧚‍♀️';
-		// } else if (points < 2600 && gender == 'm') {
-		// 	avatar = '🧚‍♂️';
-		// } else if (points < 2600 && gender == 'n') {
-		// 	avatar = '🧚';
-		// }
 		var avatar = '🧚';
 		let arrayF = ['🧞‍♀️', '🧜‍♀️', '🧚‍♀️'];
 		let arrayM = ['🧞‍♂️', '🧜', '🧚‍♂️'];
@@ -62,4 +42,25 @@ fora.scripts.push(async () => {
 	}
 	checkRank(user.totalPoints);
 	checkAvatar(user.totalPoints, user.gender);
+
+	// this is the original hard code the function above replaced:
+	// if (points >= 5200 && gender == 'f') {
+	// 	avatar = '🧞‍♀️';
+	// } else if (points >= 5200 && gender == 'm') {
+	// 	avatar = '🧞‍♂️';
+	// } else if (points >= 5200 && gender == 'n') {
+	// 	avatar = '🧞';
+	// } else if (points >= 2600 && gender == 'f') {
+	// 	avatar = '🧜‍♀️';
+	// } else if (points >= 2600 && gender == 'm') {
+	// 	avatar = '🧜';
+	// } else if (points >= 2600 && gender == 'n') {
+	// 	avatar = '🧜‍♂️';
+	// } else if (points < 2600 && gender == 'f') {
+	// 	avatar = '🧚‍♀️';
+	// } else if (points < 2600 && gender == 'm') {
+	// 	avatar = '🧚‍♂️';
+	// } else if (points < 2600 && gender == 'n') {
+	// 	avatar = '🧚';
+	// }
 });

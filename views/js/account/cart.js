@@ -133,6 +133,7 @@ fora.scripts.push(async () => {
 		cart.timeRequested = Date.now();
 		cart.username = user.username;
 		cart.wechatID = user.wechatID;
+		cart.address = user.address;
 		cart.sent = 0;
 		cart.pickedUp = 0;
 		cart.declined = 0;

@@ -62,8 +62,11 @@ include account
 										span=order.subtotal.toFixed(2) + " RMB"
 									p Estimated sales tax: 
 										span=order.salesTax.toFixed(2) + " RMB"
-									p.mb-5 Shipping and handling cost: 
+									p Shipping and handling cost: 
 										span=order.shipping.toFixed(2) + " RMB"
+									if (order.shipping)
+										p.mb-5 Delivery Address: 
+											span=order.address
 								.col-md-4
 									if (!order.declined)
 										p Total billing: 

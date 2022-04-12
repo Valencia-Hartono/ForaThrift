@@ -59,7 +59,8 @@ else
 										if (order.shipping==0)
 											p Customer pick up from store
 										else 
-											p Customer paid for delivery
+											p Customer paid for delivery: 
+												span=order.address
 									.col-md-4
 										if (!order.declined)
 											p Total billing: 
@@ -137,7 +138,8 @@ else
 										if (order.shipping==0)
 											p Customer pick up from store
 										else 
-											p Customer paid for delivery
+											p Customer paid for delivery: 
+												span=order.address
 									.col-md-4
 										if (!order.declined)
 											p Total billing: 
